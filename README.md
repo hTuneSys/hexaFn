@@ -1,4 +1,4 @@
-# hexaFn
+# hexaFn 
 
 <p align="center">
   <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" />
