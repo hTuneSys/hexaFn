@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" width="260"/>
+  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" />
 </p>
 
 # hexaFn
