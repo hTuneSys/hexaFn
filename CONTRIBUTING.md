@@ -62,6 +62,55 @@ Feel free to:
 
 ---
 
+## 🧠 Commit Message Format (Semantic Release)
+
+We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to automate versioning and changelogs.
+
+| Prefix | Meaning            | Version Impact     |
+|--------|--------------------|--------------------|
+| feat:  | Add a new feature  | minor version bump |
+| fix:   | Fix a bug          | patch version bump |
+| perf:  | Performance change | patch version bump |
+| docs:  | Docs only          | no version change  |
+| chore: | Build/config/meta  | no version change  |
+| BREAKING CHANGE: | In footer | major version bump 🔥 |
+
+### **Examples:**
+
+#### ➕ Add a New Feature (minor)
+```
+feat(run): support WASM sandbox execution
+```
+
+#### 🐛 Fix a Bug (patch)
+```
+fix(store): resolve panic when key is empty
+```
+
+#### 📈 Improve Performance (patch)
+```
+perf(trigger): reduce evaluation loop overhead
+```
+
+#### 📚 Documentation Only (no bump)
+```
+docs: clarify HexaBridge usage in README
+```
+
+#### 🔧 Tooling Change (no bump)
+```
+chore(ci): switch to GitHub Actions for build
+```
+
+#### 💥 Breaking Change (major)
+```
+feat(store): introduce versioned keys
+
+BREAKING CHANGE: old keys will no longer be recognized by the runtime.
+```
+
+---
+
 ## 📬 Contact & Support
 
 For questions, feedback, or feature discussions, reach us at:  
