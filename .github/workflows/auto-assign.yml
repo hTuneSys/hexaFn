@@ -1,0 +1,13 @@
+name: Auto Assign Reviewer
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  add-reviewer:
+    name: Add Reviewer (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto assign
+        uses: kentaro-m/auto-assign-action@v1.2.3
