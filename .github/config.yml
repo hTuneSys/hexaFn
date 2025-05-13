@@ -1,0 +1,19 @@
+# Welcome message for first-time contributors
+
+welcome:
+  newPRWelcomeComment: >
+    👋 **Welcome to hexaFn!**  
+    Thank you for your first pull request 🎉  
+    A maintainer will review it soon. In the meantime, make sure your PR follows our [contribution guidelines](../.github/CONTRIBUTING.md).  
+    Happy hacking! 🚀
+
+  newIssueWelcomeComment: >
+    👋 Welcome!  
+    Thanks for submitting your first issue.  
+    A maintainer will look into it shortly. Don’t forget to check out the [documentation](../docs/summary.md) while you wait.
+
+  newContributorWelcomeComment: >
+    🙌 Thanks for joining the hexaFn project!  
+    We’re excited to have you here.  
+    Head over to [getting started](../docs/getting-started.md) to begin your journey.
+
