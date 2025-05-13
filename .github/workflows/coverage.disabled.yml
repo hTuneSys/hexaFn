@@ -1,0 +1,54 @@
+name: Code Coverage
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    name: Run coverage analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Cache cargo-tarpaulin binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/bin/cargo-tarpaulin
+          key: ${{ runner.os }}-tarpaulin
+          restore-keys: |
+            ${{ runner.os }}-tarpaulin
+
+      - name: Install Tarpaulin if not cached
+        run: |
+          if ! command -v cargo-tarpaulin &> /dev/null; then
+            cargo install cargo-tarpaulin;
+          fi
+
+      - name: Run Coverage
+        run: |
+          mkdir -p coverage
+          cargo tarpaulin --out Xml --output-dir coverage
+          echo "--- coverage folder contents ---"
+          ls -la coverage
+
+      - name: Rename coverage file if needed
+        run: |
+          if [ -f coverage/tarpaulin-report.xml ]; then
+            echo "File already named correctly.";
+          else
+            mv coverage/cobertura.xml coverage/tarpaulin-report.xml
+          fi
+
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/tarpaulin-report.xml
+          flags: rust
+          fail_ci_if_error: true
