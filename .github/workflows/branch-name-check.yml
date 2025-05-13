@@ -1,0 +1,20 @@
+name: 🧪 Enforce Branch Naming
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-branch-name:
+    name: Check Branch Name (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          echo "Checking branch name: $BRANCH_NAME"
+          if [[ ! "$BRANCH_NAME" =~ ^(feat|fix|chore|refactor|test|docs|ci|perf|build|release|hotfix)/.+$ ]]; then
+            echo "❌ Invalid branch name: $BRANCH_NAME"
+            echo "Branch names must match the format: <type>/<description>"
+            exit 1
+          fi
