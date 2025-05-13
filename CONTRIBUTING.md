@@ -178,6 +178,46 @@ You can also open a [GitHub Issue](https://github.com/hTuneSys/hexaFn/issues) to
 
 ---
 
+## ✅ Ground Rules
+
+- All contributions must follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- Code must be formatted with `cargo fmt`
+- All PRs must be reviewed and pass CI
+- `main` is **protected** and used only for releases
+- Contributions are made against the `develop` branch
+
+---
+
+## 🔄 Branch Strategy (Summary)
+
+| Branch        | Role                                                                 |
+|---------------|----------------------------------------------------------------------|
+| `main`        | Production branch – semantic-release runs here                       |
+| `develop`     | Active integration branch – PR base                                  |
+| `feature/*`   | New features – merge into `develop`                                  |
+| `fix/*`       | Bugfix branches – merge into `develop`                               |
+| `release/*`   | QA-tested, stable pre-release – merged to `main` after approval      |
+| `hotfix/*`    | Urgent fixes from `main` – immediately patched + backmerged          |
+
+➡️ For full strategy see [`docs/branch-strategy.md`](./docs/branch-strategy.md)
+
+---
+
+## 🧪 How to Submit a PR
+
+1. Fork the repository
+2. Create your branch from `develop` using correct naming (`feature/`, `fix/`, etc.)
+3. Make sure your changes pass CI and are formatted
+4. Submit a pull request to `develop`
+
+PRs must:
+- Be clearly described
+- Reference related issues (e.g., `Closes #42`)
+- Use correct semantic commit format
+- Tick module boxes in the PR template
+
+---
+
 ## 🧾 License
 
 By contributing, you agree that your contributions will be licensed under the same license as the project: **MIT License**.
