@@ -17,15 +17,36 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Install Tarpaulin
-        run: cargo install cargo-tarpaulin
+      - name: Cache cargo-tarpaulin binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/bin/cargo-tarpaulin
+          key: ${{ runner.os }}-tarpaulin
+          restore-keys: |
+            ${{ runner.os }}-tarpaulin
+
+      - name: Install Tarpaulin if not cached
+        run: |
+          if ! command -v cargo-tarpaulin &> /dev/null; then
+            cargo install cargo-tarpaulin;
+          fi
 
       - name: Run Coverage
         run: |
           mkdir -p coverage
           cargo tarpaulin --out Xml --output-dir coverage
+          echo "--- coverage folder contents ---"
+          ls -la coverage
 
-      - name: Upload coverage report
+      - name: Rename coverage file if needed
+        run: |
+          if [ -f coverage/tarpaulin-report.xml ]; then
+            echo "File already named correctly.";
+          else
+            mv coverage/*.xml coverage/tarpaulin-report.xml
+          fi
+
+      - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
         with:
           files: coverage/tarpaulin-report.xml
