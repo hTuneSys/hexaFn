@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hexaFn - From Feed to Feedback</title>
+  <style>
+    :root {
+      --bg: #111;
+      --text: #f4f4f4;
+      --card: #2b2b2b;
+      --accent: #ffde59;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fdfdfd;
+        --text: #111;
+        --card: #eaeaea;
+        --accent: #2b4c75;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #ffffff;
+      animation: fadeInDown 1s ease-out;
+    }
+    header p {
+      color: #aaa;
+      font-style: italic;
+      animation: fadeIn 2s ease-in;
+    }
+    .section {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .section h2 {
+      color: var(--accent);
+      margin-top: 2rem;
+    }
+    .section ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+    .modules, .audience, .not-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card {
+      background-color: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      flex: 1 1 calc(33% - 2rem);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%;
+      }
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" width="120" />
+    <h1>hexaFn</h1>
+    <p>From Feed to Feedback, fully programmable.</p>
+  </header>
+
+  <div class="section">
+    <h2>🚀 What is hexaFn?</h2>
+    <p>hexaFn is a programmable, event-driven data engine based on the 6F Lifecycle Flow: <strong>Feed → Filter → Format → Function → Forward → Feedback</strong>.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔷 6F Lifecycle Flow</h2>
+    <ul>
+      <li><strong>Feed:</strong> Ingest events and data from external sources.</li>
+      <li><strong>Filter:</strong> Evaluate and pre-process conditions.</li>
+      <li><strong>Format:</strong> Normalize or validate incoming data.</li>
+      <li><strong>Function:</strong> Run programmable logic or custom functions.</li>
+      <li><strong>Forward:</strong> Send output to destinations like KV store, pubsub, or webhooks.</li>
+      <li><strong>Feedback:</strong> Log and trigger traceable responses.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧩 Core Modules</h2>
+    <div class="modules">
+      <div class="card"><strong>HexaStore</strong><br />Typed key-value store with event triggers.</div>
+      <div class="card"><strong>HexaCast</strong><br />Real-time pub-sub and broadcast engine.</div>
+      <div class="card"><strong>HexaRun</strong><br />Dynamic function execution (WASM/DSL).</div>
+      <div class="card"><strong>HexaTrigger</strong><br />Condition-based trigger engine.</div>
+      <div class="card"><strong>HexaWatch</strong><br />Auditing and event monitoring layer.</div>
+      <div class="card"><strong>HexaBridge</strong><br />External API and SDK integrations.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>👤 Who is it for?</h2>
+    <div class="audience">
+      <div class="card"><strong>Event Architects</strong><br />For backend event-driven system builders.</div>
+      <div class="card"><strong>Realtime Hackers</strong><br />For chat, IoT, or live gaming developers.</div>
+      <div class="card"><strong>Product Integrators</strong><br />For webhook, form, and action automation.</div>
+      <div class="card"><strong>AI Pipeliners</strong><br />For ML engineers doing live preprocessing.</div>
+      <div class="card"><strong>Infra Builders</strong><br />For architects building composable infra.</div>
+      <div class="card"><strong>Plugin Crafters</strong><br />For developers building reusable logic.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>❌ What hexaFn is NOT (Never-6)</h2>
+    <div class="not-section">
+      <div class="card"><strong>Never-SQL:</strong><br />We are not a relational SQL database.</div>
+      <div class="card"><strong>No-Bloat:</strong><br />We are not a bloated monolith.</div>
+      <div class="card"><strong>No-Wait:</strong><br />We are not a batch processing engine.</div>
+      <div class="card"><strong>No-LockIn:</strong><br />We are not a vendor lock-in SaaS.</div>
+      <div class="card"><strong>No-UIBuilder:</strong><br />We are not a visual frontend tool.</div>
+      <div class="card"><strong>No-Magic:</strong><br />We are not a black-box runtime.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 hexaTune LLC · Built with 🖤 by Hüsamettin ARABACI · <a href="https://github.com/hTuneSys/hexaFn" style="color:#aaa;">GitHub Repo</a>
+  </div>
+</body>
+</html>
