@@ -43,7 +43,7 @@ jobs:
           if [ -f coverage/tarpaulin-report.xml ]; then
             echo "File already named correctly.";
           else
-            mv coverage/*.xml coverage/tarpaulin-report.xml
+            mv coverage/cobertura.xml coverage/tarpaulin-report.xml
           fi
 
       - name: Upload coverage report to Codecov
