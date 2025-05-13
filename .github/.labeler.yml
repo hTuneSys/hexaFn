@@ -1,0 +1,32 @@
+"module:store":
+  - 'src/store/**'
+
+"module:cast":
+  - 'src/cast/**'
+
+"module:run":
+  - 'src/run/**'
+
+"module:trigger":
+  - 'src/trigger/**'
+
+"module:watch":
+  - 'src/watch/**'
+
+"module:bridge":
+  - 'src/bridge/**'
+
+"type:feature":
+  - 'feature/**'
+
+"type:bug":
+  - 'fix/**'
+
+"type:docs":
+  - 'docs/**'
+
+"type:ci":
+  - '.github/workflows/**'
+
+"type:infra":
+  - 'infrastructure/**'
