@@ -81,7 +81,7 @@ Use the following pattern:
 - `feat/run/wasm-runtime`
 - `fix/store/null-check`
 
-Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`, `ci`
+Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`, `ci`, `build`, `style` 
 
 ---
 
