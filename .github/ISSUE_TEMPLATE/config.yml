@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+description: "Select one of the templates below to open a new issue."
+contact_links:
+  - name: 💬 Questions or Discussions
+    url: https://github.com/hTuneSys/hexaFn/discussions
+    about: Ask questions, start discussions, or get help.
