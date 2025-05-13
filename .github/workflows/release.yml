@@ -9,7 +9,7 @@ on:
 
 jobs:
   release:
-    name: Semantic Release
+    name: Semantic Release (hexaFn)
     runs-on: ubuntu-latest
 
     steps:
