@@ -1,8 +1,8 @@
-<p align="center">
-  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" />
-</p>
-
 # hexaFn
+
+<p align="center">
+  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" width="260"/>
+</p>
 
 **From Feed to Feedback, fully programmable.**  
 A modern event-driven function pipeline powered by the 6F Lifecycle Flow.
@@ -29,6 +29,10 @@ Each stage of the `6F` architecture represents a distinct processing step:
 - **Function**: Apply programmable logic through dynamic, pluggable functions.
 - **Forward**: Dispatch processed output to destinations (KV, pubsub, webhooks, etc.).
 - **Feedback**: Log, trigger, or record responses for traceability and orchestration.
+
+<p align="center">
+  <img src="docs/assets/diagram.png" alt="6F Flow Diagram" width="720"/>
+</p>
 
 ---
 
