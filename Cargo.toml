@@ -1,0 +1,10 @@
+[package]
+name = "hexafn"
+version = "0.1.0"
+edition = "2021"
+authors = ["hexaTune Team <info@hexafn.com>"]
+description = "Modular event-driven function engine using the 6F lifecycle flow"
+license = "MIT"
+repository = "https://github.com/hTuneSys/hexaFn"
+
+[dependencies]
