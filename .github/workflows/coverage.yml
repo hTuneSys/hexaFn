@@ -23,11 +23,11 @@ jobs:
       - name: Run Coverage
         run: |
           mkdir -p coverage
-          cargo tarpaulin --out Xml --output-dir coverage --output-files coverage.xml
+          cargo tarpaulin --out Xml --output-dir coverage
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3
         with:
-          files: coverage/coverage.xml
+          files: coverage/tarpaulin-report.xml
           flags: rust
           fail_ci_if_error: true
