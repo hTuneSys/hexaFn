@@ -1,0 +1,8 @@
+addReviewers: true
+addAssignees: author
+
+reviewers:
+  - husamettinarabaci
+
+skipDraft: true
+numberOfReviewers: 1
