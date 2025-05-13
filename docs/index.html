@@ -11,7 +11,6 @@
       --text: #f4f4f4;
       --card: #1d1e21;
       --accent: #ffde59;
-      --dark-blue: #2b4c75;
     }
     body {
       margin: 0;
@@ -27,7 +26,7 @@
       border-bottom: 2px solid var(--accent);
     }
     header img {
-      filter: drop-shadow(0 0 5px #ffde59);
+      filter: drop-shadow(0 0 5px var(--accent));
     }
     header h1 {
       font-size: 3rem;
@@ -105,7 +104,59 @@
     <p>From Feed to Feedback, fully programmable.</p>
   </header>
 
-  <!-- içerik buraya gelecek -->
+  <div class="section">
+    <h2>🚀 What is hexaFn?</h2>
+    <p>hexaFn is a programmable, event-driven data engine built around the 6F Lifecycle Flow: <strong>Feed → Filter → Format → Function → Forward → Feedback</strong>.</p>
+    <p>It lets developers create real-time logic pipelines with typed key-value storage, dynamic function execution, and full pub-sub orchestration—open-source, composable, and fully self-hostable.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔷 6F Lifecycle Flow</h2>
+    <ul>
+      <li><strong>Feed:</strong> Ingest events and data from external sources.</li>
+      <li><strong>Filter:</strong> Evaluate and pre-process conditions.</li>
+      <li><strong>Format:</strong> Normalize or validate incoming data.</li>
+      <li><strong>Function:</strong> Run programmable logic or custom functions.</li>
+      <li><strong>Forward:</strong> Send output to destinations like KV store, pubsub, or webhooks.</li>
+      <li><strong>Feedback:</strong> Log and trigger traceable responses.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧩 Core Modules</h2>
+    <div class="modules">
+      <div class="card"><strong>HexaStore</strong><br />Typed key-value store with event triggers.</div>
+      <div class="card"><strong>HexaCast</strong><br />Real-time pub-sub and broadcast engine.</div>
+      <div class="card"><strong>HexaRun</strong><br />Dynamic function execution (WASM, DSL, JS).</div>
+      <div class="card"><strong>HexaTrigger</strong><br />Condition-based trigger and rule chaining.</div>
+      <div class="card"><strong>HexaWatch</strong><br />Log and monitor all observable events.</div>
+      <div class="card"><strong>HexaBridge</strong><br />Webhooks, REST, SDKs & external integrations.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>👤 Who is it for?</h2>
+    <div class="audience">
+      <div class="card"><strong>Event Architects</strong><br />For backend engineers building real-time pipelines.</div>
+      <div class="card"><strong>Realtime Hackers</strong><br />For devs building chat, IoT, or game systems.</div>
+      <div class="card"><strong>Product Integrators</strong><br />For automation, forms, workflows, triggers.</div>
+      <div class="card"><strong>AI Pipeliners</strong><br />For ML engineers doing feature prep and inference.</div>
+      <div class="card"><strong>Infra Builders</strong><br />For architects building composable self-hosted logic layers.</div>
+      <div class="card"><strong>Plugin Crafters</strong><br />For open-source contributors building reusable logic.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>❌ What hexaFn is NOT (Never-6)</h2>
+    <div class="not-section">
+      <div class="card"><strong>Never-SQL</strong><br />We are not a traditional relational database.</div>
+      <div class="card"><strong>No-Bloat</strong><br />We are not a bloated monolith or framework.</div>
+      <div class="card"><strong>No-Wait</strong><br />We are not a batch processor. Events are real-time.</div>
+      <div class="card"><strong>No-LockIn</strong><br />We are not a cloud-only SaaS. Self-host freely.</div>
+      <div class="card"><strong>No-UIBuilder</strong><br />We are not a visual editor or CMS.</div>
+      <div class="card"><strong>No-Magic</strong><br />We do not hide logic or state. Transparent by design.</div>
+    </div>
+  </div>
 
   <div class="footer">
     © 2025 hexaTune LLC · Built with 🖤 by Hüsamettin ARABACI · 
