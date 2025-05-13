@@ -62,7 +62,46 @@ Feel free to:
 
 ---
 
-## 🧠 Commit Message Format (Semantic Release)
+## 1️⃣ Branch & Merge Policy
+
+- Never push directly to `main`
+- All changes must go through pull requests (PR)
+- PRs require approval by project owners before merge
+- Merge method: **squash and merge** preferred
+
+---
+
+## 2️⃣ Branch Naming Convention
+
+Use the following pattern:
+```
+<type>/<module>/<short-description>
+```
+**Examples:**
+- `feat/run/wasm-runtime`
+- `fix/store/null-check`
+
+Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`, `ci`
+
+---
+
+## 3️⃣ Pull Request Guidelines
+
+- Use the provided PR template
+- Include related issue (e.g. `Closes #42`)
+- Check off affected modules and checklist
+- Ensure `cargo fmt`, `cargo test`, and `clippy` pass before submitting
+
+---
+
+## 4️⃣ Issue Guidelines
+
+- Use the `bug report` or `feature request` templates
+- Include logs, screenshots, or reproduction steps when possible
+
+---
+
+## 5️⃣ Commit Message Format (Semantic Release)
 
 We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to automate versioning and changelogs.
 
@@ -108,6 +147,25 @@ feat(store): introduce versioned keys
 
 BREAKING CHANGE: old keys will no longer be recognized by the runtime.
 ```
+
+---
+
+## 6️⃣ Tests & CI/CD
+
+- CI checks must pass before PR is reviewed
+- Test coverage should not drop
+- Use `cargo tarpaulin` to validate test coverage
+
+---
+
+## 7️⃣ Fork & PR Flow
+
+1. Fork the repository
+2. Create your feature branch from `main`
+3. Commit using conventional format
+4. Push to your fork and open a PR
+
+We recommend tagging your PR with labels such as `type:feature`, `module:store`, etc.
 
 ---
 
