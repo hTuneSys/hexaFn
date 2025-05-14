@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 ---
 name: "🚀 Feature Request"
 about: "Propose a new feature or enhancement for hexaFn"

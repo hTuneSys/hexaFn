@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 📚 Branching Strategy for hexaFn
 
 This project follows a structured, scalable branching model inspired by GitHub Flow, Gitflow, and real-world enterprise project practices. All contributors are expected to adhere to the rules defined here for consistent development and stable releases.

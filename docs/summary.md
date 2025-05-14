@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 📚 hexaFn Documentation Summary
 
 Welcome to the hexaFn documentation hub. Below is an overview of the core documents available for contributors, developers, and maintainers.

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 🙋 Support Guide for hexaFn
 
 Thanks for using **hexaFn**! Below are the ways you can get help or contact the maintainers.

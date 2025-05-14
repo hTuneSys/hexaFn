@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+// SPDX-License-Identifier: MIT
 fn main() {
     println!("🚀 hexaFn is ready. Welcome to the 6F lifecycle engine!");
 }
