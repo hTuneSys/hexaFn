@@ -1,6 +1,6 @@
 ---
 name: "🐞 Bug Report"
-description: "Report a reproducible problem or crash in hexaFn"
+about: "Report a reproducible problem or crash in hexaFn"
 title: "[BUG] "
 labels: ["type:bug", "status:unconfirmed"]
 assignees: ["husamettinarabaci"]
@@ -49,4 +49,3 @@ Explain what you expected to happen instead.
 ### 📄 Logs / Screenshots
 
 Please paste logs, error messages, or screenshots to support your report.
-
