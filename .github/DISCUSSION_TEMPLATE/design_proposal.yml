@@ -1,0 +1,28 @@
+name: "🧠 Design Proposal (RFC)"
+description: Suggest a significant architectural or module-level change
+labels: ["type:proposal", "status:discussion"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: 🔎 Context
+      description: Explain the problem or motivation for this proposal
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 🔧 Proposal
+      description: Describe the solution or design you suggest
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: ⚖️ Alternatives
+      description: What other options did you consider?
+  - type: textarea
+    id: impact
+    attributes:
+      label: 🌐 Impact
+      description: How does this affect existing modules, users, or architecture?
