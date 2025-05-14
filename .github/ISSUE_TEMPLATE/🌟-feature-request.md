@@ -1,9 +1,9 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+name: "\U0001F31F Feature Request"
+about: Suggest a new feature or improvement for hexaFn
+title: "[feat]: Suggest a new capability or improvement"
+labels: type:enhancement
+assignees: husamettinarabaci
 
 ---
 
