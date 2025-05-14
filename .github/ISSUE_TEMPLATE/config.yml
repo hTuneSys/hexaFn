@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
+blank_issues_enabled: false
+description: "Choose a template below to open a new issue."
+contact_links:
+  - name: 💬 Questions or Discussions
+    url: https://github.com/hTuneSys/hexaFn/discussions
+    about: Ask questions, start discussions, or get help.
