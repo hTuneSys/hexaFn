@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 🗂️ hexaFn Project Board Design
 
 This document defines the layout, purpose, and automation rules of the official **hexaFn Kanban Board** under GitHub Projects.

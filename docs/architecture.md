@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 🏗️ hexaFn Architecture
 
 ## ⚙️ Core Principle: The 6F Lifecycle Flow

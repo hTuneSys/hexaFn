@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # Contributing to hexaFn
 
 Thank you for considering contributing to **hexaFn**!  

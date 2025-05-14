@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
 name: 🧪 Enforce Branch Naming
 
 on:
@@ -13,7 +16,7 @@ jobs:
         run: |
           BRANCH_NAME="${{ github.head_ref }}"
           echo "Checking branch name: $BRANCH_NAME"
-          if [[ ! "$BRANCH_NAME" =~ ^(feat|fix|chore|refactor|test|docs|ci|perf|build|release|hotfix)/.+$ ]]; then
+          if [[ ! "$BRANCH_NAME" =~ ^(feat|fix|chore|refactor|test|docs|ci|perf|build|release|hotfix|style)/.+$ ]]; then
             echo "❌ Invalid branch name: $BRANCH_NAME"
             echo "Branch names must match the format: <type>/<description>"
             exit 1

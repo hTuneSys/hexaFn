@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 📬 Contact & Communication
 
 Welcome to **hexaFn** — we're happy to connect with contributors, users, and enthusiasts!

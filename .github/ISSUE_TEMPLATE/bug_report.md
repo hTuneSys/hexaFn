@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 ---
 name: "🐞 Bug Report"
 about: "Report a reproducible problem or crash in hexaFn"

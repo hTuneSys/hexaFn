@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 🔐 Security Policy
 
 Thank you for taking the time to help us improve the security of **hexaFn**.

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # 🚀 Getting Started with hexaFn
 
 Welcome, contributor! This guide will help you get up and running with the **hexaFn** codebase and contribution flow.
