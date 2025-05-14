@@ -4,53 +4,27 @@ SPDX-License-Identifier: MIT
 -->
 
 ---
-name: "🐞 Bug Report"
-about: "Report a reproducible problem or crash in hexaFn"
-title: "[BUG] "
-labels: ["type:bug", "status:unconfirmed"]
-assignees: ["husamettinarabaci"]
+name: 🐛 Bug Report
+about: Report a reproducible bug or unexpected behavior in hexaFn
+title: "[bug]: Describe the problem clearly"
+labels: bug
+assignees: husamettinarabaci
 ---
 
-### 🐛 Description
+### 🐞 Describe the Bug
+A clear and concise description of what the bug is.
 
-A clear and concise description of what the bug is and where it occurs.
-
----
-
-### 🔁 Steps to Reproduce
-
+### ✅ To Reproduce
+Steps to reproduce the behavior:
 1. Go to '...'
-2. Run '...'
-3. Observe the issue: '...'
+2. Click on '...'
+3. Scroll down to '...'
+4. See error
 
----
+### 📷 Screenshots or Logs
+If applicable, add screenshots or logs to help explain your problem.
 
-### ✅ Expected Behavior
-
-Explain what you expected to happen instead.
-
----
-
-### 🧩 Affected Module(s)
-
-- [ ] HexaStore
-- [ ] HexaRun
-- [ ] HexaCast
-- [ ] HexaBridge
-- [ ] HexaTrigger
-- [ ] HexaWatch
-- [ ] Core
-
----
-
-### 🖥️ Environment (please complete the following):
-
-- OS: [e.g. Ubuntu 22.04, macOS Ventura]
-- Rust Version (`rustc --version`):
-- hexaFn Version (if known):
-
----
-
-### 📄 Logs / Screenshots
-
-Please paste logs, error messages, or screenshots to support your report.
+### 🌐 Environment
+- OS: [e.g. Ubuntu 22.04]
+- Rust Version: [e.g. 1.77]
+- hexaFn Commit SHA: [e.g. abc1234]
