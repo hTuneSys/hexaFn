@@ -1,11 +1,3 @@
----
-name: "🐞 Bug Report"
-description: "Report a reproducible problem or crash."
-title: "[BUG] "
-labels: ["type:bug"]
-assignees: ["husamettinarabaci"]
----
-
 ### 🐛 Description
 A clear and concise description of what the bug is.
 
@@ -28,5 +20,3 @@ Add logs, screenshots, or related references if applicable.
 - [ ] HexaTrigger
 - [ ] HexaWatch
 - [ ] Core
-
----
