@@ -1,34 +1,37 @@
----
 name: "🧠 Design Proposal (RFC)"
-about: "Propose a major architectural or functional change for hexaFn"
-title: "[RFC] "
+description: Propose a major architectural or modular design idea
 labels: ["type:proposal", "status:discussion"]
----
-
-### 🧠 Problem or Motivation
-
-Describe the need for this proposal. What problem does it solve or opportunity does it create?
-
----
-
-### 🛠️ Proposed Solution
-
-Explain the architecture, design, or approach you'd like to suggest.
-
----
-
-### 🔄 Alternatives Considered
-
-What other options did you consider or discard? Why?
-
----
-
-### 📈 Impact
-
-How will this affect current users, modules, or interfaces?
-
----
-
-### 🔗 References or Related Proposals
-
-(Optional) Link to related issues, RFCs, articles, or code examples.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use this template to share large or long-term ideas about hexaFn’s architecture or capabilities.
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 🧠 Problem or Motivation
+      description: What problem does this solve or what opportunity does it create?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 🛠️ Proposed Solution
+      description: Describe the solution, architecture, or module you’re suggesting.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternatives Considered
+      description: What other options did you evaluate? Why didn’t you choose them?
+  - type: textarea
+    id: impact
+    attributes:
+      label: 📈 Impact
+      description: How would this affect existing systems, users, or other modules?
+  - type: textarea
+    id: references
+    attributes:
+      label: 🔗 References
+      description: (Optional) Related RFCs, issues, diagrams, or research.
