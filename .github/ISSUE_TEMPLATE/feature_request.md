@@ -1,10 +1,25 @@
-### ✨ What feature would you like to see?
-Clearly describe the feature you're proposing.
+---
+name: "🚀 Feature Request"
+about: "Propose a new feature or enhancement for hexaFn"
+title: "[FEATURE] "
+labels: ["type:feature", "status:triage"]
+assignees: ["husamettinarabaci"]
+---
+
+### ✨ What would you like to see?
+
+Describe the new feature or enhancement you'd like to propose.
+
+---
 
 ### 🔍 Why is it needed?
-Explain the use case or problem this feature solves.
+
+Explain the problem this feature solves or the value it adds.
+
+---
 
 ### 🧩 Affected Module(s)
+
 - [ ] HexaStore
 - [ ] HexaRun
 - [ ] HexaCast
@@ -13,5 +28,14 @@ Explain the use case or problem this feature solves.
 - [ ] HexaWatch
 - [ ] Core
 
+---
+
+### 🖼️ Any Mockups or Examples?
+
+(Optional) Share screenshots, API shape ideas, or links to inspiration.
+
+---
+
 ### 💬 Additional Context
-Any diagrams, API sketch, or context you’d like to share?
+
+Any other relevant information or use cases?
