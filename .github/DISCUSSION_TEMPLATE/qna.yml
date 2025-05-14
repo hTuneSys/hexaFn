@@ -1,0 +1,17 @@
+name: "❓ Question / Help"
+description: Ask a question or request support
+labels: ["type:question", "status:discussion"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: 💬 What's your question?
+      description: Provide as much context as possible.
+      placeholder: I'm wondering how to...
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Related module (optional)
+      placeholder: e.g. HexaStore, HexaRun, CLI
