@@ -4,43 +4,18 @@ SPDX-License-Identifier: MIT
 -->
 
 ---
-name: "🚀 Feature Request"
-about: "Propose a new feature or enhancement for hexaFn"
-title: "[FEATURE] "
-labels: ["type:feature", "status:triage"]
-assignees: ["husamettinarabaci"]
+name: 🌟 Feature Request
+about: Suggest a new feature or improvement for hexaFn
+title: "[feat]: Suggest a new capability or improvement"
+labels: enhancement
+assignees: husamettinarabaci
 ---
 
-### ✨ What would you like to see?
+### 🚀 Feature Proposal
+Describe the feature you’d like to see implemented.
 
-Describe the new feature or enhancement you'd like to propose.
+### 🔍 Use Case
+Explain how this feature would be useful in real scenarios.
 
----
-
-### 🔍 Why is it needed?
-
-Explain the problem this feature solves or the value it adds.
-
----
-
-### 🧩 Affected Module(s)
-
-- [ ] HexaStore
-- [ ] HexaRun
-- [ ] HexaCast
-- [ ] HexaBridge
-- [ ] HexaTrigger
-- [ ] HexaWatch
-- [ ] Core
-
----
-
-### 🖼️ Any Mockups or Examples?
-
-(Optional) Share screenshots, API shape ideas, or links to inspiration.
-
----
-
-### 💬 Additional Context
-
-Any other relevant information or use cases?
+### 🧩 Related Components
+Which part/module of hexaFn does this relate to? (e.g. HexaStore, HexaCast, etc.)
