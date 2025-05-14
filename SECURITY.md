@@ -13,7 +13,7 @@ If you discover a vulnerability or security issue, we strongly encourage you to 
 
 ## 📬 Reporting a Vulnerability
 
-Please report any security issues by emailing:
+Please report any security issues privately by emailing:
 
 **📧 info@hexafn.com**
 
@@ -23,7 +23,9 @@ Include the following information if possible:
 - The impact it could have
 - A potential fix, if you have one
 
-We aim to respond within **3 business days**.
+We aim to respond within **3 business days** and provide a fix or mitigation plan within a reasonable timeframe.
+
+If applicable, we may use GitHub's [Security Advisories](https://docs.github.com/en/code-security/security-advisories) to coordinate public disclosure.
 
 ---
 
@@ -41,9 +43,13 @@ We aim to respond within **3 business days**.
 We request that you:
 - Do not publish the issue publicly before we’ve had time to address it
 - Give us adequate time to investigate and resolve the issue
-- Avoid any actions that could damage the project or users
+- Avoid any actions that could harm the project, infrastructure, or its users
 
-We appreciate your effort in keeping our ecosystem secure.
+Thank you for helping keep the hexaFn ecosystem secure.
 
-Thank you,
-**hexaFn Team**
+---
+
+## 📖 Additional Resources
+
+- Responsible Disclosure Guidelines: [responsibledisclosure.com](https://responsibledisclosure.com)
+- GitHub Security Advisories: [docs.github.com](https://docs.github.com/en/code-security/security-advisories)
