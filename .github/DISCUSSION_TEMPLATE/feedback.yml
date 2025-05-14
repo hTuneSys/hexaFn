@@ -1,0 +1,11 @@
+name: "💬 Feedback"
+description: General feedback, UX improvement ideas, etc.
+labels: ["type:feedback", "status:discussion"]
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: 📃 What's your feedback?
+      description: We'd love to hear what you think!
+    validations:
+      required: true
