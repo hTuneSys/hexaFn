@@ -1,0 +1,26 @@
+name: 💤 Mark stale issues and PRs
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # every day at 02:00 UTC
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          stale-issue-message: |
+            This issue has been marked as stale due to inactivity. If it remains inactive, it will be closed soon.
+          stale-pr-message: |
+            This PR has been marked as stale. Please update or comment to keep it open.
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-label: status:stale
+          stale-pr-label: status:stale
+          exempt-issue-labels: priority:high,type:feature
+          exempt-pr-labels: priority:high
