@@ -1,11 +1,3 @@
----
-name: "🚀 Feature Request"
-description: "Suggest a new idea or enhancement."
-title: "[FEATURE] "
-labels: ["type:feature"]
-assignees: ["husamettinarabaci"]
----
-
 ### ✨ What feature would you like to see?
 Clearly describe the feature you're proposing.
 
@@ -23,5 +15,3 @@ Explain the use case or problem this feature solves.
 
 ### 💬 Additional Context
 Any diagrams, API sketch, or context you’d like to share?
-
----
