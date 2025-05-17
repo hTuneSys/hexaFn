@@ -22,7 +22,7 @@ hexaFn is a programmable, event-driven data engine designed around a modular arc
 
 > **Feed → Filter → Format → Function → Forward → Feedback**
 
-Built by [hexaTune Team](https://hexafn.com) and maintained under the [hTuneSys](https://github.com/hTuneSys) GitHub organization, hexaFn lets developers build reactive systems where data is not only stored or published—but actively **processed, transformed, and routed through logic**.
+Built by [hexaTune Team](https://hexafn.com) and maintained under the [hTuneSys](https://github.com/hTuneSys) GitHub organization, hexaFn lets developers build reactive systems where data is not only stored or published—but actively **processed, transformed, and routed through logic**. 
 
 ---
 
