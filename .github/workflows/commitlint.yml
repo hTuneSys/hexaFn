@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 # SPDX-License-Identifier: MIT
 
-name: Commit Lint
+name: 🧐 Commit Lint
 
 on:
   pull_request:

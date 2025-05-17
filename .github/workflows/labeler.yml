@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
+name: 🔖 PR Labeler
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  label:
+    name: Label PR (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+

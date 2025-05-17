@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 # SPDX-License-Identifier: MIT
 
-name: Auto Assign Reviewer
+name: 🤝 Auto Assign Reviewer
 
 on:
   pull_request:
@@ -14,3 +14,5 @@ jobs:
     steps:
       - name: Auto assign
         uses: kentaro-m/auto-assign-action@v1.2.3
+        with:
+          configuration-path: .github/auto_assign.yml
