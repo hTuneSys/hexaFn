@@ -39,7 +39,7 @@ type:docs:
 
 type:ci:
   - changed-files:
-      - any-glob-to-any-file: ['.github/workflows/**']
+      - any-glob-to-any-file: ['.github/**']
 
 type:infra:
   - changed-files:
