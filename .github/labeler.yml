@@ -1,40 +1,50 @@
 # SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 # SPDX-License-Identifier: MIT
 
-"module:store":
-  - 'src/store/**'
+module:store:
+  paths:
+    - src/store/**
 
-"module:cast":
-  - 'src/cast/**'
+module:cast:
+  paths:
+    - src/cast/**
 
-"module:run":
-  - 'src/run/**'
+module:run:
+  paths:
+    - src/run/**
 
-"module:trigger":
-  - 'src/trigger/**'
+module:trigger:
+  paths:
+    - src/trigger/**
 
-"module:watch":
-  - 'src/watch/**'
+module:watch:
+  paths:
+    - src/watch/**
 
-"module:bridge":
-  - 'src/bridge/**'
+module:bridge:
+  paths:
+    - src/bridge/**
 
-"type:feature":
-  - 'feature/**'
+type:feature:
+  paths:
+    - feature/**
 
-"type:bug":
-  - 'fix/**'
+type:bug:
+  paths:
+    - fix/**
 
-"type:docs":
-  - 'docs/**'
+type:docs:
+  paths:
+    - docs/**
 
-"type:ci":
-  - '.github/workflows/**'
+type:ci:
+  paths:
+    - .github/workflows/**
 
-"type:infra":
-  - 'infrastructure/**'
+type:infra:
+  paths:
+    - infrastructure/**
 
-# Put other cases here
-
-"default:unclassified":
-  - '*'
+default:unclassified:
+  paths:
+    - '*'
