@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
+name: ❌ Block Non-Develop PRs to Release
+
+on:
+  pull_request:
+    branches:
+      - release/*
+    types: [opened, synchronize]
+
+jobs:
+  enforce-develop-only:
+    name: Block Non-Develop PRs to Release (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if source branch is not develop
+        run: |
+          echo "Source branch: ${{ github.head_ref }}"
+          if [[ "${{ github.head_ref }}" != "develop" ]]; then
+            echo "❌ Only develop branch may target release/*."
+            exit 1
+          fi
