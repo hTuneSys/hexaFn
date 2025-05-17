@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 # SPDX-License-Identifier: MIT
 
-name: Check Semantic PR Title
+name: 🏷️ Check Semantic PR Title
 
 on:
   pull_request:
