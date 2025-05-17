@@ -2,49 +2,37 @@
 # SPDX-License-Identifier: MIT
 
 module:store:
-  paths:
-    - src/store/**
+  - src/store/**
 
 module:cast:
-  paths:
-    - src/cast/**
+  - src/cast/**
 
 module:run:
-  paths:
-    - src/run/**
+  - src/run/**
 
 module:trigger:
-  paths:
-    - src/trigger/**
+  - src/trigger/**
 
 module:watch:
-  paths:
-    - src/watch/**
+  - src/watch/**
 
 module:bridge:
-  paths:
-    - src/bridge/**
+  - src/bridge/**
 
 type:feature:
-  paths:
-    - feature/**
+  - feature/**
 
 type:bug:
-  paths:
-    - fix/**
+  - fix/**
 
 type:docs:
-  paths:
-    - docs/**
+  - docs/**
 
 type:ci:
-  paths:
-    - .github/workflows/**
+  - .github/workflows/**
 
 type:infra:
-  paths:
-    - infrastructure/**
+  - infrastructure/**
 
 default:unclassified:
-  paths:
-    - '*'
+  - '*'
