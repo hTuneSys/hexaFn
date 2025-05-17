@@ -20,5 +20,6 @@ jobs:
         uses: actions/labeler@v5
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/labeler_pr.yml
+          # Dosya adını güncelledik
+          configuration-path: .github/labeler.yml
           dot: true
