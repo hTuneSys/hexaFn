@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
+module:store:
+  - changed-files:
+      - any-glob-to-any-file: ['src/store/**']
+
+module:cast:
+  - changed-files:
+      - any-glob-to-any-file: ['src/cast/**']
+
+module:run:
+  - changed-files:
+      - any-glob-to-any-file: ['src/run/**']
+
+module:trigger:
+  - changed-files:
+      - any-glob-to-any-file: ['src/trigger/**']
+
+module:watch:
+  - changed-files:
+      - any-glob-to-any-file: ['src/watch/**']
+
+module:bridge:
+  - changed-files:
+      - any-glob-to-any-file: ['src/bridge/**']
+
+type:feature:
+  - changed-files:
+      - any-glob-to-any-file: ['feature/**']
+
+type:bug:
+  - changed-files:
+      - any-glob-to-any-file: ['fix/**']
+
+type:docs:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**']
+
+type:ci:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/workflows/**']
+
+type:infra:
+  - changed-files:
+      - any-glob-to-any-file: ['infrastructure/**']
+
+default:unclassified:
+  - changed-files:
+      - any-glob-to-any-file: ['*']
