@@ -2,7 +2,7 @@
 SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
-
+ 
 # hexaFn Roadmap
 
 This roadmap outlines the planned phases for building hexaFn — a programmable event-function engine with KV, pub-sub, and dynamic execution modules.
