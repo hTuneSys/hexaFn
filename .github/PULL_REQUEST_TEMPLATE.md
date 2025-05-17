@@ -1,8 +1,3 @@
-<!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
-SPDX-License-Identifier: MIT
--->
-
 ## 📄 Summary
 
 > Explain what this PR changes and why it’s needed.

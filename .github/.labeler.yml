@@ -33,3 +33,8 @@
 
 "type:infra":
   - 'infrastructure/**'
+
+# Put other cases here
+
+"default:unclassified":
+  - '*'
