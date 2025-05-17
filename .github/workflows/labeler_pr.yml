@@ -4,8 +4,12 @@
 name: 🔖 PR Labeler
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   label:
@@ -16,6 +20,5 @@ jobs:
         uses: actions/labeler@v5
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/labeler.yml
-          sync-labels: false
+          configuration-path: .github/labeler_pr.yml
           dot: true
