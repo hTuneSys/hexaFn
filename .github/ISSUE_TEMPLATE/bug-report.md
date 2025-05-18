@@ -1,3 +1,7 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
 ---
 name: "\U0001F41B Bug Report"
 about: Report a reproducible bug or unexpected behavior in hexaFn

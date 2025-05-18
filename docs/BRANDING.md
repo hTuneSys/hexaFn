@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-License-Identifier: MIT
+-->
+
 # hexaFn Branding Guide
 
 This guide defines the visual identity, tone, and presentation standards for the hexaFn project.

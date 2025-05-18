@@ -107,4 +107,7 @@ Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to get involved.
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).  
-© 2025 hTuneSys. All rights reserved.
+© 2025 hexaTune LLC. All rights reserved.
+
+The license file is provided in full at the root of this repository.  
+All source files include [SPDX](https://spdx.dev/) headers and the project is compliant with [REUSE Specification 3.3](https://reuse.software/spec/).
