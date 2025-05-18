@@ -7,3 +7,24 @@ contact_links:
   - name: 💬 Questions or Discussions
     url: https://github.com/hTuneSys/hexaFn/discussions
     about: Ask questions, start discussions, or get help.
+
+issue_templates:
+  - name: 🐛 Bug Report
+    description: Report a reproducible bug or unexpected behavior in hexaFn
+    file: bug-report.md
+
+  - name: ✨ Feature Request
+    description: Suggest a new idea, enhancement, or feature for hexaFn
+    file: feature-request.md
+
+  - name: ❓ Question / Clarification
+    description: Ask a question or request clarification about usage or design
+    file: question.md
+
+  - name: 💬 Support Request
+    description: Request help with usage, configuration, or integration
+    file: support.md
+
+  - name: 📝 Documentation Issue
+    description: Report problems or make suggestions for improving documentation
+    file: documentation.md

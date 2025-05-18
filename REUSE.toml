@@ -13,7 +13,7 @@ SPDX-FileCopyrightText = "2025 Hüsamettin Arabacı"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = [".github/ISSUE_TEMPLATE/bug-report.md", ".github/ISSUE_TEMPLATE/feature-request.md", ".github/ISSUE_TEMPLATE/support.md", ".github/PULL_REQUEST_TEMPLATE.md"]
+path = [".github/ISSUE_TEMPLATE/bug-report.md", ".github/ISSUE_TEMPLATE/feature-request.md", ".github/ISSUE_TEMPLATE/support.md", ".github/ISSUE_TEMPLATE/documentation.md", ".github/ISSUE_TEMPLATE/question.md", ".github/PULL_REQUEST_TEMPLATE.md"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2025 Hüsamettin Arabacı"
 SPDX-License-Identifier = "MIT"
