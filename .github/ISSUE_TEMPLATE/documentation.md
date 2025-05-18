@@ -6,9 +6,6 @@ labels: type:documentation
 assignees: husamettinarabaci
 ---
 
-<!-- SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı -->
-<!-- SPDX-License-Identifier: MIT -->
-
 ### 📄 What part of the documentation is unclear or incorrect?
 
 Please specify which page or section has a problem or could be improved.

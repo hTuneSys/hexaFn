@@ -6,9 +6,6 @@ labels: type:question
 assignees: husamettinarabaci
 ---
 
-<!-- SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı -->
-<!-- SPDX-License-Identifier: MIT -->
-
 ### 🤔 What is your question?
 
 Please clearly describe the question or concept you're unclear about. Be as specific as possible.
