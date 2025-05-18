@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-License-Identifier: MIT
+
+name: REUSE Compliance
+
+on: [push, pull_request]
+
+jobs:
+  reuse:
+    name: REUSE Compliance (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install reuse
+      - run: reuse lint
