@@ -3,7 +3,6 @@ name: "\U0001F41B Bug Report"
 about: Report a reproducible bug or unexpected behavior in hexaFn
 title: "[bug]: Describe the problem clearly"
 labels: type:bug
-assignees: husamettinarabaci
 
 ---
 
@@ -36,3 +35,12 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+**Impact**
+How critical is the bug? (e.g., crash, data loss, UI glitch)
+
+**Severity**
+What is the scope? (e.g., affects all users, only under rare conditions)
+
+**Priority**
+How soon should this be fixed? (e.g., urgent, normal, low)

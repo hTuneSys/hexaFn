@@ -1,9 +1,9 @@
 ---
 name: "❓ Question / Clarification"
 about: Ask a question or request clarification about hexaFn usage or design
-title: "[question]: "
-labels: type:question
-assignees: husamettinarabaci
+title: "[question]: Briefly summarize your question"
+labels: [status:needs-spec]
+
 ---
 
 ### 🤔 What is your question?
@@ -16,7 +16,7 @@ Please clearly describe the question or concept you're unclear about. Be as spec
 
 - What part of the system are you referring to?
 - Are you following a particular example or tutorial?
-- Have you checked the README, FAQ or documentation?
+- Have you checked the [README](https://github.com/hTuneSys/hexaFn#readme), [FAQ](https://hexafn.com/docs/faq), or [full documentation](https://hexafn.com/docs)?
 
 ---
 

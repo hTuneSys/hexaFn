@@ -2,8 +2,8 @@
 name: "💬 Support Request"
 about: Request general help, integration advice, or usage clarification for hexaFn
 title: "[support]: Describe your need"
-labels: type:support
-assignees: husamettinarabaci
+labels: [status:waiting-feedback]
+
 ---
 
 ### 📚 What do you need help with?
@@ -17,9 +17,9 @@ Please describe the situation, problem, or question you have. Include as much co
 
 ### 💻 System Details (Optional)
 
-- hexaFn version (if applicable):  
-- Platform or environment (e.g. Linux, Docker, GitHub Actions):  
-- Rust version (if relevant):  
+- hexaFn version (if applicable): _(run `hexafn --version`)_
+- Platform or environment (e.g. Linux, Docker, GitHub Actions):
+- Rust version (if relevant):
 
 ---
 

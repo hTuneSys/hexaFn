@@ -1,0 +1,230 @@
+.
+├── Cargo.toml
+├── CHANGELOG.md
+├── docs
+│   ├── ARCHITECTURE.md
+│   ├── assets
+│   │   ├── diagram.png
+│   │   ├── favicon.ico
+│   │   └── hexaFn-logo.png
+│   ├── BRANCH_STRATEGY.md
+│   ├── BRANDING.md
+│   ├── CNAME
+│   ├── CODE_OF_CONDUCT.md -> ../.github/CODE_OF_CONDUCT.md
+│   ├── COMMIT_STRATEGY.md
+│   ├── COMMUNITY.md
+│   ├── CONFIGURATION.md
+│   ├── CONTACT.md
+│   ├── CONTRIBUTING.md -> ../.github/CONTRIBUTING.md
+│   ├── DEVELOPMENT_GUIDE.md
+│   ├── FAQ.md
+│   ├── GETTING_STARTED.md
+│   ├── index.html
+│   ├── LABELLING_STRATEGY.md
+│   ├── MILESTONES.md
+│   ├── PROJECT_BOARD.md
+│   ├── PR_STRATEGY.md
+│   ├── ROADMAP.md
+│   ├── SECURITY.md -> ../.github/SECURITY.md
+│   ├── STYLE_GUIDE.md
+│   ├── SUMMARY.md
+│   ├── SUPPORT.md -> ../.github/SUPPORT.md
+│   └── USE_CASES.md
+├── examples
+│   └── README.md
+├── .git
+│   ├── branches
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── develop
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── develop
+│   │               └── HEAD
+│   ├── objects
+│   │   ├── 03
+│   │   │   └── 56d16093e16d5ab24de71beadf5d9d44f4f441
+│   │   ├── 0f
+│   │   │   └── 48b3ba9b06f48e9e1bf09fe624d64f0e218017
+│   │   ├── 15
+│   │   │   └── 8b7c0b2e91b2e1a8b3e90d4052130fb939601d
+│   │   ├── 27
+│   │   │   └── 8b32baed9c26e58df89e987c3851b2da5c7c44
+│   │   ├── 32
+│   │   │   └── ffa51fcdf83330c519356e317e9df7d30a61ac
+│   │   ├── 3a
+│   │   │   └── 454d8aaf8df4b0edd47749b534f9e2030d5c33
+│   │   ├── 43
+│   │   │   ├── 0cf7b1a0e5c2d48d4eea9842fd6cfc81c5d5c0
+│   │   │   ├── 2b3e0692bef2f1b0364fb2c2c0619eafb198b1
+│   │   │   └── aa2c6a170045d9fc90327fcd2c08112b25f97a
+│   │   ├── 4c
+│   │   │   └── 36deaacad715ecf31fc7cdcba675c51aa8f195
+│   │   ├── 4f
+│   │   │   └── 6de14aae8933bc3c619522ea3db0e2574ce88e
+│   │   ├── 53
+│   │   │   ├── 0c0d24886aef3c34816d60d0d66112ef8ab444
+│   │   │   └── ecae46b56ca68caa81dca89bafe9dcf8f27600
+│   │   ├── 5c
+│   │   │   └── da94459faf325d86d430f4a765528a1c42c46d
+│   │   ├── 5d
+│   │   │   └── 6fb35bf05ef258ddd346967dd567991676db43
+│   │   ├── 5f
+│   │   │   └── f1f93eb30badacc52049b08561d815fcbe3a2f
+│   │   ├── 61
+│   │   │   └── 966f40a4e03a511b8fe202583766a3e4f4b014
+│   │   ├── 64
+│   │   │   └── 33d63947cfcccebb43a11930e43c5b46a3085c
+│   │   ├── 73
+│   │   │   └── 2e180cd58530382970a3dbebb1118e5f33d1fb
+│   │   ├── 76
+│   │   │   └── f8514ac031e29d3fcf8e3b1f77b1f1310c444c
+│   │   ├── 7d
+│   │   │   └── 9a7d18c8d99d2d330f89401174fb9ba20673f8
+│   │   ├── 7e
+│   │   │   └── b9c39e4281a901a0a84cd0ba781df9600f052e
+│   │   ├── 80
+│   │   │   └── 0e7b73fb9b7009c9b6ba8bed4541600894b154
+│   │   ├── 81
+│   │   │   └── 1458ee88a26f4514a66e557b8248b3fbc4fabb
+│   │   ├── 82
+│   │   │   └── 9618948194c9067aa5279738ae80f52dc4ab70
+│   │   ├── 84
+│   │   │   └── af7e3d04260b12492e1eac76ffaaa79a6e6941
+│   │   ├── 8a
+│   │   │   └── 63c5ad4cea957e84d31a57e914408ff1e868f2
+│   │   ├── 96
+│   │   │   └── 4fa835e13a2efc774835221c2184f673fbc661
+│   │   ├── 97
+│   │   │   └── 553c66e07c145d8342a7040bfaa2eee57d6c9a
+│   │   ├── a5
+│   │   │   ├── 3a64ad16296e46792d30982301fad0e9ab5c07
+│   │   │   └── 414c3631b2ed0158044d8ea29cc614f7374d6f
+│   │   ├── a8
+│   │   │   └── fda89b6c36ba112aa82aab99452e8ecf73173f
+│   │   ├── a9
+│   │   │   └── 28e5a2640ef757370946a944cc494f2ecb9743
+│   │   ├── ab
+│   │   │   └── 56deba2c13ef111f01e45a82a94c8167d86d5f
+│   │   ├── b0
+│   │   │   └── 53a2e0ca8dda802903807fce29c4fb17d0920a
+│   │   ├── c1
+│   │   │   └── 80c83f440a695e0cc4826e6a5159e0d7523da2
+│   │   ├── c6
+│   │   │   └── a0962d34ec402df2ca41c77fb5a6f1d9d4a72e
+│   │   ├── ca
+│   │   │   └── 0c89a233b5fd797bea814368e2b311c777d320
+│   │   ├── cc
+│   │   │   └── 8bb70b6df85f84ed1291e166f200afd42b8aa6
+│   │   ├── d0
+│   │   │   └── 6a06ac73d7070aab2bec7336540f56b5be1308
+│   │   ├── d6
+│   │   │   ├── 4a46e71fd7bfb862184a17dff31fe0466a7322
+│   │   │   └── 81b54ac31f635dc71c84d8e5d1d8ab742d0fee
+│   │   ├── db
+│   │   │   └── 47569312efceb3b3ecf490e8cdbdca9a457ddc
+│   │   ├── e6
+│   │   │   ├── afed18649a4f7360ee845de3c464718cd9c01b
+│   │   │   └── f7e232f07fd0ccf879b2abe287b1c4f45533c6
+│   │   ├── f0
+│   │   │   └── f70a715f64653d73f4f87fecd5462e026bf347
+│   │   ├── f4
+│   │   │   └── d2e3274096755c7c83daca42bab8cfe79e7269
+│   │   ├── f5
+│   │   │   └── da84a18e0d5d32d3d444dffb096a9ec04dedec
+│   │   ├── fb
+│   │   │   └── 808ea21d877665fba579abf483dd44d3abb176
+│   │   ├── fc
+│   │   │   └── 381dba74a542177df52f43473252cda0d94a57
+│   │   ├── fd
+│   │   │   └── 71223ccf3f4ecb2ba45bed33f7d588e6bbf791
+│   │   ├── fe
+│   │   │   └── 59951e05dac7b2a9a53cb2efb7eed655b61aac
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-bbae848eae8a7ef9f04ea658768a1478450ef893.idx
+│   │       ├── pack-bbae848eae8a7ef9f04ea658768a1478450ef893.pack
+│   │       └── pack-bbae848eae8a7ef9f04ea658768a1478450ef893.rev
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── develop
+│       ├── remotes
+│       │   └── origin
+│       │       ├── develop
+│       │       └── HEAD
+│       └── tags
+├── .github
+│   ├── auto_assign.yml
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CODEOWNERS
+│   ├── .commitlintrc.yml
+│   ├── config.yml
+│   ├── CONTRIBUTING.md
+│   ├── dependabot.yml
+│   ├── FUNDING.yml
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug-report.md
+│   │   ├── config.yml
+│   │   ├── documentation.md
+│   │   ├── feature-request.md
+│   │   ├── question.md
+│   │   └── support.md
+│   ├── labeler.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── SECURITY.md
+│   ├── SUPPORT.md
+│   └── workflows
+│       ├── auto-assign.yml
+│       ├── branch-name-check.yml
+│       ├── ci.yml
+│       ├── commitlint.yml
+│       ├── labeler.yml
+│       ├── main-pr-protect.yml
+│       ├── pr-title-check.yml
+│       ├── release-pr-protect.yml
+│       ├── release.yml
+│       ├── reuse-lint.yml
+│       └── stale.yml
+├── .gitignore
+├── LICENSE
+├── LICENSES
+│   └── MIT.txt
+├── package.json
+├── README.md
+├── .releaserc.yml
+├── REUSE.toml
+├── scripts
+│   └── README.md
+├── src
+│   └── main.rs
+├── tests
+│   └── README.md
+└── tree.txt
+
+74 directories, 154 files
