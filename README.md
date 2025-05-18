@@ -102,7 +102,9 @@ Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to get involved.
 
 **hexaFn** is created and maintained by [hexaTune LLC](https://github.com/hTuneSys).
 
-© 2025 [hexaTune Team](https://hexafn.com)  
-Licensed under MIT.
-
 ---
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).  
+© 2025 hTuneSys. All rights reserved.
