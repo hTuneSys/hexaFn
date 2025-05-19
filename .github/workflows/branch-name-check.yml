@@ -16,7 +16,7 @@ jobs:
         run: |
           BRANCH_NAME="${{ github.head_ref }}"
           echo "Checking branch name: $BRANCH_NAME"
-          if [[ ! "$BRANCH_NAME" =~ ^(feat|fix|chore|refactor|test|docs|ci|perf|build|release|hotfix|style)/.+$ ]]; then
+          if [[ ! "$BRANCH_NAME" =~ ^(feat|fix|chore|refactor|test|docs|ci|perf|build|release|hotfix|style|develop)/.+$ ]]; then
             echo "❌ Invalid branch name. Allowed prefixes: feat/, fix/, chore/, refactor/, test/, docs/, ci/, perf/, build/, release/, hotfix/, style/"
             echo "Branch names must match the format: <type>/<description>"
             exit 1
