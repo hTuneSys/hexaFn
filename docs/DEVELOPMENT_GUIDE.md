@@ -106,7 +106,7 @@ For detailed tracing, integrate with `HexaWatch` logging module.
 
 ## 🔀 Branching & PRs
 
-Follow the naming rules defined in `BRANCH_STRATEGY.md` and `PR_STRATEGY.md`. Allowed branch prefixes:
+Follow the naming rules defined in [`BRANCH_STRATEGY.md`](BRANCH_STRATEGY.md) and [`PR_STRATEGY.md`](PR_STRATEGY.md). Allowed branch prefixes:
 
 - `feat/`, `fix/`, `refactor/`, `test/`, `docs/`, `ci/`, etc.
 
@@ -116,13 +116,13 @@ Create a feature branch:
 git checkout -b feat/new-module
 ```
 
-Open a PR with a valid title and follow checklist from `PULL_REQUEST_TEMPLATE.md`.
+Open a PR with a valid title and follow checklist from [`PULL_REQUEST_TEMPLATE.md`](PULL_REQUEST_TEMPLATE.md).
 
 ---
 
 ## 🧱 Commit Conventions
 
-Use the supported 12 types from `COMMIT_STRATEGY.md`. Example:
+Use the supported 12 types from [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md). Example:
 
 ```bash
 feat: add token parsing logic
@@ -159,17 +159,17 @@ All contributors must follow the documentation style and structure:
 
 - Use `///` for public Rust docs
 - Update relevant `.md` files in `docs/` when modifying features
-- Follow the guide in `CONTRIBUTING.md`
+- Follow the guide in [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
 
 ## 🧠 Helpful Resources
 
-- `GETTING_STARTED.md` – Initial setup and quick commands
-- `ARCHITECTURE.md` – System design and modules
-- `USE_CASES.md` – Functional capabilities
-- `CONTACT.md`, `SUPPORT.md` – Communication channels
-- `LABELLING_STRATEGY.md` – Tag issues/PRs correctly
+- [`GETTING_STARTED.md`](GETTING_STARTED.md) – Initial setup and quick commands
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) – System design and modules
+- [`USE_CASES.md`](USE_CASES.md) – Functional capabilities
+- [`CONTACT.md`](CONTACT.md), [`SUPPORT.md`](SUPPORT.md) – Communication channels
+- [`LABELLING_STRATEGY.md`](LABELLING_STRATEGY.md) – Tag issues/PRs correctly
 
 ---
 

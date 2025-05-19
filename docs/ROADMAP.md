@@ -66,5 +66,5 @@ This document outlines the future development goals and timeline for the hexaFn 
 ---
 
 For live updates, check the GitHub Projects and Milestones:
-➡️ https://github.com/hexaFn/hexaFn/projects  
-➡️ https://github.com/hexaFn/hexaFn/milestones
+➡️ https://github.com/hTuneSys/hexaFn/projects  
+➡️ https://github.com/hTuneSys/hexaFn/milestones

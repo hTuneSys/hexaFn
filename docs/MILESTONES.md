@@ -31,7 +31,7 @@ This document tracks the key milestones and phases of the hexaFn project. Each m
 
 ## 🔨 Phase 3: Developer Experience
 
-- [ ] Write `GETTING_STARTED.md` and `DEVELOPMENT_GUIDE.md`
+- [ ] Write [`GETTING_STARTED.md`](GETTING_STARTED.md) and [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md)
 - [ ] Add FAQ and SUPPORT guidance
 - [ ] Finalize environment config structure
 - [ ] Set up code formatting and lint enforcement docs
@@ -59,4 +59,4 @@ This document tracks the key milestones and phases of the hexaFn project. Each m
 ## 📊 Monitoring Progres
 s
 Use GitHub Milestones tab to monitor live progress:
-➡️ https://github.com/hexaFn/hexaFn/milestones
+➡️ https://github.com/hTuneSys/hexaFn/milestones

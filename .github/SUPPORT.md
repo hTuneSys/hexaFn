@@ -21,8 +21,8 @@ Thanks for using **hexaFn**! Below are the ways you can get help or contact the 
 
 ## 💡 Tips
 
-- Before opening an issue, please check the [FAQ](https://github.com/hTuneSys/hexaFn/blob/main/docs/FAQ.md).
+- Before opening an issue, please check the [FAQ](https://github.com/hTuneSys/hexaFn/blob/develop/docs/FAQ.md).
 - Use appropriate labels when opening issues to help us respond faster.
-- For security-related concerns, please read our [Security Policy](https://github.com/hTuneSys/hexaFn/blob/main/.github/SECURITY.md).
+- For security-related concerns, please read our [Security Policy](https://github.com/hTuneSys/hexaFn/blob/develop/.github/SECURITY.md).
 
 We appreciate your feedback and contributions 💙

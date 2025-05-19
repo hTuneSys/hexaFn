@@ -8,7 +8,7 @@ SPDX-License-Identifier: MIT
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 <p align="center">
-  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo" width="160"/>
+  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo"/>
 </p>
 
 **From Feed to Feedback, fully programmable.**  
@@ -108,7 +108,7 @@ Everything is documented under the `/docs/` folder. Start with:
 - [`LABELLING_STRATEGY.md`](docs/LABELLING_STRATEGY.md)
 - [`ROADMAP.md`](docs/ROADMAP.md)
 
-Interactive web view at: **https://hexafn.com/docs/**
+Interactive web view at: **https://hexafn.com**
 
 ---
 
@@ -161,7 +161,7 @@ Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%
 <p align="center">
   <img src="https://user-images.githubusercontent.com/00000000/hexaFn-pipeline.gif" alt="hexaFn Animation" width="640"/>
 </p>
-
+<!--TODO: Add animation preview here.-->
 _(If not yet available, animation will be added soon.)_
 
 ---

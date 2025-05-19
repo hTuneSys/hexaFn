@@ -23,7 +23,7 @@ Ensure the following tools are installed:
 ## 📦 Clone the Repository
 
 ```bash
-git clone https://github.com/hexaFn/hexaFn.git
+git clone https://github.com/hTuneSys/hexaFn.git
 cd hexaFn
 ```
 
@@ -91,10 +91,9 @@ cargo clippy
 
 ## 📚 Next Steps
 
-- Read `README.md` for project overview
-- Check `ARCHITECTURE.md` to understand system design
-- Use `USE_CASES.md` to explore core functionalities
-- Review `CONTRIBUTING.md` to contribute effectively
+- Check [`ARCHITECTURE.md`](ARCHITECTURE.md) to understand system design
+- Use [`USE_CASES.md`](USE_CASES.md) to explore core functionalities
+- Review [`CONTRIBUTING.md`](CONTRIBUTING.md) to contribute effectively
 
 ---
 

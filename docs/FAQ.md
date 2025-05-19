@@ -23,20 +23,20 @@ It is a utility library with optional CLI tools. It is **not** a web framework o
 
 ## ❓ How do I get started?
 
-Refer to the `GETTING_STARTED.md` file (coming soon). It will walk you through setup, commands, and examples.
+Refer to the [`GETTING_STARTED.md`](GETTING_STARTED.md) file (coming soon). It will walk you through setup, commands, and examples.
 
 ---
 
 ## ❓ How can I contribute?
 
-Check out the [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md) for instructions on how to suggest changes, report issues, and submit pull requests.
+Check out the [`CONTRIBUTING.md`](CONTRIBUTING.md) for instructions on how to suggest changes, report issues, and submit pull requests.
 
 ---
 
 ## ❓ Are there any requirements before contributing?
 
 Yes. You must:
-- Follow the commit message strategy defined in `COMMIT_STRATEGY.md`
+- Follow the commit message strategy defined in [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md)
 - Respect the branching and PR rules
 - Adhere to the code of conduct
 
@@ -44,13 +44,13 @@ Yes. You must:
 
 ## ❓ What if I find a bug?
 
-Open an issue using the [Bug Report Template](https://github.com/hexaFn/hexaFn/issues/new?template=bug-report.md) and provide as much detail as possible.
+Open an issue using the [Bug Report Template](https://github.com/hTuneSys/hexaFn/issues/new?template=bug-report.md) and provide as much detail as possible.
 
 ---
 
 ## ❓ What should I do if I have a feature idea?
 
-Use the [Feature Request Template](https://github.com/hexaFn/hexaFn/issues/new?template=feature-request.md) or start a discussion to propose your idea.
+Use the [Feature Request Template](https://github.com/hTuneSys/hexaFn/issues/new?template=feature-request.md) or start a discussion to propose your idea.
 
 ---
 
@@ -71,7 +71,7 @@ The project is maintained by the community, led by @amca (Hüsamettin Arabacı).
 You can:
 - Open a GitHub Discussion
 - File an issue using the Support template
-- Refer to the `SUPPORT.md` and `CONTACT.md` files
+- Refer to the [`SUPPORT.md`](SUPPORT.md) and [`CONTACT.md`](CONTACT.md) files
 
 ---
 

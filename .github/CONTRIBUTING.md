@@ -14,11 +14,11 @@ This document outlines how to get involved, contribute code or ideas, and follow
 
 Please review the following core documents:
 
-- [Getting Started](https://github.com/hTuneSys/hexaFn/blob/main/docs/GETTING_STARTED.md)
-- [Architecture](https://github.com/hTuneSys/hexaFn/blob/main/docs/ARCHITECTURE.md)
-- [Branch Strategy](https://github.com/hTuneSys/hexaFn/blob/main/docs/BRANCH_STRATEGY.md)
-- [Project Board](https://github.com/hTuneSys/hexaFn/blob/main/docs/PROJECT_BOARD.md)
-- [FAQ](https://github.com/hTuneSys/hexaFn/blob/main/docs/FAQ.md)
+- [Getting Started](https://github.com/hTuneSys/hexaFn/blob/develop/docs/GETTING_STARTED.md)
+- [Architecture](https://github.com/hTuneSys/hexaFn/blob/develop/docs/ARCHITECTURE.md)
+- [Branch Strategy](https://github.com/hTuneSys/hexaFn/blob/develop/docs/BRANCH_STRATEGY.md)
+- [Project Board](https://github.com/hTuneSys/hexaFn/blob/develop/docs/PROJECT_BOARD.md)
+- [FAQ](https://github.com/hTuneSys/hexaFn/blob/develop/docs/FAQ.md)
 - [README](https://github.com/hTuneSys/hexaFn#readme)
 
 ---
@@ -34,7 +34,7 @@ Please review the following core documents:
 
 ## 🔀 Branch Strategy
 
-Please follow our [Branching Guide](https://github.com/hTuneSys/hexaFn/blob/main/docs/BRANCH_STRATEGY.md)
+Please follow our [Branching Guide](https://github.com/hTuneSys/hexaFn/blob/develop/docs/BRANCH_STRATEGY.md)
 
 - Always branch from `develop`
 - Use one of the allowed types as prefix:  
@@ -85,7 +85,7 @@ cargo test --locked --all-targets       # Test
 
 ## 🧪 PR Flow & Project Board
 
-All contributions are tracked in the [Project Board](https://github.com/hTuneSys/hexaFn/blob/main/docs/PROJECT_BOARD.md):
+All contributions are tracked in the [Project Board](https://github.com/hTuneSys/hexaFn/blob/develop/docs/PROJECT_BOARD.md):
 
 1. Choose or create an issue
 2. Fork the repo and branch from `develop`
@@ -100,7 +100,7 @@ All contributions are tracked in the [Project Board](https://github.com/hTuneSys
 ## 🏷 Label System
 
 Labels are automatically assigned based on the module or type.  
-Refer to [Labelling Strategy](https://github.com/hTuneSys/hexaFn/blob/main/docs/LABELLING_STRATEGY.md)
+Refer to [Labelling Strategy](https://github.com/hTuneSys/hexaFn/blob/develop/docs/LABELLING_STRATEGY.md)
 
 ---
 
@@ -116,6 +116,6 @@ Refer to [Labelling Strategy](https://github.com/hTuneSys/hexaFn/blob/main/docs/
 
 - Questions? Use [GitHub Discussions](https://github.com/hTuneSys/hexaFn/discussions)
 - For sensitive topics, contact **info@hexafn.com**
-- Please follow our [Code of Conduct](https://github.com/hTuneSys/hexaFn/blob/main/.github/CODE_OF_CONDUCT.md)
+- Please follow our [Code of Conduct](https://github.com/hTuneSys/hexaFn/blob/develop/.github/CODE_OF_CONDUCT.md)
 
 We’re excited to build hexaFn with your help 🚀
