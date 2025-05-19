@@ -19,5 +19,6 @@ jobs:
           echo "Source branch: ${{ github.head_ref }}"
           if [[ ! "${{ github.head_ref }}" =~ ^release\/.*$ ]]; then
             echo "❌ Only release/* branches may target main."
+            echo "❌ Only PRs from 'release/*' branches are allowed to merge into 'main'."
             exit 1
           fi

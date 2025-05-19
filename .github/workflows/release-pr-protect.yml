@@ -19,5 +19,6 @@ jobs:
           echo "Source branch: ${{ github.head_ref }}"
           if [[ "${{ github.head_ref }}" != "develop" ]]; then
             echo "❌ Only develop branch may target release/*."
+            echo "❌ Only PRs from 'develop' are allowed to merge into 'release/*'."
             exit 1
           fi

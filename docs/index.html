@@ -2,169 +2,134 @@
 SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hexaFn - From Feed to Feedback</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <meta name="description" content="hexaFn - Functional Utilities for Modern Rust Projects" />
+  <title>hexaFn Docs</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <style>
     :root {
-      --bg: #0b0b0c;
-      --text: #f4f4f4;
-      --card: #1d1e21;
-      --accent: #ffde59;
+      --main-bg: #ffffff;
+      --main-text: #1e1e1e;
+      --primary: #2d2e83;
+      --secondary: #f1f1f1;
+      --link-color: #2d2e83;
     }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: system-ui, sans-serif;
+      background: var(--main-bg);
+      color: var(--main-text);
     }
     header {
-      background: linear-gradient(145deg, #121212, #1f1f1f);
-      padding: 3rem 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
       text-align: center;
-      border-bottom: 2px solid var(--accent);
     }
     header img {
-      filter: drop-shadow(0 0 5px var(--accent));
+      max-height: 60px;
+      margin-bottom: 0.5rem;
     }
-    header h1 {
-      font-size: 3rem;
-      color: var(--accent);
-      margin: 1rem 0 0.5rem;
-    }
-    header p {
-      color: #bbb;
-      font-style: italic;
-      font-size: 1.2rem;
-    }
-    .section {
-      max-width: 1100px;
+    main {
+      padding: 1rem 1.5rem;
+      max-width: 960px;
       margin: auto;
-      padding: 3rem 1.5rem;
     }
-    .section h2 {
-      color: var(--accent);
-      font-size: 1.8rem;
-      border-left: 5px solid var(--accent);
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
+    section {
+      margin-bottom: 2.5rem;
     }
-    .section ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
-    }
-    .modules, .audience, .not-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .card {
-      background-color: var(--card);
-      padding: 1.2rem;
-      border-radius: 10px;
-      flex: 1 1 calc(33.3% - 2rem);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      border-left: 4px solid var(--accent);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-    }
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #777;
-      border-top: 1px solid #222;
-      background-color: #121212;
+    h1, h2 {
+      color: var(--primary);
     }
     a {
-      color: var(--accent);
+      color: var(--link-color);
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 768px) {
-      .card {
-        flex: 1 1 100%;
-      }
-      header h1 {
-        font-size: 2.2rem;
-      }
+    .card-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      background: var(--secondary);
+    }
+    .images {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .images img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #777;
+      padding: 2rem 1rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>hexaFn</h1>
-    <p>From Feed to Feedback, fully programmable.</p>
+    <img src="assets/hexaFn-logo.png" alt="hexaFn Logo" />
+    <h1>hexaFn Project Documentation</h1>
+    <p>Modular. Functional. Documented.</p>
   </header>
+  <main>
+    <section>
+      <h2>🔍 What is hexaFn?</h2>
+      <p><strong>hexaFn</strong> is an open-source utility system focused on functional programming patterns in Rust. Built with modularity, composability, and developer happiness in mind, it offers reliable primitives like <code>pipe</code>, <code>compose</code>, and structured event-driven architecture tools.</p>
+    </section>
 
-  <div class="section">
-    <h2>🚀 What is hexaFn?</h2>
-    <p>hexaFn is a programmable, event-driven data engine built around the 6F Lifecycle Flow: <strong>Feed → Filter → Format → Function → Forward → Feedback</strong>.</p>
-    <p>It lets developers create real-time logic pipelines with typed key-value storage, dynamic function execution, and full pub-sub orchestration—open-source, composable, and fully self-hostable.</p>
-  </div>
+    <section>
+      <h2>📂 Documentation</h2>
+      <div class="card-grid">
+        <div class="card"><a href="GETTING_STARTED.md">Getting Started</a></div>
+        <div class="card"><a href="DEVELOPMENT_GUIDE.md">Development Guide</a></div>
+        <div class="card"><a href="ARCHITECTURE.md">Architecture</a></div>
+        <div class="card"><a href="USE_CASES.md">Use Cases</a></div>
+        <div class="card"><a href="COMMIT_STRATEGY.md">Commit Strategy</a></div>
+        <div class="card"><a href="PR_STRATEGY.md">PR Strategy</a></div>
+        <div class="card"><a href="BRANCH_STRATEGY.md">Branch Strategy</a></div>
+        <div class="card"><a href="LABELLING_STRATEGY.md">Labelling Strategy</a></div>
+        <div class="card"><a href="ROADMAP.md">Roadmap</a></div>
+        <div class="card"><a href="MILESTONES.md">Milestones</a></div>
+        <div class="card"><a href="STYLE_GUIDE.md">Style Guide</a></div>
+        <div class="card"><a href="FAQ.md">FAQ</a></div>
+        <div class="card"><a href="CONTACT.md">Contact</a></div>
+        <div class="card"><a href="COMMUNITY.md">Community</a></div>
+        <div class="card"><a href="SUPPORT.md">Support</a></div>
+        <div class="card"><a href="CONTRIBUTING.md">Contributing</a></div>
+        <div class="card"><a href="CODE_OF_CONDUCT.md">Code of Conduct</a></div>
+        <div class="card"><a href="SECURITY.md">Security</a></div>
+        <div class="card"><a href="SUMMARY.md">Summary</a></div>
+      </div>
+    </section>
 
-  <div class="section">
-    <h2>🔷 6F Lifecycle Flow</h2>
-    <ul>
-      <li><strong>Feed:</strong> Ingest events and data from external sources.</li>
-      <li><strong>Filter:</strong> Evaluate and pre-process conditions.</li>
-      <li><strong>Format:</strong> Normalize or validate incoming data.</li>
-      <li><strong>Function:</strong> Run programmable logic or custom functions.</li>
-      <li><strong>Forward:</strong> Send output to destinations like KV store, pubsub, or webhooks.</li>
-      <li><strong>Feedback:</strong> Log and trigger traceable responses.</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>🧩 Core Modules</h2>
-    <div class="modules">
-      <div class="card"><strong>HexaStore</strong><br />Typed key-value store with event triggers.</div>
-      <div class="card"><strong>HexaCast</strong><br />Real-time pub-sub and broadcast engine.</div>
-      <div class="card"><strong>HexaRun</strong><br />Dynamic function execution (WASM, DSL, JS).</div>
-      <div class="card"><strong>HexaTrigger</strong><br />Condition-based trigger and rule chaining.</div>
-      <div class="card"><strong>HexaWatch</strong><br />Log and monitor all observable events.</div>
-      <div class="card"><strong>HexaBridge</strong><br />Webhooks, REST, SDKs & external integrations.</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>👤 Who is it for?</h2>
-    <div class="audience">
-      <div class="card"><strong>Event Architects</strong><br />For backend engineers building real-time pipelines.</div>
-      <div class="card"><strong>Realtime Hackers</strong><br />For devs building chat, IoT, or game systems.</div>
-      <div class="card"><strong>Product Integrators</strong><br />For automation, forms, workflows, triggers.</div>
-      <div class="card"><strong>AI Pipeliners</strong><br />For ML engineers doing feature prep and inference.</div>
-      <div class="card"><strong>Infra Builders</strong><br />For architects building composable self-hosted logic layers.</div>
-      <div class="card"><strong>Plugin Crafters</strong><br />For open-source contributors building reusable logic.</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>❌ What hexaFn is NOT (Never-6)</h2>
-    <div class="not-section">
-      <div class="card"><strong>Never-SQL</strong><br />We are not a traditional relational database.</div>
-      <div class="card"><strong>No-Bloat</strong><br />We are not a bloated monolith or framework.</div>
-      <div class="card"><strong>No-Wait</strong><br />We are not a batch processor. Events are real-time.</div>
-      <div class="card"><strong>No-LockIn</strong><br />We are not a cloud-only SaaS. Self-host freely.</div>
-      <div class="card"><strong>No-UIBuilder</strong><br />We are not a visual editor or CMS.</div>
-      <div class="card"><strong>No-Magic</strong><br />We do not hide logic or state. Transparent by design.</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    © 2025 hexaTune LLC · Built with 🖤 by hexaTune Team · 
-    <a href="https://github.com/hTuneSys/hexaFn">GitHub Repo</a>
-  </div>
+    <section>
+      <h2>🧠 Visual Overview</h2>
+      <div class="images">
+        <img src="assets/diagram.png" alt="System Diagram" />
+        <img src="assets/data-flow.png" alt="Data Flow" />
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Hüsamettin Arabacı – MIT Licensed · Built with ❤️ by the community
+  </footer>
 </body>
 </html>

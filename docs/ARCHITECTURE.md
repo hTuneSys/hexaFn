@@ -50,6 +50,8 @@ Each phase in the flow is programmable, observable, and independently testable. 
 
 ## 🧠 Data Flow (Simplified Example)
 
+![6F Data Flow Diagram](assets/data-flow.png)
+
 ```text
 User Event → Feed (Ingest) 
   → Filter (Check validity or user type) 
@@ -63,15 +65,29 @@ All stages can independently be observed, tested, logged, and extended.
 
 ---
 
-## 🔁 Extensibility
-- Each module exposes hooks
-- Function runtime supports hot-reloadable logic
-- Custom plugins can be added to Cast, Run, Trigger
-- WASM and DSL modules are isolated by design
+## 🧩 Example Use Cases
+
+### Real-time Chat Moderation
+- Incoming chat messages are fed into the system.
+- Messages are filtered for profanity and spam.
+- Formatted to standard JSON structure.
+- Functions apply sentiment analysis and auto-moderation rules.
+- Forwarded alerts sent to moderators via pubsub.
+- Feedback logs moderation actions for audit.
+
+### IoT Device Data Processing
+- Devices send sensor data (temperature, humidity).
+- Feed module ingests device events.
+- Filter discards invalid or out-of-range readings.
+- Format normalizes units and data formats.
+- Function computes trends and anomaly detection.
+- Forward sends processed data to dashboard APIs.
+- Feedback stores audit trail and triggers alerts if needed.
 
 ---
 
 ## 🏗️ Deployment Flexibility
+
 - Fully self-hostable via Docker or bare-metal
 - CLI and REST control surfaces (coming soon)
 - Future support for distributed mode & scaling workers
@@ -79,25 +95,29 @@ All stages can independently be observed, tested, logged, and extended.
 ---
 
 ## 📦 File Structure (Planned)
+
 ```text
 hexaFn/
-├── core/              # Core pipeline engine
-├── modules/
-│   ├── store/         # HexaStore
-│   ├── cast/          # HexaCast
-│   ├── run/           # HexaRun
-│   ├── trigger/       # HexaTrigger
-│   ├── watch/         # HexaWatch
-│   └── bridge/        # HexaBridge
-├── plugins/           # Optional user-contributed extensions
-├── cli/               # Command-line interface tool
-└── docs/              # Documentation & architecture
+└── src/
+    ├── core/              # Core pipeline engine
+    ├── modules/
+    │   ├── store/         # HexaStore
+    │   ├── cast/          # HexaCast
+    │   ├── run/           # HexaRun
+    │   ├── trigger/       # HexaTrigger
+    │   ├── watch/         # HexaWatch
+    │   └── bridge/        # HexaBridge
+    ├── plugins/           # Optional user-contributed extensions
+    ├── cli/               # Command-line interface tool
+    └── docs/              # Documentation & architecture
 ```
 
 ---
 
 ## 📬 Questions?
-Contact the team at **info@hexafn.com** or open an issue.
+
+Contact the team at **[info@hexafn.com](mailto:info@hexafn.com)** or open an issue.
 
 ---
+
 Built by [hexaTune LLC](https://hexafn.com) · GitHub: [hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)

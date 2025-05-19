@@ -3,118 +3,99 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# 🚀 Getting Started with hexaFn
+# GETTING_STARTED.md
 
-Welcome, contributor! This guide will help you get up and running with the **hexaFn** codebase and contribution flow.
-
----
-
-## 🧱 Project Overview
-
-**hexaFn** is a modular, programmable event engine built around the `6F Lifecycle Flow`:
-
-> **Feed → Filter → Format → Function → Forward → Feedback**
-
-It consists of six core modules:
-
-- `HexaStore` – Typed, event-driven key-value store  
-- `HexaCast` – Real-time pub-sub and broadcast engine  
-- `HexaRun` – Dynamic function runtime (WASM, JS, DSL)  
-- `HexaTrigger` – Conditional triggers and flow orchestration  
-- `HexaWatch` – Logging, audit, and observability system  
-- `HexaBridge` – External integrations via webhooks, SDKs, APIs
+Welcome to the hexaFn project! This guide will help you set up your environment, build the project, and understand the basics of how to start using or contributing to hexaFn.
 
 ---
 
-## 💻 Local Setup
+## 🔧 Prerequisites
 
-### 1. Clone the repository
+Ensure the following tools are installed:
+
+- [Rust](https://www.rust-lang.org/tools/install)
+- `cargo` (comes with Rust)
+- `git` (version control)
+- Optional: `just`, `make`, or `cargo-make` for task automation
+
+---
+
+## 📦 Clone the Repository
 
 ```bash
-git clone https://github.com/hTuneSys/hexaFn.git
+git clone https://github.com/hexaFn/hexaFn.git
 cd hexaFn
 ```
 
-### 2. Install Rust
+---
+
+## 📁 Install Dependencies
+
+hexaFn uses native Rust tooling.
 
 ```bash
-curl https://sh.rustup.rs -sSf | sh
-rustup component add clippy rustfmt
+cargo fetch
 ```
 
-### 3. Run tests
+To install auxiliary tools (if configured):
+
+```bash
+cargo install cargo-make
+```
+
+---
+
+## 🚀 Run the Project (Example)
+
+```bash
+cargo run
+```
+
+For custom environments:
+
+```bash
+HEXA_ENV=dev HEXA_PORT=4000 cargo run
+```
+
+---
+
+## 🧪 Run Tests
 
 ```bash
 cargo test
 ```
 
----
-
-## 🔧 Contribution Flow
-
-1. **Create your branch**  
-   ```bash
-   git checkout -b feat/run/add-custom-wasm
-   ```
-
-2. **Make your changes**, then commit with a conventional message  
-   ```bash
-   git commit -m "feat(run): support custom WASM execution"
-   ```
-
-3. **Push to your fork** and **open a pull request** against the `develop` branch.
-
-4. **Ensure** the following before submitting:
-   - ✅ Branch name matches pattern (`feat/*`, `fix/*`, etc.)
-   - ✅ PR title follows semantic format
-   - ✅ Passes CI (`cargo fmt`, `clippy`, `test`)
-   - ✅ Checks off modules in PR template
-
----
-
-## 📦 Tools & Conventions
-
-| Tool                | Purpose                                |
-|---------------------|----------------------------------------|
-| `cargo fmt`         | Code formatting                        |
-| `cargo clippy`      | Code linting and static analysis       |
-| `cargo tarpaulin`   | Code coverage (optional)               |
-| `commitlint`        | Commit message validation              |
-| `semantic-release`  | Automated versioning and changelogs    |
-| `labeler.yml`       | Auto-labeling based on file paths      |
-
----
-
-## 🥪 Run Specific Tests
-
-To run tests from a specific module (if modularized into crates or directories):
+To run specific tests:
 
 ```bash
-cargo test -p hexastore
-```
-
-Or using path filtering:
-```bash
-cargo test --test test_name
+cargo test test_function_name
 ```
 
 ---
 
-## 💡 Tips for Contributors
+## ✅ Verify Formatting & Linting
 
-- Keep your changes focused and atomic (1 feature/fix per PR)
-- Prefer pluggable, isolated logic in modules or functions
-- Ask questions in Discussions if uncertain
-- Review [CONTRIBUTING.md](../.github/CONTRIBUTING.md) for standards
+Format code using:
+
+```bash
+cargo fmt
+```
+
+Check for lint errors:
+
+```bash
+cargo clippy
+```
 
 ---
 
-## 📬 Contact
+## 📚 Next Steps
 
-- Email: [info@hexafn.com](mailto:info@hexafn.com)  
-- Discussions: [GitHub Discussions](https://github.com/hTuneSys/hexaFn/discussions)
+- Read `README.md` for project overview
+- Check `ARCHITECTURE.md` to understand system design
+- Use `USE_CASES.md` to explore core functionalities
+- Review `CONTRIBUTING.md` to contribute effectively
 
 ---
 
-Thanks for contributing to **hexaFn** –  
-**Together, we turn events into logic.**
+You're now ready to explore and build with hexaFn. Happy hacking!

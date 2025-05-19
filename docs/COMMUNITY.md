@@ -3,55 +3,36 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# 👥 Welcome to the hexaFn Community
+# Community Guidelines
 
-We’re excited to have you here! Whether you’re a developer, designer, writer, or enthusiast, there’s a place for you in the hexaFn ecosystem.
+Welcome to the hexaFn community! This document outlines how to participate respectfully and productively in our ecosystem.
 
----
+## 💬 Where to Engage
 
-## 💬 Where to Start
+- **GitHub Discussions**: For feature ideas, architecture talk, or casual questions.
+- **Issues**: Report bugs, suggest enhancements, or raise questions directly related to the codebase.
+- **Pull Requests**: Contributions should be discussed in PRs with context and intention clearly explained.
 
-- **Ask questions / share ideas:**  
-  → [GitHub Discussions](https://github.com/hTuneSys/hexaFn/discussions)
+## 🤝 Principles
 
-- **Report issues or bugs:**  
-  → [Issue Tracker](https://github.com/hTuneSys/hexaFn/issues)
+- **Be Respectful**: Assume good intent. Treat others with kindness and empathy.
+- **Stay on Topic**: Keep discussions focused and relevant to the project.
+- **Collaborate Openly**: Share knowledge. Avoid gatekeeping or dismissive behavior.
 
-- **Contribute code or docs:**  
-  → Start with [CONTRIBUTING.md](./CONTRIBUTING.md)
+## 🚫 Not Allowed
 
-- **Sponsor the project:**  
-  → [GitHub Sponsors](https://github.com/sponsors/hTuneSys)
+- Harassment, hate speech, or discrimination of any kind
+- Spamming, trolling, or irrelevant self-promotion
+- Malicious code or behavior
 
----
+## ✅ Tips for Contribution
 
-## 🧠 Communication Guidelines
+- Read the `CONTRIBUTING.md` guide before submitting issues or PRs.
+- Use English for all communications to keep the project inclusive.
+- Label your contributions clearly and use commit conventions.
 
-- Be respectful, constructive, and inclusive
-- Stay on topic — use the right channel for your post
-- Help others if you can
+## 📧 Need Help?
 
----
+Reach out via [GitHub Issues](https://github.com/hexaFn/hexaFn/issues) or check the `SUPPORT.md` for assistance.
 
-## 🧩 Community Structure
-
-- **Maintainers**: Lead development and roadmap planning  
-- **Contributors**: Submit PRs, ideas, fixes, and improvements  
-- **Sponsors**: Support ongoing development financially  
-- **Users**: Use the tools and give feedback
-
----
-
-## 🌍 Values We Care About
-
-- Transparency and openness
-- Ownership and modular design
-- Learning, teaching, and growing together
-
----
-
-## ✉️ Need Direct Help?
-
-Email: **info@hexafn.com**
-
-Let’s build something amazing — together 🚀
+Thank you for being part of hexaFn! We value your contributions and presence.

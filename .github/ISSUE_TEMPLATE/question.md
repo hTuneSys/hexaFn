@@ -3,7 +3,7 @@ name: "❓ Question / Clarification"
 about: Ask a question or request clarification about hexaFn usage or design
 title: "[question]: Briefly summarize your question"
 labels: [status:needs-spec]
-
+assignees: husamettinarabaci
 ---
 
 ### 🤔 What is your question?

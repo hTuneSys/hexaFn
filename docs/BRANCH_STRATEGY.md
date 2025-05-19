@@ -5,47 +5,56 @@ SPDX-License-Identifier: MIT
 
 # 📚 Branching Strategy for hexaFn
 
-This project follows a structured, scalable branching model inspired by GitHub Flow, Gitflow, and real-world enterprise project practices. All contributors are expected to adhere to the rules defined here for consistent development and stable releases.
+This project follows a structured, scalable branching model inspired by GitHub Flow, Gitflow, and real-world enterprise project practices.  
+All contributors are expected to adhere to these rules for consistent development and stable releases.
 
 ---
 
-## 🔱 Branch Layers
+## 🔱 Branch Layers and Types
 
-| Branch             | Purpose                                               |
-|--------------------|-------------------------------------------------------|
-| `main`             | Production branch. All releases are tagged from here. |
-| `release/x.y`      | Pre-release stabilization and QA                     |
-| `develop`          | Ongoing integration of all approved feature/fix PRs  |
-| `feature/xyz`      | New feature development per issue                    |
-| `fix/bug-id`       | Bugfix branches with isolated fixes                  |
-| `hotfix/critical`  | Emergency fixes applied directly on top of `main`    |
+| Branch             | Purpose                                               | Allowed Types (Prefix)                           |
+|--------------------|-----------------------------------------------------|-------------------------------------------------|
+| `main`             | Production branch. All official releases are tagged here. | N/A (protected branch)                         |
+| `release/x.y`      | Pre-release stabilization, final QA and testing.    | `release/`                                      |
+| `develop`          | Integration branch for ongoing feature and fix PRs. | N/A (protected branch)                          |
+| `feature/xyz`      | Development of new features.                         | `feat/`                                        |
+| `fix/bug-id`       | Bug fixes and patches.                               | `fix/`                                         |
+| `chore/*`          | Routine tasks, maintenance, housekeeping.           | `chore/`                                       |
+| `refactor/*`       | Code refactoring without feature or bug changes.    | `refactor/`                                    |
+| `test/*`           | Test additions and modifications.                    | `test/`                                        |
+| `docs/*`           | Documentation improvements and additions.            | `docs/`                                        |
+| `ci/*`             | Continuous Integration and automation scripts.       | `ci/`                                          |
+| `perf/*`           | Performance improvements.                            | `perf/`                                        |
+| `build/*`          | Build-related changes (packaging, dependencies).     | `build/`                                       |
+| `hotfix/*`         | Emergency fixes applied directly on `main`.          | `hotfix/`                                      |
+| `style/*`          | Code style and formatting changes.                   | `style/`                                       |
 
 ---
 
 ## 🔄 Pull Request Flow
 
-### 🔁 From contributors:
-- All PRs must be based on `develop`
-- Use `feature/your-feature`, `fix/your-bug` naming convention
-- PR title must follow semantic commit format (`feat:`, `fix:`, etc.)
+### 🔁 For Contributors:
+- All PRs **must be based on `develop`** unless hotfixing `main`.
+- Branch names should start with one of the allowed prefixes from the table above.
+- PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) format.
+- Keep your PR focused and small for easier review.
 
 ### ✅ Merge Rules:
-- `feature/*` → `develop` (after review & CI pass)
-- `fix/*` → `develop`
-- `develop` → `release/x.y` (planned at sprint end)
-- `release/x.y` → `main` (after test + approval)
-- `hotfix/*` → `main` → `develop`
+- `feature/*`, `fix/*`, `chore/*`, `refactor/*`, `test/*`, `docs/*`, `ci/*`, `perf/*`, `build/*`, `style/*` → merge into `develop` after review & CI pass.
+- `develop` → `release/x.y` at sprint end for release prep.
+- `release/x.y` → `main` after QA and approval.
+- `hotfix/*` → `main` → `develop` immediately.
 
 ---
 
 ## 🔐 Branch Protection Rules
 
-| Branch       | Protection                            |
+| Branch       | Protection                              |
 |--------------|----------------------------------------|
-| `main`       | ✅ Required PR, review, and status checks |
-| `release/*`  | ✅ Only maintainers can merge          |
-| `develop`    | ⚠️ PR required, at least 1 review      |
-| others       | 🔓 No restriction, delete after merge  |
+| `main`       | Required PR, review, status checks      |
+| `release/*`  | Only maintainers can merge              |
+| `develop`    | PR required, minimum 1 review           |
+| others       | No restriction, delete after merge      |
 
 ---
 
@@ -62,20 +71,44 @@ This project follows a structured, scalable branching model inspired by GitHub F
 
 ## 🧹 Cleanup Policy
 
-- Merged `feature/` and `fix/` branches must be deleted after merge
-- `release/` branches are deleted after tagging
-- `hotfix/` branches are merged and deleted immediately
+- Merged feature, fix, chore, refactor, test, docs, ci, perf, build, style branches **must be deleted immediately**.
+- `release/*` branches are deleted **after tagging**.
+- `hotfix/*` branches are merged and deleted **immediately**.
+- Consider automating branch deletion using GitHub Settings or scripts.
 
 ---
 
-## 💡 Notes
+## 📈 Do’s and Don’ts
 
-- `semantic-release` runs **only on `main`**
-- PR templates and commit conventions are strictly enforced
-- Contributors must fork and target `develop` in their PRs
+### Do:
+- Use **clear, descriptive branch names** with allowed prefixes.
+- Open **small, focused PRs** for faster review.
+- Follow **commit and PR title conventions**.
+- Sync with `develop` frequently.
 
-For questions, open a [discussion](https://github.com/hTuneSys/hexaFn/discussions)
+### Don’t:
+- Push large or unrelated changes in a single PR.
+- Merge into `main` or `release/*` without approval.
+- Use branch names outside the approved prefixes.
+- Forget to delete branches after merge.
 
 ---
 
-> Maintained by @husamettinarabaci • hexaTune LLC
+## 🔄 PR Flow Diagram (Textual)
+
+```text
+feature/*, fix/*, chore/* ... -> develop -> release/x.y -> main
+                                ↑               ↑
+                           hotfix/* ------------|
+```
+
+---
+
+## 📬 Questions?
+
+If you have questions or need help, open a discussion at:  
+https://github.com/hTuneSys/hexaFn/discussions
+
+---
+
+> Maintained by @husamettinarabaci · hexaTune LLC

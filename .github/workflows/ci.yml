@@ -5,31 +5,65 @@ name: 🤖 CI
 
 on:
   pull_request:
-    branches: [ main, develop, release/*, hotfix/*, feat/*, fix/* ]
   push:
-    branches: [ main, develop ]
 
 jobs:
-  build:
-    name: Build and Test (hexaFn)
+  fmt:
+    name: Check Formatting (hexaFn)
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
-          components: rustfmt, clippy
 
-      - name: Format Check
+      - name: Check code formatting
         run: cargo fmt -- --check
 
-      - name: Clippy Lint
+  clippy:
+    name: Run Clippy Linter (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run Clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
 
-      - name: Run Tests
-        run: cargo test --all
+  build:
+    name: Build Project (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Build
+        run: cargo build --locked --all-targets
+
+  test:
+    name: Run Tests (hexaFn)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test --locked --all-targets

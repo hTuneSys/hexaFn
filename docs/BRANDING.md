@@ -11,14 +11,14 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 ## 🎨 Color Palette
 
-| Role               | Hex Code   | Description                        |
-|--------------------|------------|------------------------------------|
-| Primary Dark       | `#0f0f11`  | Base background and primary tone  |
-| Accent Highlight   | `#ffde59`  | Call-to-action, links, emphasis    |
-| Soft Gray          | `#bbb`     | Borders and muted elements         |
-| Deep Graphite      | `#2b3138`  | Panels, shadows, interface depth   |
-| Neutral Light      | `#f4f4f4`  | Background for light sections      |
-| Text Gray          | `#777`     | Secondary text and placeholders    |
+| Role               | Hex Code   | Description                       | Sample            |
+|--------------------|------------|---------------------------------|-------------------|
+| Primary Dark       | `#0f0f11`  | Base background and primary tone | <span style="background:#0f0f11;color:#0f0f11;">█████</span> |
+| Accent Highlight   | `#ffde59`  | Call-to-action, links, emphasis   | <span style="background:#ffde59;color:#ffde59;">█████</span> |
+| Soft Gray          | `#bbb`     | Borders and muted elements        | <span style="background:#bbb;color:#bbb;">█████</span>       |
+| Deep Graphite      | `#2b3138`  | Panels, shadows, interface depth  | <span style="background:#2b3138;color:#2b3138;">█████</span> |
+| Neutral Light      | `#f4f4f4`  | Background for light sections     | <span style="background:#f4f4f4;color:#f4f4f4;">█████</span> |
+| Text Gray          | `#777`     | Secondary text and placeholders   | <span style="background:#777;color:#777;">█████</span>       |
 
 ---
 
@@ -28,22 +28,27 @@ This guide defines the visual identity, tone, and presentation standards for the
 - Titles should be clear, bold, and use strong contrast.
 - Avoid playful fonts or excessive stylistic elements.
 
+### Font Examples
+
+- Primary font: `Roboto Mono` ([Google Fonts](https://fonts.google.com/specimen/Roboto+Mono))  
+- Secondary font: `Inter` ([Google Fonts](https://fonts.google.com/specimen/Inter))  
+
 ---
 
 ## 🔗 Logo Usage
 
 - Preferred logo file: `hexaFn-logo.png`
 - Use on dark background for maximum contrast
-- Do not skew, stretch, or recolor
+- Do **not** skew, stretch, or recolor
 - Keep padding around the logo for visual balance
 
----
+### Logo Usage Examples
 
-## 🧠 Tone of Voice
+| Correct Usage                       | Incorrect Usage                  |
+|-----------------------------------|--------------------------------|
+| ![Correct Logo](./assets/hexaFn-logo.png) | ![Incorrect Logo](./assets/logo-wrong.png) |
 
-- Confident and technical, not overly casual
-- Prioritize clarity, brevity, and transparency
-- Avoid buzzwords – let functionality speak
+*Note: The incorrect image is an example placeholder. Replace with real image showing improper logo usage.*
 
 ---
 
@@ -51,9 +56,17 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 > From Feed to Feedback — fully programmable.
 
+### Alternative Taglines
+
+- Power your data pipeline with hexaFn
+- Modular event-driven functions at your fingertips
+- Orchestrate your workflows effortlessly
+- The smart pipeline for real-time apps
+
 ---
 
 ## 📄 Maintained by  
 **hexaTune LLC**  
 - Website: [hexafn.com](https://hexafn.com)  
-- GitHub: [github.com/hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)
+- GitHub: [github.com/hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)  
+- Email: [info@hexafn.com](mailto:info@hexafn.com)

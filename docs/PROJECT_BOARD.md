@@ -3,84 +3,58 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# 🗂️ hexaFn Project Board Design
+# PROJECT_BOARD.md
 
-This document defines the layout, purpose, and automation rules of the official **hexaFn Kanban Board** under GitHub Projects.
-
----
-
-## 📌 Columns (Board Workflow)
-
-| Order | Column Title         | Description                                                  |
-|-------|----------------------|--------------------------------------------------------------|
-| 1️⃣   | 📥 Inbox / Ideas     | New ideas, rough suggestions, or exploratory thoughts       |
-| 2️⃣   | 📝 To Do             | Accepted, ready-to-start issues with clear scope            |
-| 3️⃣   | 🚧 In Progress       | Tasks actively being developed                              |
-| 4️⃣   | 🔎 In Review         | Pull requests under code review                             |
-| 5️⃣   | ✅ Done              | Completed & merged tasks                                    |
-| 6️⃣   | 🧊 Backlog           | Low-priority or postponed tasks                             |
-| 7️⃣   | ♻️ Needs Discussion  | Items awaiting community or team feedback                   |
+This document describes the structure and usage of the hexaFn GitHub Project Board used for tracking issues, workflows, and development progress.
 
 ---
 
-## 🏷️ Recommended Labels
+## 🧭 Board Overview
 
-| Label              | Purpose                         |
-|--------------------|----------------------------------|
-| `type:feature`     | New features                    |
-| `type:bug`         | Bug reports                     |
-| `type:refactor`    | Code cleanup / structural change|
-| `type:docs`        | Documentation tasks             |
-| `type:ci`          | CI/CD and automation changes    |
-| `module:store`     | Related to HexaStore module     |
-| `module:cast`      | Related to HexaCast module      |
-| `priority:high`    | High-priority items             |
-| `help wanted`      | Welcoming external contributions|
+The hexaFn project board is organized using GitHub Projects (v2) with the following columns:
+
+1. **Inbox** – New issues or ideas needing triage  
+2. **Backlog** – Approved but not yet scheduled items  
+3. **In Progress** – Actively being worked on  
+4. **In Review** – Awaiting PR review or discussion  
+5. **Blocked** – Work paused due to dependencies  
+6. **Done** – Completed tasks  
+7. **Closed** – Rejected or archived items  
 
 ---
 
-## 🔄 Suggested Automation Rules (Manual or Action-based)
+## 🏷️ Label Integration
 
-| Event                          | Column              |
-|--------------------------------|---------------------|
-| Issue created (needs triage)  | 📥 Inbox            |
-| Issue accepted                | 📝 To Do            |
-| Developer starts work         | 🚧 In Progress      |
-| Pull request opened           | 🔎 In Review        |
-| Pull request merged           | ✅ Done             |
-| Deferred or low priority      | 🧊 Backlog          |
-| Community input required      | ♻️ Needs Discussion |
+Cards are automatically categorized using GitHub Labels, such as:
+
+- `type: bug`, `type: feature`, `type: question`, etc.
+- `status: in progress`, `status: review`, `status: blocked`
+- `priority: high`, `priority: low`
+
+These labels help sort and filter cards efficiently.
 
 ---
 
-## 🧪 Example Cards
+## 🔄 Workflow Rules
 
-| Card Title                            | Suggested Column      |
-|--------------------------------------|------------------------|
-| Define plugin system for HexaRun     | 📥 Inbox               |
-| Add `init` command to CLI            | 📝 To Do               |
-| Implement WASM execution engine      | 🚧 In Progress         |
-| Refactor HexaCast message model      | 🔎 In Review           |
-| Basic project scaffold (done)        | ✅ Done                |
-| Add Redis integration to HexaBridge  | 🧊 Backlog             |
-| Should HexaTrigger support cron?     | ♻️ Needs Discussion    |
+- Issues moved to **In Progress** must be assigned to a contributor.
+- Pull Requests are linked to issues and automatically update board state.
+- The **In Review** column is for PRs with open reviews.
+- Cards in **Done** are periodically cleaned up to **Closed**.
 
 ---
 
-## 🛠 How to Create This Board
+## 🔧 Automation
 
-1. Go to: https://github.com/orgs/hTuneSys/projects
-2. Click **New Project** → Choose **Board** view
-3. Name it: `hexaFn Board`
-4. Create the 7 columns above manually
-5. Assign issues/PRs to the board manually or via automation rules
+GitHub Actions and project workflows automate the board:
 
-For automation, you can also use GitHub Actions or third-party bots.
+- Auto-assign labels on issue creation
+- Auto-move cards based on PR status
+- Auto-close completed issues when PRs are merged
 
 ---
 
-This board keeps the hexaFn lifecycle modular, visible, and traceable.
+## 🔗 Access the Board
 
-_Questions? Contact: info@hexafn.com_
-
-Happy building 🚀
+Visit the live project board here:  
+➡️ https://github.com/orgs/hexaFn/projects/1

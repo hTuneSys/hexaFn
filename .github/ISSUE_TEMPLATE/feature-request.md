@@ -3,7 +3,7 @@ name: "\U0001F31F Feature Request"
 about: Suggest a new feature or improvement for hexaFn
 title: "[feat]: Suggest a new capability or improvement"
 labels: type:feature
-
+assignees: husamettinarabaci
 ---
 
 **Is your feature request related to a problem? Please describe.**

@@ -11,34 +11,18 @@ Thanks for using **hexaFn**! Below are the ways you can get help or contact the 
 
 ## 📬 Contact Channels
 
-| Channel         | Purpose                                  |
-|----------------|-------------------------------------------|
+| Channel         | Purpose                                                           |
+|----------------|-------------------------------------------------------------------|
 | [Discussions](https://github.com/hTuneSys/hexaFn/discussions) | Ask questions, suggest features, or open design talks |
-| [Issues](https://github.com/hTuneSys/hexaFn/issues)         | Bug reports or confirmed technical problems             |
-| Email           | For private or security-related matters   |
-|                 | ✉️ **info@hexafn.com**                    |
+| [Issues](https://github.com/hTuneSys/hexaFn/issues)         | Report bugs or request features                        |
+| Email            | For private or sensitive support: info@hexafn.com                |
 
 ---
 
-## 🔧 What to Include in Support Requests
+## 💡 Tips
 
-To help us resolve issues efficiently, please include:
-- Your operating system and version
-- Steps to reproduce the problem (if any)
-- Logs, error messages, or screenshots
-- The module you're working with (e.g. `HexaRun`, `HexaStore`)
+- Before opening an issue, please check the [FAQ](https://github.com/hTuneSys/hexaFn/blob/main/docs/FAQ.md).
+- Use appropriate labels when opening issues to help us respond faster.
+- For security-related concerns, please read our [Security Policy](https://github.com/hTuneSys/hexaFn/blob/main/.github/SECURITY.md).
 
----
-
-## 📄 Documentation First
-
-Make sure you’ve reviewed:
-- [`README.md`](./README.md)
-- [`docs/summary.md`](./docs/summary.md)
-- [`CONTRIBUTING.md`](./.github/CONTRIBUTING.md)
-
-We try to keep our docs up-to-date and beginner-friendly.
-
----
-
-Thank you for helping us improve hexaFn — your feedback keeps the engine running 🚀
+We appreciate your feedback and contributions 💙

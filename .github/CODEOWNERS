@@ -1,6 +1,14 @@
 # SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 # SPDX-License-Identifier: MIT
 
+# Default owner
 * @husamettinarabaci
-# /core/ @core-dev-team
-# /docs/ @doc-maintainers
+
+# Module-specific owners
+/src/store/     @husamettinarabaci
+/src/cast/      @husamettinarabaci
+/src/run/       @husamettinarabaci
+/src/trigger/   @husamettinarabaci
+/src/watch/     @husamettinarabaci
+/src/bridge/    @husamettinarabaci
+/docs/          @husamettinarabaci

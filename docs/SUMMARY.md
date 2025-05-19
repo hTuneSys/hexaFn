@@ -3,48 +3,64 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# 📚 hexaFn Documentation Summary
+# SUMMARY.md
 
-Welcome to the hexaFn documentation hub. Below is an overview of the core documents available for contributors, developers, and maintainers.
-
----
-
-## 🔹 Getting Started
-- [`docs/getting-started.md`](./getting-started.md)  
-  Learn how to clone, build, and contribute to the project.
+Welcome to the hexaFn project documentation hub. This file summarizes the structure and purpose of each document found in the `docs/` directory.
 
 ---
 
-## 🔹 Contribution & Community
-- [`.github/CONTRIBUTING.md`](../.github/CONTRIBUTING.md)  
-  Rules and workflows for submitting changes.
-- [`.github/CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)  
-  Community interaction guidelines.
-- [`SECURITY.md`](../SECURITY.md)  
-  Responsible disclosure and vulnerability reporting.
+## 🧭 Project Strategy & Structure
+
+- `README.md` – Overview of the project, goals, and usage
+- `SUMMARY.md` – High-level summary of all documentation files
+- `ARCHITECTURE.md` – System design and internal architecture
+- `USE_CASES.md` – Core problems the project addresses and examples
 
 ---
 
-## 🔹 Project Architecture
-- [`docs/architecture.md`](./architecture.md)  
-  Overview of the 6F Lifecycle Flow and module interaction.
+## 🛠 Contribution & Workflow
+
+- `CONTRIBUTING.md` – Guidelines for contributing (issues, PRs, code)
+- `CODE_OF_CONDUCT.md` – Community behavior rules
+- `PR_STRATEGY.md` – Rules for naming, reviewing, and merging PRs
+- `COMMIT_STRATEGY.md` – Commit message types and best practices
+- `BRANCH_STRATEGY.md` – Naming and usage rules for git branches
+- `LABELLING_STRATEGY.md` – System of issue/PR labels and their purpose
 
 ---
 
-## 🔹 Development Standards
-- `.commitlintrc.yml` – Conventional commit enforcement
-- Branch naming policy – see [`branch-strategy.md`](./branch-strategy.md)
-- CI workflows – see `.github/workflows/`
+## 📈 Planning & Management
+
+- `MILESTONES.md` – Key milestones and development phases
+- `PROJECT_BOARD.md` – GitHub Projects board usage guide
+- `ROADMAP.md` – Development roadmap and release strategy
 
 ---
 
-## 🔹 Open Topics (Coming Soon)
-- Discussion templates
-- Module-specific plugin guides
-- Wiki index with visual maps
+## 👨‍💻 Developer Tools
+
+- `CONFIGURATION.md` – Runtime and environment settings
+- `STYLE_GUIDE.md` – Coding conventions and formatting rules
+- `GETTING_STARTED.md` – (To be completed) Setup instructions for new devs
+- `DEVELOPMENT_GUIDE.md` – (To be completed) In-depth dev guide
+- `FAQ.md` – (To be completed) Frequently asked questions
 
 ---
 
-For any questions, suggestions, or feedback, contact us at [info@hexafn.com](mailto:info@hexafn.com).
+## 🤝 Community & Support
 
-Thanks for being part of the **hexaFn** ecosystem!
+- `COMMUNITY.md` – Community engagement and interaction rules
+- `CONTACT.md` – How to reach maintainers or report issues
+- `SUPPORT.md` – How to get help and where to ask questions
+
+---
+
+## 🌐 Branding & Website
+
+- `BRANDING.md` – Visual identity and logo usage
+- `CNAME` – Custom domain for GitHub Pages
+- `index.html` – Landing page of documentation site
+
+---
+
+This summary will help you navigate the docs efficiently and understand their purpose in the project lifecycle.

@@ -3,7 +3,7 @@ name: "💬 Support Request"
 about: Request general help, integration advice, or usage clarification for hexaFn
 title: "[support]: Describe your need"
 labels: [status:waiting-feedback]
-
+assignees: husamettinarabaci
 ---
 
 ### 📚 What do you need help with?

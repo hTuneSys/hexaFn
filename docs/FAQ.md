@@ -3,73 +3,76 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# hexaFn – Frequently Asked Questions (FAQ)
+# FAQ.md
+
+Frequently Asked Questions (FAQ) about the hexaFn project. If you have a question not listed here, feel free to open a GitHub Discussion or an Issue.
 
 ---
 
-### ❓ What is hexaFn?
+## ❓ What is hexaFn?
 
-hexaFn is a programmable engine that combines key-value storage, pub-sub messaging, and function execution into a unified event pipeline. It enables event-centric architectures with full developer control.
-
----
-
-### ❓ What problems does hexaFn solve?
-
-- Simplifies serverless event flows
-- Eliminates glue code between KV, pub-sub, and functions
-- Enables declarative, modular, and reactive infrastructure
+hexaFn is an open-source modular function utility system designed to enhance composability, readability, and testability in Rust applications.
 
 ---
 
-### ❓ How is hexaFn different from existing serverless platforms?
+## ❓ Is this a framework or a utility library?
 
-Unlike monolithic platforms, hexaFn:
-- Offers full lifecycle control (Feed → Feedback)
-- Runs anywhere (CLI, API, embedded)
-- Is built with modular open-source principles
+It is a utility library with optional CLI tools. It is **not** a web framework or runtime. It focuses on function composition, event flows, and modular pipelines.
 
 ---
 
-### ❓ Is this a framework or a runtime?
+## ❓ How do I get started?
 
-Both. hexaFn offers:
-- A runtime engine (HexaRun)
-- A message router (HexaCast)
-- A storage layer (HexaStore)
-- A composition model across modules
+Refer to the `GETTING_STARTED.md` file (coming soon). It will walk you through setup, commands, and examples.
 
 ---
 
-### ❓ Is it production-ready?
+## ❓ How can I contribute?
 
-Not yet. The project is currently in MVP phase. First public-ready release is targeted at **v1.0**, following gradual module-based milestones.
-
----
-
-### ❓ Who maintains this project?
-
-The project is maintained by **hexaTune LLC**, led by an experienced team of system architects and developers.
+Check out the [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md) for instructions on how to suggest changes, report issues, and submit pull requests.
 
 ---
 
-### ❓ Can I contribute?
+## ❓ Are there any requirements before contributing?
 
-Absolutely! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved.  
-You can start by joining discussions or opening a pull request.
-
----
-
-### ❓ Is this open source?
-
-Yes, fully open-source under the MIT License.  
-You’re free to use, modify, and build upon it.
+Yes. You must:
+- Follow the commit message strategy defined in `COMMIT_STRATEGY.md`
+- Respect the branching and PR rules
+- Adhere to the code of conduct
 
 ---
 
-### ❓ Where can I get updates?
+## ❓ What if I find a bug?
 
-- Website: [hexafn.com](https://hexafn.com)
-- GitHub: [github.com/hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)
-- Sponsors page: See [GitHub Sponsors](https://github.com/sponsors/husamettinarabaci)
+Open an issue using the [Bug Report Template](https://github.com/hexaFn/hexaFn/issues/new?template=bug-report.md) and provide as much detail as possible.
 
 ---
+
+## ❓ What should I do if I have a feature idea?
+
+Use the [Feature Request Template](https://github.com/hexaFn/hexaFn/issues/new?template=feature-request.md) or start a discussion to propose your idea.
+
+---
+
+## ❓ How is this project licensed?
+
+hexaFn is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+## ❓ Who maintains this project?
+
+The project is maintained by the community, led by @amca (Hüsamettin Arabacı). Maintainers and contributors are listed in the GitHub repository.
+
+---
+
+## ❓ How can I get help?
+
+You can:
+- Open a GitHub Discussion
+- File an issue using the Support template
+- Refer to the `SUPPORT.md` and `CONTACT.md` files
+
+---
+
+Still have questions? Create a new discussion or join the community — we're happy to help!

@@ -19,12 +19,14 @@ jobs:
             feat
             fix
             chore
-            docs
             refactor
-            perf
             test
+            docs
             ci
+            perf
             build
+            release
+            hotfix
             style
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

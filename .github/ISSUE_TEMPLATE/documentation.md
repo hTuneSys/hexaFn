@@ -3,7 +3,7 @@ name: "📝 Documentation Issue"
 about: Report an issue or suggest an improvement for the documentation
 title: "[docs]: Clarify CONTRIBUTING.md section"
 labels: type:doc
-
+assignees: husamettinarabaci
 ---
 
 ### 📄 What part of the documentation is unclear or incorrect?

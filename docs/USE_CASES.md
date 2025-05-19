@@ -3,83 +3,76 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# hexaFn – Use Cases
+# USE_CASES.md
 
-hexaFn is a programmable event-function engine that combines KV storage, pub-sub messaging, and dynamic function execution. Below are common scenarios where hexaFn can be applied.
-
----
-
-## 🔁 1. Realtime Event Pipelines
-
-Use hexaFn to receive, filter, transform, and dispatch realtime data from one system to another.
-
-**Example:**
-- Feed: IoT sensor stream
-- Filter: only temperature > 50°C
-- Format: JSON compact
-- Function: trigger cooling system
-- Forward: notify via webhook
+This document outlines the main use cases that the hexaFn project is designed to solve, along with example scenarios and benefits for developers and users.
 
 ---
 
-## 🤖 2. AI Function Composition
+## 🎯 Primary Purpose
 
-Create modular function pipelines for AI workflows using HexaRun.
-
-**Example:**
-- Feed: user prompt input
-- Filter: check for empty input
-- Format: convert to structured prompt
-- Function: run text generation
-- Feedback: log latency + token usage
+hexaFn aims to be a modular, testable, and open-source functional utility toolkit that improves code reliability, clarity, and expressiveness in Rust projects.
 
 ---
 
-## 🧩 3. Plugin Execution for Apps
+## 🧰 Use Case 1: Functional Helpers
 
-Power plugin systems for your own SaaS or CLI tool using hexaFn’s event-driven runtime.
+### Problem:
+Rust lacks built-in higher-order utility functions that are ergonomic.
 
-**Example:**
-- Feed: command event from user
-- Format: standardize plugin payload
-- Function: execute plugin logic (WASM or native)
-- Forward: return output to UI
+### Solution:
+hexaFn provides reusable functional patterns (e.g., `pipe`, `compose`, `tap`, `curry`) that help with chaining and composing functions without complex boilerplate.
 
 ---
 
-## 📦 4. Serverless Queue Workers
+## ⚙️ Use Case 2: Clean Pipelines for Data Transformation
 
-Build reliable event workers without maintaining infrastructure.
+### Problem:
+Data transformation pipelines become verbose or hard to debug.
 
-**Example:**
-- Feed: new user registration
-- Function: assign default resources
-- Forward: send welcome email
-- Feedback: log completion + error
+### Solution:
+hexaFn enables declarative data manipulation using readable pipeline-style syntax, reducing nesting and cognitive load.
 
 ---
 
-## 📡 5. Integration with External APIs
+## 🧪 Use Case 3: Safer Expression Handling
 
-Connect and transform data between external services through modular triggers.
+### Problem:
+Chaining operations with side-effects or unwraps can introduce runtime errors.
 
-**Example:**
-- Feed: webhook from Stripe
-- Filter: only invoice paid
-- Function: update billing record
-- Forward: sync with accounting platform
+### Solution:
+The library wraps side-effects and provides safer alternatives to map/and_then chains using controlled context-aware execution utilities.
 
 ---
 
-## 🌐 6. Multi-Stage Data Processing
+## 🔄 Use Case 4: Testable and Predictable Function Chains
 
-Chain multiple processing stages using declarative lifecycle logic.
+### Problem:
+Inconsistent or untestable chains of closures across codebases.
 
-**Example:**
-- Stage 1: ingest CSV → validate → convert to JSON
-- Stage 2: enrich with 3rd-party API
-- Stage 3: store in KV → notify admin
+### Solution:
+With structured chaining, currying, and composability, test coverage becomes easier and logic becomes clearer.
 
 ---
 
-These use cases demonstrate the flexibility of hexaFn to serve as the control plane for modern, event-centric architectures.
+## 🧩 Use Case 5: Compose-like Behavior in Microservices
+
+### Problem:
+Repeated logic across microservice layers without reuse.
+
+### Solution:
+hexaFn enables logic reuse by composing independent, pure functions that can be injected or reused across service layers.
+
+---
+
+## 👤 Use Case 6: Empowering Beginners in Functional Rust
+
+### Problem:
+New developers struggle with Rust’s functional programming style.
+
+### Solution:
+By introducing intuitive utilities and documentation, hexaFn helps onboard contributors and learners with clean patterns and understandable utilities.
+
+---
+
+These use cases represent practical examples of how hexaFn enhances productivity and reliability in modern Rust applications.

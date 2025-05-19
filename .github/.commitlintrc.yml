@@ -8,4 +8,4 @@ rules:
   type-enum:
     - 2
     - always
-    - [feat, fix, chore, refactor, docs, test, ci, build, perf, style]
+    - [feat, fix, chore, refactor, test, docs, ci, perf, build, release, hotfix, style]

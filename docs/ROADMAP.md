@@ -3,58 +3,68 @@ SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
 SPDX-License-Identifier: MIT
 -->
 
-# hexaFn Roadmap
+# ROADMAP.md
 
-This roadmap outlines the planned phases for building hexaFn — a programmable event-function engine with KV, pub-sub, and dynamic execution modules.
-
----
-
-## ✅ v0.1 – Core MVP (Foundations)
-🔹 Status: In Progress  
-🔹 Planned Modules:
-- HexaStore (in-memory key-value store)
-- HexaRun (basic WASM-based function runner)
-- CLI prototype (manual function execution)
-- Initial docs + branding + CI/CD
+This document outlines the future development goals and timeline for the hexaFn project. The roadmap is divided into phases and milestones with estimated priorities.
 
 ---
 
-## 🔄 v0.2 – Reactive Engine (Events)
-🔹 Status: Planned  
-🔹 Additions:
-- HexaTrigger (event binding)
-- Basic lifecycle routing: Feed → Filter → Function
-- Event simulation CLI
-- Minimal web API layer
-- First external trigger support (manual webhook)
+## 🧱 Phase 1: Foundation (✔ Completed)
+
+- ✅ Repository initialized
+- ✅ Documentation framework created
+- ✅ Branch, commit, and PR strategies defined
+- ✅ CI/CD and commitlint pipelines activated
 
 ---
 
-## 🚀 v0.3 – Streaming & Pub/Sub
-🔹 Status: Planned  
-🔹 Additions:
-- HexaCast (Pub/Sub engine)
-- Topic system with fanout
-- Retain/replay support
-- CLI commands for publish/subscribe
+## 📚 Phase 2: Documentation & Planning (In Progress)
+
+- [x] Finalize contribution guides and code of conduct
+- [x] Create labeling and milestone policies
+- [x] Draft project board and roadmap
+- [ ] Complete use case documentation
+- [ ] Summarize system overview and architecture
 
 ---
 
-## 🧠 v0.4 – Feedback & Observability
-🔹 Status: Planned  
-🔹 Additions:
-- HexaWatch (feedback/metrics loop)
-- Logging, tracing, internal metrics
-- Event visualization CLI/web demo
-- First production-ready integration
+## 💻 Phase 3: Development Bootstrapping
+
+- [ ] Setup development environment with scripts
+- [ ] Add configuration and CLI support
+- [ ] Design and implement modular structure
+- [ ] Add unit and integration test scaffolds
 
 ---
 
-## 🎯 v1.0 – Full Lifecycle Stable Release
-🔹 Status: Pending  
-🔹 All 6 modules production-ready:
-  - HexaStore, HexaRun, HexaCast, HexaTrigger, HexaWatch, HexaBridge
-- Declarative pipelines (YAML)
-- Plugin system (modular runtime)
-- Developer SDKs
-- Documentation site launch
+## 🚀 Phase 4: Alpha Version Release
+
+- [ ] Implement initial features from use cases
+- [ ] Release v0.1.0 as a working prototype
+- [ ] Internal test feedback loop
+- [ ] Prepare first developer onboarding docs
+
+---
+
+## 📦 Phase 5: Stable v1.0 Launch
+
+- [ ] Finalize all features in spec
+- [ ] Full test coverage and documentation
+- [ ] CI/CD optimized and verified
+- [ ] Release v1.0.0
+- [ ] Publish release notes and changelogs
+
+---
+
+## 🌐 Phase 6: Growth & Community
+
+- [ ] Launch public website and documentation hub
+- [ ] Open Discussions and Community board
+- [ ] Add support for plugins/modules
+- [ ] Evaluate sponsorship and support models
+
+---
+
+For live updates, check the GitHub Projects and Milestones:
+➡️ https://github.com/hexaFn/hexaFn/projects  
+➡️ https://github.com/hexaFn/hexaFn/milestones
