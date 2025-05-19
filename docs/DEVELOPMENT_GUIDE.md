@@ -116,7 +116,7 @@ Create a feature branch:
 git checkout -b feat/new-module
 ```
 
-Open a PR with a valid title and follow checklist from [`PULL_REQUEST_TEMPLATE.md`](PULL_REQUEST_TEMPLATE.md).
+Open a PR with a valid title and follow checklist from [`PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md).
 
 ---
 

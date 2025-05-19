@@ -57,4 +57,4 @@ GitHub Actions and project workflows automate the board:
 ## 🔗 Access the Board
 
 Visit the live project board here:  
-➡️ https://github.com/orgs/hexaFn/projects/1
+➡️ [`BOARD`](https://github.com/orgs/hTuneSys/projects/15/views/1)

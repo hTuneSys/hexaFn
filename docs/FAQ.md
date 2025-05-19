@@ -56,13 +56,13 @@ Use the [Feature Request Template](https://github.com/hTuneSys/hexaFn/issues/new
 
 ## ❓ How is this project licensed?
 
-hexaFn is licensed under the MIT License. See the `LICENSE` file for more details.
+hexaFn is licensed under the MIT License. See the [`LICENSE`](https://github.com/hTuneSys/hexaFn/blob/develop/LICENSE) file for more details.
 
 ---
 
 ## ❓ Who maintains this project?
 
-The project is maintained by the community, led by @amca (Hüsamettin Arabacı). Maintainers and contributors are listed in the GitHub repository.
+The project is maintained by the community, led by (Hüsamettin Arabacı). Maintainers and contributors are listed in the GitHub repository.
 
 ---
 

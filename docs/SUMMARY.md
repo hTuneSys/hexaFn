@@ -58,7 +58,7 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 
 - [`BRANDING.md`](BRANDING.md) – Visual identity and logo usage
 - [`CNAME`](CNAME) – Custom domain for GitHub Pages
-- [`index.html`](index.html) – Landing page of documentation site
+- [`Web Site`](https://hexafn.com) – Landing page of documentation site
 
 ---
 
