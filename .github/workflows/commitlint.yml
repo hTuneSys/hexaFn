@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Lint commits
-        uses: wagoid/commitlint-github-action@v5
+        uses: wagoid/commitlint-github-action@v6
         with:
           configFile: .commitlintrc.yml
           failOnWarnings: true
