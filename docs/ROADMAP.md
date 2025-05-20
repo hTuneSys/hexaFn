@@ -5,68 +5,78 @@ SPDX-License-Identifier: MIT
 
 # ROADMAP.md
 
-This document outlines the future development goals and timeline for the hexaFn project. The roadmap is divided into phases and milestones with estimated priorities.
+This document outlines the development trajectory for the hexaFn project. It follows a sprint-based milestone structure, each milestone comprising 3 sprints (6 weeks), and addresses focused thematic goals. Progress is tracked across six major phases.
 
 ---
 
-## 🧱 Phase 1: Foundation (✔ Completed)
+## 🚧 M1: Foundation
 
-- ✅ Repository initialized
-- ✅ Documentation framework created
-- ✅ Branch, commit, and PR strategies defined
-- ✅ CI/CD and commitlint pipelines activated
+> Status: ✅ Completed
 
----
-
-## 📚 Phase 2: Documentation & Planning (In Progress)
-
-- [x] Finalize contribution guides and code of conduct
-- [x] Create labeling and milestone policies
-- [x] Draft project board and roadmap
-- [ ] Complete use case documentation
-- [ ] Summarize system overview and architecture
+- Project repository initialized
+- README structure, logo, and badges added
+- Quick Start and core documentation established
+- CI baseline and essential GitHub Actions configured
 
 ---
 
-## 💻 Phase 3: Development Bootstrapping
+## 🚧 M2: Developer Experience
 
-- [ ] Setup development environment with scripts
-- [ ] Add configuration and CLI support
-- [ ] Design and implement modular structure
-- [ ] Add unit and integration test scaffolds
+> Status: 🟡 In Progress
 
----
-
-## 🚀 Phase 4: Alpha Version Release
-
-- [ ] Implement initial features from use cases
-- [ ] Release v0.1.0 as a working prototype
-- [ ] Internal test feedback loop
-- [ ] Prepare first developer onboarding docs
+- CONTRIBUTING.md and development guide created
+- Example-based usage instructions added
+- FAQ and SUPPORT pages drafted
+- Project structure reviewed for modular clarity
 
 ---
 
-## 📦 Phase 5: Stable v1.0 Launch
+## 🛠️ M3: CI/CD & Testing
 
-- [ ] Finalize all features in spec
-- [ ] Full test coverage and documentation
-- [ ] CI/CD optimized and verified
-- [ ] Release v1.0.0
-- [ ] Publish release notes and changelogs
+> Status: 🔜 Planned
 
----
-
-## 🌐 Phase 6: Growth & Community
-
-- [ ] Launch public website and documentation hub
-- [ ] Open Discussions and Community board
-- [ ] Add support for plugins/modules
-- [ ] Evaluate sponsorship and support models
+- Label automation and issue triage workflows enabled
+- Semantic-release setup for automated versioning
+- Coverage metrics integrated into pipelines
+- Test scaffolds and lint validation finalized
 
 ---
 
-For live updates, check the GitHub Projects and Milestones:
+## 🌍 M4: Community Building
 
-➡️ [`BOARD`](https://github.com/orgs/hTuneSys/projects/15/views/1)
+> Status: 🔜 Planned
 
-➡️ [`MILESTONES`](https://github.com/hTuneSys/hexaFn/milestones)
+- Discussions and Community board activated
+- Discord server and real-time help channels configured
+- All-contributors setup and badge integration
+- SEO metadata and sharing enhancements applied
+
+---
+
+## 📜 M5: Legal & Standards
+
+> Status: 🔜 Planned
+
+- CODEOWNERS and maintainers defined
+- REUSE, SPDX licensing headers applied
+- CLA/DCO flow and security policy published
+- OpenSSF checklist reviewed and annotated
+
+---
+
+## 🚀 M6: Final Touches
+
+> Status: 🔜 Final Phase
+
+- Blog launch, visual branding, and sponsor pitch created
+- Public roadmap and vision documentation published
+- Landing page with full feature showcase prepared
+- Release readiness and marketing checklist completed
+
+---
+
+## 📊 Live Project Tracking
+
+- GitHub Project Board: [BOARD](https://github.com/orgs/hTuneSys/projects/15/views/1)
+- Milestone Progress: [MILESTONES](https://github.com/hTuneSys/hexaFn/milestones)
+- GitHub Issues: [ISSUES](https://github.com/hTuneSys/hexaFn/issues)

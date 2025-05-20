@@ -5,58 +5,47 @@ SPDX-License-Identifier: MIT
 
 # MILESTONES.md
 
-This document tracks the key milestones and phases of the hexaFn project. Each milestone represents a deliverable or a major progress marker across the development lifecycle.
+This document defines the structured milestone plan for the hexaFn project. Each milestone spans three development sprints, focusing on a specific theme or functional domain. The plan aims to support clarity, maintainability, and sustainable progress over time.
 
 ---
 
-## ✅ Phase 1: Repository & Documentation Setup
+## 🚀 M1: Foundation
 
-- [x] Initialize GitHub repository
-- [x] Set up branch protection rules
-- [x] Add commitlint, labeler, and CI workflows
-- [x] Create `docs/` structure and core strategy files
-- [x] Configure GitHub project board and issue templates
+Establish the project's core structure and visual identity. This includes initializing the README, adding essential badges, creating a Quick Start section, and introducing a recognizable project logo and structure.
 
 ---
 
-## 🚧 Phase 2: Project Specification & Planning
+## 🛠️ M2: Developer Experience
 
-- [x] Define CONTRIBUTING, SECURITY, CODE_OF_CONDUCT
-- [x] Document PR strategy and commit types
-- [x] Establish roadmap and milestones
-- [ ] Finalize use case scenarios
-- [ ] Define system architecture
+Enhance onboarding and contribution workflows. Focus areas include refining the CONTRIBUTING guide, adding usage examples, clarifying setup instructions, and providing answers to frequently asked questions.
 
 ---
 
-## 🔨 Phase 3: Developer Experience
+## 🔁 M3: CI/CD & Testing
 
-- [ ] Write [`GETTING_STARTED.md`](GETTING_STARTED.md) and [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md)
-- [ ] Add FAQ and SUPPORT guidance
-- [ ] Finalize environment config structure
-- [ ] Set up code formatting and lint enforcement docs
+Implement continuous integration pipelines and automated testing. Key tasks involve setting up CI workflows, test coverage reporting, semantic versioning, and label automation.
 
 ---
 
-## 🚀 Phase 4: Implementation & Alpha Launch
+## 🌐 M4: Community Building
 
-- [ ] Begin core feature development (post-docs freeze)
-- [ ] Complete test coverage and CI validations
-- [ ] Tag first pre-release version
-- [ ] Collect alpha user feedback
+Foster engagement and visibility through open collaboration. Activate GitHub Discussions, set up real-time communication channels, implement all-contributors integration, and improve SEO and community presence.
 
 ---
 
-## 📦 Phase 5: Release & Maintenance
+## 📜 M5: Legal & Standards
 
-- [ ] Release v1.0.0
-- [ ] Publish changelogs and upgrade instructions
-- [ ] Maintain stable and release branches
-- [ ] Evaluate sponsorship and long-term roadmap
+Lay down the legal and structural foundations for a healthy open source project. Define licensing strategy, introduce CODEOWNERS and REUSE compliance, and implement CLA or DCO agreements.
 
 ---
 
-## 📊 Monitoring Progres
-s
+## 🧩 M6: Final Touches
+
+Polish the project for public launch. Finalize the public-facing roadmap, write technical blog content, prepare for sponsorship, and ensure all documentation and visual elements are production-ready.
+
+---
+
+## 📊 Monitoring Progress
+
 Use GitHub Milestones tab to monitor live progress:
 ➡️ https://github.com/hTuneSys/hexaFn/milestones
