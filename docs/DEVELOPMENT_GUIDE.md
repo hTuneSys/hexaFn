@@ -170,6 +170,9 @@ All contributors must follow the documentation style and structure:
 - [`USE_CASES.md`](USE_CASES.md) – Functional capabilities
 - [`CONTACT.md`](CONTACT.md), [`SUPPORT.md`](SUPPORT.md) – Communication channels
 - [`LABELLING_STRATEGY.md`](LABELLING_STRATEGY.md) – Tag issues/PRs correctly
+- [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) – Directory structure
+- [`BRANCH_STRATEGY.md`](BRANCH_STRATEGY.md) – Branch naming conventions
+- [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md) – Commit message conventions
 
 ---
 

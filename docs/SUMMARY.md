@@ -25,6 +25,7 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 - [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md) – Commit message types and best practices
 - [`BRANCH_STRATEGY.md`](BRANCH_STRATEGY.md) – Naming and usage rules for git branches
 - [`LABELLING_STRATEGY.md`](LABELLING_STRATEGY.md) – System of issue/PR labels and their purpose
+- [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) – Directory structure and module breakdown
 
 ---
 
