@@ -149,6 +149,7 @@ CI pipelines validate formatting, commit types, and workflow rules.
 
 We welcome contributors! Please read:
 
+- [`SUMMARY.md`](docs/SUMMARY.md)
 - [`CONTRIBUTING.md`](docs/CONTRIBUTING.md)
 - [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md)
 

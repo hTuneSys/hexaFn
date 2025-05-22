@@ -1,137 +1,196 @@
-<!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
-SPDX-License-Identifier: MIT
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="hexaFn - Functional Utilities for Modern Rust Projects" />
-  <title>hexaFn Docs</title>
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <title>hexaFn Documentation</title>
+  <link rel="icon" href="assets/favicon.ico" />
   <style>
+    /* CSS Variables for light theme */
     :root {
-      --main-bg: #ffffff;
-      --main-text: #1e1e1e;
-      --primary: #2d2e83;
-      --secondary: #f1f1f1;
+      --bg-color: #ffffff;
+      --text-color: #222222;
+      --primary-color: #2d2e83;
+      --secondary-color: #f5f5f5;
+      --accent-color: #ff7f50;
       --link-color: #2d2e83;
     }
-    * { box-sizing: border-box; }
+    /* Dark theme overrides */
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --primary-color: #9c27b0;
+      --secondary-color: #1e1e1e;
+      --accent-color: #ff5722;
+      --link-color: #90caf9;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
     body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: var(--main-bg);
-      color: var(--main-text);
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
     header {
-      background: var(--primary);
+      background: var(--primary-color);
       color: white;
       padding: 1rem;
-      text-align: center;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: auto;
     }
     header img {
-      max-height: 60px;
-      margin-bottom: 0.5rem;
+      height: 50px;
+    }
+    .logo-text {
+      margin-left: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 0.75rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    #theme-toggle {
+      background: var(--accent-color);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    #theme-toggle:hover {
+      background: var(--link-color);
     }
     main {
-      padding: 1rem 1.5rem;
+      padding: 1rem;
       max-width: 960px;
       margin: auto;
     }
     section {
-      margin-bottom: 2.5rem;
+      margin: 2rem 0;
     }
-    h1, h2 {
-      color: var(--primary);
+    section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
     }
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .card-grid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 1rem;
-      background: var(--secondary);
+    section p {
+      margin-bottom: 1rem;
     }
     .images {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     .images img {
-      max-width: 300px;
-      border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--secondary-color);
+      border-radius: 4px;
+      background: var(--secondary-color);
     }
     footer {
       text-align: center;
-      font-size: 0.875rem;
-      color: #777;
-      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      padding: 1rem;
+      color: var(--text-color);
+    }
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        margin: 1rem 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/hexaFn-logo.png" alt="hexaFn Logo" />
-    <h1>hexaFn Project Documentation</h1>
-    <p>Modular. Functional. Documented.</p>
+    <div class="header-inner">
+      <div style="display: flex; align-items: center;">
+        <img src="assets/hexaFn-logo.png" alt="hexaFn Logo">
+        <span class="logo-text">hexaFn Documentation</span>
+      </div>
+      <button id="theme-toggle">Toggle Theme</button>
+      <nav>
+        <a href="ARCHITECTURE.md">Architecture</a>
+        <a href="USE_CASES.md">Use Cases</a>
+        <a href="ROADMAP.md">Roadmap</a>
+        <a href="CONTRIBUTING.md">Contributing</a>
+      </nav>
+    </div>
   </header>
   <main>
-    <section>
-      <h2>🔍 What is hexaFn?</h2>
-      <p><strong>hexaFn</strong> is an open-source utility system focused on functional programming patterns in Rust. Built with modularity, composability, and developer happiness in mind, it offers reliable primitives like <code>pipe</code>, <code>compose</code>, and structured event-driven architecture tools.</p>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p><strong>hexaFn</strong> is an open-source functional pipeline framework for Rust, built around the <em>6F Lifecycle Flow</em> (Feed → Filter → Format → Function → Forward → Feedback). It enables developers to create reactive data pipelines that ingest, transform, and route events in real time:contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}. <strong>hexaFn</strong> emphasizes modularity, composability, and observability.</p>
     </section>
-
-    <section>
-      <h2>📂 Documentation</h2>
-      <div class="card-grid">
-        <div class="card"><a href="GETTING_STARTED.md">Getting Started</a></div>
-        <div class="card"><a href="DEVELOPMENT_GUIDE.md">Development Guide</a></div>
-        <div class="card"><a href="ARCHITECTURE.md">Architecture</a></div>
-        <div class="card"><a href="USE_CASES.md">Use Cases</a></div>
-        <div class="card"><a href="COMMIT_STRATEGY.md">Commit Strategy</a></div>
-        <div class="card"><a href="PR_STRATEGY.md">PR Strategy</a></div>
-        <div class="card"><a href="BRANCH_STRATEGY.md">Branch Strategy</a></div>
-        <div class="card"><a href="LABELLING_STRATEGY.md">Labelling Strategy</a></div>
-        <div class="card"><a href="ROADMAP.md">Roadmap</a></div>
-        <div class="card"><a href="MILESTONES.md">Milestones</a></div>
-        <div class="card"><a href="STYLE_GUIDE.md">Style Guide</a></div>
-        <div class="card"><a href="FAQ.md">FAQ</a></div>
-        <div class="card"><a href="CONTACT.md">Contact</a></div>
-        <div class="card"><a href="COMMUNITY.md">Community</a></div>
-        <div class="card"><a href="SUPPORT.md">Support</a></div>
-        <div class="card"><a href="CONTRIBUTING.md">Contributing</a></div>
-        <div class="card"><a href="CODE_OF_CONDUCT.md">Code of Conduct</a></div>
-        <div class="card"><a href="SECURITY.md">Security</a></div>
-        <div class="card"><a href="PROJECT_STRUCTURE.md">Project Structure</a></div>
-        <div class="card"><a href="LICENSE.md">License</a></div>
-        <div class="card"><a href="SUMMARY.md">Summary</a></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>🧠 Visual Overview</h2>
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <p>The core principle of <strong>hexaFn</strong> is the 6F functional flow, where each stage is independently programmable:contentReference[oaicite:11]{index=11}. The architecture includes modules like <code>HexaStore</code> (typed KV store), <code>HexaCast</code> (pub/sub engine), <code>HexaRun</code> (function runtime), <code>HexaTrigger</code> (rule engine), and more:contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}. Below is a simplified data flow diagram:</p>
       <div class="images">
-        <img src="assets/diagram.png" alt="System Diagram" />
-        <img src="assets/data-flow.png" alt="Data Flow" />
+        <img src="assets/data-flow.png" alt="6F Data Flow Diagram">
+        <img src="assets/diagram.png" alt="System Diagram">
       </div>
+    </section>
+    <section id="usecases">
+      <h2>Use Cases</h2>
+      <p><strong>hexaFn</strong> is ideal for building event-driven pipelines. Example scenarios include:</p>
+      <ul>
+        <li>Real-time chat moderation – filter and analyze messages, then forward alerts:contentReference[oaicite:14]{index=14}</li>
+        <li>IoT sensor data processing – ingest readings, filter anomalies, compute trends:contentReference[oaicite:15]{index=15}</li>
+        <li>Custom workflows, automation, and reactive serverless functions</li>
+      </ul>
+    </section>
+    <section id="roadmap">
+      <h2>Project Roadmap</h2>
+      <p>The hexaFn project follows a structured roadmap and milestones for features, documentation, and releases. Key plans include multi-language function support, advanced triggering, and ecosystem integrations. See the <a href="ROADMAP.md">detailed roadmap</a> for milestones and future plans.</p>
+    </section>
+    <section id="contributing">
+      <h2>Contribution Guidelines</h2>
+      <p>We welcome contributions from the community! Please read our <a href="CONTRIBUTING.md">contributing guide</a> and <a href="CODE_OF_CONDUCT.md">code of conduct</a>. Contributions should follow the project’s commit, PR, and branching strategies. All code is MIT-licensed:contentReference[oaicite:16]{index=16} and must include tests and documentation.</p>
     </section>
   </main>
   <footer>
-    &copy; 2025 Hüsamettin Arabacı – MIT Licensed · Built with ❤️ by the community
+    <p>&copy; 2025 Hüsamettin Arabacı – MIT Licensed</p>
   </footer>
+  <script>
+    // Dark/Light theme toggle
+    const btn = document.getElementById('theme-toggle');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+    // Preserve theme on reload
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+  </script>
 </body>
 </html>
