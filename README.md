@@ -8,7 +8,7 @@ SPDX-License-Identifier: MIT
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 <p align="center">
-  <img src="docs/assets/hexaFn-logo.png" alt="hexaFn Logo"/>
+  <img src="docs/assets/hexaFn-banner.png" alt="hexaFn Logo"/>
 </p>
 
 **From Feed to Feedback, fully programmable.**  

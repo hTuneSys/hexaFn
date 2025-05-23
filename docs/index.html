@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hexaFn</title>
+  <title>hexaFn – Modular Event-Driven Pipelines</title>
   <link rel="icon" href="assets/favicon.ico" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -13,84 +12,173 @@
       background: #f7f8fa;
       color: #23272f;
     }
-    #readme-md {
-      background: #fff;
-      color: #23272f;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      padding: 2.5rem 2rem 2rem 2rem;
-      margin: 2.5rem auto 1.5rem auto;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      max-width: 900px;
+    .banner {
+      width: 100%;
+      max-height: 340px;
+      min-height: 180px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      background: #23272f;
     }
-    #readme-md h1, #readme-md h2, #readme-md h3 {
+    .container {
+      max-width: 900px;
+      margin: -60px auto 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+      padding: 2.5rem 2rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
       color: #2d2e83;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .desc {
+      font-size: 1.2rem;
+      color: #444;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .features, .modules, .lifecycle, .docs, .quickstart {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      color: #2d2e83;
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
       font-weight: 700;
     }
-    #readme-md pre, #readme-md code {
+    ul {
+      margin-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .img-center {
+      display: block;
+      margin: 2rem auto 2rem auto;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .lifecycle-table, .modules-table, .not-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 1.05rem;
+    }
+    .lifecycle-table th, .lifecycle-table td, .modules-table th, .modules-table td, .not-table th, .not-table td {
+      border: 1px solid #e1e4e8;
+      padding: 0.5em 1em;
+      text-align: left;
+    }
+    .lifecycle-table th, .modules-table th, .not-table th {
+      background: #f6f8fa;
+      font-weight: 700;
+    }
+    .docs-list {
+      margin-bottom: 1.5rem;
+    }
+    .quickstart pre {
       background: #f6f8fa;
       color: #24292e;
       border-radius: 6px;
       font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-      font-size: 0.98em;
-    }
-    #readme-md pre {
+      font-size: 1em;
       padding: 1em;
       overflow-x: auto;
     }
-    #readme-md code {
-      padding: 0.2em 0.4em;
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.95rem;
+      margin: 2.5rem 0 1rem 0;
     }
-    #readme-md ul, #readme-md ol {
-      margin-left: 2em;
-      margin-bottom: 1em;
-    }
-    #readme-md blockquote {
-      border-left: 4px solid #2d2e83;
-      background: #f7f8fa;
-      color: #555;
-      padding: 0.7em 1em;
-      margin: 1.2em 0;
-      border-radius: 6px;
-    }
-    #readme-md table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 1.5em 0;
-    }
-    #readme-md th, #readme-md td {
-      border: 1px solid #e1e4e8;
-      padding: 0.5em 1em;
-    }
-    #readme-md th {
-      background: #f6f8fa;
-      font-weight: 700;
-    }
-    #readme-md a {
-      color: #2d2e83;
-      text-decoration: underline;
-    }
-    #readme-md img {
-      max-width: 100%;
-      border-radius: 6px;
-      margin: 1em 0;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    @media (max-width: 800px) {
+      .container {
+        margin: -40px 1rem 0 1rem;
+        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+      }
+      .banner {
+        max-height: 120px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="readme-md"></div>
-  <script>
-    fetch('../README.md')
-      .then(res => res.text())
-      .then(md => {
-        document.getElementById('readme-md').innerHTML = marked.parse(md);
-      });
-  </script>
+  <img src="assets/hexaFn-banner.png" alt="hexaFn Banner" class="banner" />
+  <div class="container">
+    <h1>hexaFn</h1>
+    <div class="desc">
+      From Feed to Feedback, fully programmable.<br>
+      Modular, event-driven pipelines powered by the 6F Lifecycle Flow.<br>
+      Built for developer joy, composability, and documentation-first engineering.
+    </div>
+    <section class="features">
+      <h2>Why hexaFn?</h2>
+      <ul>
+        <li>Modular, composable, and testable</li>
+        <li>Documentation-first approach</li>
+        <li>GitHub-native structure: templates, workflows, linting</li>
+        <li>MIT Licensed, SPDX-Compliant, REUSE-Spec Ready</li>
+        <li>Created for plugin creators, pipeline architects, and system hackers</li>
+      </ul>
+    </section>
+    <section class="lifecycle">
+      <h2>6F Lifecycle Flow</h2>
+      <img src="assets/data-flow.png" alt="6F Data Flow Diagram" class="img-center" style="max-width:600px;" />
+      <table class="lifecycle-table">
+        <tr><th>Step</th><th>Purpose</th></tr>
+        <tr><td><b>Feed</b></td><td>Ingest from external sources (events, APIs, queues)</td></tr>
+        <tr><td><b>Filter</b></td><td>Pre-condition checks and gating</td></tr>
+        <tr><td><b>Format</b></td><td>Normalize, transform, validate</td></tr>
+        <tr><td><b>Function</b></td><td>Execute logic with user-defined behavior</td></tr>
+        <tr><td><b>Forward</b></td><td>Route results to KV stores, topics, services</td></tr>
+        <tr><td><b>Feedback</b></td><td>Log, trace, trigger, or audit</td></tr>
+      </table>
+      <img src="assets/diagram.png" alt="System Diagram" class="img-center" style="max-width:600px;" />
+    </section>
+    <section class="modules">
+      <h2>Core Modules</h2>
+      <table class="modules-table">
+        <tr><th>Module</th><th>Role</th></tr>
+        <tr><td>HexaStore</td><td>Event-driven KV storage</td></tr>
+        <tr><td>HexaCast</td><td>Pub-sub messaging engine</td></tr>
+        <tr><td>HexaRun</td><td>Function runtime (WASM, JS, DSL)</td></tr>
+        <tr><td>HexaTrigger</td><td>Trigger orchestration engine</td></tr>
+        <tr><td>HexaWatch</td><td>Observability & audit tracing</td></tr>
+        <tr><td>HexaBridge</td><td>Webhooks, SDK, external integration</td></tr>
+      </table>
+    </section>
+    <section class="docs">
+      <h2>Documentation</h2>
+      <ul class="docs-list">
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/GETTING_STARTED.md" target="_blank">Getting Started</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/DEVELOPMENT_GUIDE.md" target="_blank">Development Guide</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/USE_CASES.md" target="_blank">Use Cases</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/COMMIT_STRATEGY.md" target="_blank">Commit Strategy</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/PR_STRATEGY.md" target="_blank">PR Strategy</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/LABELLING_STRATEGY.md" target="_blank">Labelling Strategy</a></li>
+        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/ROADMAP.md" target="_blank">Roadmap</a></li>
+      </ul>
+      <p>Full documentation is available in the <code>/docs/</code> folder on <a href="https://github.com/hTuneSys/hexaFn" target="_blank">GitHub</a>.</p>
+    </section>
+    <section class="quickstart">
+      <h2>Dev Quickstart</h2>
+      <pre><code>git clone https://github.com/hTuneSys/hexaFn.git
+cd hexaFn
+cargo build
+cargo run
+</code></pre>
+      <p>Use <code>.env</code> or CLI args for environment config. See <a href="CONFIGURATION.md">CONFIGURATION.md</a>.</p>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Hüsamettin Arabacı – MIT Licensed
+  </footer>
 </body>
 </html>
