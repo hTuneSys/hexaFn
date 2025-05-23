@@ -109,6 +109,74 @@
       border-radius: 4px;
       background: var(--secondary-color);
     }
+    /* Hero section styles */
+    .hero {
+      background: linear-gradient(120deg, var(--primary-color) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 3rem 1rem 2.5rem 1rem;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 700px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .hero-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .hero-desc {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #f5f5f5;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .hero-btn.primary {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
+    .hero-btn.primary:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+    .hero-btn.secondary {
+      background: transparent;
+      border: 2px solid var(--secondary-color);
+      color: white;
+    }
+    .hero-btn.secondary:hover {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -122,6 +190,16 @@
       }
       nav {
         margin: 1rem 0;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero-inner {
+        gap: 1rem;
+      }
+      .hero-logo {
+        width: 60px;
+        height: 60px;
       }
     }
   </style>
@@ -142,6 +220,19 @@
       </nav>
     </div>
   </header>
+  <!-- Hero Section Start -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="assets/hexaFn-logo.png" alt="hexaFn Logo" class="hero-logo">
+      <h1>hexaFn</h1>
+      <p class="hero-desc">Açık kaynak, fonksiyonel ve modüler veri işleme pipeline framework'ü.<br>6F Lifecycle Flow ile gerçek zamanlı, reaktif uygulamalar geliştirin.</p>
+      <div class="hero-buttons">
+        <a href="GETTING_STARTED.md" class="hero-btn primary">Hemen Başla</a>
+        <a href="https://github.com/arabaci/hexaFn" class="hero-btn secondary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
   <main>
     <section id="intro">
       <h2>Introduction</h2>
