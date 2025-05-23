@@ -3,285 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hexaFn Documentation</title>
+  <title>hexaFn</title>
   <link rel="icon" href="assets/favicon.ico" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    /* CSS Variables for light theme */
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #222222;
-      --primary-color: #2d2e83;
-      --secondary-color: #f5f5f5;
-      --accent-color: #ff7f50;
-      --link-color: #2d2e83;
-    }
-    /* Dark theme overrides */
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #e0e0e0;
-      --primary-color: #9c27b0;
-      --secondary-color: #1e1e1e;
-      --accent-color: #ff5722;
-      --link-color: #90caf9;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-    }
     body {
-      font-family: Arial, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f8fa;
+      color: #23272f;
     }
-    header {
-      background: var(--primary-color);
-      color: white;
-      padding: 1rem;
+    #readme-md {
+      background: #fff;
+      color: #23272f;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 2.5rem 2rem 2rem 2rem;
+      margin: 2.5rem auto 1.5rem auto;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      max-width: 900px;
     }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      max-width: 960px;
-      margin: auto;
+    #readme-md h1, #readme-md h2, #readme-md h3 {
+      color: #2d2e83;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
-    header img {
-      height: 50px;
+    #readme-md pre, #readme-md code {
+      background: #f6f8fa;
+      color: #24292e;
+      border-radius: 6px;
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+      font-size: 0.98em;
     }
-    .logo-text {
-      margin-left: 0.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
+    #readme-md pre {
+      padding: 1em;
+      overflow-x: auto;
     }
-    nav {
-      margin-top: 0.5rem;
+    #readme-md code {
+      padding: 0.2em 0.4em;
     }
-    nav a {
-      color: white;
-      margin: 0 0.75rem;
-      text-decoration: none;
-      font-weight: bold;
+    #readme-md ul, #readme-md ol {
+      margin-left: 2em;
+      margin-bottom: 1em;
     }
-    nav a:hover {
+    #readme-md blockquote {
+      border-left: 4px solid #2d2e83;
+      background: #f7f8fa;
+      color: #555;
+      padding: 0.7em 1em;
+      margin: 1.2em 0;
+      border-radius: 6px;
+    }
+    #readme-md table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5em 0;
+    }
+    #readme-md th, #readme-md td {
+      border: 1px solid #e1e4e8;
+      padding: 0.5em 1em;
+    }
+    #readme-md th {
+      background: #f6f8fa;
+      font-weight: 700;
+    }
+    #readme-md a {
+      color: #2d2e83;
       text-decoration: underline;
     }
-    #theme-toggle {
-      background: var(--accent-color);
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    #theme-toggle:hover {
-      background: var(--link-color);
-    }
-    main {
-      padding: 1rem;
-      max-width: 960px;
-      margin: auto;
-    }
-    section {
-      margin: 2rem 0;
-    }
-    section h2 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
-    section p {
-      margin-bottom: 1rem;
-    }
-    .images {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .images img {
+    #readme-md img {
       max-width: 100%;
-      height: auto;
-      border: 1px solid var(--secondary-color);
-      border-radius: 4px;
-      background: var(--secondary-color);
-    }
-    /* Hero section styles */
-    .hero {
-      background: linear-gradient(120deg, var(--primary-color) 0%, var(--accent-color) 100%);
-      color: white;
-      padding: 3rem 1rem 2.5rem 1rem;
-      text-align: center;
-    }
-    .hero-inner {
-      max-width: 700px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .hero-logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 16px;
-      background: white;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      margin-bottom: 0.5rem;
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-    .hero-desc {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: #f5f5f5;
-      line-height: 1.7;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hero-btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
       border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .hero-btn.primary {
-      background: var(--secondary-color);
-      color: var(--primary-color);
-    }
-    .hero-btn.primary:hover {
-      background: var(--accent-color);
-      color: white;
-    }
-    .hero-btn.secondary {
-      background: transparent;
-      border: 2px solid var(--secondary-color);
-      color: white;
-    }
-    .hero-btn.secondary:hover {
-      background: var(--secondary-color);
-      color: var(--primary-color);
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 1rem;
-      color: var(--text-color);
-    }
-    @media (max-width: 600px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav {
-        margin: 1rem 0;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero-inner {
-        gap: 1rem;
-      }
-      .hero-logo {
-        width: 60px;
-        height: 60px;
-      }
+      margin: 1em 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <div style="display: flex; align-items: center;">
-        <img src="assets/hexaFn-logo.png" alt="hexaFn Logo">
-        <span class="logo-text">hexaFn Documentation</span>
-      </div>
-      <button id="theme-toggle">Toggle Theme</button>
-      <nav>
-        <a href="ARCHITECTURE.md">Architecture</a>
-        <a href="USE_CASES.md">Use Cases</a>
-        <a href="ROADMAP.md">Roadmap</a>
-        <a href="CONTRIBUTING.md">Contributing</a>
-      </nav>
-    </div>
-  </header>
-  <!-- Hero Section Start -->
-  <section class="hero">
-    <div class="hero-inner">
-      <img src="assets/hexaFn-logo.png" alt="hexaFn Logo" class="hero-logo">
-      <h1>hexaFn</h1>
-      <p class="hero-desc">Açık kaynak, fonksiyonel ve modüler veri işleme pipeline framework'ü.<br>6F Lifecycle Flow ile gerçek zamanlı, reaktif uygulamalar geliştirin.</p>
-      <div class="hero-buttons">
-        <a href="GETTING_STARTED.md" class="hero-btn primary">Hemen Başla</a>
-        <a href="https://github.com/arabaci/hexaFn" class="hero-btn secondary" target="_blank">GitHub</a>
-      </div>
-    </div>
-  </section>
-  <!-- Hero Section End -->
-  <main>
-    <section id="intro">
-      <h2>Introduction</h2>
-      <p><strong>hexaFn</strong> is an open-source functional pipeline framework for Rust, built around the <em>6F Lifecycle Flow</em> (Feed → Filter → Format → Function → Forward → Feedback). It enables developers to create reactive data pipelines that ingest, transform, and route events in real time:contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}. <strong>hexaFn</strong> emphasizes modularity, composability, and observability.</p>
-    </section>
-    <section id="architecture">
-      <h2>Architecture</h2>
-      <p>The core principle of <strong>hexaFn</strong> is the 6F functional flow, where each stage is independently programmable:contentReference[oaicite:11]{index=11}. The architecture includes modules like <code>HexaStore</code> (typed KV store), <code>HexaCast</code> (pub/sub engine), <code>HexaRun</code> (function runtime), <code>HexaTrigger</code> (rule engine), and more:contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}. Below is a simplified data flow diagram:</p>
-      <div class="images">
-        <img src="assets/data-flow.png" alt="6F Data Flow Diagram">
-        <img src="assets/diagram.png" alt="System Diagram">
-      </div>
-    </section>
-    <section id="usecases">
-      <h2>Use Cases</h2>
-      <p><strong>hexaFn</strong> is ideal for building event-driven pipelines. Example scenarios include:</p>
-      <ul>
-        <li>Real-time chat moderation – filter and analyze messages, then forward alerts:contentReference[oaicite:14]{index=14}</li>
-        <li>IoT sensor data processing – ingest readings, filter anomalies, compute trends:contentReference[oaicite:15]{index=15}</li>
-        <li>Custom workflows, automation, and reactive serverless functions</li>
-      </ul>
-    </section>
-    <section id="roadmap">
-      <h2>Project Roadmap</h2>
-      <p>The hexaFn project follows a structured roadmap and milestones for features, documentation, and releases. Key plans include multi-language function support, advanced triggering, and ecosystem integrations. See the <a href="ROADMAP.md">detailed roadmap</a> for milestones and future plans.</p>
-    </section>
-    <section id="contributing">
-      <h2>Contribution Guidelines</h2>
-      <p>We welcome contributions from the community! Please read our <a href="CONTRIBUTING.md">contributing guide</a> and <a href="CODE_OF_CONDUCT.md">code of conduct</a>. Contributions should follow the project’s commit, PR, and branching strategies. All code is MIT-licensed:contentReference[oaicite:16]{index=16} and must include tests and documentation.</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Hüsamettin Arabacı – MIT Licensed</p>
-  </footer>
+  <div id="readme-md"></div>
   <script>
-    // Dark/Light theme toggle
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      if (document.body.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-      } else {
-        localStorage.setItem('theme', 'light');
-      }
-    });
-    // Preserve theme on reload
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-    }
+    fetch('../README.md')
+      .then(res => res.text())
+      .then(md => {
+        document.getElementById('readme-md').innerHTML = marked.parse(md);
+      });
   </script>
 </body>
 </html>
