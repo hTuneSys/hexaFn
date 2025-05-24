@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -169,7 +169,7 @@ _(If not yet available, animation will be added soon.)_
 
 ## 👨‍💻 Author & Maintainers
 
-Built and maintained by **Hüsamettin Arabacı** and the [hexaTune](https://github.com/hTuneSys) team.  
+Built and maintained by **Husamettin ARABACI** and the [hexaTune](https://github.com/hTuneSys) team.  
 Project SPDX compliant. Fully REUSE Spec 3.3 compatible.
 
 ---

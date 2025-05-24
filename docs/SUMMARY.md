@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -63,4 +63,4 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 
 ---
 
-This summary will help you navigate the docs efficiently and understand their purpose in the project lifecycle.
+This summary will help you navigate the docs efficiently and understand their purpose in the project lifecycle

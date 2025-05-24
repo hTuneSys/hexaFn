@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -62,7 +62,7 @@ hexaFn is licensed under the MIT License. See the [`LICENSE`](https://github.com
 
 ## ❓ Who maintains this project?
 
-The project is maintained by the community, led by (Hüsamettin Arabacı). Maintainers and contributors are listed in the GitHub repository.
+The project is maintained by the community, led by (Husamettin ARABACI). Maintainers and contributors are listed in the GitHub repository.
 
 ---
 

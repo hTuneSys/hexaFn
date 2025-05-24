@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 

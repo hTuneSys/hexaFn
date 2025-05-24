@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -83,4 +83,4 @@ This style guide ensures consistency across the codebase by outlining formatting
 
 ---
 
-Consistent style improves collaboration and makes onboarding easier. Stick to this guide for clean, professional code.
+Consistent style improves collaboration and makes onboarding easier. Stick to this guide for clean, professional code
