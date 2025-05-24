@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "hexafn-bridge"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Integration domain - handles external system connections and APIs"
+
+[dependencies]
+hexafn-core = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"

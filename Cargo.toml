@@ -1,8 +1,19 @@
 # SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
-[package]
-name = "hexaFn"
+[workspace]
+members = [
+    "crates/hexafn-core",
+    "crates/hexafn-trigger", 
+    "crates/hexafn-run",
+    "crates/hexafn-store",
+    "crates/hexafn-cast", 
+    "crates/hexafn-watch",
+    "crates/hexafn-bridge",
+]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
 authors = ["Husamettin ARABACI <info@hexafn.com>"]
 edition = "2021"
@@ -14,24 +25,32 @@ homepage = "https://hexafn.com"
 keywords = ["rust", "pipeline", "event-driven", "modular"]
 categories = ["asynchronous", "network-programming", "command-line-utilities"]
 
-[dependencies]
+[workspace.dependencies]
+# Async runtime
 tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-log = "0.4"
-anyhow = "1.0"
+
+# Error handling
 thiserror = "1.0"
+anyhow = "1.0"
 
-[dev-dependencies]
-tokio-test = "0.4"
+# Domain modeling
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
 
-[workspace]
-members = [
-    "shared",
-    "modules/bridge",
-    "modules/cast",
-    "modules/run",
-    "modules/store",
-    "modules/trigger",
-    "modules/watch",
-]
+# Observability
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Internal dependencies
+hexafn-core = { path = "crates/hexafn-core" }
+hexafn-trigger = { path = "crates/hexafn-trigger" }
+hexafn-run = { path = "crates/hexafn-run" }
+hexafn-store = { path = "crates/hexafn-store" }
+hexafn-cast = { path = "crates/hexafn-cast" }
+hexafn-watch = { path = "crates/hexafn-watch" }
+hexafn-bridge = { path = "crates/hexafn-bridge" }

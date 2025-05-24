@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "hexafn-trigger"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Trigger domain - handles event detection and filtering (Feed/Filter stages)"
+
+[dependencies]
+# Core domain dependency
+hexafn-core = { workspace = true }
+
+# Workspace dependencies
+tokio = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"

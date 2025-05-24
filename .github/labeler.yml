@@ -7,35 +7,35 @@
 
 module:bridge:
   - changed-files:
-      - any-glob-to-any-file: ['modules/bridge/**']
+      - any-glob-to-any-file: ['crates/hexafn-bridge/**']
 
 module:cast:
   - changed-files:
-      - any-glob-to-any-file: ['modules/cast/**']
+      - any-glob-to-any-file: ['crates/hexafn-cast/**']
 
 module:run:
   - changed-files:
-      - any-glob-to-any-file: ['modules/run/**']
+      - any-glob-to-any-file: ['crates/hexafn-run/**']
 
 module:store:
   - changed-files:
-      - any-glob-to-any-file: ['modules/store/**']
+      - any-glob-to-any-file: ['crates/hexafn-store/**']
 
 module:trigger:
   - changed-files:
-      - any-glob-to-any-file: ['modules/trigger/**']
+      - any-glob-to-any-file: ['crates/hexafn-trigger/**']
 
 module:watch:
   - changed-files:
-      - any-glob-to-any-file: ['modules/watch/**']
+      - any-glob-to-any-file: ['crates/hexafn-watch/**']
 
 module:core:
   - changed-files:
-      - any-glob-to-any-file: ['src/**','shared/**']
+      - any-glob-to-any-file: ['crates/hexafn-core/**']
 
 module:docs:
   - changed-files:
-      - any-glob-to-any-file: ['docs/**', 'examples/**', 'README.md']
+      - any-glob-to-any-file: ['docs/**', 'examples/**', '**/README.md']
 
 module:cli:
   - changed-files:
@@ -47,7 +47,7 @@ module:cli:
 
 type:doc:
   - changed-files:
-      - any-glob-to-any-file: ['docs/**','LICENSE','LICENSES/**','CHANGELOG.md']
+      - any-glob-to-any-file: ['docs/**','LICENSE','LICENSES/**','CHANGELOG.md','**/README.md']
 
 type:ci:
   - changed-files:
@@ -55,12 +55,17 @@ type:ci:
 
 type:test:
   - changed-files:
-      - any-glob-to-any-file: ['tests/**']
+      - any-glob-to-any-file: 
+        - 'integration-tests/**'
+        - 'benchmarks/**' 
+        - '**/tests/**'
+        - '**/*_test.rs'
+        - '**/test_*.rs'
 
 type:infra:
   - changed-files:
       - any-glob-to-any-file:
-          - 'config/**'
+          - 'crates/**/Cargo.toml'
           - 'Cargo.toml'
           - 'Cargo.lock'
           - '.releaserc.yml'

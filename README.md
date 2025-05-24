@@ -97,6 +97,7 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 Everything is documented under the `/docs/` folder. Start with:
 
 - [`GETTING_STARTED.md`](docs/GETTING_STARTED.md)
+- [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](docs/HEXAGONAL_ARCHITECTURE_GUIDE.md)
 - [`DEVELOPMENT_GUIDE.md`](docs/DEVELOPMENT_GUIDE.md)
 - [`USE_CASES.md`](docs/USE_CASES.md)
 - [`COMMIT_STRATEGY.md`](docs/COMMIT_STRATEGY.md)

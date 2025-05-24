@@ -11,17 +11,7 @@ This guide helps developers understand how to work with the hexaFn project. It e
 
 ## 🗂️ Project Structure
 
-```text
-hexaFn/
-├── src/                # Main source code
-├── docs/               # Project documentation
-├── .github/            # Issue templates, workflows, and configs
-├── Cargo.toml          # Rust project definition
-├── rust-toolchain.toml # Toolchain version pinning
-├── .releaserc.yml      # Release automation config
-├── .gitignore          # Git exclusion rules
-└── README.md           # Project overview
-```
+- [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) – Directory structure
 
 ---
 
@@ -166,6 +156,7 @@ All contributors must follow the documentation style and structure:
 ## 🧠 Helpful Resources
 
 - [`GETTING_STARTED.md`](GETTING_STARTED.md) – Initial setup and quick commands
+- [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Protocol-agnostic implementation patterns and data flow
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) – System design and modules
 - [`USE_CASES.md`](USE_CASES.md) – Functional capabilities
 - [`CONTACT.md`](CONTACT.md), [`SUPPORT.md`](SUPPORT.md) – Communication channels
