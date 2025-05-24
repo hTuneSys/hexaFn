@@ -120,7 +120,12 @@ graph TB
 
 #### **Step 1: Protocol Controller**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/adapters/inbound/`
+- **Subfolders**:
+  - `src/infrastructure/adapters/inbound/http/` - REST controllers
+  - `src/infrastructure/adapters/inbound/grpc/` - gRPC service implementations
+  - `src/infrastructure/adapters/inbound/cli/` - CLI command handlers
+  - `src/infrastructure/adapters/inbound/queue/` - Message queue consumers
 - **Responsibility**: Handle protocol-specific concerns (HTTP headers, gRPC metadata, CLI arguments)
 - **Technology Examples**: REST Controller, gRPC Service, CLI Command Handler
 - **Key Actions**:
@@ -131,7 +136,12 @@ graph TB
 
 #### **Step 2: Request Adapter**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/adapters/inbound/`
+- **Subfolders**:
+  - `src/infrastructure/adapters/inbound/http/adapters/` - HTTP request adapters
+  - `src/infrastructure/adapters/inbound/grpc/adapters/` - gRPC request adapters
+  - `src/infrastructure/adapters/inbound/cli/adapters/` - CLI request adapters
+  - `src/infrastructure/adapters/inbound/queue/adapters/` - Queue message adapters
 - **Responsibility**: Transform external format to internal format
 - **Key Actions**:
   - Parse request payload
@@ -141,7 +151,15 @@ graph TB
 
 #### **Step 3: DTO → Command Mapping**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/mappers/inbound/`
+- **Subfolders**:
+  - `src/infrastructure/mappers/inbound/dto_to_command/` - External DTO to command mappers
+  - `src/infrastructure/mappers/inbound/request_to_dto/` - Raw request to DTO mappers
+  - `src/infrastructure/dtos/inbound/` - External facing DTOs
+- **Files Examples**:
+  - `src/infrastructure/dtos/inbound/http_dtos.rs` - HTTP request/response DTOs
+  - `src/infrastructure/dtos/inbound/grpc_dtos.rs` - gRPC message DTOs
+  - `src/infrastructure/mappers/inbound/trigger_mappers.rs` - Trigger-specific mappers
 - **Responsibility**: Convert external DTOs to application commands
 - **Key Actions**:
   - Map external field names to internal names
@@ -155,7 +173,15 @@ graph TB
 
 #### **Step 4: Input Port Interface**
 
-- **Location**: Application Layer
+- **Location**: `src/application/ports/inbound/`
+- **Subfolders**:
+  - `src/application/ports/inbound/triggers/` - Trigger-specific port interfaces
+  - `src/application/ports/inbound/commands/` - Command handling port interfaces
+  - `src/application/ports/inbound/queries/` - Query handling port interfaces
+- **Files Examples**:
+  - `src/application/ports/inbound/triggers/trigger_port.rs` - Trigger operations interface
+  - `src/application/ports/inbound/commands/command_port.rs` - Command execution interface
+  - `src/application/ports/inbound/queries/query_port.rs` - Query execution interface
 - **Responsibility**: Define contract between infrastructure and application
 - **Key Actions**:
   - Expose application capabilities
@@ -169,7 +195,16 @@ graph TB
 
 #### **Step 5: Application Service**
 
-- **Location**: Application Layer
+- **Location**: `src/application/services/`
+- **Subfolders**:
+  - `src/application/services/triggers/` - Trigger-specific service implementations
+  - `src/application/services/commands/` - Command handling services
+  - `src/application/services/queries/` - Query handling services
+  - `src/application/services/shared/` - Shared service utilities
+- **Files Examples**:
+  - `src/application/services/triggers/trigger_service.rs` - Trigger orchestration service
+  - `src/application/services/commands/command_handler.rs` - Command processing service
+  - `src/application/services/queries/query_handler.rs` - Query processing service
 - **Responsibility**: Orchestrate use case execution
 - **Key Actions**:
   - Coordinate between domain objects
@@ -179,7 +214,16 @@ graph TB
 
 #### **Step 6: Command/Query Processing**
 
-- **Location**: Application Layer
+- **Location**: `src/application/models/`
+- **Subfolders**:
+  - `src/application/models/commands/` - Command data structures
+  - `src/application/models/queries/` - Query data structures
+  - `src/application/models/results/` - Result data structures
+  - `src/application/models/events/` - Application event structures
+- **Files Examples**:
+  - `src/application/models/commands/trigger_command.rs` - Trigger command definitions
+  - `src/application/models/queries/trigger_query.rs` - Trigger query definitions
+  - `src/application/models/results/trigger_result.rs` - Trigger result structures
 - **Responsibility**: Represent application intentions
 - **Key Actions**:
   - Carry use case data
@@ -189,7 +233,16 @@ graph TB
 
 #### **Step 7: Input Validation**
 
-- **Location**: Application Layer
+- **Location**: `src/application/validators/`
+- **Subfolders**:
+  - `src/application/validators/commands/` - Command validation logic
+  - `src/application/validators/queries/` - Query validation logic
+  - `src/application/validators/authorization/` - Authorization validators
+  - `src/application/validators/business/` - Business rule validators
+- **Files Examples**:
+  - `src/application/validators/commands/trigger_command_validator.rs` - Trigger command validation
+  - `src/application/validators/authorization/access_validator.rs` - Access control validation
+  - `src/application/validators/business/business_rule_validator.rs` - Business constraint validation
 - **Responsibility**: Validate application-level business rules
 - **Key Actions**:
   - Check authorization rules
@@ -203,7 +256,15 @@ graph TB
 
 #### **Step 8: Domain Entity Creation/Retrieval**
 
-- **Location**: Domain Layer
+- **Location**: `src/domain/entities/`
+- **Subfolders**:
+  - `src/domain/entities/triggers/` - Trigger-related entities
+  - `src/domain/entities/shared/` - Shared domain entities
+  - `src/domain/entities/aggregates/` - Aggregate root entities
+- **Files Examples**:
+  - `src/domain/entities/triggers/trigger.rs` - Trigger domain entity
+  - `src/domain/entities/triggers/trigger_execution.rs` - Trigger execution entity
+  - `src/domain/entities/shared/identifier.rs` - Shared identifier entity
 - **Responsibility**: Represent business concepts with behavior
 - **Key Actions**:
   - Enforce invariants
@@ -213,7 +274,16 @@ graph TB
 
 #### **Step 9: Value Object Processing**
 
-- **Location**: Domain Layer
+- **Location**: `src/domain/value_objects/`
+- **Subfolders**:
+  - `src/domain/value_objects/triggers/` - Trigger-specific value objects
+  - `src/domain/value_objects/shared/` - Shared value objects
+  - `src/domain/value_objects/primitives/` - Primitive value object wrappers
+- **Files Examples**:
+  - `src/domain/value_objects/triggers/trigger_name.rs` - Trigger name value object
+  - `src/domain/value_objects/triggers/trigger_config.rs` - Trigger configuration
+  - `src/domain/value_objects/shared/timestamp.rs` - Timestamp value object
+  - `src/domain/value_objects/primitives/email.rs` - Email value object
 - **Responsibility**: Represent immutable business values
 - **Key Actions**:
   - Ensure value validity
@@ -223,7 +293,15 @@ graph TB
 
 #### **Step 10: Business Validation**
 
-- **Location**: Domain Layer
+- **Location**: `src/domain/validators/`
+- **Subfolders**:
+  - `src/domain/validators/triggers/` - Trigger-specific domain validation
+  - `src/domain/validators/business_rules/` - Core business rule validators
+  - `src/domain/validators/invariants/` - Domain invariant validators
+- **Files Examples**:
+  - `src/domain/validators/triggers/trigger_validator.rs` - Trigger domain validation
+  - `src/domain/validators/business_rules/execution_rules.rs` - Execution business rules
+  - `src/domain/validators/invariants/entity_invariants.rs` - Entity invariant validation
 - **Responsibility**: Enforce core business rules
 - **Key Actions**:
   - Validate domain invariants
@@ -233,7 +311,15 @@ graph TB
 
 #### **Step 11: Domain Service Processing**
 
-- **Location**: Domain Layer
+- **Location**: `src/domain/services/`
+- **Subfolders**:
+  - `src/domain/services/triggers/` - Trigger-specific domain services
+  - `src/domain/services/execution/` - Execution domain services
+  - `src/domain/services/coordination/` - Cross-entity coordination services
+- **Files Examples**:
+  - `src/domain/services/triggers/trigger_manager.rs` - Trigger management service
+  - `src/domain/services/execution/execution_engine.rs` - Execution coordination service
+  - `src/domain/services/coordination/entity_coordinator.rs` - Multi-entity coordination
 - **Responsibility**: Handle complex business operations
 - **Key Actions**:
   - Coordinate between multiple entities
@@ -243,7 +329,16 @@ graph TB
 
 #### **Step 12: Domain Event Generation**
 
-- **Location**: Domain Layer
+- **Location**: `src/domain/events/`
+- **Subfolders**:
+  - `src/domain/events/triggers/` - Trigger-related domain events
+  - `src/domain/events/execution/` - Execution-related domain events
+  - `src/domain/events/shared/` - Shared domain events
+- **Files Examples**:
+  - `src/domain/events/triggers/trigger_created.rs` - Trigger creation event
+  - `src/domain/events/triggers/trigger_updated.rs` - Trigger update event
+  - `src/domain/events/execution/execution_started.rs` - Execution start event
+  - `src/domain/events/execution/execution_completed.rs` - Execution completion event
 - **Responsibility**: Signal important business occurrences
 - **Key Actions**:
   - Capture business-significant events
@@ -257,7 +352,16 @@ graph TB
 
 #### **Step 13: Output Port Interfaces**
 
-- **Location**: Application Layer
+- **Location**: `src/application/ports/outbound/`
+- **Subfolders**:
+  - `src/application/ports/outbound/persistence/` - Data persistence port interfaces
+  - `src/application/ports/outbound/messaging/` - Event publishing port interfaces
+  - `src/application/ports/outbound/external/` - External API port interfaces
+  - `src/application/ports/outbound/notifications/` - Notification port interfaces
+- **Files Examples**:
+  - `src/application/ports/outbound/persistence/trigger_repository.rs` - Trigger persistence interface
+  - `src/application/ports/outbound/messaging/event_publisher.rs` - Event publishing interface
+  - `src/application/ports/outbound/external/external_api_client.rs` - External API interface
 - **Responsibility**: Define contracts for external dependencies
 - **Key Actions**:
   - Abstract persistence concerns
@@ -267,7 +371,14 @@ graph TB
 
 #### **Step 14: Repository Adapter**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/adapters/outbound/persistence/`
+- **Subfolders**:
+  - `src/infrastructure/adapters/outbound/persistence/database/` - Database-specific adapters
+  - `src/infrastructure/adapters/outbound/persistence/file_system/` - File system adapters
+  - `src/infrastructure/adapters/outbound/persistence/cache/` - Cache adapters
+- **Files Examples**:
+  - `src/infrastructure/adapters/outbound/persistence/database/trigger_repository_impl.rs` - Database repository implementation
+  - `src/infrastructure/adapters/outbound/persistence/cache/trigger_cache_adapter.rs` - Cache adapter implementation
 - **Responsibility**: Handle data persistence
 - **Key Actions**:
   - Implement persistence logic
@@ -277,7 +388,14 @@ graph TB
 
 #### **Step 15: Event Bus Adapter**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/adapters/outbound/messaging/`
+- **Subfolders**:
+  - `src/infrastructure/adapters/outbound/messaging/event_bus/` - Event bus adapters
+  - `src/infrastructure/adapters/outbound/messaging/message_queue/` - Message queue adapters
+  - `src/infrastructure/adapters/outbound/messaging/pub_sub/` - Pub/Sub adapters
+- **Files Examples**:
+  - `src/infrastructure/adapters/outbound/messaging/event_bus/event_publisher_impl.rs` - Event bus publisher
+  - `src/infrastructure/adapters/outbound/messaging/message_queue/queue_adapter.rs` - Message queue adapter
 - **Responsibility**: Publish domain events
 - **Key Actions**:
   - Route events to appropriate channels
@@ -287,7 +405,15 @@ graph TB
 
 #### **Step 16: External API Adapter**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/adapters/outbound/external/`
+- **Subfolders**:
+  - `src/infrastructure/adapters/outbound/external/apis/` - External API client adapters
+  - `src/infrastructure/adapters/outbound/external/webhooks/` - Webhook adapters
+  - `src/infrastructure/adapters/outbound/external/notifications/` - Notification service adapters
+- **Files Examples**:
+  - `src/infrastructure/adapters/outbound/external/apis/third_party_api_client.rs` - Third-party API client
+  - `src/infrastructure/adapters/outbound/external/webhooks/webhook_sender.rs` - Webhook sender adapter
+  - `src/infrastructure/adapters/outbound/external/notifications/email_service.rs` - Email notification adapter
 - **Responsibility**: Communicate with external systems
 - **Key Actions**:
   - Handle external API protocols
@@ -297,13 +423,140 @@ graph TB
 
 #### **Step 17: Entity → Record Mapping**
 
-- **Location**: Infrastructure Layer
+- **Location**: `src/infrastructure/mappers/outbound/`
+- **Subfolders**:
+  - `src/infrastructure/mappers/outbound/entity_to_record/` - Domain entity to database record mappers
+  - `src/infrastructure/mappers/outbound/event_to_message/` - Domain event to message mappers
+  - `src/infrastructure/mappers/outbound/dto_serializers/` - DTO serialization mappers
+- **Files Examples**:
+  - `src/infrastructure/mappers/outbound/entity_to_record/trigger_entity_mapper.rs` - Trigger entity to record mapper
+  - `src/infrastructure/mappers/outbound/event_to_message/trigger_event_mapper.rs` - Trigger event to message mapper
+  - `src/infrastructure/dtos/outbound/database_records.rs` - Database record DTOs
+  - `src/infrastructure/dtos/outbound/message_payloads.rs` - Message payload DTOs
 - **Responsibility**: Transform domain objects to persistence format
 - **Key Actions**:
   - Map domain fields to storage fields
   - Handle data type conversions
   - Apply storage-specific transformations
   - Manage relationship mappings
+
+---
+
+## 📁 **Complete Folder Structure Summary**
+
+### **📦 Infrastructure Layer (`src/infrastructure/`)**
+
+```text
+src/infrastructure/
+├── adapters/
+│   ├── inbound/                    # Primary Adapters (Entry Points)
+│   │   ├── http/
+│   │   │   ├── controllers/        # HTTP controllers
+│   │   │   └── adapters/          # HTTP request adapters
+│   │   ├── grpc/
+│   │   │   ├── services/          # gRPC service implementations
+│   │   │   └── adapters/          # gRPC request adapters
+│   │   ├── cli/
+│   │   │   ├── commands/          # CLI command handlers
+│   │   │   └── adapters/          # CLI request adapters
+│   │   └── queue/
+│   │       ├── consumers/         # Message queue consumers
+│   │       └── adapters/          # Queue message adapters
+│   └── outbound/                   # Secondary Adapters (Exit Points)
+│       ├── persistence/
+│       │   ├── database/          # Database repository implementations
+│       │   ├── file_system/       # File system adapters
+│       │   └── cache/            # Cache adapters
+│       ├── messaging/
+│       │   ├── event_bus/        # Event bus publishers
+│       │   ├── message_queue/    # Message queue adapters
+│       │   └── pub_sub/          # Pub/Sub adapters
+│       └── external/
+│           ├── apis/             # External API clients
+│           ├── webhooks/         # Webhook senders
+│           └── notifications/    # Notification services
+├── mappers/
+│   ├── inbound/                    # Request Mapping
+│   │   ├── dto_to_command/        # External DTO → Command mappers
+│   │   └── request_to_dto/        # Raw request → DTO mappers
+│   └── outbound/                   # Response Mapping
+│       ├── entity_to_record/      # Domain entity → Database record
+│       ├── event_to_message/      # Domain event → Message mappers
+│       └── dto_serializers/       # DTO serialization mappers
+└── dtos/
+    ├── inbound/                    # External Facing DTOs
+    │   ├── http_dtos.rs           # HTTP request/response DTOs
+    │   └── grpc_dtos.rs           # gRPC message DTOs
+    └── outbound/                   # Internal System DTOs
+        ├── database_records.rs    # Database record DTOs
+        └── message_payloads.rs    # Message payload DTOs
+```
+
+### **🏗️ Application Layer (`src/application/`)**
+
+```text
+src/application/
+├── ports/
+│   ├── inbound/                    # Input Port Interfaces
+│   │   ├── triggers/              # Trigger-specific ports
+│   │   ├── commands/              # Command handling ports
+│   │   └── queries/               # Query handling ports
+│   └── outbound/                   # Output Port Interfaces
+│       ├── persistence/           # Data persistence ports
+│       ├── messaging/             # Event publishing ports
+│       ├── external/              # External API ports
+│       └── notifications/         # Notification ports
+├── services/
+│   ├── triggers/                   # Trigger-specific services
+│   ├── commands/                   # Command handling services
+│   ├── queries/                    # Query handling services
+│   └── shared/                     # Shared service utilities
+├── models/
+│   ├── commands/                   # Command data structures
+│   ├── queries/                    # Query data structures
+│   ├── results/                    # Result data structures
+│   └── events/                     # Application event structures
+└── validators/
+    ├── commands/                   # Command validation logic
+    ├── queries/                    # Query validation logic
+    ├── authorization/              # Authorization validators
+    └── business/                   # Business rule validators
+```
+
+### **🎯 Domain Layer (`src/domain/`)**
+
+```text
+src/domain/
+├── entities/
+│   ├── triggers/                   # Trigger-related entities
+│   ├── shared/                     # Shared domain entities
+│   └── aggregates/                 # Aggregate root entities
+├── value_objects/
+│   ├── triggers/                   # Trigger-specific value objects
+│   ├── shared/                     # Shared value objects
+│   └── primitives/                 # Primitive value object wrappers
+├── services/
+│   ├── triggers/                   # Trigger-specific domain services
+│   ├── execution/                  # Execution domain services
+│   └── coordination/               # Cross-entity coordination services
+├── events/
+│   ├── triggers/                   # Trigger-related domain events
+│   ├── execution/                  # Execution-related domain events
+│   └── shared/                     # Shared domain events
+└── validators/
+    ├── triggers/                   # Trigger-specific domain validation
+    ├── business_rules/             # Core business rule validators
+    └── invariants/                 # Domain invariant validators
+```
+
+### **🔧 Layer Communication Patterns**
+
+| **From Layer** | **To Layer** | **Via** | **Example** |
+|----------------|--------------|---------|-------------|
+| Infrastructure (Inbound) → Application | Ports | `TriggerPort` interface | HTTP adapter calls trigger port |
+| Application → Domain | Direct calls | Entity methods, Domain services | Service calls entity business logic |
+| Application → Infrastructure (Outbound) | Ports | `TriggerRepository` interface | Service calls repository through port |
+| Domain → Domain | Direct calls | Entity-to-entity, Value objects | Entity uses value objects internally |
 
 ---
 
