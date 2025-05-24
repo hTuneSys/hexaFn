@@ -96,21 +96,7 @@ All stages can independently be observed, tested, logged, and extended.
 
 ## 📦 File Structure (Planned)
 
-```text
-hexaFn/
-└── src/
-    ├── core/              # Core pipeline engine
-    ├── modules/
-    │   ├── store/         # HexaStore
-    │   ├── cast/          # HexaCast
-    │   ├── run/           # HexaRun
-    │   ├── trigger/       # HexaTrigger
-    │   ├── watch/         # HexaWatch
-    │   └── bridge/        # HexaBridge
-    ├── plugins/           # Optional user-contributed extensions
-    ├── cli/               # Command-line interface tool
-    └── docs/              # Documentation & architecture
-```
+➡️ [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) – Directory structure and module breakdown
 
 ---
 
