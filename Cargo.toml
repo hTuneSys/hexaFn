@@ -24,3 +24,14 @@ thiserror = "1.0"
 
 [dev-dependencies]
 tokio-test = "0.4"
+
+[workspace]
+members = [
+    "shared",
+    "modules/bridge",
+    "modules/cast",
+    "modules/run",
+    "modules/store",
+    "modules/trigger",
+    "modules/watch",
+]
