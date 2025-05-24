@@ -33,13 +33,15 @@ All contributors are expected to adhere to these rules for consistent developmen
 
 ## 🔄 Pull Request Flow
 
-### 🔁 For Contributors:
+### 🔁 For Contributors
+
 - All PRs **must be based on `develop`** unless hotfixing `main`.
 - Branch names should start with one of the allowed prefixes from the table above.
 - PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) format.
 - Keep your PR focused and small for easier review.
 
-### ✅ Merge Rules:
+### ✅ Merge Rules
+
 - `feature/*`, `fix/*`, `chore/*`, `refactor/*`, `test/*`, `docs/*`, `ci/*`, `perf/*`, `build/*`, `style/*` → merge into `develop` after review & CI pass.
 - `develop` → `release/x.y` at sprint end for release prep.
 - `release/x.y` → `main` after QA and approval.
@@ -80,13 +82,15 @@ All contributors are expected to adhere to these rules for consistent developmen
 
 ## 📈 Do’s and Don’ts
 
-### Do:
+### Do
+
 - Use **clear, descriptive branch names** with allowed prefixes.
 - Open **small, focused PRs** for faster review.
 - Follow **commit and PR title conventions**.
 - Sync with `develop` frequently.
 
-### Don’t:
+### Don’t
+
 - Push large or unrelated changes in a single PR.
 - Merge into `main` or `release/*` without approval.
 - Use branch names outside the approved prefixes.
@@ -107,7 +111,7 @@ feature/*, fix/*, chore/* ... -> develop -> release/x.y -> main
 ## 📬 Questions?
 
 If you have questions or need help, open a discussion at:  
-https://github.com/hTuneSys/hexaFn/discussions
+[https://github.com/hTuneSys/hexaFn/discussions](https://github.com/hTuneSys/hexaFn/discussions)
 
 ---
 

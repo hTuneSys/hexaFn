@@ -63,8 +63,8 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 ---
 
-## 📄 Maintained by  
-**hexaTune LLC**  
+## 📄 Maintained by **hexaTune LLC**
+
 - Website: [hexafn.com](https://hexafn.com)  
 - GitHub: [github.com/hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)  
 - Email: [info@hexafn.com](mailto:info@hexafn.com)

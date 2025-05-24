@@ -11,7 +11,7 @@ This guide helps developers understand how to work with the hexaFn project. It e
 
 ## 🗂️ Project Structure
 
-```
+```text
 hexaFn/
 ├── src/                # Main source code
 ├── docs/               # Project documentation

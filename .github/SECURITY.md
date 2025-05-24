@@ -15,9 +15,10 @@ If you discover a vulnerability or security issue, we strongly encourage you to 
 
 Please report any security issues privately by emailing:
 
-**📧 info@hexafn.com**
+**📧 [info@hexafn.com](mailto:info@hexafn.com)**
 
 Include the following information if possible:
+
 - A detailed description of the vulnerability
 - Steps to reproduce the issue
 - Any proof-of-concept code or screenshots
@@ -32,6 +33,7 @@ Optionally, you may encrypt your report using our GPG key (coming soon).
 ## 🔐 Scope
 
 This policy applies to vulnerabilities in:
+
 - Application logic
 - Authentication/Authorization
 - Data integrity and privacy
@@ -42,6 +44,7 @@ This policy applies to vulnerabilities in:
 ## 🚫 Out of Scope
 
 The following will generally not be considered security issues:
+
 - Missing security headers
 - Rate limiting or brute-force protection
 - Outdated browser support

@@ -7,9 +7,7 @@ SPDX-License-Identifier: MIT
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-<p align="center">
-  <img src="docs/assets/hexaFn-banner.png" alt="hexaFn Logo"/>
-</p>
+![hexaFn Logo](docs/assets/hexaFn-banner.png)
 
 **From Feed to Feedback, fully programmable.**  
 A modular, event-driven function pipeline powered by the 6F Lifecycle Flow. Built with documentation-first engineering, composable primitives, and developer joy at its core.
@@ -41,9 +39,7 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 | **Forward**| Route results to KV stores, topics, services |
 | **Feedback**| Log, trace, trigger, or audit |
 
-<p align="center">
-  <img src="docs/assets/diagram.png" alt="6F Lifecycle Diagram" width="720"/>
-</p>
+  ![6F Lifecycle Diagram](docs/assets/diagram.png)
 
 ---
 
@@ -91,7 +87,7 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 | `No-Bloat`   | Not a monolith |
 | `No-Wait`    | Not batch-oriented |
 | `No-LockIn`  | Fully open & extensible |
-| `No-Magic`   | Explicit, testable logic |Amca151200!!
+| `No-Magic`   | Explicit, testable logic |
 | `No-CMS`     | Not a frontend framework |
 
 ---
@@ -108,7 +104,7 @@ Everything is documented under the `/docs/` folder. Start with:
 - [`LABELLING_STRATEGY.md`](docs/LABELLING_STRATEGY.md)
 - [`ROADMAP.md`](docs/ROADMAP.md)
 
-Interactive web view at: **https://hexafn.com**
+Interactive web view at: [https://hexafn.com](https://hexafn.com)
 
 ---
 
@@ -157,16 +153,6 @@ Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%
 
 ---
 
-## ✨ Animation Preview (optional)
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/00000000/hexaFn-pipeline.gif" alt="hexaFn Animation" width="640"/>
-</p>
-<!--TODO: Add animation preview here.-->
-_(If not yet available, animation will be added soon.)_
-
----
-
 ## 👨‍💻 Author & Maintainers
 
 Built and maintained by **Husamettin ARABACI** and the [hexaTune](https://github.com/hTuneSys) team.  
@@ -180,4 +166,4 @@ Licensed under the [MIT License](./LICENSE)
 © 2025 hexaTune LLC. All rights reserved.
 
 SPDX headers are present in all source files.  
-This project is REUSE-compliant and safe for enterprise adoption.
+This project is REUSE-compliant and safe for enterprise adoption

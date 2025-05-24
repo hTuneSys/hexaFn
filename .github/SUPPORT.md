@@ -15,7 +15,7 @@ Thanks for using **hexaFn**! Below are the ways you can get help or contact the 
 |----------------|-------------------------------------------------------------------|
 | [Discussions](https://github.com/hTuneSys/hexaFn/discussions) | Ask questions, suggest features, or open design talks |
 | [Issues](https://github.com/hTuneSys/hexaFn/issues)         | Report bugs or request features                        |
-| Email            | For private or sensitive support: info@hexafn.com                |
+| Email            | For private or sensitive support: [info@hexafn.com](mailto:info@hexafn.com)                |
 
 ---
 

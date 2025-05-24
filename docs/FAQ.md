@@ -36,6 +36,7 @@ Check out the [`CONTRIBUTING.md`](CONTRIBUTING.md) for instructions on how to su
 ## ❓ Are there any requirements before contributing?
 
 Yes. You must:
+
 - Follow the commit message strategy defined in [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md)
 - Respect the branching and PR rules
 - Adhere to the code of conduct
@@ -69,6 +70,7 @@ The project is maintained by the community, led by (Husamettin ARABACI). Maintai
 ## ❓ How can I get help?
 
 You can:
+
 - Open a GitHub Discussion
 - File an issue using the Support template
 - Refer to the [`SUPPORT.md`](SUPPORT.md) and [`CONTACT.md`](CONTACT.md) files
