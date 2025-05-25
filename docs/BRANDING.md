@@ -46,7 +46,10 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 | Correct Usage                       |
 |-----------------------------------|
-| ![Correct Logo](./assets/hexaFn-logo.png) |
+| ![Banner](./assets/hexaFn-banner.png) |
+| ![Logo](./assets/hexaFn-logo.png)   |
+| ![Icon](./assets/hexaFn-icon.png)   |
+| ![Favicon](./assets/favicon.ico)   |
 
 ---
 
