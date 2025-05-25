@@ -4,23 +4,49 @@
 [package]
 name = "hexafn-trigger"
 version.workspace = true
+authors.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Trigger domain - handles event detection and filtering (Feed/Filter stages)"
+repository.workspace = true
+description = "HexaTrigger - Conditional logic and rule engine for Feed/Filter phases of 6F Lifecycle Flow"
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-# Core domain dependency
+# Internal dependencies
 hexafn-core = { workspace = true }
 
 # Workspace dependencies
-tokio = { workspace = true }
-async-trait = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-thiserror = { workspace = true }
-uuid = { workspace = true }
-chrono = { workspace = true }
-tracing = { workspace = true }
+tokio.workspace = true
+async-trait.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+
+# Trigger-specific dependencies
+regex = "1.0"
 
 [dev-dependencies]
-tokio-test = "0.4"
+tokio-test.workspace = true
+
+[features]
+default = []
+experimental = []
+testing = ["tokio-test"]
+
+[[example]]
+name = "basic_trigger"
+path = "examples/basic_trigger.rs"
+
+[[example]]  
+name = "timer_trigger"
+path = "examples/timer_trigger.rs"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

@@ -29,3 +29,6 @@ node_modules/
 
 # Temporary files
 *.tmp
+
+# Github issue list
+/issues/

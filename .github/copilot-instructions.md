@@ -147,6 +147,57 @@ EVERY new file MUST start with:
 
 ---
 
+### **REQUIRED**: SPDX Headers for All File Types
+
+EVERY new file MUST start with appropriate SPDX headers:
+
+#### **Rust Files (.rs)**
+
+```rust
+// SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+// SPDX-License-Identifier: MIT
+```
+
+#### **TOML Files (.toml)**
+
+```toml
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+```
+
+#### **Markdown Files (.md)**
+
+```markdown
+<!--
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+SPDX-License-Identifier: MIT
+-->
+```
+
+#### **YAML Files (.yml, .yaml)**
+
+```yaml
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+```
+
+#### **JSON Files (.json)**
+
+```json
+{
+  "_comment": "SPDX-FileCopyrightText: 2025 Husamettin ARABACI",
+  "_license": "SPDX-License-Identifier: MIT"
+}
+```
+
+### **FORBIDDEN**: Missing SPDX Headers
+
+❌ NEVER create files without proper SPDX headers
+❌ NEVER use incorrect comment syntax for file type
+❌ NEVER skip license identification
+
+---
+
 ## 🚨 MANDATORY LABELING SYSTEM
 
 ### **REQUIRED**: Module Labels (apply ONE)
