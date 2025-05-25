@@ -12,9 +12,30 @@ SPDX-License-Identifier: MIT
 [![Crates.io](https://img.shields.io/crates/v/hexafn.svg)](https://crates.io/crates/hexafn)
 [![Documentation](https://docs.rs/hexafn/badge.svg)](https://docs.rs/hexafn)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Build Status](https://github.com/hTuneSys/hexaFn/workflows/CI/badge.svg)](https://github.com/hTuneSys/hexaFn/actions)
+[![GitHub issues](https://img.shields.io/github/issues/hTuneSys/hexaFn)](https://github.com/hTuneSys/hexaFn/issues)
+[![GitHub stars](https://img.shields.io/github/stars/hTuneSys/hexaFn)](https://github.com/hTuneSys/hexaFn/stargazers)
+[![Discord](https://img.shields.io/badge/discord-join-7289da.svg)](https://discord.gg/hexaFn)
+[![Project Status](https://img.shields.io/badge/status-in%20development-yellow)](https://github.com/hTuneSys/hexaFn/milestones)
 
 **From Feed to Feedback, fully programmable.**  
 A modular, event-driven function pipeline powered by the 6F Lifecycle Flow. Built with documentation-first engineering, composable primitives, and developer joy at its core.
+
+## 📋 Table of Contents
+
+- [🚀 What is hexaFn?](#-what-is-hexafn)
+- [🔄 6F Lifecycle Flow](#-6f-lifecycle-flow)
+- [🧠 Why hexaFn?](#-why-hexafn)
+- [🧩 Core Modules](#-core-modules)
+- [👤 Who is it for?](#-who-is-it-for)
+- [❌ What hexaFn is NOT](#-what-hexafn-is-not)
+- [📚 Documentation](#-documentation)
+- [📦 Installation](#-installation)
+- [🔧 Dev Quickstart](#-dev-quickstart)
+- [🧪 Lint & Test](#-lint--test)
+- [✍️ Contributing](#️-contributing)
+- [👨‍💻 Author & Maintainers](#-author--maintainers)
+- [📜 License](#-license)
 
 ---
 
@@ -123,26 +144,56 @@ Coming soon. CLI and runtime APIs under development.
 
 ## 🔧 Dev Quickstart
 
+### Quick Setup
+
 ```bash
+# Clone the repository
 git clone https://github.com/hTuneSys/hexaFn.git
 cd hexaFn
+
+# Build the project
 cargo build
+
+# Run with default configuration
 cargo run
+
+# Run with custom environment
+HEXA_ENV=dev HEXA_DEBUG=true cargo run
+```
+
+### Basic Usage Example
+
+```rust
+use hexafn_core::pipeline::Pipeline;
+use hexafn_trigger::conditions::EventTrigger;
+
+// Create a simple pipeline
+let mut pipeline = Pipeline::new();
+
+// Add trigger condition
+pipeline.feed(EventTrigger::new("user.login"));
+
+// Add processing logic
+pipeline.function(|event| {
+    println!("Processing: {:?}", event);
+    Ok(event)
+});
+
+// Forward results
+pipeline.forward_to_store("user_sessions");
+
+// Execute pipeline
+pipeline.run().await?;
 ```
 
 Use `.env` or CLI args for environment config. See [`CONFIGURATION.md`](docs/CONFIGURATION.md).
 
----
+### Next Steps
 
-## 🧪 Lint & Test
-
-```bash
-cargo fmt      # Code formatting
-cargo clippy   # Linting
-cargo test     # Run tests
-```
-
-CI pipelines validate formatting, commit types, and workflow rules.
+- 📖 Read the [Getting Started Guide](docs/GETTING_STARTED.md)
+- 🏗️ Explore [Architecture Overview](docs/ARCHITECTURE.md)
+- 🎯 Check [Use Cases](docs/USE_CASES.md)
+- 🛠️ Browse [Development Guide](docs/DEVELOPMENT_GUIDE.md)
 
 ---
 
