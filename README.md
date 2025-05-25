@@ -203,6 +203,7 @@ We welcome contributors! Please read:
 
 - [`SUMMARY.md`](docs/SUMMARY.md)
 - [`CONTRIBUTING.md`](docs/CONTRIBUTING.md)
+- [`TODO_LIST.md`](docs/TODO_LIST.md)
 - [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md)
 
 Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted)
