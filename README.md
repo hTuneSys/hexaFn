@@ -5,9 +5,13 @@ SPDX-License-Identifier: MIT
 
 # hexaFn
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-
 ![hexaFn Logo](docs/assets/hexaFn-banner.png)
+
+## Function Composition Framework for Rust
+
+[![Crates.io](https://img.shields.io/crates/v/hexafn.svg)](https://crates.io/crates/hexafn)
+[![Documentation](https://docs.rs/hexafn/badge.svg)](https://docs.rs/hexafn)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **From Feed to Feedback, fully programmable.**  
 A modular, event-driven function pipeline powered by the 6F Lifecycle Flow. Built with documentation-first engineering, composable primitives, and developer joy at its core.
