@@ -41,10 +41,10 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 
 - [`CONFIGURATION.md`](CONFIGURATION.md) – Runtime and environment settings
 - [`STYLE_GUIDE.md`](STYLE_GUIDE.md) – Coding conventions and formatting rules
-- [`GETTING_STARTED.md`](GETTING_STARTED.md) – (To be completed) Setup instructions for new devs
+- [`GETTING_STARTED.md`](GETTING_STARTED.md) – Setup instructions for new devs
 - [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Protocol-agnostic implementation patterns and data flow
-- [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md) – (To be completed) In-depth dev guide
-- [`FAQ.md`](FAQ.md) – (To be completed) Frequently asked questions
+- [`DEVELOPMENT_GUIDE.md`](DEVELOPMENT_GUIDE.md) – In-depth dev guide
+- [`FAQ.md`](FAQ.md) – Frequently asked questions
 
 ---
 

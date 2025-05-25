@@ -15,7 +15,7 @@ All contributors are expected to adhere to these rules for consistent developmen
 | Branch             | Purpose                                               | Allowed Types (Prefix)                           |
 |--------------------|-----------------------------------------------------|-------------------------------------------------|
 | `main`             | Production branch. All official releases are tagged here. | N/A (protected branch)                         |
-| `release/x.y`      | Pre-release stabilization, final QA and testing.    | `release/`                                      |
+| `release/x.y`      | Pre-release stabilization, final QA and testing.    | N/A (protected branch)                                      |
 | `develop`          | Integration branch for ongoing feature and fix PRs. | N/A (protected branch)                          |
 | `feature/xyz`      | Development of new features.                         | `feat/`                                        |
 | `fix/bug-id`       | Bug fixes and patches.                               | `fix/`                                         |
