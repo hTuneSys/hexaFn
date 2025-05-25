@@ -246,6 +246,18 @@ EVERY PR MUST have:
 
 ---
 
+### **REQUIRED**: GitHub Actions Integration
+
+ALL code changes MUST pass these automated workflows:
+
+- **Auto-assign**: [`auto-assign.yml`](.github/workflows/auto-assign.yml) - Automatic PR assignment
+- **Branch protection**: [`branch-name-check.yml`](.github/workflows/branch-name-check.yml) - Semantic branch validation
+- **Commit validation**: [`commitlint.yml`](.github/workflows/commitlint.yml) - Conventional commits check
+- **Auto-labeling**: [`labeler.yml`](.github/workflows/labeler.yml) - Automatic label assignment
+- **Stale management**: [`stale.yml`](.github/workflows/stale.yml) - Issue/PR lifecycle management
+
+---
+
 ## 🚨 MANDATORY CI/CD REQUIREMENTS
 
 ### **REQUIRED**: Automated Checks
@@ -334,4 +346,125 @@ ALL PRs MUST pass these checks:
 
 ---
 
-**These instructions are REQUIRED and NON-NEGOTIABLE for all contributions to hexaFn.**
+## 📚 MANDATORY DOCUMENTATION REFERENCE
+
+### **REQUIRED**: Core Documentation Knowledge
+
+GitHub Copilot MUST be familiar with and reference these documentation files when generating code or providing guidance:
+
+#### **Critical Architecture Documents**
+
+- [`docs/HEXAGONAL_ARCHITECTURE_GUIDE.md`](../docs/HEXAGONAL_ARCHITECTURE_GUIDE.md) - **MANDATORY** for all architectural decisions
+- [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) - System design principles and patterns
+- [`docs/PROJECT_STRUCTURE.md`](../docs/PROJECT_STRUCTURE.md) - Workspace organization rules
+- [`README.md`](../../README.md) - Project overview and 6F Lifecycle Flow
+
+#### **Development Workflow Documents**
+
+- [`docs/DEVELOPMENT_GUIDE.md`](../docs/DEVELOPMENT_GUIDE.md) - **MANDATORY** for development setup
+- [`docs/BRANCH_STRATEGY.md`](../docs/BRANCH_STRATEGY.md) - **MANDATORY** for branch naming and workflow
+- [`docs/COMMIT_STRATEGY.md`](../docs/COMMIT_STRATEGY.md) - **MANDATORY** for commit conventions
+- [`docs/PR_STRATEGY.md`](../docs/PR_STRATEGY.md) - **MANDATORY** for pull request process
+- [`docs/LABELLING_STRATEGY.md`](../docs/LABELLING_STRATEGY.md) - **MANDATORY** for issue/PR labeling
+
+#### **Quality & Standards Documents**
+
+- [`docs/STYLE_GUIDE.md`](../docs/STYLE_GUIDE.md) - **MANDATORY** for code formatting and style
+- [`docs/CONTRIBUTING.md`](../docs/CONTRIBUTING.md) - **MANDATORY** for contribution guidelines
+- [`.github/CONTRIBUTING.md`](CONTRIBUTING.md) - GitHub-specific contribution rules
+- [`docs/GETTING_STARTED.md`](../docs/GETTING_STARTED.md) - New developer onboarding
+
+#### **GitHub Configuration Files**
+
+- [`.github/PULL_REQUEST_TEMPLATE.md`](PULL_REQUEST_TEMPLATE.md) - **MANDATORY** PR template structure
+- [`.github/ISSUE_TEMPLATE/`](ISSUE_TEMPLATE/) - **MANDATORY** issue template formats
+- [`.github/workflows/`](workflows/) - **MANDATORY** CI/CD pipeline knowledge
+- [`.github/CODEOWNERS`](CODEOWNERS) - Code ownership and review requirements
+
+#### **Project Management Documents**
+
+- [`docs/ROADMAP.md`](../docs/ROADMAP.md) - Project direction and milestones
+- [`docs/MILESTONES.md`](../docs/MILESTONES.md) - Specific milestone definitions
+- [`docs/USE_CASES.md`](../docs/USE_CASES.md) - Business context and scenarios
+- [`docs/FAQ.md`](../docs/FAQ.md) - Common questions and solutions
+
+#### **Configuration & Setup Documents**
+
+- [`docs/CONFIGURATION.md`](../docs/CONFIGURATION.md) - **MANDATORY** for environment setup
+- [`Cargo.toml`](../../Cargo.toml) - **MANDATORY** workspace dependencies
+- [`REUSE.toml`](../../REUSE.toml) - **MANDATORY** licensing compliance
+- [`package.json`](../../package.json) - Node.js tooling dependencies
+
+#### **Compliance & Legal Documents**
+
+- [`docs/SECURITY.md`](../docs/SECURITY.md) - **MANDATORY** security policies
+- [`docs/CODE_OF_CONDUCT.md`](../docs/CODE_OF_CONDUCT.md) - Community standards
+- [`LICENSE`](../../LICENSE) - MIT license text
+- [`CHANGELOG.md`](../../CHANGELOG.md) - Version history
+
+### **CRITICAL IMPORTANCE**: Documentation-First Engineering
+
+🚨 **ALL GitHub Copilot responses MUST:**
+
+1. **Reference relevant documentation** when providing guidance
+2. **Align with documented standards** in all suggestions
+3. **Cross-reference multiple docs** for comprehensive answers
+4. **Maintain consistency** with established patterns
+5. **Update suggestions** when documentation conflicts arise
+
+### **FORBIDDEN**: Documentation Ignorance
+
+❌ **NEVER provide suggestions that:**
+
+- Contradict documented standards
+- Ignore established workflows
+- Skip required processes
+- Violate architectural principles
+- Bypass security policies
+
+### **REQUIRED**: Documentation Cross-Reference
+
+When generating code or guidance, Copilot MUST:
+
+✅ **Check HEXAGONAL_ARCHITECTURE_GUIDE.md** for structural decisions
+✅ **Verify BRANCH_STRATEGY.md** for naming conventions  
+✅ **Validate COMMIT_STRATEGY.md** for commit formats
+✅ **Confirm STYLE_GUIDE.md** for code formatting
+✅ **Reference USE_CASES.md** for business context
+✅ **Follow PR_STRATEGY.md** for pull request guidance
+✅ **Apply LABELLING_STRATEGY.md** for issue categorization
+
+### **MANDATORY**: Documentation Update Notifications
+
+When suggesting changes that might affect documentation:
+
+🔔 **ALWAYS remind** to update relevant documentation
+🔔 **Identify** which docs need updates
+🔔 **Suggest** documentation changes alongside code changes
+🔔 **Maintain** documentation-code consistency
+
+---
+
+## 🎯 DOCUMENTATION-DRIVEN DEVELOPMENT RULES
+
+### **REQUIRED**: Documentation Precedence
+
+1. **Documentation defines behavior** - Code implements it
+2. **When in doubt, follow the docs** - Don't guess or assume
+3. **Documentation updates** MUST accompany significant changes
+4. **Cross-references** MUST be maintained between related docs
+5. **Examples** in documentation MUST be kept up-to-date
+
+### **REQUIRED**: GitHub Copilot Behavior
+
+GitHub Copilot responses MUST:
+
+- 📖 **Quote relevant documentation** sections when applicable
+- 🔗 **Provide documentation links** for further reading  
+- ⚖️ **Balance documentation compliance** with practical solutions
+- 🔄 **Suggest documentation updates** when gaps are identified
+- 📋 **Reference templates and examples** from documentation
+
+---
+
+**This documentation ecosystem is the FOUNDATION of hexaFn development. ALL Copilot assistance MUST respect and reference these established standards.**
