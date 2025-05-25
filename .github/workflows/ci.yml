@@ -5,7 +5,10 @@ name: 🤖 CI
 
 on:
   pull_request:
-  push:
+    branches:
+      - develop
+      - main
+      - 'release/**'
 
 jobs:
   fmt:
