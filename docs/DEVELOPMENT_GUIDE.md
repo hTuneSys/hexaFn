@@ -148,7 +148,7 @@ Branches like `main`, `release`, and `develop` are protected:
 Understanding hexaFn's architecture is essential for effective development. Review these key documents:
 
 - [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Fundamental hexagonal architecture principles
-- [`RUST_PORTS_ADAPTERS.md`](RUST_PORTS_ADAPTERS.md) - Comprehensive component catalog organized by architectural layers
+- [`RUST_PORTS_ADAPTERS_EXAMPLE.md`](RUST_PORTS_ADAPTERS_EXAMPLE.md) - Comprehensive component catalog organized by architectural layers
 - [`DATA_FLOW_EXAMPLE.md`](DATA_FLOW_EXAMPLE.md) - High-level data flow diagram across all modules
 - [`DATA_FLOW_DETAIL_EXAMPLE.md`](DATA_FLOW_DETAIL_EXAMPLE.md) - Detailed component interactions with interfaces and methods
 
