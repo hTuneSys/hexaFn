@@ -200,6 +200,22 @@ SPDX-License-Identifier: MIT
 
 ## 🚨 MANDATORY LABELING SYSTEM
 
+### **REQUIRED**: Language Requirements
+
+- ALL code, comments, and text in ANY file MUST be written in English only
+- ALL variable/function/class names MUST use English words only
+- ALL documentation and strings MUST be in English only
+- ALL file content regardless of file type MUST NOT contain non-English text
+- ALL commit messages and PR descriptions MUST be in English only
+
+### **FORBIDDEN**: Non-English Content
+
+❌ NEVER use non-English words in code, comments, or documentation
+❌ NEVER use non-English variable or function names
+❌ NEVER include non-English text in any project file (regardless of file type)
+❌ NEVER submit PRs with non-English descriptions or commit messages
+❌ NEVER include localized text directly in source files (use translation files/systems instead)
+
 ### **REQUIRED**: Module Labels (apply ONE)
 
 - `module:bridge`: HexaBridge changes
@@ -398,6 +414,38 @@ ALL PRs MUST pass these checks:
 ---
 
 ## 📚 MANDATORY DOCUMENTATION REFERENCE
+
+#### **Project Knowledge Documents**
+
+- [`docs/TODO_LIST.md`](../docs/TODO_LIST.md) - **MANDATORY** for task tracking and sprint planning
+- All files under [`docs/`](../docs/) - **MANDATORY** for project context and architecture
+- All files under [`.github/`](./) - **MANDATORY** for workflow and contribution guidelines
+- [`README.md`](../../README.md) - **MANDATORY** for project overview and introduction
+
+### **REQUIRED**: Initial Document Analysis
+
+When starting to assist with any hexaFn code task, GitHub Copilot MUST:
+
+1. First analyze the content of `docs/TODO_LIST.md` to understand current tasks
+2. Review relevant documentation in `docs/` directory related to the task
+3. Check `.github/` workflow files and templates for process requirements
+4. Reference the `README.md` for project context and 6F Lifecycle understanding
+
+### **FORBIDDEN**: Working Without Documentation Context
+
+❌ NEVER provide code suggestions without first analyzing:
+- The task specifics in `docs/TODO_LIST.md`
+- Related architecture docs in `docs/`
+- Workflow requirements in `.github/`
+- Project overview in `README.md`
+
+### **REQUIRED**: Task ID Reference
+
+When implementing features or fixes:
+- Each PR MUST reference a task ID from `docs/TODO_LIST.md`
+- Implementation MUST align with task description
+- PR description MUST include `Closes #<ID>` or `Addresses #<ID>`
+- Copilot MUST verify task alignment before suggesting implementation
 
 ### **REQUIRED**: Core Documentation Knowledge
 

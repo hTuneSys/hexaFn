@@ -143,6 +143,27 @@ Branches like `main`, `release`, and `develop` are protected:
 
 ---
 
+## 🏛️ Architecture Documentation
+
+Understanding hexaFn's architecture is essential for effective development. Review these key documents:
+
+- [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Fundamental hexagonal architecture principles
+- [`RUST_PORTS_ADAPTERS.md`](RUST_PORTS_ADAPTERS.md) - Comprehensive component catalog organized by architectural layers
+- [`DATA_FLOW_EXAMPLE.md`](DATA_FLOW_EXAMPLE.md) - High-level data flow diagram across all modules
+- [`DATA_FLOW_DETAIL_EXAMPLE.md`](DATA_FLOW_DETAIL_EXAMPLE.md) - Detailed component interactions with interfaces and methods
+
+These documents explain how components interact across the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) following clean hexagonal architecture patterns.
+
+When developing a new feature:
+1. Identify which module and layer your code belongs to using `RUST_PORTS_ADAPTERS.md`
+2. Understand how data flows through the system with `DATA_FLOW_EXAMPLE.md`
+3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL_EXAMPLE.md`
+4. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
+
+Maintaining architectural integrity is critical - all PRs will be reviewed for compliance with these patterns.
+
+---
+
 ## 📚 Documentation & Contributions
 
 All contributors must follow the documentation style and structure:
