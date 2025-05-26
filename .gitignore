@@ -11,6 +11,7 @@
 # VSCode settings
 .vscode/
 hexaFn.code-workspace
+/work_area/
 
 # Node modules
 node_modules/
