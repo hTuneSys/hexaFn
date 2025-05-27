@@ -369,17 +369,17 @@ ALL PRs MUST pass these checks:
 
 ALL code changes MUST pass these automated workflows:
 
-- **Auto Assign**: [`auto-assign.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/auto-assign.yml) - Automatic PR assignment
-- **Branch Name Check**: [`branch-name-check.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/branch-name-check.yml) - Semantic branch validation
-- **CI**: [`ci.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/ci.yml) - Continuous Integration and Deployment
-- **Commit Lint**: [`commitlint.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/commitlint.yml) - Conventional commits check
-- **Auto Labeling**: [`labeler.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/labeler.yml) - Automatic label assignment
-- **Main Pr Protection**: [`main-pr-protect.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/main-pr-protect.yml) - Main PR protection
-- **Pr Title Check**: [`pr-title-check.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/pr-title-check.yml) - PR title validation
-- **Release Pr Protection**: [`release-pr-protect.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/release-pr-protect.yml) - Release PR protection
-- **Release**: [`release.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/release.yml) - Release workflow
-- **Reuse Compliance**: [`reuse-lint.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/reuse-lint.yml) - REUSE compliance check
-- **Stale Management**: [`stale.yml`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/stale.yml) - Issue/PR lifecycle management
+- **Auto Assign**: [`auto-assign.yml`](./workflows/auto-assign.yml) - Automatic PR assignment
+- **Branch Name Check**: [`branch-name-check.yml`](./workflows/branch-name-check.yml) - Semantic branch validation
+- **CI**: [`ci.yml`](./workflows/ci.yml) - Continuous Integration and Deployment
+- **Commit Lint**: [`commitlint.yml`](./workflows/commitlint.yml) - Conventional commits check
+- **Auto Labeling**: [`labeler.yml`](./workflows/labeler.yml) - Automatic label assignment
+- **Main Pr Protection**: [`main-pr-protect.yml`](./workflows/main-pr-protect.yml) - Main PR protection
+- **Pr Title Check**: [`pr-title-check.yml`](./workflows/pr-title-check.yml) - PR title validation
+- **Release Pr Protection**: [`release-pr-protect.yml`](./workflows/release-pr-protect.yml) - Release PR protection
+- **Release**: [`release.yml`](./workflows/release.yml) - Release workflow
+- **Reuse Compliance**: [`reuse-lint.yml`](./workflows/reuse-lint.yml) - REUSE compliance check
+- **Stale Management**: [`stale.yml`](./workflows/stale.yml) - Issue/PR lifecycle management
 
 ---
 
@@ -468,63 +468,63 @@ GitHub Copilot MUST be familiar with and reference these documentation files whe
 
 #### **Critical Architecture Documents**
 
-- [`docs/HEXAGONAL_ARCHITECTURE_GUIDE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/HEXAGONAL_ARCHITECTURE_GUIDE.md) - **MANDATORY** for all architectural decisions
-- [`docs/ARCHITECTURE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/ARCHITECTURE.md) - **MANDATORY** System design principles and patterns
-- [`docs/PROJECT_STRUCTURE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/PROJECT_STRUCTURE.md) - **MANDATORY** Workspace organization rules
-- [`docs/DATA_FLOW_EXAMPLE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/DATA_FLOW_EXAMPLE.md) - **MANDATORY** Data flow patterns
-- [`docs/DATA_FLOW_DETAIL_EXAMPLE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/DATA_FLOW_DETAIL_EXAMPLE.md) - **MANDATORY** Detailed component architecture
-- [`README.md`](https://github.com/hTuneSys/hexaFn/blob/develop/README.md) - **MANDATORY** Project overview and 6F Lifecycle Flow
+- [`docs/HEXAGONAL_ARCHITECTURE_GUIDE.md`](../docs/HEXAGONAL_ARCHITECTURE_GUIDE.md) - **MANDATORY** for all architectural decisions
+- [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) - **MANDATORY** System design principles and patterns
+- [`docs/PROJECT_STRUCTURE.md`](../docs/PROJECT_STRUCTURE.md) - **MANDATORY** Workspace organization rules
+- [`docs/DATA_FLOW_EXAMPLE.md`](../docs/DATA_FLOW_EXAMPLE.md) - **MANDATORY** Data flow patterns
+- [`docs/DATA_FLOW_DETAIL_EXAMPLE.md`](../docs/DATA_FLOW_DETAIL_EXAMPLE.md) - **MANDATORY** Detailed component architecture
+- [`README.md`](../README.md) - **MANDATORY** Project overview and 6F Lifecycle Flow
 
 #### **Development Workflow Documents**
 
-- [`docs/DEVELOPMENT_GUIDE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/DEVELOPMENT_GUIDE.md) - **MANDATORY** for development setup
-- [`docs/BRANCH_STRATEGY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/BRANCH_STRATEGY.md) - **MANDATORY** for branch naming and workflow
-- [`docs/COMMIT_STRATEGY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/COMMIT_STRATEGY.md) - **MANDATORY** for commit conventions
-- [`docs/PR_STRATEGY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/PR_STRATEGY.md) - **MANDATORY** for pull request process
-- [`docs/LABELLING_STRATEGY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/LABELLING_STRATEGY.md) - **MANDATORY** for issue/PR labeling
+- [`docs/DEVELOPMENT_GUIDE.md`](../docs/DEVELOPMENT_GUIDE.md) - **MANDATORY** for development setup
+- [`docs/BRANCH_STRATEGY.md`](../docs/BRANCH_STRATEGY.md) - **MANDATORY** for branch naming and workflow
+- [`docs/COMMIT_STRATEGY.md`](../docs/COMMIT_STRATEGY.md) - **MANDATORY** for commit conventions
+- [`docs/PR_STRATEGY.md`](../docs/PR_STRATEGY.md) - **MANDATORY** for pull request process
+- [`docs/LABELLING_STRATEGY.md`](../docs/LABELLING_STRATEGY.md) - **MANDATORY** for issue/PR labeling
 
 #### **Quality & Standards Documents**
 
-- [`docs/STYLE_GUIDE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/STYLE_GUIDE.md) - **MANDATORY** for code formatting and style
-- [`docs/CONTRIBUTING.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/CONTRIBUTING.md) - **MANDATORY** for contribution guidelines
-- [`docs/GETTING_STARTED.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/GETTING_STARTED.md) - **MANDATORY** New developer onboarding
-- [`docs/RUST_PORTS_ADAPTERS_EXAMPLE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/RUST_PORTS_ADAPTERS_EXAMPLE.md) - **MANDATORY** Rust implementation patterns
+- [`docs/STYLE_GUIDE.md`](../docs/STYLE_GUIDE.md) - **MANDATORY** for code formatting and style
+- [`docs/CONTRIBUTING.md`](../docs/CONTRIBUTING.md) - **MANDATORY** for contribution guidelines
+- [`docs/GETTING_STARTED.md`](../docs/GETTING_STARTED.md) - **MANDATORY** New developer onboarding
+- [`docs/RUST_PORTS_ADAPTERS_EXAMPLE.md`](../docs/RUST_PORTS_ADAPTERS_EXAMPLE.md) - **MANDATORY** Rust implementation patterns
 
 #### **GitHub Configuration Files**
 
-- [`.github/PULL_REQUEST_TEMPLATE.md`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/PULL_REQUEST_TEMPLATE.md) - **MANDATORY** PR template structure
-- [`.github/ISSUE_TEMPLATE/`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/ISSUE_TEMPLATE/) - **MANDATORY** issue template formats
-- [`.github/workflows/`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/workflows/) - **MANDATORY** CI/CD pipeline knowledge
-- [`.github/CODEOWNERS`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/CODEOWNERS) - **MANDATORY** Code ownership and review requirements
+- [`.github/PULL_REQUEST_TEMPLATE.md`](./PULL_REQUEST_TEMPLATE.md) - **MANDATORY** PR template structure
+- [`.github/ISSUE_TEMPLATE/`](./ISSUE_TEMPLATE/) - **MANDATORY** issue template formats
+- [`.github/workflows/`](./workflows/) - **MANDATORY** CI/CD pipeline knowledge
+- [`.github/CODEOWNERS`](./CODEOWNERS) - **MANDATORY** Code ownership and review requirements
 
 #### **Project Management Documents**
 
-- [`docs/ROADMAP.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/ROADMAP.md) - **MANDATORY** Project direction and milestones
-- [`docs/MILESTONES.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/MILESTONES.md) - **MANDATORY** Specific milestone definitions
-- [`docs/USE_CASES.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/USE_CASES.md) - **MANDATORY** Business context and scenarios
-- [`docs/FAQ.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/FAQ.md) - **MANDATORY** Common questions and solutions
-- [`docs/PROJECT_BOARD.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/PROJECT_BOARD.md) - **MANDATORY** Project management structure
+- [`docs/ROADMAP.md`](../docs/ROADMAP.md) - **MANDATORY** Project direction and milestones
+- [`docs/MILESTONES.md`](../docs/MILESTONES.md) - **MANDATORY** Specific milestone definitions
+- [`docs/USE_CASES.md`](../docs/USE_CASES.md) - **MANDATORY** Business context and scenarios
+- [`docs/FAQ.md`](../docs/FAQ.md) - **MANDATORY** Common questions and solutions
+- [`docs/PROJECT_BOARD.md`](../docs/PROJECT_BOARD.md) - **MANDATORY** Project management structure
 
 #### **Configuration & Setup Documents**
 
-- [`docs/CONFIGURATION.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/CONFIGURATION.md) - **MANDATORY** for environment setup
-- [`Cargo.toml`](https://github.com/hTuneSys/hexaFn/blob/develop/Cargo.toml) - **MANDATORY** workspace dependencies
-- [`REUSE.toml`](https://github.com/hTuneSys/hexaFn/blob/develop/REUSE.toml) - **MANDATORY** licensing compliance
-- [`package.json`](https://github.com/hTuneSys/hexaFn/blob/develop/package.json) - **MANDATORY** Node.js tooling dependencies
+- [`docs/CONFIGURATION.md`](../docs/CONFIGURATION.md) - **MANDATORY** for environment setup
+- [`Cargo.toml`](../Cargo.toml) - **MANDATORY** workspace dependencies
+- [`REUSE.toml`](../REUSE.toml) - **MANDATORY** licensing compliance
+- [`package.json`](../package.json) - **MANDATORY** Node.js tooling dependencies
 
 #### **Compliance & Legal Documents**
 
-- [`docs/SECURITY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/SECURITY.md) - **MANDATORY** security policies
-- [`docs/CODE_OF_CONDUCT.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/CODE_OF_CONDUCT.md) - **MANDATORY** Community standards
-- [`LICENSE`](https://github.com/hTuneSys/hexaFn/blob/develop/LICENSE) - **MANDATORY** MIT license text
-- [`CHANGELOG.md`](https://github.com/hTuneSys/hexaFn/blob/develop/CHANGELOG.md) - **MANDATORY** Version history
+- [`docs/SECURITY.md`](../docs/SECURITY.md) - **MANDATORY** security policies
+- [`docs/CODE_OF_CONDUCT.md`](../docs/CODE_OF_CONDUCT.md) - **MANDATORY** Community standards
+- [`LICENSE`](../LICENSE) - **MANDATORY** MIT license text
+- [`CHANGELOG.md`](../CHANGELOG.md) - **MANDATORY** Version history
 
 #### **Community & Support Documents**
 
-- [`docs/COMMUNITY.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/COMMUNITY.md) - **MANDATORY** Community guidelines
-- [`docs/SUPPORT.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/SUPPORT.md) - **MANDATORY** Support procedures
-- [`docs/CONTACT.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/CONTACT.md) - **MANDATORY** Contact information
-- [`docs/BRANDING.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/BRANDING.md) - **MANDATORY** Brand identity guidelines
+- [`docs/COMMUNITY.md`](../docs/COMMUNITY.md) - **MANDATORY** Community guidelines
+- [`docs/SUPPORT.md`](../docs/SUPPORT.md) - **MANDATORY** Support procedures
+- [`docs/CONTACT.md`](../docs/CONTACT.md) - **MANDATORY** Contact information
+- [`docs/BRANDING.md`](../docs/BRANDING.md) - **MANDATORY** Brand identity guidelines
 
 ### **CRITICAL IMPORTANCE**: Documentation-First Engineering
 
