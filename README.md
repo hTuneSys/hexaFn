@@ -236,7 +236,7 @@ Please read:
 - [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md)
 - [`AI_CONTRIBUTION_GUIDE.md`](docs/AI_CONTRIBUTION_GUIDE.md)
 
-Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted) | [ai-friendly](https://github.com/hTuneSys/hexaFn/labels/ai-friendly)
+Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted)
 
 ---
 

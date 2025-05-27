@@ -432,7 +432,7 @@ ALL code changes MUST pass these automated workflows:
 
 #### **REQUIRED**: Project Knowledge Documents**
 
-- [`docs/TODO_LIST.md`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/TODO_LIST.md) - **MANDATORY** for task tracking and sprint planning
+- [`docs/TODO_LIST.md`](../docs/TODO_LIST.md) - **MANDATORY** for task tracking and sprint planning
 - All files under [`docs/`](https://github.com/hTuneSys/hexaFn/blob/develop/docs/) - **MANDATORY** for project context and architecture
 - All files under [`.github/`](https://github.com/hTuneSys/hexaFn/blob/develop/.github/) - **MANDATORY** for workflow and contribution guidelines
 - [`README.md`](https://github.com/hTuneSys/hexaFn/blob/develop/README.md) - **MANDATORY** for project overview and introduction
