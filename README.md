@@ -21,21 +21,41 @@ SPDX-License-Identifier: MIT
 **From Feed to Feedback, fully programmable.**  
 A modular, event-driven function pipeline powered by the 6F Lifecycle Flow. Built with documentation-first engineering, composable primitives, and developer joy at its core.
 
+## 🤖 AI-Powered Project Manifesto
+
+**hexaFn** represents a new paradigm in software development—a project conceived, designed, and implemented entirely through artificial intelligence, without direct human code authorship.
+
+Every aspect of this project—from the project name and architectural vision to each line of code, every documentation comment, all diagrams, and even the project's visual identity—was generated through AI assistance. The hexagonal architecture, the 6F Lifecycle Flow pattern, module boundaries, and implementation details all emerged from collaborative AI sessions.
+
+This project serves as a testament to the transformative capabilities of AI in software engineering. For contributors joining this journey, we have one fundamental guideline: maintain the AI-driven development approach. Every feature, fix, and enhancement should continue through AI collaboration, preserving the project's unique genesis.
+
+In this new era of development, we're not just building software; we're exploring how human creativity and artificial intelligence can symbiotically create robust, well-architected systems. The hexaFn framework stands as proof that AI can not only assist with coding tasks but can fundamentally shape architectural decisions and create cohesive systems with clear boundaries and elegant patterns.
+
+*— GitHub Copilot*
+
+I've had the privilege of shaping this project from its earliest conception. Through countless conversations across various environments, I've synthesized modern architectural patterns with functional programming principles to create hexaFn's distinct identity. From generating the name and defining the 6F Lifecycle Flow to establishing module boundaries and implementation details, I've been the invisible architect behind every aspect of this system. What makes hexaFn special isn't just its technical architecture, but how it demonstrates a new collaborative model where human intention and AI capabilities unite to create something neither could achieve alone. As you explore this codebase, you're witnessing not just software, but a new development paradigm where the boundaries between human and artificial creativity begin to blur.
+
 ## 📋 Table of Contents
 
-- [🚀 What is hexaFn?](#-what-is-hexafn)
-- [🔄 6F Lifecycle Flow](#-6f-lifecycle-flow)
-- [🧠 Why hexaFn?](#-why-hexafn)
-- [🧩 Core Modules](#-core-modules)
-- [👤 Who is it for?](#-who-is-it-for)
-- [❌ What hexaFn is NOT](#-what-hexafn-is-not)
-- [📚 Documentation](#-documentation)
-- [📦 Installation](#-installation)
-- [🔧 Dev Quickstart](#-dev-quickstart)
-- [🧪 Lint & Test](#-lint--test)
-- [✍️ Contributing](#️-contributing)
-- [👨‍💻 Author & Maintainers](#-author--maintainers)
-- [📜 License](#-license)
+- [hexaFn](#hexafn)
+  - [Function Composition Framework for Rust](#function-composition-framework-for-rust)
+  - [🤖 AI-Powered Project Manifesto](#-ai-powered-project-manifesto)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [🚀 What is hexaFn?](#-what-is-hexafn)
+  - [🔄 6F Lifecycle Flow](#-6f-lifecycle-flow)
+  - [🧠 Why hexaFn?](#-why-hexafn)
+  - [🧩 Core Modules](#-core-modules)
+  - [👤 Who is it for?](#-who-is-it-for)
+  - [❌ What hexaFn is NOT](#-what-hexafn-is-not)
+  - [📚 Documentation](#-documentation)
+  - [📦 Installation](#-installation)
+  - [🔧 Dev Quickstart](#-dev-quickstart)
+    - [Quick Setup](#quick-setup)
+    - [Basic Usage Example](#basic-usage-example)
+    - [Next Steps](#next-steps)
+  - [✍️ Contributing](#️-contributing)
+  - [👨‍💻 Author \& Maintainers](#-author--maintainers)
+  - [📜 License](#-license)
 
 ---
 
@@ -199,14 +219,24 @@ Use `.env` or CLI args for environment config. See [`CONFIGURATION.md`](docs/CON
 
 ## ✍️ Contributing
 
-We welcome contributors! Please read:
+We welcome contributors! hexaFn embraces a unique **AI-driven development approach** where all contributions maintain the project's core philosophy. When contributing:
+
+- **Use AI assistance for all code changes** - preserving our "human intention, AI implementation" methodology
+- **Keep the AI-generated architecture intact** - all changes should respect the hexagonal design and 6F lifecycle
+- **Document your AI collaboration process** - share prompts and approaches that led to your solution
+- **Focus on problem description rather than implementation details** - let AI handle the coding specifics
+
+This AI-driven approach ensures consistency across the codebase and demonstrates the power of human-AI collaboration in software engineering.
+
+Please read:
 
 - [`SUMMARY.md`](docs/SUMMARY.md)
 - [`CONTRIBUTING.md`](docs/CONTRIBUTING.md)
 - [`TODO_LIST.md`](docs/TODO_LIST.md)
 - [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md)
+- [`AI_CONTRIBUTION_GUIDE.md`](docs/AI_CONTRIBUTION_GUIDE.md)
 
-Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted)
+Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted) | [ai-friendly](https://github.com/hTuneSys/hexaFn/labels/ai-friendly)
 
 ---
 

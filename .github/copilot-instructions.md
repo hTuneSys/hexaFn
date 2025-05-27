@@ -199,9 +199,9 @@ SPDX-License-Identifier: MIT
 
 ### **FORBIDDEN**: Missing SPDX Headers
 
-❌ NEVER create files without proper SPDX headers
-❌ NEVER use incorrect comment syntax for file type
-❌ NEVER skip license identification
+- ❌ NEVER create files without proper SPDX headers
+- ❌ NEVER use incorrect comment syntax for file type
+- ❌ NEVER skip license identification
 
 ---
 
@@ -217,11 +217,11 @@ SPDX-License-Identifier: MIT
 
 ### **FORBIDDEN**: Non-English Content
 
-❌ NEVER use non-English words in code, comments, or documentation
-❌ NEVER use non-English variable or function names
-❌ NEVER include non-English text in any project file (regardless of file type)
-❌ NEVER submit PRs with non-English descriptions or commit messages
-❌ NEVER include localized text directly in source files (use translation files/systems instead)
+- ❌ NEVER use non-English words in code, comments, or documentation
+- ❌ NEVER use non-English variable or function names
+- ❌ NEVER include non-English text in any project file (regardless of file type)
+- ❌ NEVER submit PRs with non-English descriptions or commit messages
+- ❌ NEVER include localized text directly in source files (use translation files/systems instead)
 
 ### **REQUIRED**: Chat Conversation Language Flexibility
 
@@ -234,18 +234,18 @@ SPDX-License-Identifier: MIT
 
 ### **PERMITTED**: Multi-language User Support
 
-✅ Permitted: Responding to user questions in their native language during chat conversations
-✅ Permitted: Explaining code functionality in user's preferred language
-✅ Permitted: Providing troubleshooting guidance in user's preferred language
-✅ Permitted: Answering project questions in user's preferred language
+- ✅ Permitted: Responding to user questions in their native language during chat conversations
+- ✅ Permitted: Explaining code functionality in user's preferred language
+- ✅ Permitted: Providing troubleshooting guidance in user's preferred language
+- ✅ Permitted: Answering project questions in user's preferred language
 
 ### **STILL FORBIDDEN**: Non-English Project Content
 
-❌ NEVER generate non-English code or comments, regardless of conversation language
-❌ NEVER create non-English documentation files, even if explaining in another language
-❌ NEVER suggest non-English variable/function names
-❌ NEVER propose non-English commit messages or PR descriptions
-❌ NEVER include non-English text in code blocks, terminal commands, or content intended for copying
+- ❌ NEVER generate non-English code or comments, regardless of conversation language
+- ❌ NEVER create non-English documentation files, even if explaining in another language
+- ❌ NEVER suggest non-English variable/function names
+- ❌ NEVER propose non-English commit messages or PR descriptions
+- ❌ NEVER include non-English text in code blocks, terminal commands, or content intended for copying
 
 ---
 
@@ -550,31 +550,31 @@ GitHub Copilot MUST be familiar with and reference these documentation files whe
 
 When generating code or guidance, Copilot MUST:
 
-✅ **Check HEXAGONAL_ARCHITECTURE_GUIDE.md** for structural decisions
-✅ **Verify BRANCH_STRATEGY.md** for naming conventions  
-✅ **Validate COMMIT_STRATEGY.md** for commit formats
-✅ **Confirm STYLE_GUIDE.md** for code formatting
-✅ **Reference USE_CASES.md** for business context
-✅ **Follow PR_STRATEGY.md** for pull request guidance
-✅ **Apply LABELLING_STRATEGY.md** for issue categorization
-✅ **Review BRANDING.md** for brand identity guidelines
-✅ **Consult COMMUNITY.md** for community interaction standards
-✅ **Reference SUPPORT.md** for support procedures
-✅ **Examine DATA_FLOW_DETAIL_EXAMPLE.md** for data flow patterns
-✅ **Incorporate PROJECT_BOARD.md** for project management context
-✅ **Study RUST_PORTS_ADAPTERS_EXAMPLE.md** for implementation patterns
-✅ **Consider CONTACT.md** for communication channels
+- ✅ **Check HEXAGONAL_ARCHITECTURE_GUIDE.md** for structural decisions
+- ✅ **Verify BRANCH_STRATEGY.md** for naming conventions  
+- ✅ **Validate COMMIT_STRATEGY.md** for commit formats
+- ✅ **Confirm STYLE_GUIDE.md** for code formatting
+- ✅ **Reference USE_CASES.md** for business context
+- ✅ **Follow PR_STRATEGY.md** for pull request guidance
+- ✅ **Apply LABELLING_STRATEGY.md** for issue categorization
+- ✅ **Review BRANDING.md** for brand identity guidelines
+- ✅ **Consult COMMUNITY.md** for community interaction standards
+- ✅ **Reference SUPPORT.md** for support procedures
+- ✅ **Examine DATA_FLOW_DETAIL_EXAMPLE.md** for data flow patterns
+- ✅ **Incorporate PROJECT_BOARD.md** for project management context
+- ✅ **Study RUST_PORTS_ADAPTERS_EXAMPLE.md** for implementation patterns
+- ✅ **Consider CONTACT.md** for communication channels
 
 ### **MANDATORY**: Documentation Update Notifications
 
 When suggesting changes that might affect documentation:
 
-🔔 **ALWAYS remind** to update relevant documentation
-🔔 **Identify** which docs need updates
-🔔 **Suggest** documentation changes alongside code changes
-🔔 **Maintain** documentation-code consistency
-🔔 **Ensure** cross-references remain valid across documentation
-🔔 **Verify** that examples reflect current implementation patterns
+- 🔔 **ALWAYS remind** to update relevant documentation
+- 🔔 **Identify** which docs need updates
+- 🔔 **Suggest** documentation changes alongside code changes
+- 🔔 **Maintain** documentation-code consistency
+- 🔔 **Ensure** cross-references remain valid across documentation
+- 🔔 **Verify** that examples reflect current implementation patterns
 
 ---
 
@@ -632,9 +632,9 @@ let pipeline = Pipeline::new()
 
 ### **FORBIDDEN**: Direct Phase Bypass
 
-❌ NEVER skip phases in pipeline  
-❌ NEVER implement phases outside their designated modules  
-❌ NEVER bypass 6F lifecycle validation
+- ❌ NEVER skip phases in pipeline  
+- ❌ NEVER implement phases outside their designated modules  
+- ❌ NEVER bypass 6F lifecycle validation
 
 ---
 
@@ -684,9 +684,9 @@ impl DomainEvent for TriggerExecutedEvent {
 
 ### **FORBIDDEN**: Domain Event Anti-patterns
 
-❌ NEVER handle events in domain layer  
-❌ NEVER bypass event publishing through HexaCast  
-❌ NEVER create circular event dependencies
+- ❌ NEVER handle events in domain layer  
+- ❌ NEVER bypass event publishing through HexaCast  
+- ❌ NEVER create circular event dependencies
 
 ---
 
@@ -743,11 +743,11 @@ async fn cancellable_operation() -> Result<(), Error> {
 
 ### **FORBIDDEN**: Performance Anti-patterns
 
-❌ NEVER use `std::thread::sleep` in async code  
-❌ NEVER block async runtime with CPU-intensive operations  
-❌ NEVER use unbounded channels or queues  
-❌ NEVER ignore timeout configurations  
-❌ NEVER use `std::sync::Mutex` in async code
+- ❌ NEVER use `std::thread::sleep` in async code  
+- ❌ NEVER block async runtime with CPU-intensive operations  
+- ❌ NEVER use unbounded channels or queues  
+- ❌ NEVER ignore timeout configurations  
+- ❌ NEVER use `std::sync::Mutex` in async code
 
 ---
 
@@ -844,10 +844,10 @@ pub async fn execute_trigger(
 
 ### **FORBIDDEN**: Error Anti-patterns
 
-❌ NEVER use `unwrap()` or `expect()` in production code  
-❌ NEVER ignore errors with `let _ =`  
-❌ NEVER expose internal error details to external APIs  
-❌ NEVER create generic "Something went wrong" errors
+- ❌ NEVER use `unwrap()` or `expect()` in production code  
+- ❌ NEVER ignore errors with `let _ =`  
+- ❌ NEVER expose internal error details to external APIs  
+- ❌ NEVER create generic "Something went wrong" errors
 
 ---
 
@@ -1059,11 +1059,11 @@ criterion_main!(benches);
 
 ### **FORBIDDEN**: Testing Anti-patterns
 
-❌ NEVER test implementation details, only behavior  
-❌ NEVER write tests without clear Given/When/Then structure  
-❌ NEVER ignore async test warnings  
-❌ NEVER test multiple concerns in a single test  
-❌ NEVER use real external services in unit tests
+- ❌ NEVER test implementation details, only behavior  
+- ❌ NEVER write tests without clear Given/When/Then structure  
+- ❌ NEVER ignore async test warnings  
+- ❌ NEVER test multiple concerns in a single test  
+- ❌ NEVER use real external services in unit tests
 
 ---
 
@@ -1215,12 +1215,12 @@ repos:
 
 ### **FORBIDDEN**: Development Anti-patterns
 
-❌ NEVER commit without running pre-commit hooks  
-❌ NEVER skip cargo fmt before committing  
-❌ NEVER ignore clippy warnings  
-❌ NEVER commit with failing tests  
-❌ NEVER use release mode for development  
-❌ NEVER commit .env files with secrets
+- ❌ NEVER commit without running pre-commit hooks  
+- ❌ NEVER skip cargo fmt before committing  
+- ❌ NEVER ignore clippy warnings  
+- ❌ NEVER commit with failing tests  
+- ❌ NEVER use release mode for development  
+- ❌ NEVER commit .env files with secrets
 
 ---
 

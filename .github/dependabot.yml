@@ -9,8 +9,8 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     labels:
-      - "type:dependency"
-      - "status:automated"
+      - "type:refactor"
+      - "status:needs-review"
     assignees:
       - "husamettinarabaci"
 
@@ -20,7 +20,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     labels:
-      - "type:dependency"
-      - "status:automated"
+      - "type:refactor"
+      - "status:needs-review"
     assignees:
       - "husamettinarabaci"
