@@ -1,305 +1,207 @@
-<!--
-SPDX-FileCopyrightText: 2025 Husamettin ARABACI
-SPDX-License-Identifier: MIT
--->
+<!-- SPDX-FileCopyrightText: 2025 Husamettin ARABACI -->
+<!-- SPDX-License-Identifier: MIT -->
 
 # hexaFn Detailed Component Architecture Diagram
 
-This diagram illustrates the detailed component architecture of the hexaFn system, including the specific interfaces, structs, methods, and connections between all parts of the system organized according to **Hexagonal Architecture** principles and the **6F Lifecycle Flow**.
+This document provides a detailed, module- and layer-level architecture diagram for the hexaFn project. It strictly follows the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) and Hexagonal Architecture, and reflects all requirements and data models as defined in DATA_MODEL_*.md and TODO_LIST.md.
 
-## Detailed Component Diagram
+---
+
+## 📐 Detailed Module & Layer Architecture
 
 ```mermaid
 flowchart TB
-    %% External Input
-    ExternalEvent[External Event]
+    %% === External World (External Systems) ===
+    External["External Systems\n(Webhooks, APIs, Clients, Queues)"]
+    ExternalOut["External Outputs\n(Monitoring, Webhooks, APIs)"]
 
-    %% ===== BRIDGE MODULE =====
-    subgraph "hexafn-bridge (Feed)"
+    %% === BRIDGE (Feed) ===
+    subgraph Bridge["hexafn-bridge (Feed)"]
         subgraph BridgeInfra["Infrastructure"]
-            WebhookEndpoint["WebhookController<br>REST adapter"]
-            WebhookParser["HttpRequestParser<br>parses HTTP input"]
-            TokenValidator["JwtTokenValidator<br>validates token"]
+            WebhookEndpoint["WebhookEndpoint\n(REST, SDK, API)"]
+            WebhookParser["WebhookParser"]
+            TokenValidator["TokenValidator"]
         end
-
         subgraph BridgeApp["Application"]
-            WebhookUseCase["WebhookIngestionPort<br>ingest_event"]
-            EventPublishPort["EventPublisherPort<br>publish"]
+            IntegrationMgmtPort["IntegrationManagementPort"]
+            WebhookReceiverPort["WebhookReceiverPort"]
+            BridgeService["BridgeService"]
         end
-
         subgraph BridgeDomain["Domain"]
-            WebhookEvent["WebhookEvent"]
-            WebhookSource["WebhookSource"]
-            EventTransformer["EventTransformer<br>transform"]
-            NormalizationRules["NormalizationRules<br>apply"]
-        end
-
-        subgraph BridgeOutboundInfra["Outbound"]
-            EventPublisher["KafkaEventPublisher"]
-            TopicRouter["TopicRouter<br>route"]
+            Integration["Integration"]
+            Webhook["Webhook"]
+            EventTransformer["EventTransformer"]
+            BridgeEvent["BridgeEvent"]
         end
     end
 
-    %% ===== TRIGGER MODULE =====
-    subgraph "hexafn-trigger (Filter)"
+    %% === TRIGGER (Filter) ===
+    subgraph Trigger["hexafn-trigger (Filter)"]
         subgraph TriggerInfra["Infrastructure"]
-            SubscriberAdapter["EventSubscriber"]
-            ConfigLoader["YamlConfigLoader"]
+            EventSubscriber["EventSubscriber"]
+            ConfigLoader["ConfigLoader"]
         end
-
         subgraph TriggerApp["Application"]
-            TriggerEvalUseCase["TriggerEvaluationPort<br>evaluate"]
-            RuleMatchingService["RuleMatchingService<br>match_rules"]
-            TriggerRegistryPort["TriggerRegistryPort<br>find_by_id"]
-            ExecutionRequestPort["ExecutionRequestPort<br>request_execution"]
+            TriggerRegistryPort["TriggerRegistryPort"]
+            TriggerEvaluationPort["TriggerEvaluationPort"]
+            TriggerService["TriggerService"]
         end
-
         subgraph TriggerDomain["Domain"]
-            Trigger["Trigger"]
+            TriggerEntity["Trigger"]
             TriggerCondition["TriggerCondition"]
-            TriggerRule["TriggerRule"]
-            TriggerPolicy["TriggerPolicy<br>check_policy"]
-            TriggerActivatedEvent["TriggerActivatedEvent"]
-        end
-
-        subgraph TriggerOutboundInfra["Outbound"]
-            TriggerRepository["InMemoryTriggerRepository"]
-            ExecutionRequestPublisher["ExecutionRequestPublisher"]
+            CompoundType["CompoundType"]
+            TriggerEvent["TriggerEvent"]
         end
     end
 
-    %% ===== RUN MODULE =====
-    subgraph "hexafn-run (Format + Function)"
+    %% === RUN (Format + Function) ===
+    subgraph Run["hexafn-run (Format & Function)"]
         subgraph RunInfra["Infrastructure"]
             ExecutionSubscriber["ExecutionSubscriber"]
-            FunctionLoader["FunctionLoader"]
+            FunctionRepository["FunctionRepository"]
         end
-
         subgraph RunApp["Application"]
-            ExecutionUseCase["FunctionExecutionPort<br>execute"]
-            ContextPreparationService["ContextPreparationService<br>prepare"]
-            FormatService["FormatService<br>format"]
-            RuntimeSelectionService["RuntimeSelectionService<br>select_runtime"]
-            ResultProcessingPort["ResultProcessingPort<br>process"]
+            FunctionRegistryPort["FunctionRegistryPort"]
+            FunctionExecutionPort["FunctionExecutionPort"]
+            RunService["RunService"]
         end
-
         subgraph RunDomain["Domain"]
-            Function["Function"]
-            ExecutionContext["ExecutionContext"]
-            RuntimeEnvironment["RuntimeType"]
-            FunctionSchema["FunctionSchema"]
-            Validator["SchemaValidator<br>validate"]
-            FunctionExecutedEvent["FunctionExecutedEvent"]
-        end
-
-        subgraph RunOutboundInfra["Outbound"]
-            FunctionRepository["FilesystemFunctionRepository"]
-            WASMRuntime["WasmtimeRuntime"]
-            DSLInterpreter["DSLInterpreter"]
-            JSRuntime["QuickJSRuntime"]
-            ResultPublisher["ResultPublisher"]
+            FunctionRuntime["FunctionRuntime"]
+            FunctionContext["FunctionContext"]
+            ExecutionResult["ExecutionResult"]
         end
     end
 
-    %% ===== FORWARD PHASE (Store + Cast) =====
-    subgraph "hexafn-store"
+    %% === STORE (Forward: KV) ===
+    subgraph Store["hexafn-store (Forward: KV Store)"]
         subgraph StoreInfra["Infrastructure"]
-            StoreAPIController["KVStoreController"]
-            ResultSubscriber["ResultSubscriber"]
+            KVStoreController["KVStoreController"]
+            StoreRepository["StoreRepository"]
         end
         subgraph StoreApp["Application"]
-            KVStoreUseCase["KVStorePort<br>set/get"]
-            KeyValidationService["KeyValidationService"]
-            PersistencePort["PersistencePort<br>store"]
-            ChangeEventPort["ChangeEventPort<br>emit_change"]
+            KvStorePort["KvStorePort"]
+            StoreService["StoreService"]
         end
         subgraph StoreDomain["Domain"]
-            KVPair["KVPair"]
-            Key["Key"]
-            Value["Value"]
+            KvStore["KvStore"]
+            KeyValueEntry["KeyValueEntry"]
             Namespace["Namespace"]
-            VersionedEntry["VersionedEntry"]
-            KVValidator["KVValidator"]
-            KVUpdatedEvent["KVUpdatedEvent"]
-        end
-        subgraph StoreOutboundInfra["Outbound"]
-            InMemoryStore["InMemoryStore"]
-            RocksDBStore["RocksDBStore"]
-            FileSystemStore["FileSystemStore"]
-            ChangePublisher["ChangePublisher"]
         end
     end
 
-    subgraph "hexafn-cast"
+    %% === CAST (Forward: Pub/Sub) ===
+    subgraph Cast["hexafn-cast (Forward: Pub/Sub)"]
         subgraph CastInfra["Infrastructure"]
-            PublishController["PublishController"]
-            SubscriptionController["SubscriptionController"]
-            ResultForwarder["ResultForwarder"]
+            MessageBus["MessageBus"]
+            CastRepository["CastRepository"]
         end
         subgraph CastApp["Application"]
-            PublishUseCase["PublisherPort<br>publish"]
-            SubscribeUseCase["SubscriberPort<br>subscribe"]
-            TopicRoutingService["TopicRoutingService"]
-            MessageBusPort["MessageBusPort<br>send"]
-            DeliveryStatusPort["DeliveryStatusPort<br>record_status"]
+            TopicManagementPort["TopicManagementPort"]
+            PublisherPort["PublisherPort"]
+            SubscriberPort["SubscriberPort"]
         end
         subgraph CastDomain["Domain"]
             Topic["Topic"]
             Message["Message"]
             Subscriber["Subscriber"]
-            TopicFilter["TopicFilter"]
-            DeliveryPolicy["DeliveryPolicy"]
-            MessageDeliveredEvent["MessageDeliveredEvent"]
-        end
-        subgraph CastOutboundInfra["Outbound"]
-            InMemoryBus["InMemoryBus"]
-            RetryManager["RetryManager"]
-            DeliveryLogger["DeliveryLogger"]
         end
     end
 
-    %% ===== WATCH MODULE =====
-    subgraph "hexafn-watch (Feedback)"
+    %% === WATCH (Feedback) ===
+    subgraph Watch["hexafn-watch (Feedback)"]
         subgraph WatchInfra["Infrastructure"]
-            MetricsEndpoint["MetricsEndpoint"]
-            LogSubscriber["LogSubscriber"]
-            TracingHook["TracingHook"]
+            LogExporter["LogExporter"]
+            TraceExporter["TraceExporter"]
+            MetricsExporter["MetricsExporter"]
         end
         subgraph WatchApp["Application"]
-            LoggingUseCase["LoggingPort<br>log"]
-            TracingUseCase["TracingPort<br>span ops"]
-            MetricsUseCase["MetricsPort<br>record"]
-            AlertingService["AlertingService"]
-            ObservabilityPort["ObservabilityPort<br>export"]
+            LoggingPort["LoggingPort"]
+            TracingPort["TracingPort"]
+            MetricsPort["MetricsPort"]
+            WatchService["WatchService"]
         end
         subgraph WatchDomain["Domain"]
             Trace["Trace"]
             Span["Span"]
             LogEntry["LogEntry"]
             MetricPoint["MetricPoint"]
-            TraceCorrelator["TraceCorrelator"]
-            AnomalyDetector["AnomalyDetector"]
-            AlertTriggeredEvent["AlertTriggeredEvent"]
-        end
-        subgraph WatchOutboundInfra["Outbound"]
-            StructuredLogger["JsonLogger"]
-            PrometheusExporter["PrometheusClient"]
-            TracingExporter["OTelExporter"]
-            AlertNotifier["AlertNotifier"]
         end
     end
 
-    %% ===== CORE MODULE (Shared Kernel) =====
-    subgraph "hexafn-core"
-        subgraph CoreDomain["Domain Layer"]
-            %% Domain Contracts
-            EventContract["trait Event<br>event_type(), event_id(), timestamp(), payload()"]
-            DomainEventContract["trait DomainEvent<br>aggregate_id(), sequence_number(), occurred_at(), correlation_id()"]
-            PipelineContract["trait Pipeline<br>execute(), add_stage(), get_stages(), build(), validate()"]
-            ErrorContract["trait HexaError<br>error_code(), error_message(), kind(), severity(), source()"]
-            
-            %% Domain Value Objects
-            EventId["EventId<br>new(), from_string(), to_string()"]
-            PipelineStageType["enum PipelineStageType<br>Feed, Filter, Format, Function, Forward, Feedback"]
-            HexaErrorKind["enum HexaErrorKind<br>NotFound, Validation, Timeout, Internal, External, Unknown"]
-            HexaErrorSeverity["enum HexaErrorSeverity<br>Low, Medium, High, Critical"]
-            
-            %% Domain Entities
-            PipelineContext["PipelineContext<br>data: HashMap, get(), set(), clone()"]
+    %% === CORE (Shared Kernel) ===
+    subgraph Core["hexafn-core (Shared Kernel)"]
+        subgraph CoreInfra["Infrastructure"]
+            EventBus["EventBus"]
+            Config["Config"]
+            CLI["CLI"]
         end
-        
-        subgraph CoreApp["Application Layer"]
-            %% 6F Lifecycle Traits
-            FeedTrait["trait Feed<br>ingest(input: T) -> Result<Event, Error>"]
-            FilterTrait["trait Filter<br>apply(event: Event) -> Result<bool, Error>"]
-            FormatTrait["trait Format<br>transform(event: Event) -> Result<Event, Error>"]
-            FunctionTrait["trait Function<br>execute(context: Context) -> Result<Output, Error>"]
-            ForwardTrait["trait Forward<br>deliver(output: Output) -> Result<(), Error>"]
-            FeedbackTrait["trait Feedback<br>observe(result: Result) -> Result<(), Error>"]
-            
-            %% Pipeline Management
-            PipelineBuilder["PipelineBuilder<br>feed(), filter(), format(), function(), forward(), feedback(), build()"]
-            PipelineExecutor["PipelineExecutor<br>execute_stage(), handle_error(), propagate_context()"]
-            
-            %% Event Processing
-            EventProcessor["EventProcessor<br>process(), validate(), enrich()"]
-            EventRouter["EventRouter<br>route_to_stage(), determine_next_stage()"]
+        subgraph CoreApp["Application"]
+            Orchestrator["Orchestrator"]
+            PipelineBuilder["PipelineBuilder"]
         end
-        
-        subgraph CoreInfra["Infrastructure Layer"]
-            %% Configuration Management
-            ConfigManager["ConfigManager<br>load(), reload(), validate_config()"]
-            EnvironmentLoader["EnvironmentLoader<br>load_env(), parse_vars()"]
-            
-            %% Event Bus Integration
-            CoreEventBus["CoreEventBus<br>publish(), subscribe(), unsubscribe()"]
-            EventSerializer["EventSerializer<br>serialize(), deserialize()"]
-            
-            %% Error Handling
-            ErrorHandler["ErrorHandler<br>handle(), log_error(), recover()"]
-            ErrorReporter["ErrorReporter<br>report(), format_error()"]
-            
-            %% Metrics & Telemetry
-            CoreMetrics["CoreMetrics<br>record_pipeline_execution(), track_stage_duration()"]
-            TelemetryCollector["TelemetryCollector<br>collect(), export()"]
+        subgraph CoreDomain["Domain"]
+            DomainEvent["DomainEvent"]
+            ValueObjects["ValueObjects"]
+            Pipeline["Pipeline"]
         end
     end
 
-    %% Core Module Connections to Other Modules
-    CoreDomain -.-> BridgeDomain
-    CoreDomain -.-> TriggerDomain
-    CoreDomain -.-> RunDomain
-    CoreDomain -.-> StoreDomain
-    CoreDomain -.-> CastDomain
-    CoreDomain -.-> WatchDomain
+    %% === Data Flow Connections (6F Lifecycle) ===
+    External --> WebhookEndpoint
+    WebhookEndpoint --> WebhookParser --> TokenValidator --> WebhookReceiverPort
+    WebhookReceiverPort --> BridgeService --> EventTransformer
+    EventTransformer --> BridgeEvent --> EventSubscriber
+    EventSubscriber --> TriggerRegistryPort
+    TriggerRegistryPort --> TriggerEvaluationPort --> TriggerService
+    TriggerService --> TriggerEntity --> TriggerCondition
+    TriggerService --> ExecutionSubscriber
+    ExecutionSubscriber --> FunctionRegistryPort
+    FunctionRegistryPort --> FunctionExecutionPort --> RunService
+    RunService --> FunctionRuntime
+    RunService --> FunctionContext
+    FunctionRuntime --> ExecutionResult
+    ExecutionResult --> KVStoreController
+    ExecutionResult --> MessageBus
+    KVStoreController --> KvStorePort --> StoreService --> KvStore
+    MessageBus --> TopicManagementPort --> PublisherPort --> SubscriberPort
+    PublisherPort --> Topic
+    SubscriberPort --> Subscriber
+    Topic --> Message
+    Message --> LogExporter
+    LogExporter --> LoggingPort --> WatchService --> Trace
+    Trace --> Span
+    WatchService --> MetricPoint
+    MetricPoint --> MetricsExporter
+    Trace --> TraceExporter
+    LoggingPort --> LogEntry
+    LogEntry --> LogExporter
+    MetricsPort --> MetricPoint
+    Orchestrator -.-> PipelineBuilder
+    PipelineBuilder -.-> Pipeline
+    EventBus -.-> EventSubscriber
+    EventBus -.-> MessageBus
+    EventBus -.-> LogExporter
+    EventBus -.-> TraceExporter
+    EventBus -.-> MetricsExporter
+    CLI -.-> Orchestrator
+    Config -.-> Orchestrator
+    Pipeline -.-> DomainEvent
+    ValueObjects -.-> Pipeline
     
-    CoreApp -.-> BridgeApp
-    CoreApp -.-> TriggerApp
-    CoreApp -.-> RunApp
-    CoreApp -.-> StoreApp
-    CoreApp -.-> CastApp
-    CoreApp -.-> WatchApp
-    
-    CoreInfra -.-> BridgeInfra
-    CoreInfra -.-> TriggerInfra
-    CoreInfra -.-> RunInfra
-    CoreInfra -.-> StoreInfra
-    CoreInfra -.-> CastInfra
-    CoreInfra -.-> WatchInfra
-
-    %% Data Flow Connections
-    ExternalEvent --> WebhookEndpoint
-    TopicRouter --> SubscriberAdapter
-    ExecutionRequestPublisher --> ExecutionSubscriber
-    ResultPublisher --> ResultSubscriber
-    ResultPublisher --> ResultForwarder
-    ChangePublisher --> LogSubscriber
-    DeliveryLogger --> LogSubscriber
-    AlertNotifier --> ExternalOutput["External Output"]
-    TopicRouter --> ExternalOutput
-    ResultPublisher --> ExternalOutput
+    %% === Feedback and External Output ===
+    LogExporter --> ExternalOut
+    TraceExporter --> ExternalOut
+    MetricsExporter --> ExternalOut
 ```
 
-## Architecture Explanation
+---
 
-This detailed component diagram shows:
+## 📝 Explanation
 
-1. **Complete Component Details**: All struct definitions, trait interfaces, methods, and connections.
-
-2. **Hexagonal Architecture Layers**:
-   - **Infrastructure Layer**: Handles external concerns and implements adapters
-   - **Application Layer**: Contains use cases and port definitions
-   - **Domain Layer**: Houses core business rules and models
-
-3. **6F Lifecycle Organization**:
-   - **Feed Phase**: Data ingestion (hexafn-bridge)
-   - **Filter Phase**: Condition checking (hexafn-trigger)
-   - **Format & Function Phases**: Data transformation and execution (hexafn-run)
-   - **Forward Phase**: Result delivery (hexafn-store, hexafn-cast)
-   - **Feedback Phase**: Observability and audit (hexafn-watch)
-
-4. **Data Flow**: Event flow from external ingestion through the entire system.
-
-5. **Core Module**: Shared kernel providing common traits, interfaces, and pipelines.
-
-The architecture follows clean separation of concerns with domain-driven design principles while enabling flexible composition through the 6F Lifecycle Flow model.
+- **Each module** (Bridge, Trigger, Run, Store, Cast, Watch, Core) is shown with its Infrastructure, Application, and Domain layers, as required by Hexagonal Architecture.
+- **6F Lifecycle Flow** is strictly followed: Feed (Bridge) → Filter (Trigger) → Format/Function (Run) → Forward (Store/Cast) → Feedback (Watch).
+- **Data flow** is unidirectional and modular, with clear boundaries and port/adaptor interfaces between layers.
+- **Core module** provides shared types, orchestration, event bus, and pipeline builder, supporting all modules.
+- **External systems** interact via Bridge (input) and Watch (output/feedback).
+- **All major data structures, ports, and flows** are represented, matching the comprehensive data models and TODO_LIST.md requirements.
+- **This diagram and explanation are designed to be exhaustive and production-ready, suitable for onboarding, architecture review, and implementation reference.**

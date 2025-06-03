@@ -75,6 +75,87 @@ classDiagram
         +new_policy RetentionPolicy
         +timestamp DateTime
     }
+    class CastAuditTrail {
+        +cast_id String
+        +events Vec~CastAuditEvent~
+    }
+    class CastLock {
+        +acquire(id: String) Result~_, HexaError~
+        +release(id: String) Result~_, HexaError~
+        +is_locked(id: String) bool
+    }
+    class CastDependencyGraph {
+        +add_dependency(from: String, to: String)
+        +remove_dependency(from: String, to: String)
+        +get_dependencies(id: String) Vec~String~
+    }
+    class CastRollbackPoint {
+        +cast_id String
+        +stage_index u32
+        +state serde_json::Value
+    }
+    class CastTag {
+        +name String
+        +color String
+    }
+    class CastAccessControl {
+        +cast_id String
+        +allowed_roles Vec~String~
+        +is_allowed(user: String) bool
+    }
+    class TopicPartitioning {
+        +topic String
+        +partitions u32
+    }
+    class TopicACL {
+        +topic String
+        +acl_rules Vec~AclRule~
+    }
+    class TopicVersioning {
+        +topic String
+        +version String
+    }
+    class TopicCompaction {
+        +topic String
+        +compaction_policy String
+    }
+    class TopicReplayWindow {
+        +topic String
+        +window_start DateTime
+        +window_end DateTime
+    }
+    class SubscriberGroup {
+        +group_id String
+        +subscribers Vec~Subscriber~
+    }
+    class SubscriberOffsetManagement {
+        +subscriber_id String
+        +offset u64
+    }
+    class SubscriberDeadLetterQueue {
+        +subscriber_id String
+        +dlq_messages Vec~Message~
+    }
+    class MessageEncryption {
+        +message_id String
+        +encryption_metadata HashMap~String, String~
+    }
+    class MessageCompression {
+        +message_id String
+        +compression_type String
+    }
+    class MessageOrderingGuarantee {
+        +topic String
+        +ordering_policy String
+    }
+    class MessageDeduplication {
+        +message_id String
+        +deduplication_id String
+    }
+    class MessageAuditTrail {
+        +message_id String
+        +delivery_history Vec~DeliveryStatus~
+    }
     Publisher --> Topic
     Subscriber --> Topic
     Subscriber --> Message
@@ -82,6 +163,14 @@ classDiagram
     MessageDeliveredEvent --> Message
     TopicCreatedEvent --> Topic
     TopicRetentionPolicyChangedEvent --> Topic
+    CastAuditTrail --> CastAuditEvent
+    CastDependencyGraph --> CastTag
+    CastRollbackPoint --> CastAuditTrail
+    CastAccessControl --> CastTag
+    SubscriberGroup --> Subscriber
+    SubscriberOffsetManagement --> Subscriber
+    SubscriberDeadLetterQueue --> Message
+    MessageAuditTrail --> DeliveryStatus
 ```
 
 ## Application Layer
@@ -141,6 +230,32 @@ classDiagram
     class CastValidator {
         +validate_topic(config: TopicConfig) Result~_, HexaError~
     }
+    class CastAuditService {
+        +record_event(cast_id: String, event: CastAuditEvent)
+        +get_audit_trail(cast_id: String) CastAuditTrail
+    }
+    class CastLockService {
+        +lock(cast_id: String) Result~_, HexaError~
+        +unlock(cast_id: String) Result~_, HexaError~
+        +is_locked(cast_id: String) bool
+    }
+    class CastDependencyService {
+        +resolve_dependencies(cast_id: String) Vec~String~
+    }
+    class CastRollbackService {
+        +create_rollback_point(cast_id: String, stage_index: u32)
+        +rollback_to_point(cast_id: String, point: CastRollbackPoint)
+    }
+    class CastTaggingService {
+        +add_tag(cast_id: String, tag: CastTag)
+        +remove_tag(cast_id: String, tag: CastTag)
+        +list_tags(cast_id: String) Vec~CastTag~
+    }
+    class CastAccessControlService {
+        +grant_access(cast_id: String, user: String)
+        +revoke_access(cast_id: String, user: String)
+        +check_access(cast_id: String, user: String) bool
+    }
     TopicManagementPort --> Topic
     PublisherPort --> Topic
     SubscriberPort --> Topic
@@ -149,6 +264,10 @@ classDiagram
     CastService --> SubscriberPort
     TopicConfigLoader --> TopicConfig
     CastValidator --> TopicConfig
+    CastAuditService --> CastAuditTrail
+    CastRollbackService --> CastRollbackPoint
+    CastTaggingService --> CastTag
+    CastAccessControlService --> CastTag
 ```
 
 ## Infrastructure Layer
@@ -192,12 +311,39 @@ classDiagram
         Kafka
         WebSocket
     }
+    class CastAuditRepository {
+        +save(trail: CastAuditTrail)
+        +load(cast_id: String) Option~CastAuditTrail~
+    }
+    class CastLockManager {
+        +acquire_lock(cast_id: String)
+        +release_lock(cast_id: String)
+        +is_locked(cast_id: String) bool
+    }
+    class CastDependencyAdapter {
+        +fetch_dependencies(cast_id: String) Vec~String~
+    }
+    class CastRollbackAdapter {
+        +save_point(point: CastRollbackPoint)
+        +load_points(cast_id: String) Vec~CastRollbackPoint~
+    }
+    class CastTagStore {
+        +add(cast_id: String, tag: CastTag)
+        +remove(cast_id: String, tag: CastTag)
+        +list(cast_id: String) Vec~CastTag~
+    }
+    class CastAccessControlAdapter {
+        +set_access(cast_id: String, user: String, allowed: bool)
+        +get_access(cast_id: String, user: String) bool
+    }
     CastRepository --> Topic
     CastRepository --> Subscriber
     CastEventBus --> MessageDeliveredEvent
     CastMapper --> CastDto
     CastMapper --> Message
     OutputForwarder --> OutputTarget
+    CastAuditRepository --> CastAuditTrail
+    CastRollbackAdapter --> CastRollbackPoint
+    CastTagStore --> CastTag
+    CastAccessControlAdapter --> CastTag
 ```
-
----

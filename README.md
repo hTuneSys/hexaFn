@@ -146,14 +146,14 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 
 Everything is documented under the `/docs/` folder. Start with:
 
-- [`GETTING_STARTED.md`](docs/GETTING_STARTED.md)
-- [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](docs/HEXAGONAL_ARCHITECTURE_GUIDE.md)
-- [`DEVELOPMENT_GUIDE.md`](docs/DEVELOPMENT_GUIDE.md)
-- [`USE_CASES.md`](docs/USE_CASES.md)
-- [`COMMIT_STRATEGY.md`](docs/COMMIT_STRATEGY.md)
-- [`PR_STRATEGY.md`](docs/PR_STRATEGY.md)
-- [`LABELLING_STRATEGY.md`](docs/LABELLING_STRATEGY.md)
-- [`ROADMAP.md`](docs/ROADMAP.md)
+- [GETTING_STARTED](docs/GETTING_STARTED.md)
+- [HEXAGONAL_ARCHITECTURE_GUIDE](docs/HEXAGONAL_ARCHITECTURE_GUIDE.md)
+- [DEVELOPMENT_GUIDE](docs/DEVELOPMENT_GUIDE.md)
+- [USE_CASES](docs/USE_CASES.md)
+- [COMMIT_STRATEGY](docs/COMMIT_STRATEGY.md)
+- [PR_STRATEGY](docs/PR_STRATEGY.md)
+- [LABELLING_STRATEGY](docs/LABELLING_STRATEGY.md)
+- [ROADMAP](docs/ROADMAP.md)
 
 Interactive web view at: [https://hexafn.com](https://hexafn.com)
 
@@ -211,7 +211,7 @@ pipeline.forward_to_store("user_sessions");
 pipeline.run().await?;
 ```
 
-Use `.env` or CLI args for environment config. See [`CONFIGURATION.md`](docs/CONFIGURATION.md).
+Use `.env` or CLI args for environment config. See [CONFIGURATION](docs/CONFIGURATION.md).
 
 ### Next Steps
 
@@ -235,11 +235,11 @@ This AI-driven approach ensures consistency across the codebase and demonstrates
 
 Please read:
 
-- [`SUMMARY.md`](docs/SUMMARY.md)
-- [`CONTRIBUTING.md`](docs/CONTRIBUTING.md)
-- [`TODO_LIST.md`](docs/TODO_LIST.md)
-- [`CODE_OF_CONDUCT.md`](docs/CODE_OF_CONDUCT.md)
-- [`AI_CONTRIBUTION_GUIDE.md`](docs/AI_CONTRIBUTION_GUIDE.md)
+- [SUMMARY](docs/SUMMARY.md)
+- [CONTRIBUTING](docs/CONTRIBUTING.md)
+- [TODO_LIST](docs/TODO_LIST.md)
+- [CODE_OF_CONDUCT](docs/CODE_OF_CONDUCT.md)
+- [AI_CONTRIBUTION_GUIDE](docs/AI_CONTRIBUTION_GUIDE.md)
 
 Good first issues: [help wanted](https://github.com/hTuneSys/hexaFn/labels/help%20wanted)
 

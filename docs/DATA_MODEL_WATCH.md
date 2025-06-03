@@ -55,6 +55,67 @@ classDiagram
         +timestamp DateTime
         +message String
     }
+    %% Additional missing domain structures from output.txt
+    class WatchAuditTrail {
+        +watch_id String
+        +events Vec~WatchAuditEvent~
+    }
+    class WatchLock {
+        +acquire(id: String) Result~_, HexaError~
+        +release(id: String) Result~_, HexaError~
+        +is_locked(id: String) bool
+    }
+    class WatchDependencyGraph {
+        +add_dependency(from: String, to: String)
+        +remove_dependency(from: String, to: String)
+        +get_dependencies(id: String) Vec~String~
+    }
+    class WatchRollbackPoint {
+        +watch_id String
+        +stage_index u32
+        +state serde_json::Value
+    }
+    class WatchTag {
+        +name String
+        +color String
+    }
+    class WatchAccessControl {
+        +watch_id String
+        +allowed_roles Vec~String~
+        +is_allowed(user: String) bool
+    }
+    class LogRedaction {
+        +redact(entry: LogEntry) LogEntry
+    }
+    class LogRetentionPolicy {
+        +max_age Duration
+        +max_size u64
+    }
+    class LogExporters {
+        +export(entry: LogEntry, target: String) Result~_, HexaError~
+    }
+    class TraceCorrelation {
+        +correlate(trace_ids: Vec~String~) Result~_, HexaError~
+    }
+    class TraceSamplingPolicy {
+        +sample(trace: Trace) bool
+    }
+    class AlertSuppression {
+        +suppress(alert_id: String) bool
+    }
+    class AlertEscalation {
+        +escalate(alert_id: String) void
+    }
+    class MetricsDownsampling {
+        +downsample(points: Vec~MetricPoint~) Vec~MetricPoint~
+    }
+    class MetricsCustomAggregator {
+        +aggregate(points: Vec~MetricPoint~) MetricPoint
+    }
+    class WatchAccessAudit {
+        +audit_id String
+        +access_events Vec~WatchAccessEvent~
+    }
     Trace --> Span
     LogEntry --> LogLevel
     MetricPoint --> LogEntry
@@ -107,6 +168,33 @@ classDiagram
         +GetTrace
         +GetMetrics
     }
+    %% Additional missing application structures from output.txt
+    class WatchAuditService {
+        +record_event(watch_id: String, event: WatchAuditEvent)
+        +get_audit_trail(watch_id: String) WatchAuditTrail
+    }
+    class WatchLockService {
+        +lock(watch_id: String) Result~_, HexaError~
+        +unlock(watch_id: String) Result~_, HexaError~
+        +is_locked(watch_id: String) bool
+    }
+    class WatchDependencyService {
+        +resolve_dependencies(watch_id: String) Vec~String~
+    }
+    class WatchRollbackService {
+        +create_rollback_point(watch_id: String, stage_index: u32)
+        +rollback_to_point(watch_id: String, point: WatchRollbackPoint)
+    }
+    class WatchTaggingService {
+        +add_tag(watch_id: String, tag: WatchTag)
+        +remove_tag(watch_id: String, tag: WatchTag)
+        +list_tags(watch_id: String) Vec~WatchTag~
+    }
+    class WatchAccessControlService {
+        +grant_access(watch_id: String, user: String)
+        +revoke_access(watch_id: String, user: String)
+        +check_access(watch_id: String, user: String) bool
+    }
     LoggingPort --> LogEntry
     TracingPort --> Trace
     MetricsPort --> MetricPoint
@@ -143,11 +231,35 @@ classDiagram
         +to_dto(entry: LogEntry) WatchDto
         +from_dto(dto: WatchDto) LogEntry
     }
+    %% Additional missing infrastructure structures from output.txt
+    class WatchAuditRepository {
+        +save(trail: WatchAuditTrail)
+        +load(watch_id: String) Option~WatchAuditTrail~
+    }
+    class WatchLockManager {
+        +acquire_lock(watch_id: String)
+        +release_lock(watch_id: String)
+        +is_locked(watch_id: String) bool
+    }
+    class WatchDependencyAdapter {
+        +fetch_dependencies(watch_id: String) Vec~String~
+    }
+    class WatchRollbackAdapter {
+        +save_point(point: WatchRollbackPoint)
+        +load_points(watch_id: String) Vec~WatchRollbackPoint~
+    }
+    class WatchTagStore {
+        +add(watch_id: String, tag: WatchTag)
+        +remove(watch_id: String, tag: WatchTag)
+        +list(watch_id: String) Vec~WatchTag~
+    }
+    class WatchAccessControlAdapter {
+        +set_access(watch_id: String, user: String, allowed: bool)
+        +get_access(watch_id: String, user: String) bool
+    }
     LogExporter --> LogEntry
     TraceExporter --> Trace
     MetricsExporter --> MetricPoint
     WatchMapper --> WatchDto
     WatchMapper --> LogEntry
 ```
-
----

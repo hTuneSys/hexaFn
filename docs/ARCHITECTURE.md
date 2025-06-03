@@ -105,7 +105,7 @@ All stages can independently be observed, tested, logged, and extended.
 
 ## 📦 File Structure (Planned)
 
-➡️ [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) – Directory structure and module breakdown
+➡️ [PROJECT_STRUCTURE](PROJECT_STRUCTURE.md) – Directory structure and module breakdown
 
 ---
 
