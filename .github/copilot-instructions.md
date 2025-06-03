@@ -471,9 +471,19 @@ GitHub Copilot MUST be familiar with and reference these documentation files whe
 - [`docs/HEXAGONAL_ARCHITECTURE_GUIDE.md`](../docs/HEXAGONAL_ARCHITECTURE_GUIDE.md) - **MANDATORY** for all architectural decisions
 - [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) - **MANDATORY** System design principles and patterns
 - [`docs/PROJECT_STRUCTURE.md`](../docs/PROJECT_STRUCTURE.md) - **MANDATORY** Workspace organization rules
-- [`docs/DATA_FLOW_EXAMPLE.md`](../docs/DATA_FLOW_EXAMPLE.md) - **MANDATORY** Data flow patterns
-- [`docs/DATA_FLOW_DETAIL_EXAMPLE.md`](../docs/DATA_FLOW_DETAIL_EXAMPLE.md) - **MANDATORY** Detailed component architecture
 - [`README.md`](../README.md) - **MANDATORY** Project overview and 6F Lifecycle Flow
+
+#### **Critical Data Model and Flow Documents**
+
+- [`docs/DATA_MODEL_CORE.md`](../docs/DATA_MODEL_CORE.md) - **MANDATORY** Data Core model and domain concepts
+- [`docs/DATA_MODEL_RUN.md`](../docs/DATA_MODEL_RUN.md) - **MANDATORY** Data Run model and domain concepts
+- [`docs/DATA_MODEL_CAST.md`](../docs/DATA_MODEL_CAST.md) - **MANDATORY** Data Cast model and domain concepts
+- [`docs/DATA_MODEL_BRIDGE.md`](../docs/DATA_MODEL_BRIDGE.md) - **MANDATORY** Data Bridge model and domain concepts
+- [`docs/DATA_MODEL_TRIGGER.md`](../docs/DATA_MODEL_TRIGGER.md) - **MANDATORY** Data Trigger model and domain concepts
+- [`docs/DATA_MODEL_STORE.md`](../docs/DATA_MODEL_STORE.md) - **MANDATORY** Data Store model and domain concepts
+- [`docs/DATA_MODEL_WATCH.md`](../docs/DATA_MODEL_WATCH.md) - **MANDATORY** Data Watch model and domain concepts
+- [`docs/DATA_FLOW.md`](../docs/DATA_FLOW.md) - **MANDATORY** Data flow patterns
+- [`docs/DATA_FLOW_DETAIL.md`](../docs/DATA_FLOW_DETAIL.md) - **MANDATORY** Detailed component architecture
 
 #### **Development Workflow Documents**
 
@@ -560,7 +570,15 @@ When generating code or guidance, Copilot MUST:
 - ✅ **Review BRANDING.md** for brand identity guidelines
 - ✅ **Consult COMMUNITY.md** for community interaction standards
 - ✅ **Reference SUPPORT.md** for support procedures
-- ✅ **Examine DATA_FLOW_DETAIL_EXAMPLE.md** for data flow patterns
+- ✅ **Examine DATA_FLOW.md** for data flow patterns
+- ✅ **Examine DATA_FLOW_DETAIL.md** for data flow detail patterns
+- ✅ **Examine DATA_MODEL_CORE.md** for core data model
+- ✅ **Examine DATA_MODEL_RUN.md** for run data model
+- ✅ **Examine DATA_MODEL_CAST.md** for cast data model
+- ✅ **Examine DATA_MODEL_BRIDGE.md** for bridge data model
+- ✅ **Examine DATA_MODEL_TRIGGER.md** for trigger data model
+- ✅ **Examine DATA_MODEL_STORE.md** for store data model
+- ✅ **Examine DATA_MODEL_WATCH.md** for watch data model
 - ✅ **Incorporate PROJECT_BOARD.md** for project management context
 - ✅ **Study RUST_PORTS_ADAPTERS_EXAMPLE.md** for implementation patterns
 - ✅ **Consider CONTACT.md** for communication channels
@@ -1083,18 +1101,6 @@ cargo install cargo-deny          # Dependency licensing checks
 pip install pre-commit
 pre-commit install
 ```
-
-### **REQUIRED**: VS Code Extensions
-
-Essential extensions for hexaFn development:
-
-- `rust-analyzer` - Rust language support
-- `Even Better TOML` - TOML file support  
-- `GitLens` - Git integration
-- `GitHub Copilot` - AI code assistance (if available)
-- `Error Lens` - Inline error display
-- `CodeLLDB` - Rust debugging
-- `REST Client` - API testing
 
 ### **REQUIRED**: Development Environment Variables
 

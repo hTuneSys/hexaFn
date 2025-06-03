@@ -11,8 +11,8 @@ This diagram illustrates the complete data flow through all hexaFn modules, orga
 
 ```mermaid
 flowchart TB
-    %% Dış sistemler
-    External[Dış Sistemler] --> BridgeInfra
+    %% External Systems
+    External[External Systems] --> BridgeInfra
     
     %% Bridge Modülü
     subgraph Bridge["hexafn-bridge (Feed Phase)"]

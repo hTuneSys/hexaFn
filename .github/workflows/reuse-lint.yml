@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
-name: REUSE Compliance
+name: 📄 REUSE Compliance
 
 on: [pull_request]
 

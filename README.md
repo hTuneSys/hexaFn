@@ -17,6 +17,11 @@ SPDX-License-Identifier: MIT
 [![GitHub stars](https://img.shields.io/github/stars/hTuneSys/hexaFn)](https://github.com/hTuneSys/hexaFn/stargazers)
 [![Discord](https://img.shields.io/badge/discord-join-7289da.svg)](https://discord.gg/hexaFn)
 [![Project Status](https://img.shields.io/badge/status-in%20development-yellow)](https://github.com/hTuneSys/hexaFn/milestones)
+[![CodeQL](https://github.com/hTuneSys/hexaFn/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hTuneSys/hexaFn/actions/workflows/github-code-scanning/codeql)
+[![Dependabot Updates](https://github.com/hTuneSys/hexaFn/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/hTuneSys/hexaFn/actions/workflows/dependabot/dependabot-updates)
+[![REUSE Compliance](https://github.com/hTuneSys/hexaFn/actions/workflows/reuse-lint.yml/badge.svg)](https://github.com/hTuneSys/hexaFn/actions/workflows/reuse-lint.yml)
+[![🤖 CI](https://github.com/hTuneSys/hexaFn/actions/workflows/ci.yml/badge.svg)](https://github.com/hTuneSys/hexaFn/actions/workflows/ci.yml)
+[![🧐 Commit Lint](https://github.com/hTuneSys/hexaFn/actions/workflows/commitlint.yml/badge.svg)](https://github.com/hTuneSys/hexaFn/actions/workflows/commitlint.yml)
 
 **From Feed to Feedback, fully programmable.**  
 A modular, event-driven function pipeline powered by the 6F Lifecycle Flow. Built with documentation-first engineering, composable primitives, and developer joy at its core.

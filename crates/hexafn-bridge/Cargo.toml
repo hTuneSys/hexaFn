@@ -3,21 +3,35 @@
 
 [package]
 name = "hexafn-bridge"
+description = "Integration domain - handles external system connections and APIs"
 version.workspace = true
+authors.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Integration domain - handles external system connections and APIs"
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-hexafn-core = { workspace = true }
-tokio = { workspace = true }
-async-trait = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-thiserror = { workspace = true }
-uuid = { workspace = true }
-chrono = { workspace = true }
-tracing = { workspace = true }
+# Async support
+async-trait.workspace = true
+tokio.workspace = true
+
+# Serialization
+serde.workspace = true
+
+# Error handling
+thiserror.workspace = true
+
+# Domain modeling
+uuid.workspace = true
+chrono.workspace = true
+
+# Observability
+tracing.workspace = true
+serde_json.workspace = true
 
 [dev-dependencies]
-tokio-test = "0.4"
+tokio-test.workspace = true
