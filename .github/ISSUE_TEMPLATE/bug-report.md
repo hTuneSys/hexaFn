@@ -2,7 +2,7 @@
 name: "\U0001F41B Bug Report"
 about: Report a reproducible bug or unexpected behavior in hexaFn
 title: "[bug]: Describe the problem clearly"
-labels: type:bug
+labels: [type:bug]
 assignees: husamettinarabaci
 ---
 

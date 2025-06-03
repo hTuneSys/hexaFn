@@ -2,7 +2,7 @@
 name: "📝 Documentation Issue"
 about: Report an issue or suggest an improvement for the documentation
 title: "[docs]: Clarify CONTRIBUTING.md section"
-labels: type:doc
+labels: [type:doc]
 assignees: husamettinarabaci
 ---
 

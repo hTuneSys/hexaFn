@@ -2,19 +2,3 @@
 # SPDX-License-Identifier: MIT
 
 blank_issues_enabled: false
-contact_links:
-  - name: 💬 Questions or Discussions
-    url: https://github.com/hTuneSys/hexaFn/discussions
-    about: Ask questions, start discussions, or get help.
-  - name: 📚 Documentation
-    url: https://github.com/hTuneSys/hexaFn/blob/main/docs/
-    about: Check our comprehensive documentation for guides and reference materials.
-  - name: 🐛 Report a Bug
-    url: https://github.com/hTuneSys/hexaFn/issues/new?template=bug_report.md
-    about: Report bugs or unexpected behavior while using hexaFn.
-  - name: 🚀 Feature Request
-    url: https://github.com/hTuneSys/hexaFn/issues/new?template=feature_request.md
-    about: Suggest new features or improvements for hexaFn.
-  - name: 📝 Documentation Issue
-    url: https://github.com/hTuneSys/hexaFn/issues/new?template=documentation_issue.md
-    about: Report issues with our documentation or suggest improvements.

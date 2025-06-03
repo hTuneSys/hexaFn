@@ -149,16 +149,24 @@ Understanding hexaFn's architecture is essential for effective development. Revi
 
 - [`HEXAGONAL_ARCHITECTURE_GUIDE.md`](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Fundamental hexagonal architecture principles
 - [`RUST_PORTS_ADAPTERS_EXAMPLE.md`](RUST_PORTS_ADAPTERS_EXAMPLE.md) - Comprehensive component catalog organized by architectural layers
-- [`DATA_FLOW_EXAMPLE.md`](DATA_FLOW_EXAMPLE.md) - High-level data flow diagram across all modules
-- [`DATA_FLOW_DETAIL_EXAMPLE.md`](DATA_FLOW_DETAIL_EXAMPLE.md) - Detailed component interactions with interfaces and methods
+- [`DATA_FLOW.md`](DATA_FLOW.md) - High-level data flow diagram across all modules
+- [`DATA_FLOW_DETAIL.md`](DATA_FLOW_DETAIL.md) - Detailed component interactions with interfaces and methods
+- [`DATA_MODEL_CORE.md`](DATA_MODEL_CORE.md) - Core data model definitions
+- [`DATA_MODEL_RUN.md`](DATA_MODEL_RUN.md) - Run data model definitions
+- [`DATA_MODEL_CAST.md`](DATA_MODEL_CAST.md) - Cast data model definitions
+- [`DATA_MODEL_BRIDGE.md`](DATA_MODEL_BRIDGE.md) - Bridge data model definitions
+- [`DATA_MODEL_TRIGGER.md`](DATA_MODEL_TRIGGER.md) - Trigger data model definitions
+- [`DATA_MODEL_STORE.md`](DATA_MODEL_STORE.md) - Store data model definitions
+- [`DATA_MODEL_WATCH.md`](DATA_MODEL_WATCH.md) - Watch data model definitions
 
 These documents explain how components interact across the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) following clean hexagonal architecture patterns.
 
 When developing a new feature:
 1. Identify which module and layer your code belongs to using `RUST_PORTS_ADAPTERS.md`
-2. Understand how data flows through the system with `DATA_FLOW_EXAMPLE.md`
-3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL_EXAMPLE.md`
+2. Understand how data flows through the system with `DATA_FLOW.md`
+3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL.md`
 4. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
+5. Ensure your code adheres to the data model definitions in `DATA_MODEL_CORE.md`, `DATA_MODEL_RUN.md`, etc.
 
 Maintaining architectural integrity is critical - all PRs will be reviewed for compliance with these patterns.
 
