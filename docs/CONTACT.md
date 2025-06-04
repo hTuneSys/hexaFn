@@ -31,7 +31,7 @@ For bug reports, feature requests, or support questions, please use our [GitHub 
 
 ## 🔒 Security Reports
 
-If you discover a security vulnerability, please follow the guidelines in [SECURITY.md](../.github/SECURITY.md) or contact us securely at:
+If you discover a security vulnerability, please follow the guidelines in [SECURITY](../.github/SECURITY.md) or contact us securely at:
 
 - Email: [info@hexafn.com](mailto:info@hexafn.com)
 
@@ -49,8 +49,8 @@ For sponsorships, collaborations, or media inquiries, please see our [FUNDING.ym
 
 If you're interested in contributing, collaborating, or joining the discussion:
 
-- Read the [CONTRIBUTING.md](../.github/CONTRIBUTING.md)
-- Follow our [CODE_OF_CONDUCT.md](../.github/CODE_OF_CONDUCT.md)
+- Read the [CONTRIBUTING](../.github/CONTRIBUTING.md)
+- Follow our [CODE_OF_CONDUCT](../.github/CODE_OF_CONDUCT.md)
 - Join community discussions on GitHub
 
 ---

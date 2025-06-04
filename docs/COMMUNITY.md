@@ -27,12 +27,12 @@ Welcome to the hexaFn community! This document outlines how to participate respe
 
 ## ✅ Tips for Contribution
 
-- Read the [`CONTRIBUTING.md`](CONTRIBUTING.md) guide before submitting issues or PRs.
+- Read the [CONTRIBUTING](CONTRIBUTING.md) guide before submitting issues or PRs.
 - Use English for all communications to keep the project inclusive.
 - Label your contributions clearly and use commit conventions.
 
 ## 📧 Need Help?
 
-Reach out via [GitHub Issues](https://github.com/hTuneSys/hexaFn/issues) or check the [`SUPPORT.md`](SUPPORT.md) for assistance.
+Reach out via [GitHub Issues](https://github.com/hTuneSys/hexaFn/issues) or check the [SUPPORT](SUPPORT.md) for assistance.
 
 Thank you for being part of hexaFn! We value your contributions and presence.

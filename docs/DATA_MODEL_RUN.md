@@ -57,11 +57,38 @@ classDiagram
         +status ExecutionStatus
         +outputs HashMap~String, Any~
     }
-    FunctionRuntime --> FunctionContext
-    FunctionRuntime --> ExecutionResult
-    ExecutionResult --> ExecutionStatus
-    ExecutionResult --> Error
-    FunctionExecutedEvent --> ExecutionResult
+    class FunctionAuditTrail {
+        +function_id String
+        +executions Vec~FunctionExecutedEvent~
+    }
+    class FunctionLock {
+        +acquire(id: String) Result~_, HexaError~
+        +release(id: String) Result~_, HexaError~
+        +is_locked(id: String) bool
+    }
+    class FunctionDependencyGraph {
+        +add_dependency(from: String, to: String)
+        +remove_dependency(from: String, to: String)
+        +get_dependencies(id: String) Vec~String~
+    }
+    class FunctionRollbackPoint {
+        +function_id String
+        +execution_index u32
+        +state serde_json::Value
+    }
+    class FunctionTag {
+        +name String
+        +color String
+    }
+    class FunctionAccessControl {
+        +function_id String
+        +allowed_roles Vec~String~
+        +is_allowed(user: String) bool
+    }
+    FunctionAuditTrail --> FunctionExecutedEvent
+    FunctionDependencyGraph --> FunctionTag
+    FunctionRollbackPoint --> FunctionAuditTrail
+    FunctionAccessControl --> FunctionTag
 ```
 
 ## Application Layer
@@ -117,12 +144,36 @@ classDiagram
         +validate_input(context: FunctionContext) Result~_, HexaError~
         +validate_output(result: ExecutionResult) Result~_, HexaError~
     }
-    FunctionRegistryPort --> FunctionDefinition
-    FunctionExecutionPort --> FunctionDefinition
-    RunService --> FunctionRegistryPort
-    RunService --> FunctionExecutionPort
-    FunctionConfigLoader --> FunctionConfig
-    RunValidator --> FunctionConfig
+    class FunctionAuditService {
+        +record_event(function_id: String, event: FunctionExecutedEvent)
+        +get_audit_trail(function_id: String) FunctionAuditTrail
+    }
+    class FunctionLockService {
+        +lock(function_id: String) Result~_, HexaError~
+        +unlock(function_id: String) Result~_, HexaError~
+        +is_locked(function_id: String) bool
+    }
+    class FunctionDependencyService {
+        +resolve_dependencies(function_id: String) Vec~String~
+    }
+    class FunctionRollbackService {
+        +create_rollback_point(function_id: String, execution_index: u32)
+        +rollback_to_point(function_id: String, point: FunctionRollbackPoint)
+    }
+    class FunctionTaggingService {
+        +add_tag(function_id: String, tag: FunctionTag)
+        +remove_tag(function_id: String, tag: FunctionTag)
+        +list_tags(function_id: String) Vec~FunctionTag~
+    }
+    class FunctionAccessControlService {
+        +grant_access(function_id: String, user: String)
+        +revoke_access(function_id: String, user: String)
+        +check_access(function_id: String, user: String) bool
+    }
+    FunctionAuditService --> FunctionAuditTrail
+    FunctionRollbackService --> FunctionRollbackPoint
+    FunctionTaggingService --> FunctionTag
+    FunctionAccessControlService --> FunctionTag
 ```
 
 ## Infrastructure Layer
@@ -154,11 +205,38 @@ classDiagram
         +to_dto(definition: FunctionDefinition) FunctionDto
         +from_dto(dto: FunctionDto) FunctionDefinition
     }
+    class FunctionAuditRepository {
+        +save(trail: FunctionAuditTrail)
+        +load(function_id: String) Option~FunctionAuditTrail~
+    }
+    class FunctionLockManager {
+        +acquire_lock(function_id: String)
+        +release_lock(function_id: String)
+        +is_locked(function_id: String) bool
+    }
+    class FunctionDependencyAdapter {
+        +fetch_dependencies(function_id: String) Vec~String~
+    }
+    class FunctionRollbackAdapter {
+        +save_point(point: FunctionRollbackPoint)
+        +load_points(function_id: String) Vec~FunctionRollbackPoint~
+    }
+    class FunctionTagStore {
+        +add(function_id: String, tag: FunctionTag)
+        +remove(function_id: String, tag: FunctionTag)
+        +list(function_id: String) Vec~FunctionTag~
+    }
+    class FunctionAccessControlAdapter {
+        +set_access(function_id: String, user: String, allowed: bool)
+        +get_access(function_id: String, user: String) bool
+    }
     FunctionRepository --> FunctionDefinition
     RuntimeFactory --> FunctionRuntime
     RunEventBus --> FunctionExecutedEvent
     RunMapper --> FunctionDto
     RunMapper --> FunctionDefinition
+    FunctionAuditRepository --> FunctionAuditTrail
+    FunctionRollbackAdapter --> FunctionRollbackPoint
+    FunctionTagStore --> FunctionTag
+    FunctionAccessControlAdapter --> FunctionTag
 ```
-
----

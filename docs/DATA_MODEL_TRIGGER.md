@@ -55,6 +55,34 @@ classDiagram
         +trigger_id String
         +timestamp DateTime
     }
+    class TriggerAuditTrail {
+        +trigger_id String
+        +events Vec~TriggerAuditEvent~
+    }
+    class TriggerLock {
+        +acquire(id: String) Result~_, HexaError~
+        +release(id: String) Result~_, HexaError~
+        +is_locked(id: String) bool
+    }
+    class TriggerDependencyGraph {
+        +add_dependency(from: String, to: String)
+        +remove_dependency(from: String, to: String)
+        +get_dependencies(id: String) Vec~String~
+    }
+    class TriggerRollbackPoint {
+        +trigger_id String
+        +stage_index u32
+        +state serde_json::Value
+    }
+    class TriggerTag {
+        +name String
+        +color String
+    }
+    class TriggerAccessControl {
+        +trigger_id String
+        +allowed_roles Vec~String~
+        +is_allowed(user: String) bool
+    }
     Trigger --> TriggerCondition
     TriggerEvent <|-- TriggerCreatedEvent
     TriggerEvent <|-- TriggerFiredEvent
@@ -115,6 +143,32 @@ classDiagram
         +params serde_json::Value
         +compound CompoundType
     }
+    class TriggerAuditService {
+        +record_event(trigger_id: String, event: TriggerAuditEvent)
+        +get_audit_trail(trigger_id: String) TriggerAuditTrail
+    }
+    class TriggerLockService {
+        +lock(trigger_id: String) Result~_, HexaError~
+        +unlock(trigger_id: String) Result~_, HexaError~
+        +is_locked(trigger_id: String) bool
+    }
+    class TriggerDependencyService {
+        +resolve_dependencies(trigger_id: String) Vec~String~
+    }
+    class TriggerRollbackService {
+        +create_rollback_point(trigger_id: String, stage_index: u32)
+        +rollback_to_point(trigger_id: String, point: TriggerRollbackPoint)
+    }
+    class TriggerTaggingService {
+        +add_tag(trigger_id: String, tag: TriggerTag)
+        +remove_tag(trigger_id: String, tag: TriggerTag)
+        +list_tags(trigger_id: String) Vec~TriggerTag~
+    }
+    class TriggerAccessControlService {
+        +grant_access(trigger_id: String, user: String)
+        +revoke_access(trigger_id: String, user: String)
+        +check_access(trigger_id: String, user: String) bool
+    }
     TriggerRegistryPort --> Trigger
     TriggerEvaluationPort --> Trigger
     TriggerService --> TriggerRegistryPort
@@ -151,10 +205,33 @@ classDiagram
         +to_dto(trigger: Trigger) TriggerDto
         +from_dto(dto: TriggerDto) Trigger
     }
+    class TriggerAuditRepository {
+        +save(trail: TriggerAuditTrail)
+        +load(trigger_id: String) Option~TriggerAuditTrail~
+    }
+    class TriggerLockManager {
+        +acquire_lock(trigger_id: String)
+        +release_lock(trigger_id: String)
+        +is_locked(trigger_id: String) bool
+    }
+    class TriggerDependencyAdapter {
+        +fetch_dependencies(trigger_id: String) Vec~String~
+    }
+    class TriggerRollbackAdapter {
+        +save_point(point: TriggerRollbackPoint)
+        +load_points(trigger_id: String) Vec~TriggerRollbackPoint~
+    }
+    class TriggerTagStore {
+        +add(trigger_id: String, tag: TriggerTag)
+        +remove(trigger_id: String, tag: TriggerTag)
+        +list(trigger_id: String) Vec~TriggerTag~
+    }
+    class TriggerAccessControlAdapter {
+        +set_access(trigger_id: String, user: String, allowed: bool)
+        +get_access(trigger_id: String, user: String) bool
+    }
     TriggerRepository --> Trigger
     TriggerEventBus --> TriggerEvent
     TriggerMapper --> TriggerDto
     TriggerMapper --> Trigger
 ```
-
----

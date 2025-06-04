@@ -94,6 +94,58 @@ classDiagram
         +event_type() &'static str
         +payload() serde_json::Value
     }
+    class PipelineBuilder {
+        +new() PipelineBuilder
+        +feed(source: Feed)
+        +filter(predicate: Filter)
+        +format(transformer: Format)
+        +function(runner: Function)
+        +forward(target: Forward)
+        +feedback(observer: Feedback)
+        +build() Pipeline
+    }
+    class PipelineStageRegistry {
+        +register(stage_type: PipelineStageType, factory: PipelineStageFactory)
+        +get(stage_type: PipelineStageType) Option~PipelineStageFactory~
+    }
+    class PipelineStageFactory {
+        +create(params: serde_json::Value) PipelineStage
+    }
+    class PipelineStageMetadata {
+        +name String
+        +description String
+        +version String
+        +author String
+        +tags Vec~String~
+    }
+    class PipelineLock {
+        +acquire(id: String) Result~_, HexaError~
+        +release(id: String) Result~_, HexaError~
+        +is_locked(id: String) bool
+    }
+    class PipelineAuditTrail {
+        +pipeline_id String
+        +events Vec~PipelineAuditEvent~
+    }
+    class PipelineTag {
+        +name String
+        +color String
+    }
+    class PipelineDependencyGraph {
+        +add_dependency(from: String, to: String)
+        +remove_dependency(from: String, to: String)
+        +get_dependencies(id: String) Vec~String~
+    }
+    class PipelineRollbackPoint {
+        +pipeline_id String
+        +stage_index u32
+        +state serde_json::Value
+    }
+    class PipelineAccessControl {
+        +pipeline_id String
+        +allowed_roles Vec~String~
+        +is_allowed(user: String) bool
+    }
     Pipeline --> PipelineStage : contains
     PipelineStage --> PipelineContext : uses
     PipelineStage --> PipelineStageType : has type
@@ -154,6 +206,32 @@ classDiagram
     class PipelineValidator {
         +validate_config(config: PipelineConfig) Result~_, HexaError~
     }
+    class PipelineAuditService {
+        +record_event(pipeline_id: String, event: PipelineAuditEvent)
+        +get_audit_trail(pipeline_id: String) PipelineAuditTrail
+    }
+    class PipelineLockService {
+        +lock(pipeline_id: String) Result~_, HexaError~
+        +unlock(pipeline_id: String) Result~_, HexaError~
+        +is_locked(pipeline_id: String) bool
+    }
+    class PipelineDependencyService {
+        +resolve_dependencies(pipeline_id: String) Vec~String~
+    }
+    class PipelineRollbackService {
+        +create_rollback_point(pipeline_id: String, stage_index: u32)
+        +rollback_to_point(pipeline_id: String, point: PipelineRollbackPoint)
+    }
+    class PipelineTaggingService {
+        +add_tag(pipeline_id: String, tag: PipelineTag)
+        +remove_tag(pipeline_id: String, tag: PipelineTag)
+        +list_tags(pipeline_id: String) Vec~PipelineTag~
+    }
+    class PipelineAccessControlService {
+        +grant_access(pipeline_id: String, user: String)
+        +revoke_access(pipeline_id: String, user: String)
+        +check_access(pipeline_id: String, user: String) bool
+    }
     PipelineOrchestrator --> PipelineConfig
     PipelineOrchestrator --> PipelineInstance
     PipelineConfigLoader --> PipelineConfig
@@ -188,6 +266,31 @@ classDiagram
     class PipelineMapper {
         +to_dto(instance: PipelineInstance) PipelineDto
         +from_dto(dto: PipelineDto) PipelineInstance
+    }
+    class PipelineAuditRepository {
+        +save(trail: PipelineAuditTrail)
+        +load(pipeline_id: String) Option~PipelineAuditTrail~
+    }
+    class PipelineLockManager {
+        +acquire_lock(pipeline_id: String)
+        +release_lock(pipeline_id: String)
+        +is_locked(pipeline_id: String) bool
+    }
+    class PipelineDependencyAdapter {
+        +fetch_dependencies(pipeline_id: String) Vec~String~
+    }
+    class PipelineRollbackAdapter {
+        +save_point(point: PipelineRollbackPoint)
+        +load_points(pipeline_id: String) Vec~PipelineRollbackPoint~
+    }
+    class PipelineTagStore {
+        +add(pipeline_id: String, tag: PipelineTag)
+        +remove(pipeline_id: String, tag: PipelineTag)
+        +list(pipeline_id: String) Vec~PipelineTag~
+    }
+    class PipelineAccessControlAdapter {
+        +set_access(pipeline_id: String, user: String, allowed: bool)
+        +get_access(pipeline_id: String, user: String) bool
     }
     PipelineCli --> PipelineOrchestrator
     PipelineRepository --> PipelineInstance

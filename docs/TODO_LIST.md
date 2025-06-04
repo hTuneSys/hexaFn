@@ -20,7 +20,7 @@ This document tracks the development progress of the hexaFn project organized by
 
 | ID | Title | Status | Description |
 |----|-------|--------|-------------|
-| 447 | Initialize project structure and base modules | OPEN | Set up the initial Rust project with Cargo and create the base directory structure for core and modules (core pipeline, trigger engine, run engine, etc.) according to the planned architecture. |
+| 447 | Initialize project structure and base modules | CLOSED | Set up the initial Rust project with Cargo and create the base directory structure for core and modules (core pipeline, trigger engine, run engine, etc.) according to the planned architecture. |
 | 448 | Design the internal DSL for function logic | OPEN | Define the syntax and capabilities of the internal domain-specific language (DSL) used for writing function logic in HexaRun. |
 | 449 | Implement basic DSL parser and executor | OPEN | Develop a minimal parser and interpreter for the internal DSL to execute function logic. |
 | 450 | Define HexaTrigger trait and event model | OPEN | Design and implement the core 'Trigger' trait along with an event/context model that triggers will evaluate. |

@@ -23,13 +23,13 @@ It is a utility library with optional CLI tools. It is **not** a web framework o
 
 ## ❓ How do I get started?
 
-Refer to the [`GETTING_STARTED.md`](GETTING_STARTED.md) file (coming soon). It will walk you through setup, commands, and examples.
+Refer to the [GETTING_STARTED](GETTING_STARTED.md) file (coming soon). It will walk you through setup, commands, and examples.
 
 ---
 
 ## ❓ How can I contribute?
 
-Check out the [`CONTRIBUTING.md`](CONTRIBUTING.md) for instructions on how to suggest changes, report issues, and submit pull requests.
+Check out the [CONTRIBUTING](CONTRIBUTING.md) for instructions on how to suggest changes, report issues, and submit pull requests.
 
 ---
 
@@ -37,7 +37,7 @@ Check out the [`CONTRIBUTING.md`](CONTRIBUTING.md) for instructions on how to su
 
 Yes. You must:
 
-- Follow the commit message strategy defined in [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md)
+- Follow the commit message strategy defined in [COMMIT_STRATEGY](COMMIT_STRATEGY.md)
 - Respect the branching and PR rules
 - Adhere to the code of conduct
 
@@ -57,7 +57,7 @@ Use the [Feature Request Template](https://github.com/hTuneSys/hexaFn/issues/new
 
 ## ❓ How is this project licensed?
 
-hexaFn is licensed under the MIT License. See the [`LICENSE`](https://github.com/hTuneSys/hexaFn/blob/develop/LICENSE) file for more details.
+hexaFn is licensed under the MIT License. See the [LICENSE](https://github.com/hTuneSys/hexaFn/blob/develop/LICENSE) file for more details.
 
 ---
 
@@ -73,7 +73,7 @@ You can:
 
 - Open a GitHub Discussion
 - File an issue using the Support template
-- Refer to the [`SUPPORT.md`](SUPPORT.md) and [`CONTACT.md`](CONTACT.md) files
+- Refer to the [SUPPORT](SUPPORT.md) and [CONTACT](CONTACT.md) files
 
 ---
 
