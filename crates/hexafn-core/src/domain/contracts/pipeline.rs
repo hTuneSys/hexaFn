@@ -26,10 +26,10 @@
 //! assert_eq!(context.get("user_id"), Some(&json!("12345")));
 //! ```
 
+use crate::domain::contracts::HexaError;
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::domain::contracts::HexaError;
 
 /// Represents the type of pipeline stage in the 6F Lifecycle Flow.
 ///
@@ -45,7 +45,7 @@ use crate::domain::contracts::HexaError;
 ///
 /// ```rust
 /// use hexafn_core::PipelineStageType;
-/// 
+///
 /// let stage_type = PipelineStageType::Feed;
 /// assert_eq!(stage_type, PipelineStageType::Feed);
 ///
@@ -62,7 +62,7 @@ use crate::domain::contracts::HexaError;
 /// ```rust
 /// use hexafn_core::PipelineStageType;
 /// use serde_json;
-/// 
+///
 /// let stage = PipelineStageType::Function;
 /// let json = serde_json::to_string(&stage).unwrap();
 /// let deserialized: PipelineStageType = serde_json::from_str(&json).unwrap();
@@ -106,12 +106,12 @@ pub enum PipelineStageType {
 /// use hexafn_core::{Pipeline, PipelineStage};
 /// use hexafn_core::domain::contracts::HexaError;
 /// use std::fmt::{Debug, Display, Formatter};
-/// 
+///
 /// # struct MyPipeline;
 /// #
 /// # #[derive(Debug)]
 /// # struct MyError;
-/// # 
+/// #
 /// # impl Display for MyError {
 /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 /// #         write!(f, "Test error occurred")
@@ -121,11 +121,11 @@ pub enum PipelineStageType {
 /// # impl HexaError for MyError {
 /// #     fn error_code(&self) -> &str { "TEST_ERROR" }
 /// #     fn error_message(&self) -> &str { "Test error" }
-/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-/// #         hexafn_core::HexaErrorKind::Unknown 
+/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+/// #         hexafn_core::HexaErrorKind::Unknown
 /// #     }
-/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-/// #         hexafn_core::HexaErrorSeverity::Low 
+/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+/// #         hexafn_core::HexaErrorSeverity::Low
 /// #     }
 /// # }
 /// # #[async_trait::async_trait]
@@ -162,7 +162,7 @@ pub enum PipelineStageType {
 /// #
 /// # #[derive(Debug)]
 /// # struct MyError;
-/// # 
+/// #
 /// # impl Display for MyError {
 /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 /// #         write!(f, "Pipeline error occurred")
@@ -172,14 +172,14 @@ pub enum PipelineStageType {
 /// # impl HexaError for MyError {
 /// #     fn error_code(&self) -> &str { "PIPELINE_ERROR" }
 /// #     fn error_message(&self) -> &str { "Pipeline error" }
-/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-/// #         hexafn_core::HexaErrorKind::Unknown 
+/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+/// #         hexafn_core::HexaErrorKind::Unknown
 /// #     }
-/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-/// #         hexafn_core::HexaErrorSeverity::Low 
+/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+/// #         hexafn_core::HexaErrorSeverity::Low
 /// #     }
 /// # }
-/// 
+///
 /// fn handle_pipeline_error(error: MyError) {
 ///     eprintln!("Pipeline failed with code: {}", error.error_code());
 /// }
@@ -215,21 +215,21 @@ pub trait Pipeline: Send + Sync {
     /// #
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Test error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "TEST" }
     /// #     fn error_message(&self) -> &str { "Test error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Unknown 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Unknown
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::Low 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::Low
     /// #     }
     /// # }
     /// # #[async_trait::async_trait]
@@ -257,7 +257,7 @@ pub trait Pipeline: Send + Sync {
     /// Add a stage to the pipeline.
     ///
     /// Stages are executed in the order they implement `get_order()`.
-    /// Each stage type (Feed, Filter, Format, Function, Forward, Feedback) 
+    /// Each stage type (Feed, Filter, Format, Function, Forward, Feedback)
     /// should appear exactly once in a valid pipeline.
     ///
     /// # Arguments
@@ -275,26 +275,26 @@ pub trait Pipeline: Send + Sync {
     /// # use hexafn_core::{Pipeline, PipelineStage};
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct MyPipeline; 
+    /// # struct MyPipeline;
     /// # #[derive(Debug)]
-    /// # struct MyStage; 
+    /// # struct MyStage;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Test error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "TEST" }
     /// #     fn error_message(&self) -> &str { "Test error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Unknown 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Unknown
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::Low 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::Low
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl PipelineStage for MyStage {
@@ -311,7 +311,7 @@ pub trait Pipeline: Send + Sync {
     /// #     fn build(self) -> Result<Self, Box<dyn HexaError>> { Ok(self) }
     /// #     fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
     /// # }
-    /// 
+    ///
     /// fn configure_pipeline() -> Result<(), Box<dyn HexaError>> {
     ///     let mut pipeline = MyPipeline;
     ///     let feed_stage = Box::new(MyStage);
@@ -338,24 +338,24 @@ pub trait Pipeline: Send + Sync {
     /// # use hexafn_core::{Pipeline, PipelineStageType};
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct MyPipeline; 
+    /// # struct MyPipeline;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Test error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "TEST" }
     /// #     fn error_message(&self) -> &str { "Test error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Unknown 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Unknown
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::Low 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::Low
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl Pipeline for MyPipeline {
@@ -366,14 +366,14 @@ pub trait Pipeline: Send + Sync {
     /// #     fn build(self) -> Result<Self, Box<dyn HexaError>> { Ok(self) }
     /// #     fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
     /// # }
-    /// 
+    ///
     /// fn inspect_pipeline_stages(pipeline: &MyPipeline) {
     ///     let stages = pipeline.get_stages();
     ///     println!("Pipeline has {} stages", stages.len());
     ///     
     ///     for stage in stages {
-    ///         println!("Stage type: {:?}, Order: {}", 
-    ///                  stage.stage_type(), 
+    ///         println!("Stage type: {:?}, Order: {}",
+    ///                  stage.stage_type(),
     ///                  stage.get_order());
     ///     }
     /// }
@@ -396,24 +396,24 @@ pub trait Pipeline: Send + Sync {
     /// # use hexafn_core::Pipeline;
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct MyPipeline; 
+    /// # struct MyPipeline;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Validation error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "VALIDATION_ERROR" }
     /// #     fn error_message(&self) -> &str { "Validation error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Validation 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Validation
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::High 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::High
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl Pipeline for MyPipeline {
@@ -459,24 +459,24 @@ pub trait Pipeline: Send + Sync {
     /// # use hexafn_core::Pipeline;
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct MyPipeline; 
+    /// # struct MyPipeline;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Validation error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "VALIDATION_ERROR" }
     /// #     fn error_message(&self) -> &str { "Validation error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Validation 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Validation
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::High 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::High
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl Pipeline for MyPipeline {
@@ -529,31 +529,31 @@ pub trait Pipeline: Send + Sync {
 /// };
 /// use hexafn_core::domain::contracts::HexaError;
 /// use std::fmt::{Debug, Display, Formatter};
-/// 
+///
 /// # #[derive(Debug)]
 /// # struct MyError;
-/// # 
+/// #
 /// # impl Display for MyError {
 /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 /// #         write!(f, "Stage error occurred")
 /// #     }
 /// # }
 /// #
-/// # impl HexaError for MyError { 
+/// # impl HexaError for MyError {
 /// #     fn error_code(&self) -> &str { "STAGE_ERROR" }
 /// #     fn error_message(&self) -> &str { "Stage error" }
-/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-/// #         hexafn_core::HexaErrorKind::Internal 
+/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+/// #         hexafn_core::HexaErrorKind::Internal
 /// #     }
-/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-/// #         hexafn_core::HexaErrorSeverity::Medium 
+/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+/// #         hexafn_core::HexaErrorSeverity::Medium
 /// #     }
 /// # }
-/// 
+///
 /// struct FeedStage {
 ///     source_name: String,
 /// }
-/// 
+///
 /// #[async_trait::async_trait]
 /// impl PipelineStage for FeedStage {
 ///     fn stage_type(&self) -> PipelineStageType {
@@ -566,7 +566,7 @@ pub trait Pipeline: Send + Sync {
 ///
 ///     async fn execute(&self, context: &mut PipelineContext) -> Result<(), Box<dyn HexaError>> {
 ///         // Implement feed logic
-///         context.set("source".to_string(), 
+///         context.set("source".to_string(),
 ///                    serde_json::json!(&self.source_name));
 ///         Ok(())
 ///     }
@@ -589,22 +589,22 @@ pub trait Pipeline: Send + Sync {
 /// # use hexafn_core::domain::contracts::HexaError;
 /// # use std::fmt::{Debug, Display, Formatter};
 /// # #[derive(Debug)]
-/// # struct MyError; 
-/// # 
+/// # struct MyError;
+/// #
 /// # impl Display for MyError {
 /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
 /// #         write!(f, "Test error occurred")
 /// #     }
 /// # }
 /// #
-/// # impl HexaError for MyError { 
+/// # impl HexaError for MyError {
 /// #     fn error_code(&self) -> &str { "TEST" }
 /// #     fn error_message(&self) -> &str { "Test error" }
-/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-/// #         hexafn_core::HexaErrorKind::Unknown 
+/// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+/// #         hexafn_core::HexaErrorKind::Unknown
 /// #     }
-/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-/// #         hexafn_core::HexaErrorSeverity::Low 
+/// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+/// #         hexafn_core::HexaErrorSeverity::Low
 /// #     }
 /// # }
 /// # struct MyStage;
@@ -612,7 +612,7 @@ pub trait Pipeline: Send + Sync {
 /// #     fn stage_type(&self) -> PipelineStageType { PipelineStageType::Feed }
 /// #     async fn execute(&self, context: &mut hexafn_core::PipelineContext) -> Result<(), Box<dyn HexaError>> { Ok(()) }
 /// #     fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-/// 
+///
 /// fn get_order(&self) -> u32 {
 ///     match self.stage_type() {
 ///         PipelineStageType::Feed => 1,
@@ -642,35 +642,35 @@ pub trait PipelineStage: Send + Sync {
     /// # use hexafn_core::{PipelineStage, PipelineStageType};
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct FeedStage; 
+    /// # struct FeedStage;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Test error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "TEST" }
     /// #     fn error_message(&self) -> &str { "Test error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Unknown 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Unknown
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::Low 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::Low
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl PipelineStage for FeedStage {
     /// #     async fn execute(&self, context: &mut hexafn_core::PipelineContext) -> Result<(), Box<dyn HexaError>> { Ok(()) }
     /// #     fn get_order(&self) -> u32 { 1 } fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-    /// 
+    ///
     /// fn stage_type(&self) -> PipelineStageType {
     ///     PipelineStageType::Feed
     /// }
     /// # }
-    /// 
+    ///
     /// fn check_stage_type(stage: &dyn PipelineStage) {
     ///     match stage.stage_type() {
     ///         PipelineStageType::Feed => println!("This is a feed stage"),
@@ -697,37 +697,37 @@ pub trait PipelineStage: Send + Sync {
     /// # use hexafn_core::PipelineStage;
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct MyStage; 
+    /// # struct MyStage;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Test error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "TEST" }
     /// #     fn error_message(&self) -> &str { "Test error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Unknown 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Unknown
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::Low 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::Low
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl PipelineStage for MyStage {
     /// #     fn stage_type(&self) -> hexafn_core::PipelineStageType { hexafn_core::PipelineStageType::Feed }
     /// #     async fn execute(&self, context: &mut hexafn_core::PipelineContext) -> Result<(), Box<dyn HexaError>> { Ok(()) }
     /// #     fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-    /// 
+    ///
     /// fn get_order(&self) -> u32 {
     ///     1  // Execute first in pipeline
     /// }
     /// # }
-    /// 
-    /// fn sort_stages_by_order(mut stages: Vec<Box<dyn PipelineStage>>) 
+    ///
+    /// fn sort_stages_by_order(mut stages: Vec<Box<dyn PipelineStage>>)
     ///     -> Vec<Box<dyn PipelineStage>> {
     ///     stages.sort_by_key(|stage| stage.get_order());
     ///     stages
@@ -755,30 +755,30 @@ pub trait PipelineStage: Send + Sync {
     /// # use hexafn_core::{PipelineStage, PipelineContext};
     /// # use hexafn_core::domain::contracts::HexaError;
     /// # use std::fmt::{Debug, Display, Formatter};
-    /// # struct FilterStage; 
+    /// # struct FilterStage;
     /// # #[derive(Debug)]
     /// # struct MyError;
-    /// # 
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Filter error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "FILTER_ERROR" }
     /// #     fn error_message(&self) -> &str { "Filter error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Validation 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Validation
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
-    /// #         hexafn_core::HexaErrorSeverity::High 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
+    /// #         hexafn_core::HexaErrorSeverity::High
     /// #     }
     /// # }
     /// # #[async_trait::async_trait] impl PipelineStage for FilterStage {
     /// #     fn stage_type(&self) -> hexafn_core::PipelineStageType { hexafn_core::PipelineStageType::Filter }
     /// #     fn get_order(&self) -> u32 { 2 } fn validate(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-    /// 
+    ///
     /// async fn execute(&self, context: &mut PipelineContext) -> Result<(), Box<dyn HexaError>> {
     ///     // Get input from previous stage
     ///     let user_id = context.get("user_id")
@@ -791,7 +791,7 @@ pub trait PipelineStage: Send + Sync {
     ///     }
     ///     
     ///     // Set result for next stage
-    ///     context.set("filter_passed".to_string(), 
+    ///     context.set("filter_passed".to_string(),
     ///                serde_json::json!(true));
     ///     
     ///     Ok(())
@@ -818,21 +818,21 @@ pub trait PipelineStage: Send + Sync {
     /// # use std::fmt::{Debug, Display, Formatter};
     /// # struct DatabaseStage { connection_string: String }
     /// # #[derive(Debug)]
-    /// # struct MyError; 
-    /// # 
+    /// # struct MyError;
+    /// #
     /// # impl Display for MyError {
     /// #     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
     /// #         write!(f, "Validation error occurred")
     /// #     }
     /// # }
     /// #
-    /// # impl HexaError for MyError { 
+    /// # impl HexaError for MyError {
     /// #     fn error_code(&self) -> &str { "VALIDATION_ERROR" }
     /// #     fn error_message(&self) -> &str { "Validation error" }
-    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind { 
-    /// #         hexafn_core::HexaErrorKind::Validation 
+    /// #     fn error_kind(&self) -> hexafn_core::HexaErrorKind {
+    /// #         hexafn_core::HexaErrorKind::Validation
     /// #     }
-    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity { 
+    /// #     fn error_severity(&self) -> hexafn_core::HexaErrorSeverity {
     /// #         hexafn_core::HexaErrorSeverity::High
     /// #     }
     /// # }
@@ -840,7 +840,7 @@ pub trait PipelineStage: Send + Sync {
     /// #     fn stage_type(&self) -> hexafn_core::PipelineStageType { hexafn_core::PipelineStageType::Forward }
     /// #     fn get_order(&self) -> u32 { 5 }
     /// #     async fn execute(&self, context: &mut hexafn_core::PipelineContext) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-    /// 
+    ///
     /// fn validate(&self) -> Result<(), Box<dyn HexaError>> {
     ///     if self.connection_string.is_empty() {
     ///         return Err(Box::new(MyError));  // Missing required configuration
@@ -874,7 +874,7 @@ pub trait PipelineStage: Send + Sync {
 ///
 /// ```text
 /// Feed Stage    -> sets "input_data"
-/// Filter Stage  -> reads "input_data", sets "filter_result" 
+/// Filter Stage  -> reads "input_data", sets "filter_result"
 /// Format Stage  -> reads "filter_result", sets "formatted_data"
 /// Function Stage-> reads "formatted_data", sets "function_output"
 /// Forward Stage -> reads "function_output", sets "forward_status"
@@ -888,9 +888,9 @@ pub trait PipelineStage: Send + Sync {
 /// ```rust
 /// use hexafn_core::PipelineContext;
 /// use serde_json::json;
-/// 
+///
 /// let mut context = PipelineContext::new();
-/// 
+///
 /// // Set various data types
 /// context.set("user_id".to_string(), json!("12345"));
 /// context.set("timestamp".to_string(), json!(1642781234));
@@ -899,7 +899,7 @@ pub trait PipelineStage: Send + Sync {
 ///     "source": "webhook",
 ///     "version": "1.0"
 /// }));
-/// 
+///
 /// // Retrieve and use data
 /// assert_eq!(context.get("user_id"), Some(&json!("12345")));
 /// assert_eq!(context.get("nonexistent"), None);
@@ -910,7 +910,7 @@ pub trait PipelineStage: Send + Sync {
 /// ```rust
 /// use hexafn_core::PipelineContext;
 /// use serde_json::json;
-/// 
+///
 /// async fn feed_stage_example(context: &mut PipelineContext) {
 ///     // Feed stage: ingest external data
 ///     context.set("raw_input".to_string(), json!({
@@ -919,7 +919,7 @@ pub trait PipelineStage: Send + Sync {
 ///         "timestamp": "2024-01-01T10:00:00Z"
 ///     }));
 /// }
-/// 
+///
 /// async fn filter_stage_example(context: &mut PipelineContext) {
 ///     // Filter stage: validate and filter data
 ///     if let Some(raw_input) = context.get("raw_input") {
@@ -939,9 +939,9 @@ pub trait PipelineStage: Send + Sync {
 /// ```rust
 /// use hexafn_core::PipelineContext;
 /// use serde_json::json;
-/// 
+///
 /// let mut context = PipelineContext::new();
-/// 
+///
 /// // Store complex nested structures
 /// context.set("processing_result".to_string(), json!({
 ///     "status": "success",
@@ -954,7 +954,7 @@ pub trait PipelineStage: Send + Sync {
 ///     },
 ///     "errors": []
 /// }));
-/// 
+///
 /// // Access nested data
 /// if let Some(result) = context.get("processing_result") {
 ///     let status = result["status"].as_str().unwrap_or("unknown");
@@ -982,10 +982,10 @@ impl PipelineContext {
     ///
     /// ```rust
     /// use hexafn_core::PipelineContext;
-    /// 
+    ///
     /// let context = PipelineContext::new();
     /// assert_eq!(context.data.len(), 0);
-    /// 
+    ///
     /// // Context is ready for use
     /// let mut mutable_context = context;
     /// // Add data as needed...
@@ -1022,13 +1022,13 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
     /// context.set("name".to_string(), json!("Alice"));
-    /// 
+    ///
     /// // Get existing value
     /// assert_eq!(context.get("name"), Some(&json!("Alice")));
-    /// 
+    ///
     /// // Get non-existent value
     /// assert_eq!(context.get("missing"), None);
     /// ```
@@ -1038,17 +1038,17 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
     /// context.set("age".to_string(), json!(25));
     /// context.set("active".to_string(), json!(true));
-    /// 
+    ///
     /// // Safe type conversion
     /// if let Some(age_value) = context.get("age") {
     ///     let age = age_value.as_u64().unwrap_or(0);
     ///     println!("Age: {}", age);
     /// }
-    /// 
+    ///
     /// if let Some(active_value) = context.get("active") {
     ///     let is_active = active_value.as_bool().unwrap_or(false);
     ///     println!("Active: {}", is_active);
@@ -1060,10 +1060,10 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
     /// context.set("status".to_string(), json!("processing"));
-    /// 
+    ///
     /// match context.get("status") {
     ///     Some(value) if value.as_str() == Some("processing") => {
     ///         println!("Currently processing...");
@@ -1097,21 +1097,21 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
-    /// 
+    ///
     /// // String value
     /// context.set("name".to_string(), json!("John Doe"));
-    /// 
+    ///
     /// // Numeric value
     /// context.set("count".to_string(), json!(42));
-    /// 
+    ///
     /// // Boolean value
     /// context.set("enabled".to_string(), json!(true));
-    /// 
+    ///
     /// // Array value
     /// context.set("tags".to_string(), json!(["rust", "pipeline", "async"]));
-    /// 
+    ///
     /// // Object value
     /// context.set("config".to_string(), json!({
     ///     "timeout": 30,
@@ -1125,13 +1125,13 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
-    /// 
+    ///
     /// // Initial value
     /// context.set("counter".to_string(), json!(0));
     /// assert_eq!(context.get("counter"), Some(&json!(0)));
-    /// 
+    ///
     /// // Update value
     /// context.set("counter".to_string(), json!(1));
     /// assert_eq!(context.get("counter"), Some(&json!(1)));
@@ -1142,9 +1142,9 @@ impl PipelineContext {
     /// ```rust
     /// use hexafn_core::PipelineContext;
     /// use serde_json::json;
-    /// 
+    ///
     /// let mut context = PipelineContext::new();
-    /// 
+    ///
     /// // Build up state through stages
     /// context.set("input".to_string(), json!("raw data"));
     /// context.set("validated".to_string(), json!(true));
@@ -1172,10 +1172,10 @@ impl Default for PipelineContext {
     ///
     /// ```rust
     /// use hexafn_core::PipelineContext;
-    /// 
+    ///
     /// let context1 = PipelineContext::default();
     /// let context2 = PipelineContext::new();
-    /// 
+    ///
     /// // Both are equivalent
     /// assert_eq!(context1.data.len(), context2.data.len());
     /// ```
@@ -1184,13 +1184,13 @@ impl Default for PipelineContext {
     ///
     /// ```rust
     /// use hexafn_core::PipelineContext;
-    /// 
+    ///
     /// #[derive(Default)]
     /// struct PipelineExecutor {
     ///     context: PipelineContext,
     ///     stage_count: usize,
     /// }
-    /// 
+    ///
     /// let executor = PipelineExecutor::default();
     /// assert_eq!(executor.context.data.len(), 0);
     /// ```
@@ -1268,10 +1268,13 @@ mod tests {
     #[test]
     fn pipeline_context_stage_to_stage_example() {
         let mut ctx = PipelineContext::new();
-        ctx.set("raw_input".to_string(), json!({
-            "event_type": "user_login",
-            "user_id": "user_123"
-        }));
+        ctx.set(
+            "raw_input".to_string(),
+            json!({
+                "event_type": "user_login",
+                "user_id": "user_123"
+            }),
+        );
         // Simulate filter stage (avoid borrow conflict)
         if let Some(raw_input) = ctx.get("raw_input") {
             let event_type = raw_input["event_type"].as_str().unwrap_or("");
