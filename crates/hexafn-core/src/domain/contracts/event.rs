@@ -88,7 +88,6 @@ impl EventId {
     pub fn from_string(s: &str) -> Result<Self, uuid::Error> {
         Ok(Self(Uuid::parse_str(s)?))
     }
-
 }
 
 impl Default for EventId {
@@ -234,9 +233,15 @@ mod tests {
     }
 
     impl Event for TestEvent {
-        fn event_type(&self) -> &'static str { "test.event" }
-        fn event_id(&self) -> &EventId { &self.id }
-        fn timestamp(&self) -> DateTime<Utc> { self.occurred_at }
+        fn event_type(&self) -> &'static str {
+            "test.event"
+        }
+        fn event_id(&self) -> &EventId {
+            &self.id
+        }
+        fn timestamp(&self) -> DateTime<Utc> {
+            self.occurred_at
+        }
         fn payload(&self) -> serde_json::Value {
             json!({ "value": self.value })
         }

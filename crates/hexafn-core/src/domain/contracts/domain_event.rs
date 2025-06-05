@@ -227,9 +227,9 @@ pub trait DomainEvent: Event {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::domain::contracts::event::{Event, EventId};
     use chrono::Utc;
     use serde_json::json;
-    use crate::domain::contracts::event::{Event, EventId};
 
     #[derive(Debug)]
     struct TestDomainEvent {
@@ -242,19 +242,33 @@ mod tests {
     }
 
     impl Event for TestDomainEvent {
-        fn event_type(&self) -> &'static str { "test.domain_event" }
-        fn event_id(&self) -> &EventId { &self.id }
-        fn timestamp(&self) -> chrono::DateTime<Utc> { self.occurred_at }
+        fn event_type(&self) -> &'static str {
+            "test.domain_event"
+        }
+        fn event_id(&self) -> &EventId {
+            &self.id
+        }
+        fn timestamp(&self) -> chrono::DateTime<Utc> {
+            self.occurred_at
+        }
         fn payload(&self) -> serde_json::Value {
             json!({ "value": self.value })
         }
     }
 
     impl DomainEvent for TestDomainEvent {
-        fn aggregate_id(&self) -> &str { &self.aggregate_id }
-        fn sequence_number(&self) -> u64 { self.seq }
-        fn occurred_at(&self) -> chrono::DateTime<Utc> { self.occurred_at }
-        fn correlation_id(&self) -> &str { &self.correlation_id }
+        fn aggregate_id(&self) -> &str {
+            &self.aggregate_id
+        }
+        fn sequence_number(&self) -> u64 {
+            self.seq
+        }
+        fn occurred_at(&self) -> chrono::DateTime<Utc> {
+            self.occurred_at
+        }
+        fn correlation_id(&self) -> &str {
+            &self.correlation_id
+        }
     }
 
     #[test]

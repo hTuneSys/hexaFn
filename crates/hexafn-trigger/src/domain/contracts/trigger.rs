@@ -71,7 +71,7 @@ pub trait Trigger {
     /// use hexafn_core::HexaError;
     /// use hexafn_trigger::Trigger;
     /// use hexafn_trigger::TriggerCondition;
-    /// 
+    ///
     /// struct MyTrigger;
     /// impl Trigger for MyTrigger {
     ///     fn id(&self) -> String { "trigger-123".to_string() }
@@ -189,8 +189,8 @@ pub trait Trigger {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::any::Any;
     use hexafn_core::HexaError;
+    use std::any::Any;
 
     struct AlwaysTrueCondition;
 
@@ -264,11 +264,21 @@ mod tests {
     struct InactiveTrigger;
 
     impl Trigger for InactiveTrigger {
-        fn id(&self) -> String { "inactive".to_string() }
-        fn name(&self) -> String { "Inactive".to_string() }
-        fn is_active(&self) -> bool { false }
-        fn evaluate(&self, _context: &dyn Any) -> Result<bool, Box<dyn HexaError>> { Ok(false) }
-        fn get_conditions(&self) -> Vec<Box<dyn TriggerCondition>> { vec![] }
+        fn id(&self) -> String {
+            "inactive".to_string()
+        }
+        fn name(&self) -> String {
+            "Inactive".to_string()
+        }
+        fn is_active(&self) -> bool {
+            false
+        }
+        fn evaluate(&self, _context: &dyn Any) -> Result<bool, Box<dyn HexaError>> {
+            Ok(false)
+        }
+        fn get_conditions(&self) -> Vec<Box<dyn TriggerCondition>> {
+            vec![]
+        }
     }
 
     #[test]

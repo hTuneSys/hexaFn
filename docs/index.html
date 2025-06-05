@@ -1,184 +1,967 @@
+<!--
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+SPDX-License-Identifier: MIT
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hexaFn – Modular Event-Driven Pipelines</title>
-  <link rel="icon" href="assets/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="hexaFn - Modular event-driven function pipeline framework powered by the 6F Lifecycle Flow. Built with Rust, Hexagonal Architecture, and Domain-Driven Design.">
+  <meta name="keywords" content="hexaFn, Rust, event-driven, pipeline, function composition, hexagonal architecture, DDD, WebAssembly, JavaScript, DSL">
+  <meta name="author" content="Husamettin ARABACI, hexaTune LLC">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="hexaFn - Function Composition Framework for Rust">
+  <meta property="og:description" content="Modular event-driven pipelines powered by the 6F Lifecycle Flow. Built for developer joy, composability, and documentation-first engineering.">
+  <meta property="og:image" content="https://htuneSys.github.io/hexaFn/assets/hexaFn-banner.png">
+  <meta property="og:url" content="https://htuneSys.github.io/hexaFn/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="hexaFn - Function Composition Framework for Rust">
+  <meta name="twitter:description" content="Modular event-driven pipelines powered by the 6F Lifecycle Flow">
+  <meta name="twitter:image" content="https://htuneSys.github.io/hexaFn/assets/hexaFn-banner.png">
+  
+  <title>hexaFn - Function Composition Framework for Rust</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  
   <style>
-    body {
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #3b82f6;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --error-color: #ef4444;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --border-radius: 8px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f7f8fa;
-      color: #23272f;
+      padding: 0;
     }
-    .banner {
-      width: 100%;
-      max-height: 340px;
-      min-height: 180px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto;
-      background: #23272f;
+    
+    html {
+      scroll-behavior: smooth;
     }
-    .container {
-      max-width: 900px;
-      margin: -60px auto 0 auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-      padding: 2.5rem 2rem 2rem 2rem;
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--gray-800);
+      background: linear-gradient(135deg, var(--gray-50) 0%, #ffffff 100%);
+    }
+
+    /* Header and Navigation */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
       position: relative;
-      z-index: 2;
+      overflow: hidden;
     }
-    h1 {
-      font-size: 2.5rem;
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-      color: #2d2e83;
-      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ffffff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .desc {
-      font-size: 1.2rem;
-      color: #444;
-      text-align: center;
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
       margin-bottom: 2rem;
     }
-    .features, .modules, .lifecycle, .docs, .quickstart {
-      margin-bottom: 2.5rem;
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
     }
-    h2 {
-      color: #2d2e83;
-      font-size: 1.4rem;
-      margin-bottom: 0.7rem;
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background: var(--gray-100);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
       font-weight: 700;
-    }
-    ul {
-      margin-left: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .img-center {
-      display: block;
-      margin: 2rem auto 2rem auto;
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-    .lifecycle-table, .modules-table, .not-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 1.05rem;
-    }
-    .lifecycle-table th, .lifecycle-table td, .modules-table th, .modules-table td, .not-table th, .not-table td {
-      border: 1px solid #e1e4e8;
-      padding: 0.5em 1em;
-      text-align: left;
-    }
-    .lifecycle-table th, .modules-table th, .not-table th {
-      background: #f6f8fa;
-      font-weight: 700;
-    }
-    .docs-list {
-      margin-bottom: 1.5rem;
-    }
-    .quickstart pre {
-      background: #f6f8fa;
-      color: #24292e;
-      border-radius: 6px;
-      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-      font-size: 1em;
-      padding: 1em;
-      overflow-x: auto;
-    }
-    footer {
       text-align: center;
-      color: #888;
-      font-size: 0.95rem;
-      margin: 2.5rem 0 1rem 0;
+      margin-bottom: 3rem;
+      color: var(--gray-900);
     }
-    @media (max-width: 800px) {
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      text-align: center;
+      color: var(--gray-600);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    /* 6F Flow */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .flow-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+
+    .flow-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .flow-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .flow-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--gray-900);
+    }
+
+    .flow-description {
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+    }
+
+    .flow-example {
+      background: var(--gray-50);
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: all 0.3s ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .module-icon {
+      width: 3rem;
+      height: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .module-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    .module-description {
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+    }
+
+    .module-features {
+      list-style: none;
+    }
+
+    .module-features li {
+      padding: 0.25rem 0;
+      color: var(--gray-700);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .module-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success-color);
+      font-weight: bold;
+    }
+
+    /* Architecture */
+    .architecture-diagram {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .architecture-flow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .arch-step {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .arch-arrow {
+      color: var(--gray-400);
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Quick Start */
+    .code-block {
+      background: var(--gray-900);
+      color: #e5e7eb;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      overflow-x: auto;
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .code-block::before {
+      content: '$ ';
+      color: var(--success-color);
+      font-weight: bold;
+    }
+
+    .code-block code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--gray-600);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--gray-900);
+      color: var(--gray-300);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-company {
+      opacity: 0.7;
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.125rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .architecture-flow {
+        flex-direction: column;
+      }
+      
+      .arch-arrow {
+        transform: rotate(90deg);
+      }
+
       .container {
-        margin: -40px 1rem 0 1rem;
-        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+        padding: 0 1rem;
       }
-      .banner {
-        max-height: 120px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Utilities */
+    .text-center { text-align: center; }
+    .mb-4 { margin-bottom: 2rem; }
+    .mt-4 { margin-top: 2rem; }
+    
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      height: 3rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
-  <img src="assets/hexaFn-banner.png" alt="hexaFn Banner" class="banner" />
-  <div class="container">
-    <h1>hexaFn</h1>
-    <div class="desc">
-      From Feed to Feedback, fully programmable.<br>
-      Modular, event-driven pipelines powered by the 6F Lifecycle Flow.<br>
-      Built for developer joy, composability, and documentation-first engineering.
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="logo">⬡</div>
+      <h1>hexaFn</h1>
+      <p>Modular event-driven function pipeline framework powered by the <strong>6F Lifecycle Flow</strong></p>
+      
+      <div class="badges">
+        <span class="badge">🦀 Rust</span>
+        <span class="badge">⚡ Event-Driven</span>
+        <span class="badge">🔧 Modular</span>
+        <span class="badge">📦 WASM/JS/DSL</span>
+        <span class="badge">🏗️ Hexagonal Architecture</span>
+        <span class="badge">📋 MIT Licensed</span>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="https://github.com/hTuneSys/hexaFn" class="btn btn-primary" target="_blank">
+          📚 View on GitHub
+        </a>
+        <a href="#quick-start" class="btn btn-secondary">
+          🚀 Quick Start
+        </a>
+      </div>
     </div>
-    <section class="features">
-      <h2>Why hexaFn?</h2>
-      <ul>
-        <li>Modular, composable, and testable</li>
-        <li>Documentation-first approach</li>
-        <li>GitHub-native structure: templates, workflows, linting</li>
-        <li>MIT Licensed, SPDX-Compliant, REUSE-Spec Ready</li>
-        <li>Created for plugin creators, pipeline architects, and system hackers</li>
-      </ul>
-    </section>
-    <section class="lifecycle">
-      <h2>6F Lifecycle Flow</h2>
-      <img src="assets/data-flow.png" alt="6F Data Flow Diagram" class="img-center" style="max-width:600px;" />
-      <table class="lifecycle-table">
-        <tr><th>Step</th><th>Purpose</th></tr>
-        <tr><td><b>Feed</b></td><td>Ingest from external sources (events, APIs, queues)</td></tr>
-        <tr><td><b>Filter</b></td><td>Pre-condition checks and gating</td></tr>
-        <tr><td><b>Format</b></td><td>Normalize, transform, validate</td></tr>
-        <tr><td><b>Function</b></td><td>Execute logic with user-defined behavior</td></tr>
-        <tr><td><b>Forward</b></td><td>Route results to KV stores, topics, services</td></tr>
-        <tr><td><b>Feedback</b></td><td>Log, trace, trigger, or audit</td></tr>
-      </table>
-      <img src="assets/diagram.png" alt="System Diagram" class="img-center" style="max-width:600px;" />
-    </section>
-    <section class="modules">
-      <h2>Core Modules</h2>
-      <table class="modules-table">
-        <tr><th>Module</th><th>Role</th></tr>
-        <tr><td>HexaStore</td><td>Event-driven KV storage</td></tr>
-        <tr><td>HexaCast</td><td>Pub-sub messaging engine</td></tr>
-        <tr><td>HexaRun</td><td>Function runtime (WASM, JS, DSL)</td></tr>
-        <tr><td>HexaTrigger</td><td>Trigger orchestration engine</td></tr>
-        <tr><td>HexaWatch</td><td>Observability & audit tracing</td></tr>
-        <tr><td>HexaBridge</td><td>Webhooks, SDK, external integration</td></tr>
-      </table>
-    </section>
-    <section class="docs">
-      <h2>Documentation</h2>
-      <ul class="docs-list">
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/GETTING_STARTED.md" target="_blank">Getting Started</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/DEVELOPMENT_GUIDE.md" target="_blank">Development Guide</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/USE_CASES.md" target="_blank">Use Cases</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/COMMIT_STRATEGY.md" target="_blank">Commit Strategy</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/PR_STRATEGY.md" target="_blank">PR Strategy</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/LABELLING_STRATEGY.md" target="_blank">Labelling Strategy</a></li>
-        <li><a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/ROADMAP.md" target="_blank">Roadmap</a></li>
-      </ul>
-      <p>Full documentation is available in the <code>/docs/</code> folder on <a href="https://github.com/hTuneSys/hexaFn" target="_blank">GitHub</a>.</p>
-    </section>
-    <section class="quickstart">
-      <h2>Dev Quickstart</h2>
-      <pre><code>git clone https://github.com/hTuneSys/hexaFn.git
-cd hexaFn
-cargo build
-cargo run
-</code></pre>
-      <p>Use <code>.env</code> or CLI args for environment config. See <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/CONFIGURATION.md">CONFIGURATION.md</a>.</p>
-    </section>
-  </div>
-  <footer>
-    &copy; 2025 Husamettin ARABACI – MIT Licensed
+  </section>
+
+  <!-- Overview Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Why hexaFn?</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">6</span>
+          <div class="stat-label">Lifecycle Phases</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">7</span>
+          <div class="stat-label">Core Modules</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <div class="stat-label">Runtime Types</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <div class="stat-label">Type Safe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6F Lifecycle Flow -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">The 6F Lifecycle Flow</h2>
+      <p class="section-subtitle">
+        Every pipeline follows the same predictable flow: <strong>Feed → Filter → Format → Function → Forward → Feedback</strong>
+      </p>
+      
+      <div class="architecture-diagram">
+        <div class="architecture-flow">
+          <div class="arch-step">Feed</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-step">Filter</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-step">Format</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-step">Function</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-step">Forward</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-step">Feedback</div>
+        </div>
+      </div>
+
+      <div class="flow-grid">
+        <div class="flow-card">
+          <div class="flow-number">1</div>
+          <h3 class="flow-title">Feed</h3>
+          <p class="flow-description">Ingest data from external sources like webhooks, APIs, message queues, or file systems.</p>
+          <div class="flow-example">HexaBridge: HTTP endpoints, SDK integrations</div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-number">2</div>
+          <h3 class="flow-title">Filter</h3>
+          <p class="flow-description">Apply conditional logic and pre-condition checks to gate pipeline execution.</p>
+          <div class="flow-example">HexaTrigger: Rule engine, condition evaluation</div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-number">3</div>
+          <h3 class="flow-title">Format</h3>
+          <p class="flow-description">Normalize, transform, and validate incoming data for consistent processing.</p>
+          <div class="flow-example">Data transformation, schema validation</div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-number">4</div>
+          <h3 class="flow-title">Function</h3>
+          <p class="flow-description">Execute user-defined logic using WASM, JavaScript, or internal DSL.</p>
+          <div class="flow-example">HexaRun: Multi-runtime function execution</div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-number">5</div>
+          <h3 class="flow-title">Forward</h3>
+          <p class="flow-description">Route results to KV stores, pub/sub topics, or external services.</p>
+          <div class="flow-example">HexaStore: KV storage, HexaCast: pub/sub</div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-number">6</div>
+          <h3 class="flow-title">Feedback</h3>
+          <p class="flow-description">Log, trace, audit, and monitor pipeline execution for observability.</p>
+          <div class="flow-example">HexaWatch: Structured logging, tracing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Modules -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Core Modules</h2>
+      <p class="section-subtitle">
+        Seven specialized modules working together through clean, hexagonal architecture boundaries.
+      </p>
+      
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🏗️</div>
+            <h3 class="module-title">hexafn-core</h3>
+          </div>
+          <p class="module-description">Shared kernel providing core architecture, pipeline orchestration, and event flow management.</p>
+          <ul class="module-features">
+            <li>Pipeline builder and orchestrator</li>
+            <li>Domain events and value objects</li>
+            <li>Shared traits and interfaces</li>
+            <li>Configuration management</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🌉</div>
+            <h3 class="module-title">hexafn-bridge</h3>
+          </div>
+          <p class="module-description">External integrations and webhook management for data ingestion (Feed phase).</p>
+          <ul class="module-features">
+            <li>HTTP webhook endpoints</li>
+            <li>SDK integrations</li>
+            <li>Event normalization</li>
+            <li>Token-based security</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🎯</div>
+            <h3 class="module-title">hexafn-trigger</h3>
+          </div>
+          <p class="module-description">Conditional logic and rule engine for pipeline gating (Filter phase).</p>
+          <ul class="module-features">
+            <li>Rule-based trigger evaluation</li>
+            <li>Compound conditions (AND/OR/NOT)</li>
+            <li>Priority-based execution</li>
+            <li>Dynamic configuration reload</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">⚡</div>
+            <h3 class="module-title">hexafn-run</h3>
+          </div>
+          <p class="module-description">Multi-runtime function execution supporting WASM, JavaScript, and DSL (Function phase).</p>
+          <ul class="module-features">
+            <li>WebAssembly (WASM) runtime</li>
+            <li>JavaScript (QuickJS) runtime</li>
+            <li>Internal DSL interpreter</li>
+            <li>Resource limiting and timeouts</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🗄️</div>
+            <h3 class="module-title">hexafn-store</h3>
+          </div>
+          <p class="module-description">Event-driven key-value storage with triggers and versioning (Forward phase).</p>
+          <ul class="module-features">
+            <li>Namespaced KV operations</li>
+            <li>Version tracking and TTL</li>
+            <li>Transaction support</li>
+            <li>Multiple backend support</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">📡</div>
+            <h3 class="module-title">hexafn-cast</h3>
+          </div>
+          <p class="module-description">Pub/sub messaging engine with topic management (Forward phase).</p>
+          <ul class="module-features">
+            <li>Topic-based messaging</li>
+            <li>Subscriber lifecycle management</li>
+            <li>Message filtering and routing</li>
+            <li>Retry and acknowledgment</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">👁️</div>
+            <h3 class="module-title">hexafn-watch</h3>
+          </div>
+          <p class="module-description">Observability and audit tracing for comprehensive monitoring (Feedback phase).</p>
+          <ul class="module-features">
+            <li>Structured logging with trace context</li>
+            <li>OpenTelemetry integration</li>
+            <li>Metrics and alerting</li>
+            <li>Performance monitoring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section id="quick-start" class="section">
+    <div class="container">
+      <h2 class="section-title">Quick Start</h2>
+      <p class="section-subtitle">
+        Get up and running with hexaFn in minutes. Built with Rust for performance and safety.
+      </p>
+      
+      <div class="code-block">
+        <code>
+git clone https://github.com/hTuneSys/hexaFn.git<br>
+cd hexaFn<br>
+cargo build --release<br>
+cargo run -- --help
+        </code>
+      </div>
+
+      <div class="flow-grid mt-4">
+        <div class="flow-card">
+          <h3 class="flow-title">🔧 Development</h3>
+          <p class="flow-description">Start developing with hot-reload and comprehensive tooling support.</p>
+          <div class="flow-example">cargo watch -x "run -- --dev-mode"</div>
+        </div>
+        
+        <div class="flow-card">
+          <h3 class="flow-title">🚀 Production</h3>
+          <p class="flow-description">Deploy with Docker or as a standalone binary with configuration.</p>
+          <div class="flow-example">./target/release/hexafn --config config.toml</div>
+        </div>
+        
+        <div class="flow-card">
+          <h3 class="flow-title">🧪 Testing</h3>
+          <p class="flow-description">Run comprehensive test suites including integration tests.</p>
+          <div class="flow-example">cargo test --all && ./scripts/test/run-integration.sh</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documentation -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Documentation</h2>
+      <p class="section-subtitle">
+        Comprehensive documentation covering architecture, development, and deployment.
+      </p>
+      
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">📖</div>
+            <h3 class="module-title">Getting Started</h3>
+          </div>
+          <p class="module-description">Step-by-step guide to setting up and using hexaFn for the first time.</p>
+          <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/GETTING_STARTED.md" target="_blank" class="btn btn-primary">Read Guide</a>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🏗️</div>
+            <h3 class="module-title">Architecture Guide</h3>
+          </div>
+          <p class="module-description">Deep dive into hexagonal architecture, DDD principles, and module boundaries.</p>
+          <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/HEXAGONAL_ARCHITECTURE_GUIDE.md" target="_blank" class="btn btn-primary">Learn Architecture</a>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">💻</div>
+            <h3 class="module-title">Development Guide</h3>
+          </div>
+          <p class="module-description">Contributing guidelines, code standards, and development workflow.</p>
+          <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/DEVELOPMENT_GUIDE.md" target="_blank" class="btn btn-primary">Start Contributing</a>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">📊</div>
+            <h3 class="module-title">Use Cases</h3>
+          </div>
+          <p class="module-description">Real-world examples and practical applications of hexaFn pipelines.</p>
+          <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/USE_CASES.md" target="_blank" class="btn btn-primary">View Examples</a>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">🗺️</div>
+            <h3 class="module-title">Roadmap</h3>
+          </div>
+          <p class="module-description">Project roadmap, milestones, and planned features for future releases.</p>
+          <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/ROADMAP.md" target="_blank" class="btn btn-primary">View Roadmap</a>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon">📋</div>
+            <h3 class="module-title">API Reference</h3>
+          </div>
+          <p class="module-description">Complete API documentation generated from source code.</p>
+          <a href="https://docs.rs/hexafn" target="_blank" class="btn btn-primary">API Docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/hTuneSys/hexaFn" target="_blank">GitHub</a>
+        <a href="https://github.com/hTuneSys/hexaFn/issues" target="_blank">Issues</a>
+        <a href="https://github.com/hTuneSys/hexaFn/discussions" target="_blank">Discussions</a>
+        <a href="https://github.com/hTuneSys/hexaFn/blob/develop/docs/CONTRIBUTING.md" target="_blank">Contributing</a>
+        <a href="https://github.com/hTuneSys/hexaFn/blob/develop/LICENSE" target="_blank">License</a>
+      </div>
+      <div class="footer-company">
+        <p>&copy; 2025 Husamettin ARABACI • hexaTune LLC • MIT Licensed</p>
+        <p>Built with ❤️ using Rust, Hexagonal Architecture, and Domain-Driven Design</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to top">
+    ↑
+  </button>
+
+  <script>
+    // Scroll to top button visibility
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.querySelector('.scroll-top');
+      if (window.pageYOffset > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add fade-in animation to cards when they come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.flow-card, .module-card, .stat-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>

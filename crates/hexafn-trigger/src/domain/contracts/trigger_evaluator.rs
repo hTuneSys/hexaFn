@@ -179,7 +179,11 @@ pub trait TriggerEvaluator {
     /// let ctx = 42u32;
     /// assert_eq!(evaluator.evaluate(triggers[0], &ctx as &dyn Any).unwrap(), true);
     /// ```
-    fn evaluate(&self, trigger: &dyn Trigger, context: &dyn Any) -> Result<bool, Box<dyn HexaError>>;
+    fn evaluate(
+        &self,
+        trigger: &dyn Trigger,
+        context: &dyn Any,
+    ) -> Result<bool, Box<dyn HexaError>>;
 
     /// Registers a new trigger in the evaluator.
     ///
@@ -357,9 +361,15 @@ mod tests {
 
     struct TestTrigger;
     impl Trigger for TestTrigger {
-        fn id(&self) -> String { "test".to_string() }
-        fn name(&self) -> String { "Test".to_string() }
-        fn is_active(&self) -> bool { true }
+        fn id(&self) -> String {
+            "test".to_string()
+        }
+        fn name(&self) -> String {
+            "Test".to_string()
+        }
+        fn is_active(&self) -> bool {
+            true
+        }
         fn evaluate(&self, context: &dyn Any) -> Result<bool, Box<dyn HexaError>> {
             for cond in self.get_conditions() {
                 if !cond.matches(context)? {
@@ -368,7 +378,9 @@ mod tests {
             }
             Ok(true)
         }
-        fn get_conditions(&self) -> Vec<Box<dyn super::super::trigger_condition::TriggerCondition>> {
+        fn get_conditions(
+            &self,
+        ) -> Vec<Box<dyn super::super::trigger_condition::TriggerCondition>> {
             vec![Box::new(TestCondition)]
         }
     }
@@ -379,15 +391,24 @@ mod tests {
 
     impl DummyEvaluator {
         fn new() -> Self {
-            Self { triggers: Vec::new() }
+            Self {
+                triggers: Vec::new(),
+            }
         }
     }
 
     impl TriggerEvaluator for DummyEvaluator {
-        fn evaluate(&self, trigger: &dyn Trigger, context: &dyn Any) -> Result<bool, Box<dyn HexaError>> {
+        fn evaluate(
+            &self,
+            trigger: &dyn Trigger,
+            context: &dyn Any,
+        ) -> Result<bool, Box<dyn HexaError>> {
             trigger.evaluate(context)
         }
-        fn register_trigger(&mut self, trigger: Box<dyn Trigger>) -> Result<(), Box<dyn HexaError>> {
+        fn register_trigger(
+            &mut self,
+            trigger: Box<dyn Trigger>,
+        ) -> Result<(), Box<dyn HexaError>> {
             self.triggers.push(trigger);
             Ok(())
         }
@@ -399,7 +420,11 @@ mod tests {
             self.triggers.iter().map(|t| t.as_ref()).collect()
         }
         fn get_active_triggers(&self) -> Vec<&dyn Trigger> {
-            self.triggers.iter().filter(|t| t.is_active()).map(|t| t.as_ref()).collect()
+            self.triggers
+                .iter()
+                .filter(|t| t.is_active())
+                .map(|t| t.as_ref())
+                .collect()
         }
     }
 
@@ -428,16 +453,30 @@ mod tests {
     fn test_get_active_triggers() {
         struct InactiveTrigger;
         impl Trigger for InactiveTrigger {
-            fn id(&self) -> String { "inactive".to_string() }
-            fn name(&self) -> String { "Inactive".to_string() }
-            fn is_active(&self) -> bool { false }
-            fn evaluate(&self, _: &dyn Any) -> Result<bool, Box<dyn HexaError>> { Ok(false) }
-            fn get_conditions(&self) -> Vec<Box<dyn super::super::trigger_condition::TriggerCondition>> { vec![] }
+            fn id(&self) -> String {
+                "inactive".to_string()
+            }
+            fn name(&self) -> String {
+                "Inactive".to_string()
+            }
+            fn is_active(&self) -> bool {
+                false
+            }
+            fn evaluate(&self, _: &dyn Any) -> Result<bool, Box<dyn HexaError>> {
+                Ok(false)
+            }
+            fn get_conditions(
+                &self,
+            ) -> Vec<Box<dyn super::super::trigger_condition::TriggerCondition>> {
+                vec![]
+            }
         }
 
         let mut evaluator = DummyEvaluator::new();
         evaluator.register_trigger(Box::new(TestTrigger)).unwrap();
-        evaluator.register_trigger(Box::new(InactiveTrigger)).unwrap();
+        evaluator
+            .register_trigger(Box::new(InactiveTrigger))
+            .unwrap();
 
         let active = evaluator.get_active_triggers();
         assert_eq!(active.len(), 1);
