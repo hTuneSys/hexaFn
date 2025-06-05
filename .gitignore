@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
 # Rust build directory
@@ -10,6 +10,8 @@
 
 # VSCode settings
 .vscode/
+hexaFn.code-workspace
+/work_area/
 
 # Node modules
 node_modules/
@@ -28,3 +30,6 @@ node_modules/
 
 # Temporary files
 *.tmp
+
+# Github issue list
+/issues/

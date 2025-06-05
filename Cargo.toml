@@ -1,26 +1,69 @@
-# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
-[package]
-name = "hexaFn"
+[workspace]
+members = [
+    "crates/hexafn-core",
+    "crates/hexafn-trigger", 
+    "crates/hexafn-run",
+    "crates/hexafn-store",
+    "crates/hexafn-cast", 
+    "crates/hexafn-watch",
+    "crates/hexafn-bridge",
+]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
-authors = ["Hüsamettin Arabacı <info@hexafn.com>"]
+authors = ["Husamettin ARABACI <info@hexafn.com>"]
 edition = "2021"
 license = "MIT"
 license-file = "LICENSE"
 repository = "https://github.com/hTuneSys/hexaFn"
-description = "Modular event-driven function pipeline in Rust."
+description = "Modular event-driven function pipeline framework with 6F lifecycle flow"
 homepage = "https://hexafn.com"
-keywords = ["rust", "pipeline", "event-driven", "modular"]
-categories = ["asynchronous", "network-programming", "command-line-utilities"]
+keywords = ["rust", "pipeline", "event-driven", "hexagonal-architecture", "6f-lifecycle"]
+categories = ["asynchronous", "network-programming", "development-tools"]
+rust-version = "1.75"
 
-[dependencies]
+[workspace.dependencies]
+# Async runtime
 tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-log = "0.4"
-anyhow = "1.0"
-thiserror = "1.0"
+toml = "0.8"
 
-[dev-dependencies]
+# Error handling
+thiserror = "2.0.12"
+anyhow = "1.0"
+
+# Domain modeling
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Observability
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Testing
+mockall = "0.13.1"
 tokio-test = "0.4"
+
+# Development tools
+criterion = { version = "0.6.0", features = ["html_reports"] }
+
+# Shared util
+once_cell = "1.18"
+
+# Internal dependencies
+hexafn-core = { path = "crates/hexafn-core" }
+hexafn-trigger = { path = "crates/hexafn-trigger" }
+hexafn-run = { path = "crates/hexafn-run" }
+hexafn-store = { path = "crates/hexafn-store" }
+hexafn-cast = { path = "crates/hexafn-cast" }
+hexafn-watch = { path = "crates/hexafn-watch" }
+hexafn-bridge = { path = "crates/hexafn-bridge" }

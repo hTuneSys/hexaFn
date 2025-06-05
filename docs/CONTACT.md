@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -13,7 +13,7 @@ If you have questions, suggestions, or need support for the hexaFn project, plea
 
 For any general inquiries about the project, feel free to open a [GitHub Discussion](https://github.com/hTuneSys/hexaFn/discussions) or reach out via email:
 
-- Email: `info@hexafn.com` *(example address, replace with real one if needed)*
+- Email: [info@hexafn.com](mailto:info@hexafn.com)
 
 ---
 
@@ -31,9 +31,9 @@ For bug reports, feature requests, or support questions, please use our [GitHub 
 
 ## 🔒 Security Reports
 
-If you discover a security vulnerability, please follow the guidelines in [SECURITY.md](../.github/SECURITY.md) or contact us securely at:
+If you discover a security vulnerability, please follow the guidelines in [SECURITY](../.github/SECURITY.md) or contact us securely at:
 
-- Email: `info@hexafn.com` *(example address, replace if needed)*
+- Email: [info@hexafn.com](mailto:info@hexafn.com)
 
 ---
 
@@ -41,7 +41,7 @@ If you discover a security vulnerability, please follow the guidelines in [SECUR
 
 For sponsorships, collaborations, or media inquiries, please see our [FUNDING.yml](https://github.com/hTuneSys/hexaFn/blob/develop/.github/FUNDING.yml) or contact:
 
-- Email: `info@hexafn.com` *(example address)*
+- Email: [info@hexafn.com](mailto:info@hexafn.com)
 
 ---
 
@@ -49,8 +49,8 @@ For sponsorships, collaborations, or media inquiries, please see our [FUNDING.ym
 
 If you're interested in contributing, collaborating, or joining the discussion:
 
-- Read the [CONTRIBUTING.md](../.github/CONTRIBUTING.md)
-- Follow our [CODE_OF_CONDUCT.md](../.github/CODE_OF_CONDUCT.md)
+- Read the [CONTRIBUTING](../.github/CONTRIBUTING.md)
+- Follow our [CODE_OF_CONDUCT](../.github/CODE_OF_CONDUCT.md)
 - Join community discussions on GitHub
 
 ---

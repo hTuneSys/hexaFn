@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -15,7 +15,7 @@ Thanks for using **hexaFn**! Below are the ways you can get help or contact the 
 |----------------|-------------------------------------------------------------------|
 | [Discussions](https://github.com/hTuneSys/hexaFn/discussions) | Ask questions, suggest features, or open design talks |
 | [Issues](https://github.com/hTuneSys/hexaFn/issues)         | Report bugs or request features                        |
-| Email            | For private or sensitive support: info@hexafn.com                |
+| [Email](mailto:info@hexafn.com) | For private or sensitive support                     |
 
 ---
 

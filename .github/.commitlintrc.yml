@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
 extends:
@@ -9,3 +9,5 @@ rules:
     - 2
     - always
     - [feat, fix, chore, refactor, test, docs, ci, perf, build, release, hotfix, style]
+  header-max-length: [0, "always"]
+  body-max-line-length: [0, "always"]

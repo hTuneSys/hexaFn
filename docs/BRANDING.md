@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -46,7 +46,10 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 | Correct Usage                       |
 |-----------------------------------|
-| ![Correct Logo](./assets/hexaFn-logo.png) |
+| ![Banner](./assets/hexaFn-banner.png) |
+| ![Logo](./assets/hexaFn-logo.png)   |
+| ![Icon](./assets/hexaFn-icon.png)   |
+| ![Favicon](./assets/favicon.ico)   |
 
 ---
 
@@ -63,8 +66,8 @@ This guide defines the visual identity, tone, and presentation standards for the
 
 ---
 
-## 📄 Maintained by  
-**hexaTune LLC**  
+## 📄 Maintained by **hexaTune LLC**
+
 - Website: [hexafn.com](https://hexafn.com)  
 - GitHub: [github.com/hTuneSys/hexaFn](https://github.com/hTuneSys/hexaFn)  
 - Email: [info@hexafn.com](mailto:info@hexafn.com)

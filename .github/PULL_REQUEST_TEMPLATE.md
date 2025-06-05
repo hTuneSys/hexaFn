@@ -1,3 +1,5 @@
+# Pull Request
+
 ## 📄 Summary
 
 > Clearly describe what this PR changes and why it is necessary.  
@@ -31,6 +33,7 @@ feat, fix, chore, refactor, test, docs, ci, perf, build, release, hotfix, style
 ```
 
 ✅ Examples:
+
 ```text
 feat: add lifecycle validator
 fix: resolve webhook retry bug
@@ -67,7 +70,7 @@ Before submitting, make sure you've completed the following:
 
 > If this PR addresses one or more issues, link them here:
 
-```
+```text
 Closes #
 ```
 

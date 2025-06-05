@@ -1,19 +1,25 @@
 version = 1
 
 [[annotations]]
-path = ["docs/assets/diagram.png", "docs/assets/hexaFn-logo.png", "docs/assets/favicon.ico", "docs/CNAME","docs/assets/data-flow.png"]
+path = ["docs/assets/**","docs/CNAME","docs/index.html"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2025 Hüsamettin Arabacı"
+SPDX-FileCopyrightText = "2025 Husamettin ARABACI"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["hexaFn.code-workspace"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 Husamettin ARABACI"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
 path = ["package.json","CHANGELOG.md","Cargo.lock"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2025 Hüsamettin Arabacı"
+SPDX-FileCopyrightText = "2025 Husamettin ARABACI"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = [".github/ISSUE_TEMPLATE/bug-report.md", ".github/ISSUE_TEMPLATE/feature-request.md", ".github/ISSUE_TEMPLATE/support.md", ".github/ISSUE_TEMPLATE/documentation.md", ".github/ISSUE_TEMPLATE/question.md", ".github/PULL_REQUEST_TEMPLATE.md"]
+path = [".github/ISSUE_TEMPLATE/**",".github/PULL_REQUEST_TEMPLATE.md"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2025 Hüsamettin Arabacı"
+SPDX-FileCopyrightText = "2025 Husamettin ARABACI"
 SPDX-License-Identifier = "MIT"
