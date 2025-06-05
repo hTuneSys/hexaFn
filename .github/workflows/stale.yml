@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
 name: 💤 Mark stale issues and PRs
@@ -18,8 +18,8 @@ jobs:
     steps:
       - uses: actions/stale@v9
         with:
-          days-before-stale: 180
-          days-before-close: 30
+          days-before-stale: 365
+          days-before-close: 60
           stale-issue-message: >
             This issue has been marked as stale due to inactivity.
             Please update or comment to prevent automatic closure.

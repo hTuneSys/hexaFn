@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -91,9 +91,9 @@ cargo clippy
 
 ## 📚 Next Steps
 
-- Check [`ARCHITECTURE.md`](ARCHITECTURE.md) to understand system design
-- Use [`USE_CASES.md`](USE_CASES.md) to explore core functionalities
-- Review [`CONTRIBUTING.md`](CONTRIBUTING.md) to contribute effectively
+- Check [ARCHITECTURE](ARCHITECTURE.md) to understand system design
+- Use [USE_CASES](USE_CASES.md) to explore core functionalities
+- Review [CONTRIBUTING](CONTRIBUTING.md) to contribute effectively
 
 ---
 

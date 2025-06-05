@@ -1,49 +1,79 @@
-# SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 # SPDX-License-Identifier: MIT
 
-module:store:
-  - changed-files:
-      - any-glob-to-any-file: ['src/store/**']
-
-module:cast:
-  - changed-files:
-      - any-glob-to-any-file: ['src/cast/**']
-
-module:run:
-  - changed-files:
-      - any-glob-to-any-file: ['src/run/**']
-
-module:trigger:
-  - changed-files:
-      - any-glob-to-any-file: ['src/trigger/**']
-
-module:watch:
-  - changed-files:
-      - any-glob-to-any-file: ['src/watch/**']
+# ────────────────────────────────────────────────────────────────────────────────
+# MODULE LABELS
+# ────────────────────────────────────────────────────────────────────────────────
 
 module:bridge:
   - changed-files:
-      - any-glob-to-any-file: ['src/bridge/**']
+      - any-glob-to-any-file: ['crates/hexafn-bridge/**']
 
-type:feature:
+module:cast:
   - changed-files:
-      - any-glob-to-any-file: ['feature/**']
+      - any-glob-to-any-file: ['crates/hexafn-cast/**']
 
-type:bug:
+module:run:
   - changed-files:
-      - any-glob-to-any-file: ['fix/**']
+      - any-glob-to-any-file: ['crates/hexafn-run/**']
 
-type:docs:
+module:store:
   - changed-files:
-      - any-glob-to-any-file: ['docs/**']
+      - any-glob-to-any-file: ['crates/hexafn-store/**']
+
+module:trigger:
+  - changed-files:
+      - any-glob-to-any-file: ['crates/hexafn-trigger/**']
+
+module:watch:
+  - changed-files:
+      - any-glob-to-any-file: ['crates/hexafn-watch/**']
+
+module:core:
+  - changed-files:
+      - any-glob-to-any-file: ['crates/hexafn-core/**']
+
+module:docs:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**', 'examples/**', '**/README.md']
+
+module:cli:
+  - changed-files:
+      - any-glob-to-any-file: ['scripts/**']
+
+# ────────────────────────────────────────────────────────────────────────────────
+# TYPE LABELS
+# ────────────────────────────────────────────────────────────────────────────────
+
+type:doc:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**','LICENSE','LICENSES/**','CHANGELOG.md','**/README.md']
 
 type:ci:
   - changed-files:
-      - any-glob-to-any-file: ['.github/**']
+      - any-glob-to-any-file: ['.github/**','.gitignore','package.json']
+
+type:test:
+  - changed-files:
+      - any-glob-to-any-file: 
+        - 'integration-tests/**'
+        - 'benchmarks/**' 
+        - '**/tests/**'
+        - '**/*_test.rs'
+        - '**/test_*.rs'
 
 type:infra:
   - changed-files:
-      - any-glob-to-any-file: ['infrastructure/**']
+      - any-glob-to-any-file:
+          - 'crates/**/Cargo.toml'
+          - 'Cargo.toml'
+          - 'Cargo.lock'
+          - '.releaserc.yml'
+          - 'REUSE.toml'
+
+# ────────────────────────────────────────────────────────────────────────────────
+# DEFAULT LABEL
+# ────────────────────────────────────────────────────────────────────────────────
 
 default:unclassified:
   - changed-files:

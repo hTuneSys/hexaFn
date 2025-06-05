@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "hexafn-trigger"
+description = "HexaTrigger - Conditional logic and rule engine for Feed/Filter phases of 6F Lifecycle Flow"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+# Async support
+async-trait.workspace = true
+tokio.workspace = true
+
+# Serialization
+serde.workspace = true
+
+# Error handling
+thiserror.workspace = true
+
+# Domain modeling
+uuid.workspace = true
+chrono.workspace = true
+
+# Observability
+tracing.workspace = true
+serde_json.workspace = true
+
+# Internal dependencies
+hexafn-core = { path = "../hexafn-core" }
+
+[dev-dependencies]
+tokio-test.workspace = true

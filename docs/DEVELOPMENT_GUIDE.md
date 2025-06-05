@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2025 Hüsamettin Arabacı
+SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 SPDX-License-Identifier: MIT
 -->
 
@@ -11,17 +11,7 @@ This guide helps developers understand how to work with the hexaFn project. It e
 
 ## 🗂️ Project Structure
 
-```
-hexaFn/
-├── src/                # Main source code
-├── docs/               # Project documentation
-├── .github/            # Issue templates, workflows, and configs
-├── Cargo.toml          # Rust project definition
-├── rust-toolchain.toml # Toolchain version pinning
-├── .releaserc.yml      # Release automation config
-├── .gitignore          # Git exclusion rules
-└── README.md           # Project overview
-```
+- [PROJECT_STRUCTURE](PROJECT_STRUCTURE.md) – Directory structure
 
 ---
 
@@ -106,7 +96,7 @@ For detailed tracing, integrate with `HexaWatch` logging module.
 
 ## 🔀 Branching & PRs
 
-Follow the naming rules defined in [`BRANCH_STRATEGY.md`](BRANCH_STRATEGY.md) and [`PR_STRATEGY.md`](PR_STRATEGY.md). Allowed branch prefixes:
+Follow the naming rules defined in [BRANCH_STRATEGY](BRANCH_STRATEGY.md) and [PR_STRATEGY](PR_STRATEGY.md). Allowed branch prefixes:
 
 - `feat/`, `fix/`, `refactor/`, `test/`, `docs/`, `ci/`, etc.
 
@@ -116,13 +106,13 @@ Create a feature branch:
 git checkout -b feat/new-module
 ```
 
-Open a PR with a valid title and follow checklist from [`PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md).
+Open a PR with a valid title and follow checklist from [PULL_REQUEST_TEMPLATE](../.github/PULL_REQUEST_TEMPLATE.md).
 
 ---
 
 ## 🧱 Commit Conventions
 
-Use the supported 12 types from [`COMMIT_STRATEGY.md`](COMMIT_STRATEGY.md). Example:
+Use the supported 12 types from [COMMIT_STRATEGY](COMMIT_STRATEGY.md). Example:
 
 ```bash
 feat: add token parsing logic
@@ -153,23 +143,56 @@ Branches like `main`, `release`, and `develop` are protected:
 
 ---
 
+## 🏛️ Architecture Documentation
+
+Understanding hexaFn's architecture is essential for effective development. Review these key documents:
+
+- [HEXAGONAL_ARCHITECTURE_GUIDE](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Fundamental hexagonal architecture principles
+- [RUST_PORTS_ADAPTERS_EXAMPLE](RUST_PORTS_ADAPTERS_EXAMPLE.md) - Comprehensive component catalog organized by architectural layers
+- [DATA_FLOW](DATA_FLOW.md) - High-level data flow diagram across all modules
+- [DATA_FLOW_DETAIL](DATA_FLOW_DETAIL.md) - Detailed component interactions with interfaces and methods
+- [DATA_MODEL_CORE](DATA_MODEL_CORE.md) - Core data model definitions
+- [DATA_MODEL_RUN](DATA_MODEL_RUN.md) - Run data model definitions
+- [DATA_MODEL_CAST](DATA_MODEL_CAST.md) - Cast data model definitions
+- [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.md) - Bridge data model definitions
+- [DATA_MODEL_TRIGGER](DATA_MODEL_TRIGGER.md) - Trigger data model definitions
+- [DATA_MODEL_STORE](DATA_MODEL_STORE.md) - Store data model definitions
+- [DATA_MODEL_WATCH](DATA_MODEL_WATCH.md) - Watch data model definitions
+
+These documents explain how components interact across the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) following clean hexagonal architecture patterns.
+
+When developing a new feature:
+1. Identify which module and layer your code belongs to using `RUST_PORTS_ADAPTERS.md`
+2. Understand how data flows through the system with `DATA_FLOW.md`
+3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL.md`
+4. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
+5. Ensure your code adheres to the data model definitions in `DATA_MODEL_CORE.md`, `DATA_MODEL_RUN.md`, etc.
+
+Maintaining architectural integrity is critical - all PRs will be reviewed for compliance with these patterns.
+
+---
+
 ## 📚 Documentation & Contributions
 
 All contributors must follow the documentation style and structure:
 
 - Use `///` for public Rust docs
 - Update relevant `.md` files in `docs/` when modifying features
-- Follow the guide in [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Follow the guide in [CONTRIBUTING](CONTRIBUTING.md)
 
 ---
 
 ## 🧠 Helpful Resources
 
-- [`GETTING_STARTED.md`](GETTING_STARTED.md) – Initial setup and quick commands
-- [`ARCHITECTURE.md`](ARCHITECTURE.md) – System design and modules
-- [`USE_CASES.md`](USE_CASES.md) – Functional capabilities
-- [`CONTACT.md`](CONTACT.md), [`SUPPORT.md`](SUPPORT.md) – Communication channels
-- [`LABELLING_STRATEGY.md`](LABELLING_STRATEGY.md) – Tag issues/PRs correctly
+- [GETTING_STARTED](GETTING_STARTED.md) – Initial setup and quick commands
+- [HEXAGONAL_ARCHITECTURE_GUIDE](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Protocol-agnostic implementation patterns and data flow
+- [ARCHITECTURE](ARCHITECTURE.md) – System design and modules
+- [USE_CASES](USE_CASES.md) – Functional capabilities
+- [CONTACT](CONTACT.md), [SUPPORT](SUPPORT.md) – Communication channels
+- [LABELLING_STRATEGY](LABELLING_STRATEGY.md) – Tag issues/PRs correctly
+- [PROJECT_STRUCTURE](PROJECT_STRUCTURE.md) – Directory structure
+- [BRANCH_STRATEGY](BRANCH_STRATEGY.md) – Branch naming conventions
+- [COMMIT_STRATEGY](COMMIT_STRATEGY.md) – Commit message conventions
 
 ---
 

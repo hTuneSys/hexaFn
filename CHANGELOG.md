@@ -8,13 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-### Added
+### Added (Unreleased)
+
 - Initial setup of hexaFn project structure.
 
 ### Changed
+
 - Placeholder for upcoming changes.
 
 ### Fixed
+
 - Placeholder for bug fixes.
 
 ---
@@ -22,4 +25,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.0.0] - YYYY-MM-DD
 
 ### Added
+
 - Project creation and initial commit.
