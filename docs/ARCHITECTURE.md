@@ -17,17 +17,17 @@ Each phase in the flow is programmable, observable, and independently testable. 
 
 ## 🔶 Module Overview
 
-### 1. `HexaStore`
+### 1. `HexaBridge`
 
-- Typed, schema-validating key-value store
-- Supports triggers, TTL, event emit on write
-- Backend-agnostic (supports in-memory, disk-based, or Redis-style engines)
+- Integration module: external API/webhook/SDK interfaces
+- Connects hexaFn to the outside world
+- Enables bidirectional communication
 
-### 2. `HexaCast`
+### 2. `HexaTrigger`
 
-- High-performance Pub/Sub engine
-- Topic-based + pattern matching subscriptions
-- Delivers messages to functions, external services, or UI listeners
+- Conditional logic and rule engine
+- Event chaining with AND/OR logic
+- Time-based and value-based triggering supported
 
 ### 3. `HexaRun`
 
@@ -35,23 +35,23 @@ Each phase in the flow is programmable, observable, and independently testable. 
 - Supports: WASM, Lua, JS, internal DSL
 - Can access KV, cast, and external inputs in a sandboxed context
 
-### 4. `HexaTrigger`
+### 4. `HexaStore`
 
-- Conditional logic and rule engine
-- Event chaining with AND/OR logic
-- Time-based and value-based triggering supported
+- Typed, schema-validating key-value store
+- Supports triggers, TTL, event emit on write
+- Backend-agnostic (supports in-memory, disk-based, or Redis-style engines)
 
-### 5. `HexaWatch`
+### 5. `HexaCast`
+
+- High-performance Pub/Sub engine
+- Topic-based + pattern matching subscriptions
+- Delivers messages to functions, external services, or UI listeners
+
+### 6. `HexaWatch`
 
 - Unified observer layer (logging, tracing, metrics)
 - Supports pluggable sinks (console, Elastic, Prometheus)
 - Real-time audit trail of system activity
-
-### 6. `HexaBridge`
-
-- Integration module: external API/webhook/SDK interfaces
-- Connects hexaFn to the outside world
-- Enables bidirectional communication
 
 ---
 

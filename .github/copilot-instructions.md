@@ -52,12 +52,12 @@ crates/<domain>/src/
 ### Module Boundaries
 
 - `hexafn-core`: Core architecture & event flow ( Shared Kernel )
+- `hexafn-bridge`: HexaBridge (external integrations & webhooks)
+- `hexafn-trigger`: HexaTrigger (conditional logic & rule engine)
+- `hexafn-run`: HexaRun (function runtime: WASM, JS, DSL)
 - `hexafn-store`: HexaStore (typed KV storage with triggers)
 - `hexafn-cast`: HexaCast (pub-sub messaging engine)
-- `hexafn-run`: HexaRun (function runtime: WASM, JS, DSL)
-- `hexafn-trigger`: HexaTrigger (conditional logic & rule engine)
 - `hexafn-watch`: HexaWatch (observability & audit tracing)
-- `hexafn-bridge`: HexaBridge (external integrations & webhooks)
 
 ---
 

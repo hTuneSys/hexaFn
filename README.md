@@ -89,8 +89,6 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 | **Forward**| Route results to KV stores, topics, services |
 | **Feedback**| Log, trace, trigger, or audit |
 
-  ![6F Lifecycle Diagram](docs/assets/diagram.png)
-
 ---
 
 ## 🧠 Why hexaFn?
@@ -107,12 +105,12 @@ Each phase in the 6F architecture represents a focused stage of data handling:
 
 | Module         | Role |
 |----------------|------|
+| `HexaBridge`   | Webhooks, SDK, external integration |
+| `HexaTrigger`  | Trigger orchestration engine |
+| `HexaRun`      | Function runtime (WASM, JS, DSL) |
 | `HexaStore`    | Event-driven KV storage |
 | `HexaCast`     | Pub-sub messaging engine |
-| `HexaRun`      | Function runtime (WASM, JS, DSL) |
-| `HexaTrigger`  | Trigger orchestration engine |
 | `HexaWatch`    | Observability & audit tracing |
-| `HexaBridge`   | Webhooks, SDK, external integration |
 
 ---
 

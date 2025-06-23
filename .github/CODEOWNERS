@@ -5,10 +5,43 @@
 * @husamettinarabaci
 
 # Module-specific owners
-/src/store/     @husamettinarabaci
-/src/cast/      @husamettinarabaci
-/src/run/       @husamettinarabaci
-/src/trigger/   @husamettinarabaci
-/src/watch/     @husamettinarabaci
-/src/bridge/    @husamettinarabaci
-/docs/          @husamettinarabaci
+
+## Core module
+/crates/hexafn-core/    @husamettinarabaci
+
+## Bridge module
+/crates/hexafn-bridge/  @husamettinarabaci
+
+## Watch module
+/crates/hexafn-watch/   @husamettinarabaci
+
+## Cast (Pub/Sub) module
+/crates/hexafn-cast/    @husamettinarabaci
+
+## Store module
+/crates/hexafn-store/   @husamettinarabaci
+
+## Run module
+/crates/hexafn-run/     @husamettinarabaci
+
+## Trigger module
+/crates/hexafn-trigger/ @husamettinarabaci
+
+## Documentation
+/docs/                  @husamettinarabaci
+
+## Tests
+/integration-tests/     @husamettinarabaci
+
+## Benchmarks
+/benchmarks/            @husamettinarabaci
+
+## Examples
+/examples/              @husamettinarabaci
+
+## Scripts
+/scripts/               @husamettinarabaci
+
+## GitHub
+/.github/               @husamettinarabaci
+

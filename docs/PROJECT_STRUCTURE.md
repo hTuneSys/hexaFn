@@ -83,13 +83,13 @@ crates/<domain>/src/
 
 | Module                | Lifecycle Stage(s) | Responsibility                                          |
 | --------------------- | ------------------ | ------------------------------------------------------- |
-| `hexafn-core/`        | Shared Kernel      | Domain contracts, shared types, 6F lifecycle traits    |
-| `hexafn-trigger/`     | Feed / Filter      | Detects & evaluates events                              |
-| `hexafn-run/`         | Function           | Executes logic (DSL, WASM, scripts)                     |
+| `hexafn-core/`        | Shared Kernel      | Domain contracts, shared types, 6F lifecycle traits     |
+| `hexafn-bridge/`      | Feed               | Interfaces with external systems (e.g., webhooks, APIs) |
+| `hexafn-trigger/`     | Filter             | Detects & evaluates events                              |
+| `hexafn-run/`         | Format / Function  | Executes logic (DSL, WASM, scripts)                     |
 | `hexafn-store/`       | Forward            | Persists outputs or states                              |
 | `hexafn-cast/`        | Forward            | Broadcasts events/messages (e.g., to pub/sub)           |
 | `hexafn-watch/`       | Feedback           | Collects logs, telemetry, audits                        |
-| `hexafn-bridge/`      | Integration        | Interfaces with external systems (e.g., webhooks, APIs) |
 
 ---
 
@@ -129,19 +129,15 @@ hexafn-core = { path = "crates/hexafn-core" }
 └─────────┬───────┘
           │
 ┌─────────┼───────┐
-│  hexafn-watch   │
+│  hexafn-trigger │
 └─────────┬───────┘
           │
-┌─────────┼───────┐ ┌─────────────────┐ ┌─────────────────┐
-│  hexafn-cast    │ │  hexafn-store   │ │  hexafn-run     │
-└─────────┬───────┘ └─────────┬───────┘ └─────────┬───────┘
-          │                   │                   │
-          └─────────┬─────────┴─────────┬─────────┘
-                    │                   │
-          ┌─────────┼───────┐ ┌─────────┼───────┐
-          │ hexafn-trigger  │ │   hexafn-core   │
-          └─────────────────┘ └─────────────────┘
-                                       │
+┌─────────┼───────┐ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐ 
+│  hexafn-run     │ │  hexafn-store   │ │  hexafn-cast    │ │  hexafn-watch   │
+└─────────┬───────┘ └─────────┬───────┘ └─────────┬───────┘ └─────────┬───────┘
+          │                   │                   │                   │
+          └───────────────────┴─────────┬─────────┴───────────────────┘
+                                        │
                               (Shared Domain Kernel)
 ```
 
