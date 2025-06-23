@@ -16,7 +16,7 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 authors = ["Husamettin ARABACI <info@hexafn.com>"]
-edition = "2021"
+edition = "2024"
 license = "MIT"
 license-file = "LICENSE"
 repository = "https://github.com/hTuneSys/hexaFn"
@@ -24,7 +24,7 @@ description = "Modular event-driven function pipeline framework with 6F lifecycl
 homepage = "https://hexafn.com"
 keywords = ["rust", "pipeline", "event-driven", "hexagonal-architecture", "6f-lifecycle"]
 categories = ["asynchronous", "network-programming", "development-tools"]
-rust-version = "1.75"
+rust-version = "1.86.0"
 
 [workspace.dependencies]
 # Async runtime
