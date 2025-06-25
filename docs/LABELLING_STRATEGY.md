@@ -24,15 +24,15 @@ This document defines the complete, system-approved label taxonomy used in the h
 
 ## 🧩 Module Labels
 
-- `module:bridge` – HexaBridge (external integrations)
-- `module:cast` – HexaCast (pub-sub engine)
-- `module:cli` – CLI tools
 - `module:core` – Core architecture & event flow
-- `module:docs` – Documentation tasks
+- `module:bridge` – HexaBridge (external integrations)
+- `module:trigger` – HexaTrigger (rule engine)
 - `module:run` – HexaRun (function runtime)
 - `module:store` – HexaStore (key-value engine)
-- `module:trigger` – HexaTrigger (rule engine)
+- `module:cast` – HexaCast (pub-sub engine)
 - `module:watch` – HexaWatch (logging & tracing)
+- `module:docs` – Documentation tasks
+- `module:cli` – CLI tools
 
 ---
 

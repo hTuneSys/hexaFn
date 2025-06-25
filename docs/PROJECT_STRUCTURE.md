@@ -99,13 +99,13 @@ crates/<domain>/src/
 # Root Cargo.toml
 [workspace]
 members = [
-    "crates/hexafn-core",
+    "crates/hexafn-core",    
+    "crates/hexafn-bridge",
     "crates/hexafn-trigger", 
     "crates/hexafn-run",
     "crates/hexafn-store",
     "crates/hexafn-cast", 
     "crates/hexafn-watch",
-    "crates/hexafn-bridge",
 ]
 resolver = "2"
 

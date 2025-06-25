@@ -12,20 +12,20 @@
 ## Bridge module
 /crates/hexafn-bridge/  @husamettinarabaci
 
-## Watch module
-/crates/hexafn-watch/   @husamettinarabaci
-
-## Cast (Pub/Sub) module
-/crates/hexafn-cast/    @husamettinarabaci
-
-## Store module
-/crates/hexafn-store/   @husamettinarabaci
+## Trigger module
+/crates/hexafn-trigger/ @husamettinarabaci
 
 ## Run module
 /crates/hexafn-run/     @husamettinarabaci
 
-## Trigger module
-/crates/hexafn-trigger/ @husamettinarabaci
+## Store module
+/crates/hexafn-store/   @husamettinarabaci
+
+## Cast (Pub/Sub) module
+/crates/hexafn-cast/    @husamettinarabaci
+
+## Watch module
+/crates/hexafn-watch/   @husamettinarabaci
 
 ## Documentation
 /docs/                  @husamettinarabaci

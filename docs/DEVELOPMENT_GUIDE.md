@@ -151,13 +151,13 @@ Understanding hexaFn's architecture is essential for effective development. Revi
 - [RUST_PORTS_ADAPTERS_EXAMPLE](RUST_PORTS_ADAPTERS_EXAMPLE.md) - Comprehensive component catalog organized by architectural layers
 - [DATA_FLOW](DATA_FLOW.md) - High-level data flow diagram across all modules
 - [DATA_FLOW_DETAIL](DATA_FLOW_DETAIL.md) - Detailed component interactions with interfaces and methods
-- [DATA_MODEL_CORE](DATA_MODEL_CORE.md) - Core data model definitions
-- [DATA_MODEL_RUN](DATA_MODEL_RUN.md) - Run data model definitions
-- [DATA_MODEL_CAST](DATA_MODEL_CAST.md) - Cast data model definitions
-- [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.md) - Bridge data model definitions
-- [DATA_MODEL_TRIGGER](DATA_MODEL_TRIGGER.md) - Trigger data model definitions
-- [DATA_MODEL_STORE](DATA_MODEL_STORE.md) - Store data model definitions
-- [DATA_MODEL_WATCH](DATA_MODEL_WATCH.md) - Watch data model definitions
+- [DATA_MODEL_CORE](DATA_MODEL_CORE.puml) - Core data model definitions
+- [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.puml) - Bridge data model definitions
+- [DATA_MODEL_TRIGGER](DATA_MODEL_TRIGGER.puml) - Trigger data model definitions
+- [DATA_MODEL_RUN](DATA_MODEL_RUN.puml) - Run data model definitions
+- [DATA_MODEL_STORE](DATA_MODEL_STORE.puml) - Store data model definitions
+- [DATA_MODEL_CAST](DATA_MODEL_CAST.puml) - Cast data model definitions
+- [DATA_MODEL_WATCH](DATA_MODEL_WATCH.puml) - Watch data model definitions
 
 These documents explain how components interact across the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) following clean hexagonal architecture patterns.
 
@@ -166,7 +166,7 @@ When developing a new feature:
 2. Understand how data flows through the system with `DATA_FLOW.md`
 3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL.md`
 4. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
-5. Ensure your code adheres to the data model definitions in `DATA_MODEL_CORE.md`, `DATA_MODEL_RUN.md`, etc.
+5. Ensure your code adheres to the data model definitions in `DATA_MODEL_*.puml`, etc.
 
 Maintaining architectural integrity is critical - all PRs will be reviewed for compliance with these patterns.
 

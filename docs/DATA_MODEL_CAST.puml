@@ -1,8 +1,5 @@
-```plantuml
-'''
 ' SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 ' SPDX-License-Identifier: MIT
-' This file is auto-generated from DATA_MODEL_CAST.md
 
 @startuml DATA_MODEL_CAST
 
@@ -340,4 +337,3 @@ package "Infrastructure Layer" {
 }
 
 @enduml
-```

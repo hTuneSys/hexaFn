@@ -1,12 +1,13 @@
-```plantuml
-@startuml DATA_MODEL_WATCH
 ' SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 ' SPDX-License-Identifier: MIT
-' PlantUML class diagram for HexaWatch (Watch Module)
+
+@startuml DATA_MODEL_WATCH
 
 ' =====================
-' DOMAIN LAYER
+' Watch Module (HexaWatch)
 ' =====================
+
+' --- Domain Layer ---
 package "Domain Layer" {
     interface Trace <<trait>> {
         +start_span(name: String): Result<Span, HexaError>
@@ -141,9 +142,7 @@ LogEntry --> LogLevel
 MetricPoint --> LogEntry
 WatchEvent <|-- AlertTriggeredEvent
 
-' =====================
-' APPLICATION LAYER
-' =====================
+' --- Application Layer ---
 package "Application Layer" {
     interface LoggingPort <<port>> {
         +log(entry: LogEntry): Result<(), HexaError>
@@ -231,9 +230,7 @@ WatchService --> LoggingPort
 WatchService --> TracingPort
 WatchService --> MetricsPort
 
-' =====================
-' INFRASTRUCTURE LAYER
-' =====================
+' --- Infrastructure Layer ---
 package "Infrastructure Layer" {
     class LogExporter {
         +export(entry: LogEntry): Result<(), HexaError>
@@ -304,4 +301,3 @@ MetricsExporter --> MetricPoint
 WatchMapper --> WatchDto
 WatchMapper --> LogEntry
 @enduml
-```

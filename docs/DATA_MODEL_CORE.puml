@@ -1,8 +1,5 @@
-```plantuml
-'''
 ' SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 ' SPDX-License-Identifier: MIT
-' This file is auto-generated from DATA_MODEL_CORE.md
 
 @startuml DATA_MODEL_CORE
 
@@ -38,7 +35,6 @@ package "Domain Layer" {
     +new(): PipelineContext
     +get(key: &str): Option<serde_json::Value>
     +set(key: String, value: serde_json::Value): void
-    +clone(): PipelineContext
   }
   interface Event {
     +event_type(): &'static str
@@ -58,12 +54,14 @@ package "Domain Layer" {
     +occurred_at(): chrono::DateTime<chrono::Utc>
     +correlation_id(): &str
   }
-  interface HexaError {
-    +error_code(): &'static str
-    +error_message(): String
-    +kind(): HexaErrorKind
-    +severity(): HexaErrorSeverity
-    +source(): Option<Box<dyn std::error::Error>>
+  class HexaError {
+      +error_code(): &'static str
+      +error_message(): String
+      +error_kind(): HexaErrorKind
+      +error_severity(): HexaErrorSeverity
+      +source(): Option<Box<dyn std::error::Error>>
+      +to_log_entry(): String
+      +to_string(): String
   }
   enum HexaErrorKind {
     NotFound
@@ -72,12 +70,14 @@ package "Domain Layer" {
     Internal
     External
     Unknown
+    +to_string(): String
   }
   enum HexaErrorSeverity {
     Low
     Medium
     High
     Critical
+    +to_string(): String
   }
   interface CoreDomainEvent {
     +event_type(): &'static str
@@ -136,13 +136,14 @@ package "Domain Layer" {
     +is_allowed(user: String): bool
   }
 
-  Pipeline --> PipelineStage : contains
-  PipelineStage --> PipelineContext : uses
-  PipelineStage --> PipelineStageType : has type
-  Event --> EventId : has
-  DomainEvent --|> Event : extends
-  HexaError --> HexaErrorKind : categorized by
-  HexaError --> HexaErrorSeverity : prioritized by
+  ' === Rust-style relations ===
+  Pipeline *-- PipelineStage : contains
+  PipelineStage ..> PipelineContext : uses
+  PipelineStage ..> PipelineStageType : has type
+  Event -- EventId : has
+  DomainEvent <|.. Event : is (trait impl)
+  HexaError ..> HexaErrorKind : categorized by
+  HexaError ..> HexaErrorSeverity : prioritized by
 }
 
 ' --- Application Layer ---
@@ -218,12 +219,14 @@ package "Application Layer" {
     +revoke_access(pipeline_id: String, user: String)
     +check_access(pipeline_id: String, user: String): bool
   }
-  PipelineOrchestrator --> PipelineConfig
-  PipelineOrchestrator --> PipelineInstance
-  PipelineConfigLoader --> PipelineConfig
-  PipelineInstance --> PipelineStage
-  PipelineInstance --> PipelineStatus
-  PipelineValidator --> PipelineConfig
+
+  ' === Rust-style relations ===
+  PipelineOrchestrator ..> PipelineConfig : uses
+  PipelineOrchestrator ..> PipelineInstance : creates
+  PipelineConfigLoader ..> PipelineConfig : returns
+  PipelineInstance *-- PipelineStage : contains
+  PipelineInstance -- PipelineStatus : has
+  PipelineValidator ..> PipelineConfig : validates
 }
 
 ' --- Infrastructure Layer ---
@@ -277,11 +280,13 @@ package "Infrastructure Layer" {
     +set_access(pipeline_id: String, user: String, allowed: bool)
     +get_access(pipeline_id: String, user: String): bool
   }
-  PipelineCli --> PipelineOrchestrator
-  PipelineRepository --> PipelineInstance
-  PipelineEventBus --> CoreDomainEvent
-  PipelineMapper --> PipelineDto
-  PipelineMapper --> PipelineInstance
+
+  ' === Rust-style relations ===
+  PipelineCli ..> PipelineOrchestrator : calls
+  PipelineRepository ..> PipelineInstance : stores
+  PipelineEventBus ..> CoreDomainEvent : publishes
+  PipelineMapper ..> PipelineDto : maps
+  PipelineMapper ..> PipelineInstance : maps
 }
 
 ' --- Developer Tooling & Test Abstractions ---
@@ -308,9 +313,11 @@ package "Developer Tooling & Test Abstractions" {
     +run_command(cmd: String, args: Vec<String>): Result<String, HexaError>
     +assert_output(expected: String): Result<_, HexaError>
   }
-  IntegrationTestSuite --> TestCase
-  BenchmarkSuite --> TestCase
-  CliTestHarness --> TestCase
+
+  ' === Rust-style relations ===
+  IntegrationTestSuite *-- TestCase : contains
+  BenchmarkSuite *-- TestCase : contains
+  CliTestHarness ..> TestCase : uses
 }
 
 ' --- Cross-Module Event Flows & Orchestration ---
@@ -330,11 +337,12 @@ package "Cross-Module Event Flows & Orchestration" {
     +serve(port: u16): Result<_, HexaError>
     +get_stats(): Result<Vec<MetricPoint>, HexaError>
   }
-  Orchestrator --> CoreDomainEvent
-  Orchestrator --> MetricsEndpoint
-  ConfigHotReloader --> Orchestrator
-  MetricsEndpoint --> MetricPoint
+
+  ' === Rust-style relations ===
+  Orchestrator ..> CoreDomainEvent : handles
+  Orchestrator ..> MetricsEndpoint : uses
+  ConfigHotReloader ..> Orchestrator : watches
+  MetricsEndpoint ..> MetricPoint : returns
 }
 
 @enduml
-```

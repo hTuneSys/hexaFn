@@ -64,13 +64,13 @@ crates/<domain>/src/
 ## 🚨 MANDATORY DOCUMENTATION REFERENCE
 
 - [`docs/TODO_LIST.md`](../docs/TODO_LIST.md) - **MANDATORY** for task tracking and sprint planning
-- [`docs/DATA_MODEL_CORE.md`](../docs/DATA_MODEL_CORE.md) - **MANDATORY** Data Core model and domain concepts
-- [`docs/DATA_MODEL_RUN.md`](../docs/DATA_MODEL_RUN.md) - **MANDATORY** Data Run model and domain concepts
-- [`docs/DATA_MODEL_CAST.md`](../docs/DATA_MODEL_CAST.md) - **MANDATORY** Data Cast model and domain concepts
-- [`docs/DATA_MODEL_BRIDGE.md`](../docs/DATA_MODEL_BRIDGE.md) - **MANDATORY** Data Bridge model and domain concepts
-- [`docs/DATA_MODEL_TRIGGER.md`](../docs/DATA_MODEL_TRIGGER.md) - **MANDATORY** Data Trigger model and domain concepts
-- [`docs/DATA_MODEL_STORE.md`](../docs/DATA_MODEL_STORE.md) - **MANDATORY** Data Store model and domain concepts
-- [`docs/DATA_MODEL_WATCH.md`](../docs/DATA_MODEL_WATCH.md) - **MANDATORY** Data Watch model and domain concepts
+- [`docs/DATA_MODEL_CORE.puml`](../docs/DATA_MODEL_CORE.puml) - **MANDATORY** Data Core model and domain concepts
+- [`docs/DATA_MODEL_BRIDGE.puml`](../docs/DATA_MODEL_BRIDGE.puml) - **MANDATORY** Data Bridge model and domain concepts
+- [`docs/DATA_MODEL_TRIGGER.puml`](../docs/DATA_MODEL_TRIGGER.puml) - **MANDATORY** Data Trigger model and domain concepts
+- [`docs/DATA_MODEL_RUN.puml`](../docs/DATA_MODEL_RUN.puml) - **MANDATORY** Data Run model and domain concepts
+- [`docs/DATA_MODEL_STORE.puml`](../docs/DATA_MODEL_STORE.puml) - **MANDATORY** Data Store model and domain concepts
+- [`docs/DATA_MODEL_CAST.puml`](../docs/DATA_MODEL_CAST.puml) - **MANDATORY** Data Cast model and domain concepts
+- [`docs/DATA_MODEL_WATCH.puml`](../docs/DATA_MODEL_WATCH.puml) - **MANDATORY** Data Watch model and domain concepts
 - [`docs/DATA_FLOW.md`](../docs/DATA_FLOW.md) - **MANDATORY** Data flow patterns
 - [`docs/DATA_FLOW_DETAIL.md`](../docs/DATA_FLOW_DETAIL.md) - **MANDATORY** Detailed component architecture
 - [`docs/BRANCH_STRATEGY.md`](../docs/BRANCH_STRATEGY.md) - **MANDATORY** for branch naming and workflow
@@ -139,14 +139,14 @@ If there is a related issue ID, it should be appended at the end: `<type>/<descr
 
 **Allowed Labels ONLY**:
 
-- `module:bridge`: HexaBridge changes
-- `module:cast`: HexaCast changes
 - `module:core`: Core architecture changes
-- `module:docs`: Documentation changes
+- `module:bridge`: HexaBridge changes
+- `module:trigger`: HexaTrigger changes
 - `module:run`: HexaRun changes
 - `module:store`: HexaStore changes
-- `module:trigger`: HexaTrigger changes
+- `module:cast`: HexaCast changes
 - `module:watch`: HexaWatch changes
+- `module:docs`: Documentation changes
 - `module:cli`: CLI tools changes
 
 ### **REQUIRED**: Type Labels

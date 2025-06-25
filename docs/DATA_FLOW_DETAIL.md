@@ -3,7 +3,7 @@
 
 # hexaFn Detailed Component Architecture Diagram
 
-This document provides a detailed, module- and layer-level architecture diagram for the hexaFn project. It strictly follows the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) and Hexagonal Architecture, and reflects all requirements and data models as defined in DATA_MODEL_*.md and TODO_LIST.md.
+This document provides a detailed, module- and layer-level architecture diagram for the hexaFn project. It strictly follows the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback) and Hexagonal Architecture, and reflects all requirements and data models as defined in DATA_MODEL_*.puml and TODO_LIST.md.
 
 ---
 

@@ -1,8 +1,5 @@
-```plantuml
-'''
 ' SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 ' SPDX-License-Identifier: MIT
-' This file is auto-generated from DATA_MODEL_RUN.md
 
 @startuml DATA_MODEL_RUN
 
@@ -12,6 +9,75 @@
 
 ' --- Domain Layer ---
 package "Domain Layer" {
+  interface DataFormatter {
+    +transform(input: RawData): Result<FormattedData, HexaError>
+    +validate_schema(data: RawData, schema: Schema): Result<_, HexaError>
+    +normalize_types(data: RawData): Result<FormattedData, HexaError>
+    +get_supported_formats(): Vec<DataFormat>
+  }
+  class RawData {
+    +content: Vec<u8>
+    +content_type: String
+    +encoding: String
+    +metadata: HashMap<String, String>
+    +source: String
+    +timestamp: DateTime
+  }
+  class FormattedData {
+    +structured_data: serde_json::Value
+    +schema: Option<Schema>
+    +format: DataFormat
+    +validation_errors: Vec<ValidationError>
+    +metadata: HashMap<String, String>
+  }
+  enum DataFormat {
+    Json
+    Xml
+    Csv
+    Yaml
+    Toml
+    Binary
+    PlainText
+  }
+  class ValidationError {
+    +field_path: String
+    +error_type: ValidationErrorType
+    +message: String
+    +severity: ErrorSeverity
+  }
+  enum ValidationErrorType {
+    SchemaMismatch
+    TypeConversion
+    RequiredFieldMissing
+    InvalidFormat
+    SecurityViolation
+  }
+  enum ErrorSeverity {
+    Warning
+    Error
+    Critical
+  }
+  class FormatTransformationRule {
+    +source_format: DataFormat
+    +target_format: DataFormat
+    +transformation_template: String
+    +validation_rules: Vec<ValidationRule>
+  }
+  class ValidationRule {
+    +field_path: String
+    +rule_type: String
+    +parameters: HashMap<String, String>
+    +is_required: bool
+  }
+  class DataFormattedEvent {
+    +format_id: String
+    +source_format: DataFormat
+    +target_format: DataFormat
+    +timestamp: DateTime
+    +processing_duration: Duration
+    +success: bool
+    +errors: Vec<ValidationError>
+  }
   interface FunctionRuntime {
     +execute(context: FunctionContext): Result<ExecutionResult, HexaError>
     +init(): Result<_, HexaError>
@@ -91,10 +157,60 @@ package "Domain Layer" {
   FunctionDependencyGraph --> FunctionTag
   FunctionRollbackPoint --> FunctionAuditTrail
   FunctionAccessControl --> FunctionTag
+  DataFormatter --> RawData
+  DataFormatter --> FormattedData
+  FormattedData --> DataFormat
+  FormattedData --> ValidationError
+  ValidationError --> ValidationErrorType
+  ValidationError --> ErrorSeverity
+  FormatTransformationRule --> DataFormat
+  FormatTransformationRule --> ValidationRule
+  DataFormattedEvent --> DataFormat
+  DataFormattedEvent --> ValidationError
 }
 
 ' --- Application Layer ---
 package "Application Layer" {
+  interface DataFormattingPort {
+    +format_data(raw: RawData, target_format: DataFormat): Result<FormattedData, HexaError>
+    +validate_against_schema(data: RawData, schema: Schema): Result<_, HexaError>
+    +register_formatter(format: DataFormat, formatter: DataFormatter): Result<_, HexaError>
+  }
+  class FormatService {
+    +transform_input(raw: RawData): Result<FunctionContext, HexaError>
+    +validate_schema(data: RawData, schema: Schema): Result<_, HexaError>
+    +apply_transformation_rules(data: RawData, rules: Vec<FormatTransformationRule>): Result<FormattedData, HexaError>
+    +sanitize_input(data: RawData): Result<RawData, HexaError>
+    +get_formatter(format: DataFormat): Result<DataFormatter, HexaError>
+  }
+  class FormatConfigLoader {
+    +load_from_file(path: String): Result<Vec<FormatConfig>, HexaError>
+  }
+  class FormatConfig {
+    +id: String
+    +source_format: DataFormat
+    +target_format: DataFormat
+    +schema_path: Option<String>
+    +transformation_rules: Vec<FormatTransformationRule>
+    +validation_enabled: bool
+    +sanitization_rules: Vec<String>
+  }
+  class FormatCommand {
+    +FormatData
+    +ValidateSchema
+    +RegisterFormatter
+    +ApplyTransformation
+  }
+  class FormatQuery {
+    +ListFormatters
+    +GetFormatConfig
+    +ValidateFormat
+  }
+  class FormatValidator {
+    +validate_config(config: FormatConfig): Result<_, HexaError>
+    +validate_transformation_rules(rules: Vec<FormatTransformationRule>): Result<_, HexaError>
+    +validate_schema_compliance(data: RawData, schema: Schema): Result<_, HexaError>
+  }
   interface FunctionRegistryPort {
     +register_function(config: FunctionConfig): Result<_, HexaError>
     +remove_function(id: String): Result<_, HexaError>
@@ -171,10 +287,42 @@ package "Application Layer" {
   FunctionRollbackService --> FunctionRollbackPoint
   FunctionTaggingService --> FunctionTag
   FunctionAccessControlService --> FunctionTag
+  DataFormattingPort --> RawData
+  DataFormattingPort --> FormattedData
+  FormatService --> DataFormattingPort
+  FormatConfigLoader --> FormatConfig
+  FormatValidator --> FormatConfig
 }
 
 ' --- Infrastructure Layer ---
 package "Infrastructure Layer" {
+  class FormatRepository {
+    +save_config(config: FormatConfig): Result<_, HexaError>
+    +load_config(id: String): Result<Option<FormatConfig>, HexaError>
+    +list_configs(): Result<Vec<FormatConfig>, HexaError>
+  }
+  class FormatEventBus {
+    +publish(event: DataFormattedEvent): Result<_, HexaError>
+    +subscribe(event_type: String, handler: fn(DataFormattedEvent))
+  }
+  class FormatCli {
+    +run(args: Vec<String>): Result<_, HexaError>
+    +test_format(input: serde_json::Value, format: DataFormat): Result<_, HexaError>
+    +validate_schema(data: serde_json::Value, schema_path: String): Result<_, HexaError>
+  }
+  class FormatDto {
+    +id: String
+    +source_format: String
+    +target_format: String
+    +transformation_rules: Vec<String>
+    +validation_enabled: bool
+  }
+  class FormatMapper {
+    +to_dto(config: FormatConfig): FormatDto
+    +from_dto(dto: FormatDto): FormatConfig
+    +raw_data_to_dto(data: RawData): serde_json::Value
+    +dto_to_formatted_data(dto: serde_json::Value): FormattedData
+  }
   class FunctionRepository {
     +save(definition: FunctionDefinition): Result<_, HexaError>
     +load(id: String): Result<Option<FunctionDefinition>, HexaError>
@@ -235,7 +383,10 @@ package "Infrastructure Layer" {
   FunctionRollbackAdapter --> FunctionRollbackPoint
   FunctionTagStore --> FunctionTag
   FunctionAccessControlAdapter --> FunctionTag
+  FormatRepository --> FormatConfig
+  FormatEventBus --> DataFormattedEvent
+  FormatMapper --> FormatDto
+  FormatMapper --> FormatConfig
 }
 
 @enduml
-```

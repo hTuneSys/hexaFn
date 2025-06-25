@@ -11,13 +11,13 @@
 
 Mark the modules impacted by this PR:
 
+- [ ] Core Logic
+- [ ] HexaBridge
+- [ ] HexaTrigger
+- [ ] HexaRun
 - [ ] HexaStore
 - [ ] HexaCast
-- [ ] HexaRun
-- [ ] HexaTrigger
 - [ ] HexaWatch
-- [ ] HexaBridge
-- [ ] Core Logic
 - [ ] Documentation
 - [ ] CI / Infra
 

@@ -50,13 +50,13 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 
 ## 🗂️ Architecture & Data Model References
 
-- [DATA_MODEL_CORE](DATA_MODEL_CORE.md) – Core data model definitions
-- [DATA_MODEL_TRIGGER](DATA_MODEL_TRIGGER.md) – Trigger module data model
-- [DATA_MODEL_RUN](DATA_MODEL_RUN.md) – Run module data model
-- [DATA_MODEL_STORE](DATA_MODEL_STORE.md) – Store module data model
-- [DATA_MODEL_CAST](DATA_MODEL_CAST.md) – Cast module data model
-- [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.md) – Bridge module data model
-- [DATA_MODEL_WATCH](DATA_MODEL_WATCH.md) – Watch module data model
+- [DATA_MODEL_CORE](DATA_MODEL_CORE.puml) – Core data model definitions
+- [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.puml) – Bridge module data model
+- [DATA_MODEL_TRIGGER](DATA_MODEL_TRIGGER.puml) – Trigger module data model
+- [DATA_MODEL_RUN](DATA_MODEL_RUN.puml) – Run module data model
+- [DATA_MODEL_STORE](DATA_MODEL_STORE.puml) – Store module data model
+- [DATA_MODEL_CAST](DATA_MODEL_CAST.puml) – Cast module data model
+- [DATA_MODEL_WATCH](DATA_MODEL_WATCH.puml) – Watch module data model
 - [DATA_FLOW](DATA_FLOW.md) – High-level data flow across modules
 - [DATA_FLOW_DETAIL](DATA_FLOW_DETAIL.md) – Detailed component and interface data flow
 - [RUST_PORTS_ADAPTERS_EXAMPLE](RUST_PORTS_ADAPTERS_EXAMPLE.md) – Complete mapping of ports, adapters, and domain components

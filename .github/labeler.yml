@@ -5,13 +5,17 @@
 # MODULE LABELS
 # ────────────────────────────────────────────────────────────────────────────────
 
+module:core:
+  - changed-files:
+      - any-glob-to-any-file: ['crates/hexafn-core/**']
+      
 module:bridge:
   - changed-files:
       - any-glob-to-any-file: ['crates/hexafn-bridge/**']
 
-module:cast:
+module:trigger:
   - changed-files:
-      - any-glob-to-any-file: ['crates/hexafn-cast/**']
+      - any-glob-to-any-file: ['crates/hexafn-trigger/**']
 
 module:run:
   - changed-files:
@@ -21,17 +25,13 @@ module:store:
   - changed-files:
       - any-glob-to-any-file: ['crates/hexafn-store/**']
 
-module:trigger:
+module:cast:
   - changed-files:
-      - any-glob-to-any-file: ['crates/hexafn-trigger/**']
+      - any-glob-to-any-file: ['crates/hexafn-cast/**']
 
 module:watch:
   - changed-files:
       - any-glob-to-any-file: ['crates/hexafn-watch/**']
-
-module:core:
-  - changed-files:
-      - any-glob-to-any-file: ['crates/hexafn-core/**']
 
 module:docs:
   - changed-files:
