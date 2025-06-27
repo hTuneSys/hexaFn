@@ -46,7 +46,6 @@ package "Domain Layer" {
     +value: uuid::Uuid
     +new(): EventId
     +from_string(s: &str): Result<EventId, uuid::Error>
-    +to_string(): String
   }
   interface DomainEvent {
     +aggregate_id(): &str
@@ -54,15 +53,27 @@ package "Domain Layer" {
     +occurred_at(): chrono::DateTime<chrono::Utc>
     +correlation_id(): &str
   }
-  class HexaError {
+  interface HexaError {
       +error_code(): &'static str
       +error_message(): String
       +error_kind(): HexaErrorKind
       +error_severity(): HexaErrorSeverity
       +source(): Option<Box<dyn std::error::Error>>
       +to_log_entry(): String
-      +to_string(): String
   }
+  class HexaCoreError {
+    +code: &'static str
+    +message: String
+    +kind: HexaErrorKind
+    +severity: HexaErrorSeverity
+    +source: Option<Box<dyn std::error::Error + Send + Sync + 'static>>
+    +new(code: &'static str): HexaCoreError
+    +with_message(message: String): HexaCoreError
+    +with_kind(kind: HexaErrorKind): HexaCoreError
+    +with_severity(severity: HexaErrorSeverity): HexaCoreError
+    +with_source(source: Box<dyn std::error::Error + Send + Sync + 'static>): HexaCoreError
+  }
+  HexaCoreError ..|> HexaError
   enum HexaErrorKind {
     NotFound
     Validation
@@ -70,14 +81,12 @@ package "Domain Layer" {
     Internal
     External
     Unknown
-    +to_string(): String
   }
   enum HexaErrorSeverity {
     Low
     Medium
     High
     Critical
-    +to_string(): String
   }
   interface CoreDomainEvent {
     +event_type(): &'static str

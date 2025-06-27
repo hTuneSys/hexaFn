@@ -7,6 +7,6 @@ pub mod event;
 pub mod pipeline;
 
 pub use domain_event::DomainEvent;
-pub use error::{HexaError, HexaErrorKind, HexaErrorSeverity};
+pub use error::{HexaError, HexaErrorKind, HexaErrorSeverity,HexaCoreError};
 pub use event::{Event, EventId};
 pub use pipeline::{Pipeline, PipelineContext, PipelineStage, PipelineStageType};

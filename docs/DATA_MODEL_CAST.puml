@@ -17,6 +17,10 @@ package "Domain Layer" {
     +new(name: String): Result<Topic, HexaError>
     +with_description(description: String): Topic
     +is_valid(): bool
+    +name(): &str
+    +description(): &str
+    +created_at(): DateTime
+    +retention_policy(): &RetentionPolicy
   }
   class RetentionPolicy {
     +max_events: u64

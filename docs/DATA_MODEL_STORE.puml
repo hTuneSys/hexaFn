@@ -20,7 +20,6 @@ package "Domain Layer" {
   class Namespace {
     +value: String
     +new(name: String): Result<Namespace, HexaError>
-    +to_string(): String
     +is_valid(): bool
   }
   class KeyValueEntry {

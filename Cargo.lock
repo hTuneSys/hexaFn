@@ -170,6 +170,7 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "chrono",
+ "hexafn-core",
  "serde",
  "serde_json",
  "thiserror",
@@ -185,6 +186,7 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "chrono",
+ "hexafn-core",
  "serde",
  "serde_json",
  "thiserror",
@@ -231,6 +233,7 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "chrono",
+ "hexafn-core",
  "serde",
  "serde_json",
  "thiserror",
@@ -262,6 +265,7 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "chrono",
+ "hexafn-core",
  "serde",
  "serde_json",
  "thiserror",

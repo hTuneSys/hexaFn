@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 // SPDX-License-Identifier: MIT
 
-pub mod domain;
+pub mod trace;
 
-pub use domain::contracts::{Span,Trace};
+pub use trace::{Span,Trace};
