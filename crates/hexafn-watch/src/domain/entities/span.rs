@@ -137,7 +137,7 @@ mod tests {
             None,
             HashMap::new(),
         );
-        let s = format!("{}", span);
+        let s = format!("{span}");
         assert!(s.contains("op"));
         assert!(s.contains("s1"));
     }
@@ -172,7 +172,7 @@ mod tests {
             HashMap::new(),
         );
         assert!(span.end_time.is_some());
-        let s = format!("{}", span);
+        let s = format!("{span}");
         assert!(s.contains("finished"));
     }
 

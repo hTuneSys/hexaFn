@@ -71,13 +71,13 @@ mod tests {
     #[test]
     fn test_display_put() {
         let op = KvOp::Put;
-        assert_eq!(format!("{}", op), "Put");
+        assert_eq!(format!("{op}"), "Put");
     }
 
     #[test]
     fn test_display_delete() {
         let op = KvOp::Delete;
-        assert_eq!(format!("{}", op), "Delete");
+        assert_eq!(format!("{op}"), "Delete");
     }
 
     #[test]
@@ -97,7 +97,7 @@ mod tests {
     fn test_doc_examples() {
         // Example from enum-level doc
         let op = KvOp::Delete;
-        assert_eq!(format!("{}", op), "Delete");
+        assert_eq!(format!("{op}"), "Delete");
         // Example from is_put doc
         assert!(KvOp::Put.is_put());
         assert!(!KvOp::Delete.is_put());

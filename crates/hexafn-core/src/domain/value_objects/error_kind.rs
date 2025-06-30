@@ -110,7 +110,7 @@ mod tests {
     #[test]
     fn test_debug_format() {
         let kind = HexaErrorKind::Validation;
-        let debug_str = format!("{:?}", kind);
+        let debug_str = format!("{kind:?}");
         assert_eq!(debug_str, "Validation");
     }
 }

@@ -18,6 +18,7 @@ Mark the modules impacted by this PR:
 - [ ] HexaStore
 - [ ] HexaCast
 - [ ] HexaWatch
+- [ ] HexaMacros
 - [ ] Documentation
 - [ ] CI / Infra
 

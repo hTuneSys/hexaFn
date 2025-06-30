@@ -158,7 +158,7 @@ mod tests {
     #[test]
     fn test_display() {
         let entry = KeyValueEntry::new("k".to_string(), vec![1, 2, 3], Some(Duration::seconds(10)));
-        let s = format!("{}", entry);
+        let s = format!("{entry}");
         assert!(s.contains("key: 'k'"));
         assert!(s.contains("value: 3 bytes"));
         assert!(s.contains("ttl: 10s"));

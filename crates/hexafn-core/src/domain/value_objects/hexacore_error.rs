@@ -233,7 +233,7 @@ mod tests {
             .with_message("Display test")
             .with_kind(HexaErrorKind::Internal)
             .with_severity(HexaErrorSeverity::Critical);
-        let s = format!("{}", err);
+        let s = format!("{err}");
         assert!(s.contains("Display test"));
         assert!(s.contains("core.display"));
         assert!(s.contains("Internal"));

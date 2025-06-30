@@ -88,7 +88,7 @@ mod tests {
     #[test]
     fn test_debug_and_clone() {
         let stage = PipelineStageType::Forward;
-        let debug_str = format!("{:?}", stage);
+        let debug_str = format!("{stage:?}");
         assert_eq!(debug_str, "Forward");
         let clone = stage;
         assert_eq!(stage, clone);

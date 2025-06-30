@@ -161,7 +161,7 @@ mod tests {
             validation_errors: vec![],
             metadata: HashMap::new(),
         };
-        let s = format!("{}", data);
+        let s = format!("{data}");
         assert!(s.contains("FormattedData"));
         assert!(s.contains("format: json"));
     }

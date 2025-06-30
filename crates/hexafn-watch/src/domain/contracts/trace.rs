@@ -198,7 +198,7 @@ mod tests {
             None,
             HashMap::new(),
         );
-        let s = format!("{}", span);
+        let s = format!("{span}");
         assert!(s.contains("op"));
         assert!(s.contains("s1"));
     }
@@ -233,7 +233,7 @@ mod tests {
             HashMap::new(),
         );
         assert!(span.end_time.is_some());
-        let s = format!("{}", span);
+        let s = format!("{span}");
         assert!(s.contains("finished"));
     }
 
@@ -305,7 +305,7 @@ mod tests {
     impl Trace for MockTracer {
         fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
             let span = Span::new(
-                format!("{}-span", name),
+                format!("{name}-span"),
                 name.clone(),
                 None,
                 Utc::now(),

@@ -128,13 +128,13 @@ mod tests {
     #[test]
     fn test_display_with_ttl() {
         let policy = RetentionPolicy::new(10, Some(Duration::seconds(30)));
-        assert_eq!(format!("{}", policy), "max_events: 10, ttl: 30s");
+        assert_eq!(format!("{policy}"), "max_events: 10, ttl: 30s");
     }
 
     #[test]
     fn test_display_without_ttl() {
         let policy = RetentionPolicy::new(5, None);
-        assert_eq!(format!("{}", policy), "max_events: 5, ttl: None");
+        assert_eq!(format!("{policy}"), "max_events: 5, ttl: None");
     }
 
     #[test]
@@ -190,7 +190,7 @@ mod tests {
     fn test_doc_display_example() {
         // Example from Display doc
         let policy = RetentionPolicy::new(5, Some(Duration::seconds(10)));
-        assert_eq!(format!("{}", policy), "max_events: 5, ttl: 10s");
+        assert_eq!(format!("{policy}"), "max_events: 5, ttl: 10s");
     }
 
     #[test]
