@@ -25,6 +25,7 @@ This document defines the complete, system-approved label taxonomy used in the h
 ## 🧩 Module Labels
 
 - `module:core` – Core architecture & event flow
+- `module:macros` – Macros
 - `module:bridge` – HexaBridge (external integrations)
 - `module:trigger` – HexaTrigger (rule engine)
 - `module:run` – HexaRun (function runtime)

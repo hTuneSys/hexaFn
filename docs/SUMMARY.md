@@ -58,6 +58,7 @@ Welcome to the hexaFn project documentation hub. This file summarizes the struct
 - [DATA_MODEL_CAST](DATA_MODEL_CAST.puml) – Cast module data model
 - [DATA_MODEL_WATCH](DATA_MODEL_WATCH.puml) – Watch module data model
 - [DATA_FLOW](DATA_FLOW.md) – High-level data flow across modules
+- [DATA_FLOW_SAMPLE](DATA_FLOW_SAMPLE.md) – Sample data flow illustrating the 6F Lifecycle Flow
 - [DATA_FLOW_DETAIL](DATA_FLOW_DETAIL.md) – Detailed component and interface data flow
 - [RUST_PORTS_ADAPTERS_EXAMPLE](RUST_PORTS_ADAPTERS_EXAMPLE.md) – Complete mapping of ports, adapters, and domain components
 

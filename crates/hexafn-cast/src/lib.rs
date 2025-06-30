@@ -3,4 +3,5 @@
 
 pub mod domain;
 
-pub use domain::contracts::{RetentionPolicy, Topic};
+pub use domain::value_objects::RetentionPolicy;
+pub use domain::value_objects::Topic;

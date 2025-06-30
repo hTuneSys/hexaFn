@@ -1,92 +1,57 @@
 // SPDX-FileCopyrightText: 2025 Husamettin ARABACI
 // SPDX-License-Identifier: MIT
 
-//! # Topic Domain Contracts
+//! # Topic Value Object
 //!
-//! This module provides the core domain types for topic management and retention policy in the HexaCast pub/sub system.
+//! This module defines the [`Topic`] value object and its associated methods for the HexaCast pub/sub system.
 //!
 //! Topics represent named channels for publishing and subscribing to messages. Each topic has a retention policy that controls how many events are kept and for how long.
 //!
-//! ## Example Usage
+//! ## Example
 //!
 //! ```rust
-//! use hexafn_cast::domain::contracts::{Topic, RetentionPolicy};
-//! // Create a topic with a name and default retention policy
-//! let topic = Topic::new("my-topic".to_string()).unwrap()
-//!     .with_description("A topic for user events".to_string());
+//! use hexafn_cast::Topic;
+//! let topic = Topic::new("my-topic".to_string()).unwrap();
 //! assert!(topic.is_valid());
-//! // Access topic metadata
-//! println!("{}", topic);
-//! ```
-//!
-//! ## Test
-//!
-//! ```rust
-//! use hexafn_cast::domain::contracts::Topic;
-//! let topic = Topic::new("test".to_string());
-//! assert!(topic.is_ok());
 //! ```
 
-use chrono::{DateTime, Duration, Utc};
+use crate::RetentionPolicy;
+use chrono::{DateTime, Utc};
 use hexafn_core::{HexaCoreError, HexaError};
 use std::fmt;
-
-/// Retention policy configuration for a topic.
-///
-/// A retention policy determines how many events are stored for a topic and for how long.
-/// This helps control memory usage and event replay behavior in the pub/sub system.
-///
-/// - `max_events`: The maximum number of events to retain in the topic.
-/// - `ttl`: The optional time-to-live (in seconds) for each event. If `None`, events are kept until `max_events` is reached.
-///
-/// # Example
-/// ```rust
-/// use hexafn_cast::domain::contracts::RetentionPolicy;
-/// let policy = RetentionPolicy { max_events: 100, ttl: Some(chrono::Duration::seconds(60)) };
-/// assert_eq!(policy.max_events, 100);
-/// assert_eq!(policy.ttl.unwrap().num_seconds(), 60);
-/// ```
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct RetentionPolicy {
-    /// The maximum number of events to retain in the topic.
-    pub max_events: u64,
-    /// The optional time-to-live for each event (in chrono::Duration).
-    pub ttl: Option<Duration>,
-}
-
-impl fmt::Display for RetentionPolicy {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "max_events: {}", self.max_events)?;
-        if let Some(ttl) = self.ttl {
-            write!(f, ", ttl: {}s", ttl.num_seconds())
-        } else {
-            write!(f, ", ttl: None")
-        }
-    }
-}
 
 /// Represents a topic in the pub/sub system.
 ///
 /// A topic is a named channel for publishing and subscribing to messages. Each topic has a name, an optional description, a creation timestamp, and a retention policy that controls how long events are kept.
 ///
-/// Topics are created using [`Topic::new`], and can be further configured using builder-style methods such as [`with_description`].
-///
 /// # Example
 /// ```rust
-/// use hexafn_cast::domain::contracts::Topic;
-/// let topic = Topic::new("demo".to_string()).unwrap().with_description("Demo topic".to_string());
+/// use hexafn_cast::Topic;
+/// let topic = Topic::new("demo".to_string()).unwrap();
 /// assert_eq!(topic.name(), "demo");
-/// assert_eq!(topic.description(), "Demo topic");
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Topic {
+    /// The name of the topic.
     name: String,
+    /// An optional description of the topic.
     description: String,
+    /// The creation timestamp of the topic.
     created_at: DateTime<Utc>,
+    /// The retention policy for the topic, which determines how many events are stored and for how long.
     retention_policy: RetentionPolicy,
 }
 
 impl fmt::Display for Topic {
+    /// Formats the topic as a user-friendly string.
+    ///
+    /// # Example
+    /// ```rust
+    /// use hexafn_cast::Topic;
+    /// let topic = Topic::new("abc".to_string()).unwrap();
+    /// let s = format!("{}", topic);
+    /// assert!(s.contains("abc"));
+    /// ```
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
@@ -99,23 +64,19 @@ impl fmt::Display for Topic {
 impl Topic {
     /// Creates a new topic with the given name and default retention policy.
     ///
-    /// The default retention policy keeps up to 1000 events and does not set a TTL.
-    ///
     /// # Errors
     /// Returns an error if the name is empty.
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::Topic;
+    /// use hexafn_cast::Topic;
     /// let topic = Topic::new("abc".to_string());
     /// assert!(topic.is_ok());
-    /// let topic = Topic::new(String::new());
-    /// assert!(topic.is_err());
     /// ```
     pub fn new(name: String) -> Result<Self, Box<dyn HexaError>> {
         if name.is_empty() {
             return Err(Box::new(
-                HexaCoreError::new("cast.topic.validation.empty_name")
+                HexaCoreError::new("cast.topic.validation.name.empty")
                     .with_message("Topic name cannot be empty"),
             ));
         }
@@ -134,7 +95,7 @@ impl Topic {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::Topic;
+    /// use hexafn_cast::Topic;
     /// let topic = Topic::new("abc".to_string()).unwrap().with_description("desc".to_string());
     /// assert_eq!(topic.description(), "desc");
     /// ```
@@ -145,14 +106,10 @@ impl Topic {
 
     /// Checks if the topic is valid.
     ///
-    /// A topic is valid if its name is not empty and its retention policy allows at least one event.
-    ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::{Topic, RetentionPolicy};
-    /// let policy = RetentionPolicy { max_events: 500, ttl: Some(chrono::Duration::seconds(120)) };
-    /// let topic = Topic::new("abc".to_string()).unwrap()
-    ///     .with_retention_policy(policy.clone());
+    /// use hexafn_cast::Topic;
+    /// let topic = Topic::new("abc".to_string()).unwrap();
     /// assert!(topic.is_valid());
     /// ```
     pub fn is_valid(&self) -> bool {
@@ -161,16 +118,12 @@ impl Topic {
 
     /// Sets the retention policy for the topic (builder style).
     ///
-    /// This method replaces the topic's retention policy with the provided one and returns a new topic instance.
-    ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::{Topic, RetentionPolicy};
-    /// let policy = RetentionPolicy { max_events: 500, ttl: Some(chrono::Duration::seconds(120)) };
-    /// let topic = Topic::new("abc".to_string()).unwrap()
-    ///     .with_retention_policy(policy.clone());
+    /// use hexafn_cast::{Topic, RetentionPolicy};
+    /// let policy = RetentionPolicy { max_events: 500, ttl: None };
+    /// let topic = Topic::new("abc".to_string()).unwrap().with_retention_policy(policy.clone());
     /// assert_eq!(topic.retention_policy().max_events, 500);
-    /// assert_eq!(topic.retention_policy().ttl.unwrap().num_seconds(), 120);
     /// ```
     pub fn with_retention_policy(mut self, policy: RetentionPolicy) -> Self {
         self.retention_policy = policy;
@@ -181,7 +134,7 @@ impl Topic {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::Topic;
+    /// use hexafn_cast::Topic;
     /// let topic = Topic::new("abc".to_string()).unwrap();
     /// assert_eq!(topic.name(), "abc");
     /// ```
@@ -192,21 +145,14 @@ impl Topic {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::Topic;
+    /// use hexafn_cast::Topic;
     /// let topic = Topic::new("abc".to_string()).unwrap().with_description("desc".to_string());
     /// assert_eq!(topic.description(), "desc");
     /// ```
     pub fn description(&self) -> &str {
         &self.description
     }
-    /// Returns the creation time as a chrono::DateTime<Utc>.
-    ///
-    /// # Example
-    /// ```rust
-    /// use hexafn_cast::domain::contracts::Topic;
-    /// let topic = Topic::new("abc".to_string()).unwrap();
-    /// let _ = topic.created_at();
-    /// ```
+    /// Returns the creation time as a [`chrono::DateTime<Utc>`].
     pub fn created_at(&self) -> DateTime<Utc> {
         self.created_at
     }
@@ -214,7 +160,7 @@ impl Topic {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_cast::domain::contracts::{Topic, RetentionPolicy};
+    /// use hexafn_cast::{Topic, RetentionPolicy};
     /// let topic = Topic::new("abc".to_string()).unwrap();
     /// let policy: &RetentionPolicy = topic.retention_policy();
     /// assert!(policy.max_events > 0);
@@ -227,6 +173,8 @@ impl Topic {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::RetentionPolicy;
+    use chrono::Duration;
 
     #[test]
     fn test_topic_new_valid() {
@@ -269,5 +217,24 @@ mod tests {
         let mut t = Topic::new("topic4".to_string()).unwrap();
         t.retention_policy.max_events = 0;
         assert!(!t.is_valid());
+    }
+
+    #[test]
+    fn test_with_retention_policy() {
+        let policy = RetentionPolicy {
+            max_events: 42,
+            ttl: Some(Duration::seconds(99)),
+        };
+        let t = Topic::new("topic5".to_string())
+            .unwrap()
+            .with_retention_policy(policy.clone());
+        assert_eq!(t.retention_policy().max_events, 42);
+        assert_eq!(t.retention_policy().ttl.unwrap().num_seconds(), 99);
+    }
+
+    #[test]
+    fn test_doc_example() {
+        let topic = Topic::new("my-topic".to_string()).unwrap();
+        assert!(topic.is_valid());
     }
 }

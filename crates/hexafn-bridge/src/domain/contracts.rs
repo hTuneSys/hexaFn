@@ -3,4 +3,4 @@
 
 pub mod integration;
 
-pub use integration::{ConnectionStatus, Integration};
+pub use integration::Integration;

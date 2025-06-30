@@ -3,12 +3,13 @@
 
 //! # Integration Contracts
 //!
-//! This module defines the [`Integration`] trait and the [`ConnectionStatus`] enum for external system integrations in the Bridge module.
+//! This module defines the [`Integration`] trait for external system integrations in the Bridge module.
 //!
 //! ## Example Usage
 //!
 //! ```rust
-//! use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
+//! use hexafn_bridge::Integration;
+//! use hexafn_bridge::ConnectionStatus;
 //! use hexafn_core::HexaError;
 //!
 //! struct ExampleIntegration;
@@ -27,99 +28,31 @@
 //! assert_eq!(integration.get_name(), "example");
 //! ```
 //!
-//! ## Test
+//! ## Doc Test: Custom Implementation
 //!
 //! ```rust
-//! use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
+//! use hexafn_bridge::Integration;
+//! use hexafn_bridge::ConnectionStatus;
 //! use hexafn_core::HexaError;
 //!
-//! struct TestIntegration { connected: bool }
+//! struct CustomIntegration;
 //!
-//! impl Integration for TestIntegration {
+//! impl Integration for CustomIntegration {
 //!     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
 //!     fn disconnect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-//!     fn is_connected(&self) -> bool { self.connected }
-//!     fn get_name(&self) -> &str { "test" }
-//!     fn get_status(&self) -> ConnectionStatus {
-//!         if self.connected { ConnectionStatus::Connected } else { ConnectionStatus::Disconnected }
-//!     }
+//!     fn is_connected(&self) -> bool { false }
+//!     fn get_name(&self) -> &str { "custom" }
+//!     fn get_status(&self) -> ConnectionStatus { ConnectionStatus::Disconnected }
 //! }
 //!
-//! let int = TestIntegration { connected: true };
-//! assert_eq!(int.is_connected(), true);
-//! assert_eq!(int.get_status(), ConnectionStatus::Connected);
-//! ```
-//!
-//! ## Test
-//!
-//! ```rust
-//! use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-//! use hexafn_core::HexaError;
-//!
-//! struct TestIntegration { connected: bool }
-//!
-//! impl Integration for TestIntegration {
-//!     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-//!     fn disconnect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
-//!     fn is_connected(&self) -> bool { self.connected }
-//!     fn get_name(&self) -> &str { "test" }
-//!     fn get_status(&self) -> ConnectionStatus {
-//!         if self.connected { ConnectionStatus::Connected } else { ConnectionStatus::Disconnected }
-//!     }
-//! }
-//!
-//! let int = TestIntegration { connected: false };
-//! assert_eq!(int.is_connected(), false);
-//! assert_eq!(int.get_status(), ConnectionStatus::Disconnected);
+//! let integration = CustomIntegration;
+//! assert!(!integration.is_connected());
+//! assert_eq!(integration.get_status(), ConnectionStatus::Disconnected);
+//! assert_eq!(integration.get_name(), "custom");
 //! ```
 
+use crate::ConnectionStatus;
 use hexafn_core::HexaError;
-
-/// Represents the connection status of an external integration.
-///
-/// This enum is used to indicate the current state of an integration implementing the [`Integration`] trait.
-/// It is useful for diagnostics, health checks, and orchestrating integration lifecycles.
-///
-/// # Variants
-/// - [`Connected`]: The integration is currently connected and operational.
-/// - [`Disconnected`]: The integration is not connected.
-/// - [`Error`]: The integration is in an error state (e.g., failed to connect or lost connection).
-///
-/// # Example
-///
-/// ```rust
-/// use hexafn_bridge::domain::contracts::ConnectionStatus;
-///
-/// fn print_status(status: ConnectionStatus) {
-///     match status {
-///         ConnectionStatus::Connected => println!("Connected!"),
-///         ConnectionStatus::Disconnected => println!("Disconnected!"),
-///         ConnectionStatus::Error => println!("Error state!"),
-///     }
-/// }
-///
-/// let status = ConnectionStatus::Connected;
-/// print_status(status);
-/// ```
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
-pub enum ConnectionStatus {
-    /// The integration is currently connected.
-    Connected,
-    /// The integration is currently disconnected.
-    Disconnected,
-    /// The integration is in an error state.
-    Error,
-}
-
-impl std::fmt::Display for ConnectionStatus {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ConnectionStatus::Connected => write!(f, "Connected"),
-            ConnectionStatus::Disconnected => write!(f, "Disconnected"),
-            ConnectionStatus::Error => write!(f, "Error"),
-        }
-    }
-}
 
 /// Trait for external integration contracts.
 ///
@@ -129,7 +62,8 @@ impl std::fmt::Display for ConnectionStatus {
 ///
 /// # Example
 /// ```rust
-/// use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
+/// use hexafn_bridge::Integration;
+/// use hexafn_bridge::ConnectionStatus;
 /// use hexafn_core::HexaError;
 ///
 /// struct DummyIntegration;
@@ -152,8 +86,9 @@ pub trait Integration {
     ///
     /// # Example
     /// ```rust
-    /// # use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-    /// # use hexafn_core::HexaError;
+    /// use hexafn_bridge::Integration;
+    /// use hexafn_bridge::ConnectionStatus;
+    /// use hexafn_core::HexaError;
     /// struct MyIntegration;
     /// impl Integration for MyIntegration {
     ///     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
@@ -174,8 +109,9 @@ pub trait Integration {
     ///
     /// # Example
     /// ```rust
-    /// # use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-    /// # use hexafn_core::HexaError;
+    /// use hexafn_bridge::Integration;
+    /// use hexafn_bridge::ConnectionStatus;
+    /// use hexafn_core::HexaError;
     /// struct MyIntegration;
     /// impl Integration for MyIntegration {
     ///     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
@@ -196,8 +132,9 @@ pub trait Integration {
     ///
     /// # Example
     /// ```rust
-    /// # use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-    /// # use hexafn_core::HexaError;
+    /// use hexafn_bridge::Integration;
+    /// use hexafn_bridge::ConnectionStatus;
+    /// use hexafn_core::HexaError;
     /// struct MyIntegration;
     /// impl Integration for MyIntegration {
     ///     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
@@ -215,8 +152,9 @@ pub trait Integration {
     ///
     /// # Example
     /// ```rust
-    /// # use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-    /// # use hexafn_core::HexaError;
+    /// use hexafn_bridge::Integration;
+    /// use hexafn_bridge::ConnectionStatus;
+    /// use hexafn_core::HexaError;
     /// struct MyIntegration;
     /// impl Integration for MyIntegration {
     ///     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
@@ -234,8 +172,9 @@ pub trait Integration {
     ///
     /// # Example
     /// ```rust
-    /// # use hexafn_bridge::domain::contracts::{Integration, ConnectionStatus};
-    /// # use hexafn_core::HexaError;
+    /// use hexafn_bridge::Integration;
+    /// use hexafn_bridge::ConnectionStatus;
+    /// use hexafn_core::HexaError;
     /// struct MyIntegration;
     /// impl Integration for MyIntegration {
     ///     fn connect(&self) -> Result<(), Box<dyn HexaError>> { Ok(()) }
@@ -253,6 +192,7 @@ pub trait Integration {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ConnectionStatus;
 
     struct TestIntegration {
         connected: bool,
@@ -282,7 +222,7 @@ mod tests {
     }
 
     #[test]
-    fn test_integration_status() {
+    fn test_integration_status_connected() {
         let int = TestIntegration {
             connected: true,
             name: "test",
@@ -293,20 +233,13 @@ mod tests {
     }
 
     #[test]
-    fn test_integration_disconnect() {
+    fn test_integration_status_disconnected() {
         let int = TestIntegration {
             connected: false,
             name: "test",
         };
         assert!(!int.is_connected());
         assert_eq!(int.get_status(), ConnectionStatus::Disconnected);
-    }
-
-    #[test]
-    fn test_display_for_connection_status() {
-        assert_eq!(ConnectionStatus::Connected.to_string(), "Connected");
-        assert_eq!(ConnectionStatus::Disconnected.to_string(), "Disconnected");
-        assert_eq!(ConnectionStatus::Error.to_string(), "Error");
     }
 
     #[test]
@@ -329,5 +262,33 @@ mod tests {
         };
         assert_eq!(int.get_name(), "other");
         assert_eq!(int.get_status(), ConnectionStatus::Disconnected);
+    }
+
+    #[test]
+    fn test_trait_object_usage() {
+        let int = TestIntegration {
+            connected: true,
+            name: "traitobj",
+        };
+        let obj: &dyn Integration = &int;
+        assert!(obj.connect().is_ok());
+        assert_eq!(obj.get_name(), "traitobj");
+        assert_eq!(obj.get_status(), ConnectionStatus::Connected);
+    }
+
+    #[test]
+    fn test_multiple_integrations() {
+        let a = TestIntegration {
+            connected: true,
+            name: "A",
+        };
+        let b = TestIntegration {
+            connected: false,
+            name: "B",
+        };
+        assert!(a.is_connected());
+        assert!(!b.is_connected());
+        assert_eq!(a.get_status(), ConnectionStatus::Connected);
+        assert_eq!(b.get_status(), ConnectionStatus::Disconnected);
     }
 }

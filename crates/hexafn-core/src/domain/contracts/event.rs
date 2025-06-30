@@ -8,14 +8,15 @@
 //! in the 6F Lifecycle Flow (Feed → Filter → Format → Function → Forward → Feedback).
 //!
 //! ## Design
-//! - Each event has a unique identity (`EventId`)
+//! - Each event has a unique identity ([`EventId`](crate::EventId))
 //! - Events are immutable and serializable
-//! - The `Event` trait is implemented by all event types in the system
+//! - The [`Event`] trait is implemented by all event types in the system
 //!
 //! ## Example
 //!
 //! ```rust
-//! use hexafn_core::{Event, EventId};
+//! use hexafn_core::Event;
+//! use hexafn_core::EventId;
 //! use chrono::{Utc, DateTime};
 //! use serde_json::json;
 //!
@@ -34,74 +35,15 @@
 //!         json!({ "user_id": self.user_id })
 //!     }
 //! }
+//! let event = UserCreatedEvent {
+//!     id: EventId::new(),
+//!     user_id: "abc123".to_string(),
+//!     occurred_at: Utc::now(),
+//! };
+//! assert_eq!(event.event_type(), "user.created");
 //! ```
 
-use std::fmt::Display;
-
-use chrono::{DateTime, Utc};
-use serde::{Deserialize, Serialize};
-use uuid::Uuid;
-
-/// Value object for unique event identity.
-///
-/// Wraps a UUID and provides utility methods for creation and conversion.
-///
-/// # Examples
-///
-/// ```rust
-/// use hexafn_core::EventId;
-///
-/// let id = EventId::new();
-/// let id_str = id.to_string();
-/// let parsed = EventId::from_string(&id_str).unwrap();
-/// assert_eq!(id, parsed);
-/// ```
-#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
-pub struct EventId(pub Uuid);
-
-impl EventId {
-    /// Creates a new random event id.
-    ///
-    /// # Examples
-    ///
-    /// ```
-    /// use hexafn_core::EventId;
-    /// let id = EventId::new();
-    /// ```
-    pub fn new() -> Self {
-        Self(Uuid::new_v4())
-    }
-
-    /// Parses an event id from a string.
-    ///
-    /// # Errors
-    /// Returns an error if the string is not a valid UUID.
-    ///
-    /// # Examples
-    ///
-    /// ```
-    /// use hexafn_core::EventId;
-    /// let uuid_str = "550e8400-e29b-41d4-a716-446655440000";
-    /// let event_id = EventId::from_string(uuid_str).unwrap();
-    /// assert_eq!(event_id.to_string(), uuid_str);
-    /// ```
-    pub fn from_string(s: &str) -> Result<Self, uuid::Error> {
-        Ok(Self(Uuid::parse_str(s)?))
-    }
-}
-
-impl Default for EventId {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
-impl Display for EventId {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.0)
-    }
-}
-
+/// Core event contract for all domain and integration events in hexaFn.
 ///
 /// All events must implement this trait. Events are immutable, serializable,
 /// and carry a unique identity, type, timestamp, and payload.
@@ -109,7 +51,8 @@ impl Display for EventId {
 /// # Examples
 ///
 /// ```rust
-/// use hexafn_core::{Event, EventId};
+/// use hexafn_core::Event;
+/// use hexafn_core::EventId;
 /// use chrono::Utc;
 /// use serde_json::json;
 ///
@@ -124,15 +67,18 @@ impl Display for EventId {
 ///     fn timestamp(&self) -> chrono::DateTime<Utc> { self.occurred_at }
 ///     fn payload(&self) -> serde_json::Value { json!({}) }
 /// }
+/// let e = MyEvent { id: EventId::new(), occurred_at: Utc::now() };
+/// assert_eq!(e.event_type(), "my.event");
 /// ```
 pub trait Event: Send + Sync {
     /// Returns the static event type identifier.
     ///
     /// # Examples
     ///
-    /// ```
-    /// # use hexafn_core::{Event, EventId};
-    /// # use chrono::Utc;
+    /// ```rust
+    /// use hexafn_core::Event;
+    /// use hexafn_core::EventId;
+    /// use chrono::Utc;
     /// struct Evt { id: EventId, occurred_at: chrono::DateTime<Utc> }
     /// impl Event for Evt {
     ///     fn event_type(&self) -> &'static str { "evt.type" }
@@ -149,9 +95,10 @@ pub trait Event: Send + Sync {
     ///
     /// # Examples
     ///
-    /// ```
-    /// # use hexafn_core::{Event, EventId};
-    /// # use chrono::Utc;
+    /// ```rust
+    /// use hexafn_core::Event;
+    /// use hexafn_core::EventId;
+    /// use chrono::Utc;
     /// struct Evt { id: EventId, occurred_at: chrono::DateTime<Utc> }
     /// impl Event for Evt {
     ///     fn event_type(&self) -> &'static str { "evt.type" }
@@ -161,16 +108,18 @@ pub trait Event: Send + Sync {
     /// }
     /// let e = Evt { id: EventId::new(), occurred_at: Utc::now() };
     /// let id = e.event_id();
+    /// assert!(id.to_string().len() > 0);
     /// ```
-    fn event_id(&self) -> &EventId;
+    fn event_id(&self) -> &crate::EventId;
 
     /// Returns the timestamp when the event occurred.
     ///
     /// # Examples
     ///
-    /// ```
-    /// # use hexafn_core::{Event, EventId};
-    /// # use chrono::Utc;
+    /// ```rust
+    /// use hexafn_core::Event;
+    /// use hexafn_core::EventId;
+    /// use chrono::Utc;
     /// struct Evt { id: EventId, occurred_at: chrono::DateTime<Utc> }
     /// impl Event for Evt {
     ///     fn event_type(&self) -> &'static str { "evt.type" }
@@ -180,17 +129,19 @@ pub trait Event: Send + Sync {
     /// }
     /// let e = Evt { id: EventId::new(), occurred_at: Utc::now() };
     /// let ts = e.timestamp();
+    /// assert!(ts.timestamp() > 0);
     /// ```
-    fn timestamp(&self) -> DateTime<Utc>;
+    fn timestamp(&self) -> chrono::DateTime<chrono::Utc>;
 
     /// Returns the event payload as a JSON value.
     ///
     /// # Examples
     ///
-    /// ```
-    /// # use hexafn_core::{Event, EventId};
-    /// # use chrono::Utc;
-    /// # use serde_json::json;
+    /// ```rust
+    /// use hexafn_core::Event;
+    /// use hexafn_core::EventId;
+    /// use chrono::Utc;
+    /// use serde_json::json;
     /// struct Evt { id: EventId, value: i32, occurred_at: chrono::DateTime<Utc> }
     /// impl Event for Evt {
     ///     fn event_type(&self) -> &'static str { "evt.type" }
@@ -205,9 +156,13 @@ pub trait Event: Send + Sync {
     fn payload(&self) -> serde_json::Value;
 }
 
+/// # Event Trait Unit Tests
+///
+/// These tests validate the behavior of the Event trait and EventId value object.
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::EventId;
     use chrono::Utc;
     use serde_json::json;
 
@@ -229,7 +184,7 @@ mod tests {
     struct TestEvent {
         id: EventId,
         value: i32,
-        occurred_at: DateTime<Utc>,
+        occurred_at: chrono::DateTime<Utc>,
     }
 
     impl Event for TestEvent {
@@ -239,7 +194,7 @@ mod tests {
         fn event_id(&self) -> &EventId {
             &self.id
         }
-        fn timestamp(&self) -> DateTime<Utc> {
+        fn timestamp(&self) -> chrono::DateTime<Utc> {
             self.occurred_at
         }
         fn payload(&self) -> serde_json::Value {
@@ -258,5 +213,28 @@ mod tests {
         assert_eq!(event.event_type(), "test.event");
         assert_eq!(event.event_id(), &id);
         assert_eq!(event.payload(), json!({ "value": 42 }));
+    }
+
+    #[test]
+    fn test_event_timestamp_is_now() {
+        let event = TestEvent {
+            id: EventId::new(),
+            value: 1,
+            occurred_at: Utc::now(),
+        };
+        let now = Utc::now();
+        // Allow a small difference due to timing
+        assert!((now.timestamp() - event.timestamp().timestamp()).abs() < 2);
+    }
+
+    #[test]
+    fn test_event_payload_json_structure() {
+        let event = TestEvent {
+            id: EventId::new(),
+            value: 99,
+            occurred_at: Utc::now(),
+        };
+        let payload = event.payload();
+        assert_eq!(payload["value"], 99);
     }
 }

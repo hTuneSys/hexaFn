@@ -150,6 +150,7 @@ Understanding hexaFn's architecture is essential for effective development. Revi
 - [HEXAGONAL_ARCHITECTURE_GUIDE](HEXAGONAL_ARCHITECTURE_GUIDE.md) - Fundamental hexagonal architecture principles
 - [RUST_PORTS_ADAPTERS_EXAMPLE](RUST_PORTS_ADAPTERS_EXAMPLE.md) - Comprehensive component catalog organized by architectural layers
 - [DATA_FLOW](DATA_FLOW.md) - High-level data flow diagram across all modules
+- [DATA_FLOW_SAMPLE](DATA_FLOW_SAMPLE.md) - Sample data flow diagram illustrating the 6F Lifecycle Flow
 - [DATA_FLOW_DETAIL](DATA_FLOW_DETAIL.md) - Detailed component interactions with interfaces and methods
 - [DATA_MODEL_CORE](DATA_MODEL_CORE.puml) - Core data model definitions
 - [DATA_MODEL_BRIDGE](DATA_MODEL_BRIDGE.puml) - Bridge data model definitions
@@ -164,9 +165,10 @@ These documents explain how components interact across the 6F Lifecycle Flow (Fe
 When developing a new feature:
 1. Identify which module and layer your code belongs to using `RUST_PORTS_ADAPTERS.md`
 2. Understand how data flows through the system with `DATA_FLOW.md`
-3. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL.md`
-4. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
-5. Ensure your code adheres to the data model definitions in `DATA_MODEL_*.puml`, etc.
+3. Review the sample data flow in `DATA_FLOW_SAMPLE.md`
+4. Reference the detailed interfaces and methods in `DATA_FLOW_DETAIL.md`
+5. Follow the architectural principles outlined in `HEXAGONAL_ARCHITECTURE_GUIDE.md`
+6. Ensure your code adheres to the data model definitions in `DATA_MODEL_*.puml`, etc.
 
 Maintaining architectural integrity is critical - all PRs will be reviewed for compliance with these patterns.
 

@@ -9,6 +9,9 @@
 ## Core module
 /crates/hexafn-core/    @husamettinarabaci
 
+## Macro module
+/crates/hexafn-macros/    @husamettinarabaci
+
 ## Bridge module
 /crates/hexafn-bridge/  @husamettinarabaci
 

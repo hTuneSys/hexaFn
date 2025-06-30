@@ -5,62 +5,38 @@
 //!
 //! This module defines the core types and contracts for distributed tracing in the HexaWatch observability system.
 //!
-//! ## Overview
-//!
-//! - [`Span`]: Represents a single logical operation or unit of work in a distributed trace, including timing, parent-child relationships, and attributes for context propagation.
 //! - [`Trace`]: Trait for distributed tracing systems, supporting span creation, lookup, and completion. Implementations may use in-memory, OpenTelemetry, or custom backends.
 //!
 //! ## Example Usage
-//!
 //! ```rust
-//! use hexafn_watch::domain::contracts::Span;
+//! use hexafn_watch::Span;
 //! use chrono::Utc;
-//! use std::collections::HashMap;
-//! let span = Span {
-//!     id: "span-1".to_string(),
-//!     name: "http_request".to_string(),
-//!     parent_id: None,
-//!     start_time: Utc::now(),
-//!     end_time: None,
-//!     attributes: HashMap::new(),
-//! };
+//! let span = Span::new(
+//!     "span-1".to_string(),
+//!     "http_request".to_string(),
+//!     None,
+//!     Utc::now(),
+//!     None,
+//!     std::collections::HashMap::new(),
+//! );
 //! assert_eq!(span.name, "http_request");
 //! ```
 //!
-//! ## Unit Test
-//!
-//! ```rust
-//! use hexafn_watch::domain::contracts::Span;
-//! use chrono::Utc;
-//! use std::collections::HashMap;
-//! let span = Span {
-//!     id: "s1".to_string(),
-//!     name: "op".to_string(),
-//!     parent_id: Some("p1".to_string()),
-//!     start_time: Utc::now(),
-//!     end_time: None,
-//!     attributes: HashMap::new(),
-//! };
-//! let s = format!("{}", span);
-//! assert!(s.contains("op"));
-//! assert!(s.contains("s1"));
-//! ```
-//!
 //! ## Trace Trait Example
-//!
 //! ```rust
-//! use hexafn_watch::domain::contracts::{Trace, Span};
+//! use hexafn_watch::Trace;
+//! use hexafn_watch::Span;
 //! struct MyTracer;
 //! impl Trace for MyTracer {
 //!     fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
-//!         Ok(Span {
-//!             id: "span-1".to_string(),
+//!         Ok(Span::new(
+//!             "span-1".to_string(),
 //!             name,
-//!             parent_id: None,
-//!             start_time: chrono::Utc::now(),
-//!             end_time: None,
-//!             attributes: std::collections::HashMap::new(),
-//!         })
+//!             None,
+//!             chrono::Utc::now(),
+//!             None,
+//!             std::collections::HashMap::new(),
+//!         ))
 //!     }
 //!     fn current_span(&self) -> Option<Span> { None }
 //!     fn get_trace_id(&self) -> String { "trace-1".to_string() }
@@ -70,56 +46,9 @@
 //! let span = tracer.start_span("test".to_string()).unwrap();
 //! assert_eq!(span.name, "test");
 //! ```
-//!
 
-use chrono::{DateTime, Utc};
+pub use crate::Span;
 use hexafn_core::HexaError;
-use std::collections::HashMap;
-
-/// Represents a single span in a distributed trace.
-///
-/// A span models a logical unit of work or operation within a trace, including timing, parent-child relationships, and arbitrary attributes for context propagation and observability.
-///
-/// # Example
-/// ```rust
-/// use hexafn_watch::domain::contracts::Span;
-/// use chrono::Utc;
-/// use std::collections::HashMap;
-/// let span = Span {
-///     id: "span-1".to_string(),
-///     name: "db_query".to_string(),
-///     parent_id: Some("root-1".to_string()),
-///     start_time: Utc::now(),
-///     end_time: None,
-///     attributes: HashMap::new(),
-/// };
-/// assert_eq!(span.name, "db_query");
-/// ```
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Span {
-    /// Unique identifier for the span.
-    pub id: String,
-    /// Name of the operation or logical unit.
-    pub name: String,
-    /// Optional parent span ID for hierarchical traces.
-    pub parent_id: Option<String>,
-    /// Start timestamp of the span.
-    pub start_time: DateTime<Utc>,
-    /// Optional end timestamp (None if still open).
-    pub end_time: Option<DateTime<Utc>>,
-    /// Arbitrary key-value attributes for context propagation.
-    pub attributes: HashMap<String, String>,
-}
-
-impl std::fmt::Display for Span {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "Span[id: '{}', name: '{}', parent: {:?}, start: {}, end: {:?}]",
-            self.id, self.name, self.parent_id, self.start_time, self.end_time
-        )
-    }
-}
 
 /// Trait for distributed tracing and span management.
 ///
@@ -127,18 +56,19 @@ impl std::fmt::Display for Span {
 ///
 /// # Example
 /// ```rust
-/// use hexafn_watch::domain::contracts::{Trace, Span};
+/// use hexafn_watch::Trace;
+/// use hexafn_watch::Span;
 /// struct MyTracer;
 /// impl Trace for MyTracer {
 ///     fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
-///         Ok(Span {
-///             id: "span-1".to_string(),
+///         Ok(Span::new(
+///             "span-1".to_string(),
 ///             name,
-///             parent_id: None,
-///             start_time: chrono::Utc::now(),
-///             end_time: None,
-///             attributes: std::collections::HashMap::new(),
-///         })
+///             None,
+///             chrono::Utc::now(),
+///             None,
+///             std::collections::HashMap::new(),
+///         ))
 ///     }
 ///     fn current_span(&self) -> Option<Span> { None }
 ///     fn get_trace_id(&self) -> String { "trace-1".to_string() }
@@ -151,22 +81,23 @@ impl std::fmt::Display for Span {
 pub trait Trace {
     /// Start a new span with the given name.
     ///
-    /// This method creates and returns a new span, which represents a logical unit of work in the trace. The span should be finished with [`finish_span`] when the operation completes.
+    /// This method creates and returns a new span, which represents a logical unit of work in the trace. The span should be finished with [`Trace::finish_span`] when the operation completes.
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_watch::domain::contracts::{Trace, Span};
+    /// use hexafn_watch::Trace;
+    /// use hexafn_watch::Span;
     /// struct MyTracer;
     /// impl Trace for MyTracer {
     ///     fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
-    ///         Ok(Span {
-    ///             id: "span-1".to_string(),
+    ///         Ok(Span::new(
+    ///             "span-1".to_string(),
     ///             name,
-    ///             parent_id: None,
-    ///             start_time: chrono::Utc::now(),
-    ///             end_time: None,
-    ///             attributes: std::collections::HashMap::new(),
-    ///         })
+    ///             None,
+    ///             chrono::Utc::now(),
+    ///             None,
+    ///             std::collections::HashMap::new(),
+    ///         ))
     ///     }
     ///     fn current_span(&self) -> Option<Span> { None }
     ///     fn get_trace_id(&self) -> String { "trace-1".to_string() }
@@ -184,7 +115,8 @@ pub trait Trace {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_watch::domain::contracts::{Trace, Span};
+    /// use hexafn_watch::Trace;
+    /// use hexafn_watch::Span;
     /// struct MyTracer;
     /// impl Trace for MyTracer {
     ///     fn start_span(&self, _name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> { unimplemented!() }
@@ -203,7 +135,8 @@ pub trait Trace {
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_watch::domain::contracts::{Trace,Span};
+    /// use hexafn_watch::Trace;
+    /// use hexafn_watch::Span;
     /// struct MyTracer;
     /// impl Trace for MyTracer {
     ///     fn start_span(&self, _name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> { unimplemented!() }
@@ -218,22 +151,23 @@ pub trait Trace {
 
     /// Finish and record the given span.
     ///
-    /// This method marks the span as completed and records it in the tracing backend. It should be called exactly once for each span created with [`start_span`].
+    /// This method marks the span as completed and records it in the tracing backend. It should be called exactly once for each span created with [`Trace::start_span`].
     ///
     /// # Example
     /// ```rust
-    /// use hexafn_watch::domain::contracts::{Trace, Span};
+    /// use hexafn_watch::Trace;
+    /// use hexafn_watch::Span;
     /// struct MyTracer;
     /// impl Trace for MyTracer {
     ///     fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
-    ///         Ok(Span {
-    ///             id: "span-1".to_string(),
+    ///         Ok(Span::new(
+    ///             "span-1".to_string(),
     ///             name,
-    ///             parent_id: None,
-    ///             start_time: chrono::Utc::now(),
-    ///             end_time: None,
-    ///             attributes: std::collections::HashMap::new(),
-    ///         })
+    ///             None,
+    ///             chrono::Utc::now(),
+    ///             None,
+    ///             std::collections::HashMap::new(),
+    ///         ))
     ///     }
     ///     fn current_span(&self) -> Option<Span> { None }
     ///     fn get_trace_id(&self) -> String { "trace-1".to_string() }
@@ -251,18 +185,19 @@ pub trait Trace {
 mod tests {
     use super::*;
     use chrono::{Duration, Utc};
+    use std::cell::RefCell;
     use std::collections::HashMap;
 
     #[test]
     fn test_span_display() {
-        let span = Span {
-            id: "s1".to_string(),
-            name: "op".to_string(),
-            parent_id: Some("p1".to_string()),
-            start_time: Utc::now(),
-            end_time: None,
-            attributes: HashMap::new(),
-        };
+        let span = Span::new(
+            "s1".to_string(),
+            "op".to_string(),
+            Some("p1".to_string()),
+            Utc::now(),
+            None,
+            HashMap::new(),
+        );
         let s = format!("{}", span);
         assert!(s.contains("op"));
         assert!(s.contains("s1"));
@@ -272,14 +207,14 @@ mod tests {
     fn test_span_equality_and_clone() {
         let mut attrs = HashMap::new();
         attrs.insert("key".to_string(), "val".to_string());
-        let span1 = Span {
-            id: "id1".to_string(),
-            name: "span".to_string(),
-            parent_id: None,
-            start_time: Utc::now(),
-            end_time: None,
-            attributes: attrs.clone(),
-        };
+        let span1 = Span::new(
+            "id1".to_string(),
+            "span".to_string(),
+            None,
+            Utc::now(),
+            None,
+            attrs.clone(),
+        );
         let span2 = span1.clone();
         assert_eq!(span1, span2);
         assert_eq!(span1.attributes["key"], "val");
@@ -289,14 +224,14 @@ mod tests {
     fn test_span_with_end_time() {
         let now = Utc::now();
         let end = now + Duration::seconds(1);
-        let span = Span {
-            id: "id2".to_string(),
-            name: "finished".to_string(),
-            parent_id: None,
-            start_time: now,
-            end_time: Some(end),
-            attributes: HashMap::new(),
-        };
+        let span = Span::new(
+            "id2".to_string(),
+            "finished".to_string(),
+            None,
+            now,
+            Some(end),
+            HashMap::new(),
+        );
         assert!(span.end_time.is_some());
         let s = format!("{}", span);
         assert!(s.contains("finished"));
@@ -304,22 +239,22 @@ mod tests {
 
     #[test]
     fn test_span_parent_child() {
-        let parent = Span {
-            id: "parent".to_string(),
-            name: "parent_span".to_string(),
-            parent_id: None,
-            start_time: Utc::now(),
-            end_time: None,
-            attributes: HashMap::new(),
-        };
-        let child = Span {
-            id: "child".to_string(),
-            name: "child_span".to_string(),
-            parent_id: Some(parent.id.clone()),
-            start_time: Utc::now(),
-            end_time: None,
-            attributes: HashMap::new(),
-        };
+        let parent = Span::new(
+            "parent".to_string(),
+            "parent_span".to_string(),
+            None,
+            Utc::now(),
+            None,
+            HashMap::new(),
+        );
+        let child = Span::new(
+            "child".to_string(),
+            "child_span".to_string(),
+            Some(parent.id.clone()),
+            Utc::now(),
+            None,
+            HashMap::new(),
+        );
         assert_eq!(child.parent_id, Some("parent".to_string()));
     }
 
@@ -356,27 +291,27 @@ mod tests {
     }
 
     struct MockTracer {
-        pub last_span: std::cell::RefCell<Option<Span>>,
+        pub last_span: RefCell<Option<Span>>,
         pub trace_id: String,
     }
     impl MockTracer {
         fn new(trace_id: &str) -> Self {
             Self {
-                last_span: std::cell::RefCell::new(None),
+                last_span: RefCell::new(None),
                 trace_id: trace_id.to_string(),
             }
         }
     }
     impl Trace for MockTracer {
         fn start_span(&self, name: String) -> Result<Span, Box<dyn hexafn_core::HexaError>> {
-            let span = Span {
-                id: format!("{}-span", name),
-                name: name.clone(),
-                parent_id: None,
-                start_time: Utc::now(),
-                end_time: None,
-                attributes: HashMap::new(),
-            };
+            let span = Span::new(
+                format!("{}-span", name),
+                name.clone(),
+                None,
+                Utc::now(),
+                None,
+                HashMap::new(),
+            );
             self.last_span.replace(Some(span.clone()));
             Ok(span)
         }
@@ -408,14 +343,14 @@ mod tests {
     #[test]
     fn test_trace_finish_span_error() {
         let tracer = MockTracer::new("trace-err");
-        let span = Span {
-            id: "id".to_string(),
-            name: "".to_string(),
-            parent_id: None,
-            start_time: Utc::now(),
-            end_time: None,
-            attributes: HashMap::new(),
-        };
+        let span = Span::new(
+            "id".to_string(),
+            "".to_string(),
+            None,
+            Utc::now(),
+            None,
+            HashMap::new(),
+        );
         let result = tracer.finish_span(span);
         assert!(result.is_err());
         let err = result.unwrap_err();

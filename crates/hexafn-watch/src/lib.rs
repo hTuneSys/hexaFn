@@ -3,4 +3,5 @@
 
 pub mod domain;
 
-pub use domain::contracts::{Span,Trace};
+pub use domain::contracts::Trace;
+pub use domain::entities::Span;
