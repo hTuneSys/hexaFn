@@ -3,4 +3,4 @@
 
 pub mod trace;
 
-pub use trace::{Span,Trace};
+pub use trace::Trace;

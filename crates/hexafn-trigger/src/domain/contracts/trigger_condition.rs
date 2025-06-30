@@ -12,13 +12,7 @@
 //! - Supports prioritization and human-readable descriptions for introspection and debugging
 //! - Enables flexible, type-erased context evaluation using `&dyn Any`
 //!
-//! ## Usage
-//!
-//! Implement this trait to define custom trigger conditions. Each condition can be prioritized
-//! and described, and is evaluated against an arbitrary context (typically event data).
-//!
 //! ## Example
-//!
 //! ```rust
 //! use hexafn_trigger::TriggerCondition;
 //! use hexafn_core::HexaError;
@@ -48,7 +42,6 @@ use std::any::Any;
 /// based on the provided context. Conditions can be prioritized and described for introspection.
 ///
 /// # Example
-///
 /// ```rust
 /// use hexafn_trigger::TriggerCondition;
 /// use hexafn_core::HexaError;
@@ -67,6 +60,9 @@ use std::any::Any;
 ///         0
 ///     }
 /// }
+/// let cond = AlwaysTrueCondition;
+/// let dummy = 42u32;
+/// assert!(cond.matches(&dummy as &dyn Any).unwrap());
 /// ```
 pub trait TriggerCondition {
     /// Checks if the condition matches the given context.
@@ -82,7 +78,6 @@ pub trait TriggerCondition {
     /// * `Err` if evaluation fails due to an error.
     ///
     /// # Example
-    ///
     /// ```rust
     /// use hexafn_trigger::TriggerCondition;
     /// use hexafn_core::HexaError;
@@ -97,7 +92,6 @@ pub trait TriggerCondition {
     ///     fn description(&self) -> String { "Matches if context is String".to_string() }
     ///     fn get_priority(&self) -> u32 { 1 }
     /// }
-    ///
     /// let cond = TrueIfString;
     /// let ctx = "hello".to_string();
     /// assert_eq!(cond.matches(&ctx as &dyn Any).unwrap(), true);
@@ -107,9 +101,8 @@ pub trait TriggerCondition {
     /// Returns a human-readable description of the condition.
     ///
     /// # Example
-    ///
     /// ```rust
-    /// use crate::hexafn_trigger::TriggerCondition;
+    /// use hexafn_trigger::TriggerCondition;
     /// use hexafn_core::HexaError;
     /// use std::any::Any;
     ///
@@ -119,7 +112,6 @@ pub trait TriggerCondition {
     ///     fn description(&self) -> String { "My custom condition".to_string() }
     ///     fn get_priority(&self) -> u32 { 0 }
     /// }
-    ///
     /// let cond = MyCondition;
     /// assert_eq!(cond.description(), "My custom condition");
     /// ```
@@ -128,7 +120,6 @@ pub trait TriggerCondition {
     /// Returns the priority of this condition (lower is higher priority).
     ///
     /// # Example
-    ///
     /// ```rust
     /// use hexafn_trigger::TriggerCondition;
     /// use hexafn_core::HexaError;
@@ -140,7 +131,6 @@ pub trait TriggerCondition {
     ///     fn description(&self) -> String { "Priority condition".to_string() }
     ///     fn get_priority(&self) -> u32 { 42 }
     /// }
-    ///
     /// let cond = PriorityCondition;
     /// assert_eq!(cond.get_priority(), 42);
     /// ```

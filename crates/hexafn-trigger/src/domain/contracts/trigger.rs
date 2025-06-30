@@ -9,7 +9,6 @@
 //! of the 6F Lifecycle Flow and are designed to be composable, testable, and extensible.
 //!
 //! ## Example
-//!
 //! ```rust
 //! use hexafn_trigger::Trigger;
 //! use hexafn_trigger::TriggerCondition;
@@ -23,7 +22,6 @@
 //!     fn name(&self) -> String { "Test Trigger".to_string() }
 //!     fn is_active(&self) -> bool { true }
 //!     fn evaluate(&self, context: &dyn Any) -> Result<bool, Box<dyn HexaError>> {
-//!         // Example: always fire
 //!         Ok(true)
 //!     }
 //!     fn get_conditions(&self) -> Vec<Box<dyn TriggerCondition>> {
@@ -46,7 +44,6 @@ use hexafn_core::HexaError;
 /// orchestrate event-driven flows and can be enabled or disabled dynamically.
 ///
 /// # Example
-///
 /// ```rust
 /// use hexafn_trigger::{Trigger, TriggerCondition};
 /// use hexafn_core::HexaError;
@@ -61,17 +58,18 @@ use hexafn_core::HexaError;
 ///     fn evaluate(&self, _context: &dyn Any) -> Result<bool, Box<dyn HexaError>> { Ok(true) }
 ///     fn get_conditions(&self) -> Vec<Box<dyn TriggerCondition>> { vec![] }
 /// }
+/// let t = AlwaysActiveTrigger;
+/// assert!(t.is_active());
+/// assert_eq!(t.evaluate(&0u32 as &dyn Any).unwrap(), true);
 /// ```
 pub trait Trigger {
     /// Returns the unique identifier of the trigger.
     ///
     /// # Example
-    ///
     /// ```rust
     /// use hexafn_core::HexaError;
     /// use hexafn_trigger::Trigger;
     /// use hexafn_trigger::TriggerCondition;
-    ///
     /// struct MyTrigger;
     /// impl Trigger for MyTrigger {
     ///     fn id(&self) -> String { "trigger-123".to_string() }
@@ -88,7 +86,6 @@ pub trait Trigger {
     /// Returns the name of the trigger.
     ///
     /// # Example
-    ///
     /// ```rust
     /// # use hexafn_trigger::Trigger;
     /// struct NamedTrigger;
@@ -109,7 +106,6 @@ pub trait Trigger {
     /// Returns `true` if the trigger should be evaluated, or `false` if it is disabled.
     ///
     /// # Example
-    ///
     /// ```rust
     /// # use hexafn_trigger::Trigger;
     /// struct InactiveTrigger;
@@ -138,7 +134,6 @@ pub trait Trigger {
     /// * `Err` if evaluation fails due to an error.
     ///
     /// # Example
-    ///
     /// ```rust
     /// # use hexafn_trigger::Trigger;
     /// # use hexafn_core::HexaError;
@@ -161,7 +156,6 @@ pub trait Trigger {
     /// Each condition is evaluated as part of the trigger's logic.
     ///
     /// # Example
-    ///
     /// ```rust
     /// # use hexafn_trigger::{Trigger, TriggerCondition};
     /// struct DummyCondition;

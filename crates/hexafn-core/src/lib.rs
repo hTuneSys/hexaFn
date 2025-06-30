@@ -3,7 +3,7 @@
 
 pub mod domain;
 
-pub use domain::contracts::DomainEvent;
-pub use domain::contracts::{Event, EventId};
-pub use domain::contracts::{HexaError, HexaErrorKind, HexaErrorSeverity,HexaCoreError};
-pub use domain::contracts::{Pipeline, PipelineContext, PipelineStage, PipelineStageType};
+pub use domain::contracts::{DomainEvent, Event, HexaError, Pipeline, PipelineStage};
+pub use domain::value_objects::{
+    EventId, HexaCoreError, HexaErrorKind, HexaErrorSeverity, PipelineContext, PipelineStageType,
+};

@@ -8,6 +8,10 @@
 module:core:
   - changed-files:
       - any-glob-to-any-file: ['crates/hexafn-core/**']
+
+module:macros:
+  - changed-files:
+      - any-glob-to-any-file: ['crates/hexafn-macros/**']
       
 module:bridge:
   - changed-files:

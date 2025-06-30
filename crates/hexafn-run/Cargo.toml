@@ -33,5 +33,10 @@ chrono.workspace = true
 tracing.workspace = true
 serde_json.workspace = true
 
+# Internal dependencies
+hexafn-core = { path = "../hexafn-core" }
+dyn-clone = "1.0.19"
+serde_yaml = "0.9.34"
+
 [dev-dependencies]
 tokio-test.workspace = true

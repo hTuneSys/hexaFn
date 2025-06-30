@@ -27,7 +27,7 @@ package "Domain Layer" {
     +structured_data: serde_json::Value
     +schema: Option<Schema>
     +format: DataFormat
-    +validation_errors: Vec<ValidationError>
+    +validation_errors: Vec<HexaError>
     +metadata: HashMap<String, String>
   }
   enum DataFormat {
@@ -38,24 +38,6 @@ package "Domain Layer" {
     Toml
     Binary
     PlainText
-  }
-  class ValidationError {
-    +field_path: String
-    +error_type: ValidationErrorType
-    +message: String
-    +severity: ErrorSeverity
-  }
-  enum ValidationErrorType {
-    SchemaMismatch
-    TypeConversion
-    RequiredFieldMissing
-    InvalidFormat
-    SecurityViolation
-  }
-  enum ErrorSeverity {
-    Warning
-    Error
-    Critical
   }
   class FormatTransformationRule {
     +source_format: DataFormat
@@ -76,7 +58,7 @@ package "Domain Layer" {
     +timestamp: DateTime
     +processing_duration: Duration
     +success: bool
-    +errors: Vec<ValidationError>
+    +errors: Vec<HexaError>
   }
   interface FunctionRuntime {
     +execute(context: FunctionContext): Result<ExecutionResult, HexaError>
@@ -95,7 +77,7 @@ package "Domain Layer" {
   class ExecutionResult {
     +status: ExecutionStatus
     +outputs: HashMap<String, Any>
-    +error: Option<Error>
+    +error: Option<HexaError>
     +duration: Duration
     +memory_used: u64
     +is_success(): bool
@@ -106,12 +88,6 @@ package "Domain Layer" {
     Failure
     Timeout
     Cancelled
-  }
-  class Error {
-    +code: String
-    +message: String
-    +kind: String
-    +severity: String
   }
   class FunctionRegisteredEvent {
     +function_id: String
@@ -153,20 +129,21 @@ package "Domain Layer" {
     +allowed_roles: Vec<String>
     +is_allowed(user: String): bool
   }
+  interface Schema {
+    +data_format(): DataFormat
+    +validate(data: Vec<u8>): bool
+  }
   FunctionAuditTrail --> FunctionExecutedEvent
   FunctionDependencyGraph --> FunctionTag
   FunctionRollbackPoint --> FunctionAuditTrail
   FunctionAccessControl --> FunctionTag
   DataFormatter --> RawData
   DataFormatter --> FormattedData
+  DataFormatter --> Schema
   FormattedData --> DataFormat
-  FormattedData --> ValidationError
-  ValidationError --> ValidationErrorType
-  ValidationError --> ErrorSeverity
   FormatTransformationRule --> DataFormat
   FormatTransformationRule --> ValidationRule
   DataFormattedEvent --> DataFormat
-  DataFormattedEvent --> ValidationError
 }
 
 ' --- Application Layer ---

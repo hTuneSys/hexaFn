@@ -3,4 +3,5 @@
 
 pub mod domain;
 
-pub use domain::contracts::{ConnectionStatus, Integration};
+pub use domain::contracts::Integration;
+pub use domain::value_objects::ConnectionStatus;

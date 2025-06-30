@@ -3,4 +3,5 @@
 
 pub mod domain;
 
-pub use domain::contracts::{KeyValueEntry, KvOp, KvStore,Namespace};
+pub use domain::contracts::KvStore;
+pub use domain::value_objects::{KeyValueEntry, KvOp, Namespace};

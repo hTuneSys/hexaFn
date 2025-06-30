@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2025 Husamettin ARABACI
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "hexafn-macros"
+description = "Procedural macro crate for the entire hexaFn project: provides all macro-based automation, code generation, function/formatter registration, pipeline macros, and future DSL extensions across all modules."
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1"
+quote = "1"
+syn = { version = "2", features = ["full"] }
+inventory = "0.3"

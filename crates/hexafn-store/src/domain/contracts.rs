@@ -3,4 +3,4 @@
 
 pub mod kv_store;
 
-pub use kv_store::{KeyValueEntry,KvOp,KvStore,Namespace};
+pub use kv_store::KvStore;

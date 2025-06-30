@@ -84,6 +84,7 @@ crates/<domain>/src/
 | Module                | Lifecycle Stage(s) | Responsibility                                          |
 | --------------------- | ------------------ | ------------------------------------------------------- |
 | `hexafn-core/`        | Shared Kernel      | Domain contracts, shared types, 6F lifecycle traits     |
+| `hexafn-macros/`      | All                | Procedural macros for codegen, registration, DSL, pipeline automation |
 | `hexafn-bridge/`      | Feed               | Interfaces with external systems (e.g., webhooks, APIs) |
 | `hexafn-trigger/`     | Filter             | Detects & evaluates events                              |
 | `hexafn-run/`         | Format / Function  | Executes logic (DSL, WASM, scripts)                     |
@@ -100,6 +101,7 @@ crates/<domain>/src/
 [workspace]
 members = [
     "crates/hexafn-core",    
+    "crates/hexafn-macros",    
     "crates/hexafn-bridge",
     "crates/hexafn-trigger", 
     "crates/hexafn-run",

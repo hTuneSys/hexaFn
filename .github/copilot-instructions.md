@@ -18,7 +18,7 @@ SPDX-License-Identifier: MIT
 
 ## 🚨 CRITICAL ARCHITECTURE REQUIREMENTS
 
-### Hexagonal Architecture Structure (for all modules EXCEPT hexafn-core)
+### Hexagonal Architecture Structure (for all modules EXCEPT hexafn-core and hexafn-macros)
 
 ```plaintext
 crates/<domain>/src/
@@ -52,6 +52,7 @@ crates/<domain>/src/
 ### Module Boundaries
 
 - `hexafn-core`: Core architecture & event flow ( Shared Kernel )
+- `hexafn-macros`: Procedural macro crate (attribute macros, codegen, DSL registration)
 - `hexafn-bridge`: HexaBridge (external integrations & webhooks)
 - `hexafn-trigger`: HexaTrigger (conditional logic & rule engine)
 - `hexafn-run`: HexaRun (function runtime: WASM, JS, DSL)
@@ -72,6 +73,7 @@ crates/<domain>/src/
 - [`docs/DATA_MODEL_CAST.puml`](../docs/DATA_MODEL_CAST.puml) - **MANDATORY** Data Cast model and domain concepts
 - [`docs/DATA_MODEL_WATCH.puml`](../docs/DATA_MODEL_WATCH.puml) - **MANDATORY** Data Watch model and domain concepts
 - [`docs/DATA_FLOW.md`](../docs/DATA_FLOW.md) - **MANDATORY** Data flow patterns
+- [`docs/DATA_FLOW_SAMPLE.md`](../docs/DATA_FLOW_SAMPLE.md) - **MANDATORY** Data flow patterns sample
 - [`docs/DATA_FLOW_DETAIL.md`](../docs/DATA_FLOW_DETAIL.md) - **MANDATORY** Detailed component architecture
 - [`docs/BRANCH_STRATEGY.md`](../docs/BRANCH_STRATEGY.md) - **MANDATORY** for branch naming and workflow
 - [`docs/COMMIT_STRATEGY.md`](../docs/COMMIT_STRATEGY.md) - **MANDATORY** for commit conventions
@@ -140,6 +142,7 @@ If there is a related issue ID, it should be appended at the end: `<type>/<descr
 **Allowed Labels ONLY**:
 
 - `module:core`: Core architecture changes
+- `module:macros`: Macro changes
 - `module:bridge`: HexaBridge changes
 - `module:trigger`: HexaTrigger changes
 - `module:run`: HexaRun changes
