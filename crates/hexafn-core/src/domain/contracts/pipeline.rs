@@ -272,7 +272,7 @@ mod tests {
         type Input = String;
         type Output = String;
         async fn execute(&self, input: Self::Input) -> Result<Self::Output, Box<dyn HexaError>> {
-            Ok(format!("executed: {}", input))
+            Ok(format!("executed: {input}"))
         }
         fn add_stage(&mut self, stage: Box<dyn PipelineStage>) -> Result<(), Box<dyn HexaError>> {
             self.stages.push(stage);

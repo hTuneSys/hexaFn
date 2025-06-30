@@ -204,11 +204,11 @@ mod tests {
         let t = Topic::new("topic3".to_string())
             .unwrap()
             .with_description("d".to_string());
-        let s = format!("{}", t);
+        let s = format!("{t}");
         assert!(s.contains("topic3"));
         assert!(s.contains("d"));
         let r = t.retention_policy();
-        let s2 = format!("{}", r);
+        let s2 = format!("{r}");
         assert!(s2.contains("max_events"));
     }
 

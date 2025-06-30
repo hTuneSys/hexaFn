@@ -143,7 +143,7 @@ mod tests {
             source: "display-test".to_string(),
             timestamp: Utc::now(),
         };
-        let s = format!("{}", data);
+        let s = format!("{data}");
         assert!(s.contains("RawData"));
         assert!(s.contains("content_type: text/plain"));
         assert!(s.contains("encoding: utf-8"));

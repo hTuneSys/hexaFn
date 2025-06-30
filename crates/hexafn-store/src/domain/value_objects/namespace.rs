@@ -148,7 +148,7 @@ mod tests {
         let ns = Namespace {
             value: "abc".to_string(),
         };
-        assert_eq!(format!("{}", ns), "Namespace('abc')");
+        assert_eq!(format!("{ns}"), "Namespace('abc')");
     }
 
     #[test]

@@ -99,7 +99,7 @@ mod tests {
     #[test]
     fn test_debug_format() {
         let sev = HexaErrorSeverity::Critical;
-        let debug_str = format!("{:?}", sev);
+        let debug_str = format!("{sev:?}");
         assert_eq!(debug_str, "Critical");
     }
 }

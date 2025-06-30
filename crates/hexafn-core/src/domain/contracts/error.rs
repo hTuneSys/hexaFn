@@ -425,7 +425,7 @@ mod tests {
             .with_message("Display test")
             .with_kind(HexaErrorKind::Validation)
             .with_severity(HexaErrorSeverity::Low);
-        let s = format!("{}", err);
+        let s = format!("{err}");
         assert!(s.contains("Display test"));
         assert!(s.contains("core.display.test"));
     }
