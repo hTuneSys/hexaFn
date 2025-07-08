@@ -29,7 +29,7 @@ rust-version = "1.86.0"
 
 [workspace.dependencies]
 # Async runtime
-tokio = { version = "1.0", features = ["full"] }
+tokio = { version = "1.46", features = ["full"] }
 async-trait = "0.1"
 futures = "0.3"
 
