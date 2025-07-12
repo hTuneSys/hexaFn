@@ -21,7 +21,7 @@ package "Domain Layer" {
     +description(): &str
     +created_at(): DateTime
     +retention_policy(): &RetentionPolicy
-  }
+  }6
   class RetentionPolicy {
     +max_events: u64
     +ttl: Option<Duration>

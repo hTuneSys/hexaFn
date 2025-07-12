@@ -189,7 +189,7 @@ mod tests {
     #[test]
     fn test_debug_trait() {
         let status = ConnectionStatus::Connected;
-        let debug_str = format!("{status:?}" );
+        let debug_str = format!("{status:?}");
         assert_eq!(debug_str, "Connected");
     }
 }
