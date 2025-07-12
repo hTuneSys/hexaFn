@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 # Rust build directory
-/target/
+target/
 
 # Backup files
 **/*.rs.bk
@@ -10,8 +10,7 @@
 
 # VSCode settings
 .vscode/
-hexaFn.code-workspace
-/work_area/
+work_area/
 
 # Node modules
 node_modules/
@@ -32,4 +31,4 @@ node_modules/
 *.tmp
 
 # Github issue list
-/issues/
+issues/
