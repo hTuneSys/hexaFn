@@ -10,4 +10,4 @@ rules:
     - always
     - [feat, fix, chore, refactor, test, docs, ci, perf, build, release, hotfix, style]
   header-max-length: [0, "always"]
-  body-max-line-length: [0, "always"]
+  body-max-line-length: [0, "never"]
