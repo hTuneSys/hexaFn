@@ -15,7 +15,7 @@ jobs:
     name: Check Formatting (hexaFn)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -30,7 +30,7 @@ jobs:
     name: Run Clippy Linter (hexaFn)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -45,7 +45,7 @@ jobs:
     name: Build Project (hexaFn)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -60,7 +60,7 @@ jobs:
     name: Run Tests (hexaFn)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
